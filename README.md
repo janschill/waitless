@@ -7,6 +7,7 @@ Eine Client-Server Struktur für die Verwaltung von Tischen und Plätzen in eine
 After cloning the repository open `Homestead.yaml`, change `map` to absolute directory.
 When a vagrant environment existed, run `vagrant reload` in a terminal window.
 To start the VM, run `vagrant up`.
+To connect to the database, find the ip of the VM with `ifconfig` when connected through ssh.
 
 
 ## Laravel Valet local development setup
