@@ -12,5 +12,6 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+$waitid = DB::table('waitid')->get();
+return view('welcome', compact('waitid'));
 });
