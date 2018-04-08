@@ -9,6 +9,18 @@ When a vagrant environment existed, run `vagrant reload` in a terminal window.
 To start the VM, run `vagrant up`.
 To connect to the database, find the ip of the VM with `ifconfig` when connected through ssh.
 
+#### Vagrant Terminal 
+composer install
+vendor/bin/homestead make
+vagrant up
+vagrant ssh
+cd code
+mv /home/vagrant/code/.env.example /home/vagrant/code/.env
+evtl. env manuell erstellen
+php artisan key:generate
+
+php artisan migrate
+
 
 ## Laravel Valet local development setup
 
