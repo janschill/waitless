@@ -10,6 +10,7 @@ To start the VM, run `vagrant up`.
 To connect to the database, find the ip of the VM with `ifconfig` when connected through ssh.
 
 #### Vagrant Terminal 
+```
 composer install
 vendor/bin/homestead make
 vagrant up
@@ -20,7 +21,7 @@ evtl. env manuell erstellen
 php artisan key:generate
 
 php artisan migrate
-
+```
 
 ## Laravel Valet local development setup
 
