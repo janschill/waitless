@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Guest extends Model
 {
+    protected $fillable = ['group_size', 'comment', 'preordered'];
+
     public function scopeWaiting($query)
     {
         return $query->where('state_id', 0);

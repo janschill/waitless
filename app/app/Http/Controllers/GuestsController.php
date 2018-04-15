@@ -17,4 +17,20 @@ class GuestsController extends Controller
     {
         return view('guests.show', compact('guest'));
     }
+
+    public function create()
+    {
+        return view('guests.create');
+    }
+
+    public function store()
+    {
+        Guest::create([
+            'group_size' => request('group_size'),
+            'comment' => request('comment'),
+            'preordered' => request('preordered'),
+        ]);
+
+        return redirect('/guests');
+    }
 }
