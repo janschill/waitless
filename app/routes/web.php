@@ -4,24 +4,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', function () {
-    return view('admin');
-});
-
-Route::get('/front', function () {
-    return view('front');
-});
-
-Route::get('/back', function () {
-    return view('back');
-});
-
-
 Route::get('/guests', 'GuestsController@index');
-Route::get('/guests/create', 'GuestsController@create');
-Route::get('/guests/{guest}', 'GuestsController@show');
-Route::post('/guests', 'GuestsController@store');
 
+Route::get('/guests/create', 'GuestsController@create');
+
+Route::get('/guests/{guest}', 'GuestsController@show');
+
+Route::post('/guests', 'GuestsController@store');
 
 // Route::get('/guests/waiting', function () {
 //     $guests = Guest::waiting()->get();
@@ -40,4 +29,3 @@ Route::post('/guests', 'GuestsController@store');
 
 //     return view('guests.index', compact('guests'));
 // });
-
