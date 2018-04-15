@@ -1,7 +1,5 @@
 <?php
 
-use App\Guest;
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,33 +17,25 @@ Route::get('/back', function () {
 });
 
 
-Route::get('/guests', function () {
-    $guests = Guest::all();
-
-    return view('guests.index', compact('guests'));
-});
-
-Route::get('/guests/{guest}', function ($id) {
-    $guest = Guest::find($id);
-    return view('guests.show', compact('guest'));
-});
+Route::get('/guests', 'GuestsController@index');
+Route::get('/guests/{guest}', 'GuestsController@show');
 
 
-Route::get('/guests/waiting', function () {
-    $guests = Guest::waiting()->get();
-    return view('guests.index', compact('guests'));
-});
+// Route::get('/guests/waiting', function () {
+//     $guests = Guest::waiting()->get();
+//     return view('guests.index', compact('guests'));
+// });
 
-Route::get('/guests/assigned', function () {
-    $guests = Guest::assigned()->get();
-    dd($guests);
+// Route::get('/guests/assigned', function () {
+//     $guests = Guest::assigned()->get();
+//     dd($guests);
 
-    return view('guests.index', compact('guests'));
-});
+//     return view('guests.index', compact('guests'));
+// });
 
-Route::get('/guests/gone', function () {
-    $guests = Guest::gone()->get();
+// Route::get('/guests/gone', function () {
+//     $guests = Guest::gone()->get();
 
-    return view('guests.index', compact('guests'));
-});
+//     return view('guests.index', compact('guests'));
+// });
 
