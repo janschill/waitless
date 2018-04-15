@@ -10,6 +10,7 @@
 
 <body>
     <h1>Waitless</h1>
+    <a href="/guests">Gäste</a>
 </body>
 
 </html>
