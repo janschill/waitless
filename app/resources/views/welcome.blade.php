@@ -10,13 +10,6 @@
 
 <body>
     <h1>Waitless</h1>
-    <h2>Wartende Nummern:</h2>
-    <ul>
-        @foreach ($waitid as $wait)
-        <li> {{$wait->number}}</li>
-        @endforeach
-    </ul>
-    <p>(Aus MySQL-Datenbank)</p>
 </body>
 
 </html>
