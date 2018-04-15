@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Guest extends Model
 {
-    protected $fillable = ['group_size', 'comment', 'preordered'];
+    protected $fillable = ['waitid_id', 'state_id', 'group_size', 'comment', 'preordered', 'arrival_time', 'last_state_change'];
 
     public function scopeWaiting($query)
     {
