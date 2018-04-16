@@ -24,4 +24,14 @@ class Guest extends Model
     {
         return $query->where('state_id', 2);
     }
+
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
+
+    public function waitid()
+    {
+        return $this->belongsTo(Waitid::class);
+    }
 }
