@@ -9,6 +9,8 @@
         <p>Status: {{ $guest->state_id }}</p>
         <p>Gruppengröße: {{ $guest->group_size }}</p>
         <p>Kommentar: {{ $guest->comment }}</p>
+        <p>Angekommen um: {{ $guest->arrival_time->toFormattedDateString() }}</p>
+        <p>Letzte Statusänderung: {{ $guest->last_state_change->diffForHumans() }}</p>
     </li>
     @endforeach
 </ul>
