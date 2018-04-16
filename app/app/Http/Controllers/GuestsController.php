@@ -29,6 +29,11 @@ class GuestsController extends Controller
     // POST /guests
     public function store()
     {
+        $this->validate(request(), [
+            'group_size' => 'required|max:12'
+        ]);
+
+
         Guest::create([
             'waitid_id' => request('waitid_id'),
             'state_id' => request('state_id'),
