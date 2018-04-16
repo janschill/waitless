@@ -35,6 +35,7 @@ Navigate to the root directory of your Vagrant project. With `vagrant up` the VM
 `valet link app-name` to serve a single app in the current directory under `app-name.test`
 
 ## Coding documentation
+### Eloquent
 We are following Laravel coding conventions like [_Eloquent_](https://laravel.com/docs/5.4/eloquent). Where every database table has a corresponding domain model in PHP. These are used to interact with the database.
 
 Each model has a controller – when needed. These controllers control the data with functions like `index` (action to list all the data) or `show` (action to show single/specific data), these get called from the router and serve to the view, which render them in the browser.
