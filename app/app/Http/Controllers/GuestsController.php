@@ -9,7 +9,7 @@ class GuestsController extends Controller
     // GET /guests
     public function index()
     {
-        $guests = Guest::all();
+        $guests = Guest::latest()->get();
 
         return view('guests.index', compact('guests'));
     }
