@@ -6,6 +6,7 @@ use App\Guest;
 
 class GuestsController extends Controller
 {
+    // GET /guests
     public function index()
     {
         $guests = Guest::all();
@@ -13,16 +14,19 @@ class GuestsController extends Controller
         return view('guests.index', compact('guests'));
     }
 
+    // GET /guests/{guest}
     public function show(Guest $guest)
     {
         return view('guests.show', compact('guest'));
     }
 
+    // GET /guests/create
     public function create()
     {
         return view('guests.create');
     }
 
+    // POST /guests
     public function store()
     {
         Guest::create([
@@ -36,5 +40,23 @@ class GuestsController extends Controller
         ]);
 
         return redirect('/guests');
+    }
+
+    // GET /guests/{guest}/edit
+    public function edit()
+    {
+
+    }
+
+    // PUT/PATCH /guests/{guest}
+    public function update()
+    {
+
+    }
+
+    // DELETE /guests/{guest}
+    public function destroy()
+    {
+
     }
 }
