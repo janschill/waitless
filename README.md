@@ -13,6 +13,7 @@ To connect to the database, find the ip of the VM with `ifconfig` when connected
 ```
 composer install
 vendor/bin/homestead make
+(ssh-keygen -t rsa -C "test@waitless.com")
 vagrant up
 vagrant ssh
 cd code
