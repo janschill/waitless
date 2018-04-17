@@ -12,11 +12,12 @@ class WaitidsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Waitid $waitid)
     {
         $waitids = Waitid::all();
+        $currentlyUsed  = $waitid->guests;
 
-        return view('waitids.index', compact('waitids'));
+        return view('waitids.index', compact('waitids', 'currentlyUsed'));
     }
 
     /**

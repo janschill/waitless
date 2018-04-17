@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Guest;
+use App\Waitid;
+use Illuminate\Support\Facades\DB;
 
 class GuestsController extends Controller
 {
@@ -33,10 +35,12 @@ class GuestsController extends Controller
             'group_size' => 'required|max:12'
         ]);
 
+        $stateid = 1;
+        $waitid = $this->unoccupiedWaitids()[0]->id;
 
         Guest::create([
-            'waitid_id' => request('waitid_id'),
-            'state_id' => request('state_id'),
+            'waitid_id' => $waitid,
+            'state_id' => $stateid,
             'group_size' => request('group_size'),
             'comment' => request('comment'),
             'preordered' => request('preordered'),
@@ -63,5 +67,12 @@ class GuestsController extends Controller
     public function destroy()
     {
 
+    }
+
+    private function unoccupiedWaitids()
+    {
+        $waitids = DB::select(DB::raw("SELECT * FROM waitids WHERE number NOT IN (SELECT number FROM waitids JOIN guests ON guests.waitid_id = waitids.id JOIN states ON guests.state_id = states.id WHERE states.state = 'wartend');"));
+
+        return $waitids;
     }
 }
