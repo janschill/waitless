@@ -1,16 +1,12 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Waitless</title>
-</head>
-
-<body>
-    <h1>Waitless</h1>
-    <a href="/guests">Gäste</a>
-</body>
-
-</html>
+@extends ('layouts.master')
+@section('content')
+<h1>Waitless</h1>
+<ul>
+    <li class="list-item">
+        <a href="/guests">Gäste</a>
+    </li>
+    <li class="list-item">
+        <a href="/waitids">Waitids</a>
+    </li>
+</ul>
+@endsection
