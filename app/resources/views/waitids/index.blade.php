@@ -1,11 +1,22 @@
-@extends ('layouts.master') @section('content')
+@extends ('layouts.master')
+@section('content')
 <h1>Wartenummern</h1>
 <ul>
     @foreach ($waitids as $waitid)
-    <li>
-        <p>Id: {{ $waitid->id }}</p>
-        <p>Nummer: {{ $waitid->number }}</p>
+    <li class="list-item">
+        <h3>{{ $waitid->number }}</h3>
         <p>Erstellt am: {{ $waitid->created_at->toFormattedDateString() }}</p>
+        @if (count($waitid->guests))
+        <h3>Gerade bei folgenden Gruppen in Benutzung:</h3>
+        <ul>
+            @foreach ($waitid->guests as $guest)
+            <li>
+                <p>Gruppengröße: {{ $guest->group_size }}</p>
+            </li>
+            @endforeach
+        </ul>
+        @endif
+
     </li>
     @endforeach
 </ul>

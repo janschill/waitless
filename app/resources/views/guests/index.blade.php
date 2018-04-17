@@ -2,11 +2,11 @@
 <h1>Gäste</h1>
 <ul>
     @foreach ($guests as $guest)
-    <li>
+    <li class="list-item">
         <h3>
-            <a href="/guests/{{ $guest->id }}">Gast mit der ID: {{ $guest->id }}</a>
+            <a href="/guests/{{ $guest->id }}">{{ $guest->waitid->number }}</a>
         </h3>
-        <p>Status: {{ $guest->state_id }}</p>
+        <p>Status: {{ $guest->state->state }}</p>
         <p>Gruppengröße: {{ $guest->group_size }}</p>
         <p>Kommentar: {{ $guest->comment }}</p>
         <p>Angekommen um: {{ $guest->arrival_time->toFormattedDateString() }}</p>
