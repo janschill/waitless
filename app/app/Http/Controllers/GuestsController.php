@@ -75,7 +75,8 @@ class GuestsController extends Controller
             ->join('states', 'states.id', '=', 'guests.state_id')
             ->select('waitids.number')
             ->where('state', '=', 'wartend')
-            ->get();
+            ->get()
+            ->all();
 
         $waitingWaitidsIndexed = [];
 
@@ -83,11 +84,11 @@ class GuestsController extends Controller
             array_push($waitingWaitidsIndexed, $waitingWaitid->number);
         }
 
-        $avaiblabeWaitids = DB::table('waitids')
+        $avaiblabeWaitidsID = DB::table('waitids')
             ->select('waitids.*')
             ->whereNotIn('number', $waitingWaitidsIndexed)
             ->value('id');
 
-        return $avaiblabeWaitids;
+        return $avaiblabeWaitidsID;
     }
 }
