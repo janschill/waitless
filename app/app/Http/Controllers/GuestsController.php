@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Guest;
-use App\Waitid;
 use Illuminate\Support\Facades\DB;
 
 class GuestsController extends Controller
@@ -32,11 +31,11 @@ class GuestsController extends Controller
     public function store()
     {
         $this->validate(request(), [
-            'group_size' => 'required|max:12'
+            'group_size' => 'required|max:12',
         ]);
 
         $stateid = 1;
-        $waitid = $this->unoccupiedWaitids()[0]->id;
+        $waitid = $this->unoccupiedWaitids();
 
         Guest::create([
             'waitid_id' => $waitid,
@@ -73,6 +72,24 @@ class GuestsController extends Controller
     {
         $waitids = DB::select(DB::raw("SELECT * FROM waitids WHERE number NOT IN (SELECT number FROM waitids JOIN guests ON guests.waitid_id = waitids.id JOIN states ON guests.state_id = states.id WHERE states.state = 'wartend');"));
 
-        return $waitids;
+        $waitingWaitids = DB::table('waitids')
+            ->join('guests', 'waitids.id', '=', 'guests.waitid_id')
+            ->join('states', 'states.id', '=', 'guests.state_id')
+            ->select('waitids.number')
+            ->where('state', '=', 'wartend')
+            ->get();
+
+        $waitingWaitidsIndexed = [];
+
+        foreach ($waitingWaitids as $waitingWaitid) {
+            array_push($waitingWaitidsIndexed, $waitingWaitid->number);
+        }
+
+        $avaiblabeWaitids = DB::table('waitids')
+            ->select('waitids.*')
+            ->whereNotIn('number', $waitingWaitidsIndexed)
+            ->value('id');
+
+        return $avaiblabeWaitids;
     }
 }
