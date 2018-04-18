@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Guest;
+use App\State;
 use Illuminate\Support\Facades\DB;
 
 class GuestsController extends Controller
@@ -11,8 +12,8 @@ class GuestsController extends Controller
     public function index()
     {
         $guests = Guest::latest()->get();
-
-        return view('guests.index', compact('guests'));
+        $states = State::all();
+        return view('guests.index', compact('guests', 'states'));
     }
 
     // GET /guests/{guest}

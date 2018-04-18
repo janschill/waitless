@@ -6,7 +6,25 @@
         <h3>
             <a href="/guests/{{ $guest->id }}">{{ $guest->waitid->number }}</a>
         </h3>
-        <p>Status: {{ $guest->state->state }}</p>
+        <form method="PUT" action="/guests/{{ $guest->id }}">
+            {{ csrf_field() }}
+            <select>
+                @foreach ($states as $state)
+                    <option value="state[{{ $state->id }}]" {{  $state->state === $guest->state->state ? 'selected=\'selected\'' : '' }}>{{ $state->state }}</option>
+                @endforeach
+
+
+
+            </select>
+            <button type="submit">Bearbeiten</button>
+        </form>
+
+        <form method="PUT" action="/guests/{{ $guest->id }}">
+            {{ csrf_field() }}
+            <input type="text" name="number" placeholder="{{ $guest->group_size }}">
+            <button type="submit">Bearbeiten</button>
+        </form>
+
         <p>Gruppengröße: {{ $guest->group_size }}</p>
         <p>Kommentar: {{ $guest->comment }}</p>
         <p>Angekommen um: {{ $guest->arrival_time->toFormattedDateString() }}</p>
