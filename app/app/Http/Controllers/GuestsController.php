@@ -70,8 +70,6 @@ class GuestsController extends Controller
 
     private function unoccupiedWaitids()
     {
-        $waitids = DB::select(DB::raw("SELECT * FROM waitids WHERE number NOT IN (SELECT number FROM waitids JOIN guests ON guests.waitid_id = waitids.id JOIN states ON guests.state_id = states.id WHERE states.state = 'wartend');"));
-
         $waitingWaitids = DB::table('waitids')
             ->join('guests', 'waitids.id', '=', 'guests.waitid_id')
             ->join('states', 'states.id', '=', 'guests.state_id')
