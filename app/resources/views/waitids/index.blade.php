@@ -11,7 +11,7 @@
         <ul>
             @foreach ($waitid->guests as $guest)
             <li>
-                <p>Gruppengröße: {{ $guest->group_size }}</p>
+                <p>{{ $guest->id }} Gruppengröße: {{ $guest->group_size }}</p>
             </li>
             @endforeach
         </ul>
