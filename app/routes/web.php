@@ -13,6 +13,8 @@ Route::get('/guests/{guest}', 'GuestsController@show');
 
 Route::post('/guests', 'GuestsController@store');
 
+Route::patch('/guests/{guest}', 'GuestsController@update');
+
 // Waitids
 Route::get('/waitids', 'WaitidsController@index');
 

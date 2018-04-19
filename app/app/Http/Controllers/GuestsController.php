@@ -60,7 +60,7 @@ class GuestsController extends Controller
     // PUT/PATCH /guests/{guest}
     public function update()
     {
-
+        dd(request());
     }
 
     // DELETE /guests/{guest}
