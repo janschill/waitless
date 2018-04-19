@@ -1,0 +1,13 @@
+.guest__list-item {
+  display: block;
+}
+
+.guest {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.guest * {
+  display: inline-block;
+}
