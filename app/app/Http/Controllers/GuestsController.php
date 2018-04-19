@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Guest;
 use App\State;
 use App\Waitid;
-use Illuminate\Support\Facades\DB;
 
 class GuestsController extends Controller
 {
