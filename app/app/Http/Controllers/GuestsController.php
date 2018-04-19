@@ -39,7 +39,7 @@ class GuestsController extends Controller
         $unoccupiedWaitid = Waitid::unoccupiedWaitids();
 
         Guest::create([
-            'waitid_id' => $waitid,
+            'waitid_id' => $unoccupiedWaitid,
             'state_id' => 1,
             'group_size' => request('group_size'),
             'comment' => request('comment'),
