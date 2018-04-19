@@ -12,17 +12,17 @@ class Guest extends Model
 
     public function scopeWaiting($query)
     {
-        return $query->where('state_id', 0);
+        return $query->where('state_id', 1);
     }
 
     public function scopeAssigned($query)
     {
-        return $query->where('state_id', 1);
+        return $query->where('state_id', 2);
     }
 
     public function scopeGone($query)
     {
-        return $query->where('state_id', 2);
+        return $query->where('state_id', 3);
     }
 
     public function state()

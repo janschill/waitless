@@ -1,31 +1,20 @@
 @extends ('layouts.master') @section('content')
-<h1>Gäste</h1>
-<ul>
+
+<ul class="waiting-list">
     @foreach ($guests as $guest)
-    <li class="list-item">
-        <h3>
-            <a href="/guests/{{ $guest->id }}">{{ $guest->waitid->number }}</a>
-        </h3>
-        <form method="PATCH" action="/guests/{{ $guest->id }}">
-            {{ csrf_field() }}
-            <select name="inputState">
+    <li class="waiting-list__item">
+        <div class="guest">
+            <h3 class="guest__title">#{{ $guest->waitid->number }}</h3>
+            <span class="guest__group-size">{{ $guest->group_size }}</span>
+            <span class="guest__preordered">Vorbestellt: {{ $guest->preordered }}</span>
+            <span class="guest__comment">Kommentar: {{ $guest->comment }}</span>
+            <span class="guest__arrival-time">{{ $guest->arrival_time->diffForHumans() }}</span>
+            <select class="guest__select" name="inputState">
                 @foreach ($states as $state)
-                    <option value="state[{{ $state->id }}]" {{  $state->state === $guest->state->state ? 'selected=\'selected\'' : '' }}>{{ $state->state }}</option>
+                <option class="guest__option" value="state[{{ $state->id }}]" {{ $state->state === $guest->state->state ? 'selected=\'selected\'' : '' }}>{{ $state->state }}</option>
                 @endforeach
             </select>
-            <button type="submit">Bearbeiten</button>
-        </form>
-
-        <form method="PATCH" action="/guests/{{ $guest->id }}">
-            {{ csrf_field() }}
-            <input type="text" name="inputNumber" placeholder="{{ $guest->group_size }}">
-            <button type="submit">Bearbeiten</button>
-        </form>
-
-        <p>Gruppengröße: {{ $guest->group_size }}</p>
-        <p>Kommentar: {{ $guest->comment }}</p>
-        <p>Angekommen um: {{ $guest->arrival_time->toFormattedDateString() }}</p>
-        <p>Letzte Statusänderung: {{ $guest->last_state_change->diffForHumans() }}</p>
+        </div>
     </li>
     @endforeach
 </ul>

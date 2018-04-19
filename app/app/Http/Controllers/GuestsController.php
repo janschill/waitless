@@ -11,7 +11,7 @@ class GuestsController extends Controller
     // GET /guests
     public function index()
     {
-        $guests = Guest::latest()->get();
+        $guests = Guest::waiting()->get();
         $states = State::all();
         return view('guests.index', compact('guests', 'states'));
     }
@@ -33,6 +33,7 @@ class GuestsController extends Controller
     {
         $this->validate(request(), [
             'group_size' => 'required|max:12',
+            'comment' => 'max:12',
         ]);
 
         $unoccupiedWaitid = Waitid::unoccupiedWaitids();
@@ -53,7 +54,7 @@ class GuestsController extends Controller
     // GET /guests/{guest}/edit
     public function edit()
     {
-
+        dd(request());
     }
 
     // PUT/PATCH /guests/{guest}
@@ -65,6 +66,6 @@ class GuestsController extends Controller
     // DELETE /guests/{guest}
     public function destroy()
     {
-
+        dd(request());
     }
 }
