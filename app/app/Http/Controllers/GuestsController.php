@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Guest;
 use App\State;
+use App\Waitid;
 use Illuminate\Support\Facades\DB;
 
 class GuestsController extends Controller
@@ -35,12 +36,11 @@ class GuestsController extends Controller
             'group_size' => 'required|max:12',
         ]);
 
-        $stateid = 1;
-        $waitid = $this->unoccupiedWaitids();
+        $unoccupiedWaitid = Waitid::unoccupiedWaitids();
 
         Guest::create([
             'waitid_id' => $waitid,
-            'state_id' => $stateid,
+            'state_id' => 1,
             'group_size' => request('group_size'),
             'comment' => request('comment'),
             'preordered' => request('preordered'),
