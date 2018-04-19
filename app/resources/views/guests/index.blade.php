@@ -6,22 +6,19 @@
         <h3>
             <a href="/guests/{{ $guest->id }}">{{ $guest->waitid->number }}</a>
         </h3>
-        <form method="PUT" action="/guests/{{ $guest->id }}">
+        <form method="PATCH" action="/guests/{{ $guest->id }}">
             {{ csrf_field() }}
-            <select>
+            <select name="inputState">
                 @foreach ($states as $state)
                     <option value="state[{{ $state->id }}]" {{  $state->state === $guest->state->state ? 'selected=\'selected\'' : '' }}>{{ $state->state }}</option>
                 @endforeach
-
-
-
             </select>
             <button type="submit">Bearbeiten</button>
         </form>
 
-        <form method="PUT" action="/guests/{{ $guest->id }}">
+        <form method="PATCH" action="/guests/{{ $guest->id }}">
             {{ csrf_field() }}
-            <input type="text" name="number" placeholder="{{ $guest->group_size }}">
+            <input type="text" name="inputNumber" placeholder="{{ $guest->group_size }}">
             <button type="submit">Bearbeiten</button>
         </form>
 
