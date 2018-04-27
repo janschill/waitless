@@ -1,7 +1,3 @@
-.guest__list-item {
-  display: block;
-}
-
 .guest {
   padding: 10px;
   display: flex;
@@ -10,4 +6,8 @@
 
 .guest * {
   display: inline-block;
+}
+
+.guest__list-item {
+  display: block;
 }
