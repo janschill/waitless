@@ -29,10 +29,10 @@ vagrant ssh
 cd code
 mv /home/vagrant/code/.env.example /home/vagrant/code/.env
 ```
-evtl. env manuell erstellen
+If this fails, check if .env.example existst. If not: touch .env and past this into it: https://github.com/laravel/laravel/blob/master/.env.example
 ```
+In the vm:
 php artisan key:generate
-
 php artisan migrate
 ```
 
