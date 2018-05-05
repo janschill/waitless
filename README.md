@@ -9,6 +9,16 @@ When a vagrant environment existed, run `vagrant reload` in a terminal window.
 To start the VM, run `vagrant up`.
 To connect to the database, find the ip of the VM with `ifconfig` when connected through ssh.
 
+If you encounter a problem like `The following SSH command responded with a non-zero exit status.
+Vagrant assumes that this means the command failed!`:
+vagrant ssh
+sudo apt-get install ifupdown
+exit
+vagrant reload
+
+Maybe a newer vagrant version than in apt might fix this?
+
+
 #### Vagrant Terminal
 ```
 composer install
