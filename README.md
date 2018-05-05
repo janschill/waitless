@@ -36,6 +36,8 @@ php artisan key:generate
 php artisan migrate
 ```
 
+For now, connect to the database and execute the SQL-file to initialize the table data.
+
 #### Serving with Vagrant
 Navigate to the root directory of your Vagrant project. With `vagrant up` the VM is started and now reachable in your browser at `192.168.10.10`. If not check your _Homestead.yml_ file and check the value of `ip`
 It is also available at `homestead.test`. On Linux, you need to modify `your etc/hosts`-file to use that domain at `192.168.10.10`.
