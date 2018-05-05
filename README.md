@@ -11,11 +11,12 @@ To connect to the database, find the ip of the VM with `ifconfig` when connected
 
 If you encounter a problem like `The following SSH command responded with a non-zero exit status.
 Vagrant assumes that this means the command failed!`:
+```
 vagrant ssh
 sudo apt-get install ifupdown
 exit
 vagrant reload
-
+```
 Maybe a newer vagrant version than in apt might fix this?
 
 
@@ -30,8 +31,9 @@ cd code
 mv /home/vagrant/code/.env.example /home/vagrant/code/.env
 ```
 If this fails, check if .env.example existst. If not: touch .env and past this into it: https://github.com/laravel/laravel/blob/master/.env.example
-```
+
 In the vm:
+```
 php artisan key:generate
 php artisan migrate
 ```
@@ -53,3 +55,8 @@ It is also available at `homestead.test`. On Linux, you need to modify `your etc
 We are following Laravel coding conventions like [_Eloquent_](https://laravel.com/docs/5.4/eloquent). Where every database table has a corresponding domain model in PHP. These are used to interact with the database.
 
 Each model has a controller – when needed. These controllers control the data with functions like `index` (action to list all the data) or `show` (action to show single/specific data), these get called from the router and serve to the view, which render them in the browser.
+
+### Testing
+#### Unit
+Unit testing concetrates on the smallest portion of the program code – a single unit or function. It tests if a function returns an expected result.
+Theses test will be written in the `tests/Unit` directory and are excuted with `phpunit` in the command line.
