@@ -6,4 +6,30 @@
   padding-left: 10px;
   box-sizing: border-box;
   border-bottom: 3px solid darkgray;
+
+  .branding {
+    float: left;
+  }
+
+  .time {
+    float: left;
+    margin-left: 45%;
+    margin-right: -100%;
+  }
+
+  .add {
+    float: right;
+    background-color: #63bd78;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    font-size: 160%;
+    width: 70px;
+    border: none;
+
+    .a {
+      color: white;
+      text-decoration: none;
+    }
+  }
 }

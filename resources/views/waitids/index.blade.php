@@ -1,24 +1,24 @@
 @extends ('layouts.master_waitids')
 @section('content')
-<h1>Wartenummern</h1>
-<ul>
-    @foreach ($waitids as $waitid)
-    <li class="list-item">
-        <h3>{{ $waitid->number }}</h3>
-        <p>Erstellt am: {{ $waitid->created_at->toFormattedDateString() }}</p>
-        @if (count($waitid->guests))
-        <h3>Gerade bei folgenden Gruppen in Benutzung:</h3>
-        <ul>
-            @foreach ($waitid->guests as $guest)
-            <li>
-                <p>{{ $guest->id }} Gruppengröße: {{ $guest->group_size }}</p>
-            </li>
-            @endforeach
-        </ul>
-        @endif
 
-    </li>
+
+<table class "list">
+        <tr>
+                <th>Wartenummer</th>
+                <th>Erstellt am</th>
+                <th>Zuletzt vergeben an</th>
+                <th>Vergabeanzahl</th>
+                <th></th>
+        </tr>
+    @foreach ($waitids as $waitid)
+    <tr>
+        <th>#{{ $waitid->number }}</th>
+        <th>{{ $waitid->created_at->toFormattedDateString() }}</th>
+        <th>Implement me!</th>
+        <th>{{ $waitid->guests->count() }}</th>
+        <th>X</th>
+    </tr>
     @endforeach
-</ul>
+    </table>
 
 @endsection
