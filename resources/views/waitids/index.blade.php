@@ -1,4 +1,4 @@
-@extends ('layouts.master')
+@extends ('layouts.master_waitids')
 @section('content')
 <h1>Wartenummern</h1>
 <ul>
@@ -20,7 +20,5 @@
     </li>
     @endforeach
 </ul>
-
-<a href="/waitids/create">Neue Wartenummer hinzufügen</a>
 
 @endsection

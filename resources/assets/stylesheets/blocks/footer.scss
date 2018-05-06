@@ -1,0 +1,13 @@
+.button {
+  width: 50%;
+  float: left;
+  border-style: solid;
+  border: 2px solid rgb(100, 100, 100);
+  background-color: rgb(200, 200, 200);
+  font-size: 150%;
+  height: 50px;
+}
+
+.button--state-selected {
+  border-bottom: 6px solid black;
+}
