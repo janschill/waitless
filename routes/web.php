@@ -1,8 +1,6 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'GuestsController@index');
 
 // Guests
 Route::get('/guests', 'GuestsController@index');
