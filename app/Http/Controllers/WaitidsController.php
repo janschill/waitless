@@ -16,8 +16,8 @@ class WaitidsController extends Controller
     {
         $waitids = Waitid::all();
         $currentlyUsed  = $waitid->guests;
-
-        return view('waitids.index', compact('waitids', 'currentlyUsed'));
+        $mode = 'waitids';
+        return view('waitids.index', compact('waitids', 'currentlyUsed', 'mode'));
     }
 
     /**
