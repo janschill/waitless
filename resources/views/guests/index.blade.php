@@ -1,4 +1,5 @@
-@extends ('layouts.master_guests') @section('content')
+@extends ('layouts.master_guests') 
+@section('content')
 
 
 <table class "list">

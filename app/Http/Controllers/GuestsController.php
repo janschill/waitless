@@ -13,7 +13,8 @@ class GuestsController extends Controller
     {
         $guests = Guest::waiting()->get();
         $states = State::all();
-        return view('guests.index', compact('guests', 'states'));
+        $mode = 'guests';
+        return view('guests.index', compact('guests', 'states', 'mode'));
     }
 
     // GET /guests/{guest}
