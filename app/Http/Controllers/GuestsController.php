@@ -29,6 +29,13 @@ class GuestsController extends Controller
         return view('guests.create');
     }
 
+    public static function switchPreorder($id){
+        $guest = Guest::find(1);
+        $guest->preordered = 2;
+        $guest->save();
+        return "test!";
+    }
+
     // POST /guests
     public function store()
     {
