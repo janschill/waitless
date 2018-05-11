@@ -15,7 +15,7 @@
     <tr>
             <th>#{{ $guest->waitid->number }}</th>
             <th>{{ $guest->group_size }}</th>
-            <th>{{ $guest->preordered ? 'Ja' : 'Nein'}}</th>>
+            <th><input type="checkbox" id="preordered-cb" onclick="myFunction({{$loop->index}})" {{ $guest->preordered ? 'checked' : ''}}></th>>
             <th>{{ $guest->comment }}</th>
             <th>{{ $guest->arrival_time->diffForHumans() }}</th>
             <th>
@@ -27,5 +27,16 @@
             </th>
     @endforeach
 </table>
+
+
+<script>
+function myFunction(id) {
+        <?php use App\Http\Controllers\GuestsController;
+(GuestsController::switchPreorder(1));?>
+alert(id);
+}
+</script>
+
+
 
 @endsection
