@@ -1,5 +1,4 @@
-@extends ('layouts.master')
-@section('content')
+@extends ('layouts.master') @section('content')
 
 <h1>Neue Wartnummer hinzufügen</h1>
 
