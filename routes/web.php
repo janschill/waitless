@@ -18,10 +18,11 @@ Route::post('/guests', 'GuestsController@store');
 Route::patch('/guests/{guest}', 'GuestsController@update');
 
 // Waitids
-Route::delete('/waitids/{waitd}', 'WaitidsController@destroy');
 
 Route::get('/waitids', 'WaitidsController@index');
 
 Route::get('/waitids/create', 'WaitidsController@create');
 
 Route::post('/waitids', 'WaitidsController@store');
+
+Route::delete('/waitids/{waitd}', 'WaitidsController@destroy');
