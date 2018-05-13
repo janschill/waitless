@@ -17,7 +17,6 @@ class UnoccupiedWaitidTest extends TestCase
      */
     public function testExample()
     {
-
         $first = factory(Guest::class)->create();
         $this->assertTrue(true);
     }
