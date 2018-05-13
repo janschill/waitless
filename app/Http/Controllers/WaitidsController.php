@@ -91,6 +91,10 @@ class WaitidsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $waitid = Waitid::findOrFail($id);
+
+        $waitid->delete();
+
+        return redirect()->action('WaitidsController@index');
     }
 }

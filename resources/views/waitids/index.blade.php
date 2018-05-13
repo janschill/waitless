@@ -14,7 +14,13 @@
         <th>{{ $waitid->created_at->toFormattedDateString() }}</th>
         <th>Implement me!</th>
         <th>{{ $waitid->guests->count() }}</th>
-        <th>X</th>
+        <th>
+            <form action="/waitids/{{ $waitid->id }}" method="post">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <button type="submit">X</button>
+            </form>
+        </th>
     </tr>
     @endforeach
 </table>
