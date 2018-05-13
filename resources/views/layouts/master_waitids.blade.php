@@ -16,7 +16,7 @@
 
 <body>
 
-
+  @include ('layouts.header_waitids')
 
   @yield('content')
 

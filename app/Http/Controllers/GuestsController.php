@@ -13,8 +13,8 @@ class GuestsController extends Controller
     {
         $guests = Guest::waiting()->get();
         $states = State::all();
-
-        return view('guests.index', compact('guests', 'states'));
+        $mode = 'guests';
+        return view('guests.index', compact('guests', 'states', 'mode'));
     }
 
     // GET /guests/{guest}
@@ -27,6 +27,13 @@ class GuestsController extends Controller
     public function create()
     {
         return view('guests.create');
+    }
+
+    public static function switchPreorder($id){
+        $guest = Guest::find(1);
+        $guest->preordered = 2;
+        $guest->save();
+        return "test!";
     }
 
     // POST /guests
