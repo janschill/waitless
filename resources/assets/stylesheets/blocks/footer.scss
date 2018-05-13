@@ -1,0 +1,19 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.button {
+  width: 50%;
+  float: left;
+  border-style: solid;
+  border: 2px solid rgb(100, 100, 100);
+  background-color: rgb(200, 200, 200);
+  font-size: 130%;
+  height: 50px;
+}
+
+.button--state-selected {
+  border-bottom: 6px solid greenyellow;
+}
