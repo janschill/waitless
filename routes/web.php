@@ -11,6 +11,8 @@ Route::get('/guests/create', 'GuestsController@create');
 
 Route::get('/guests/{guest}', 'GuestsController@show');
 
+Route::get('/guests/{guest}/edit', 'GuestsController@edit');
+
 Route::post('/guests', 'GuestsController@store');
 
 Route::patch('/guests/{guest}', 'GuestsController@update');
