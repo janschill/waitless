@@ -36,26 +36,6 @@ gulp.task('uglify', function () {
     }))
     .on('error', swallowError)
     .pipe(gulp.dest('public/javascripts/'));
-
-  gulp
-    .src([
-      'resources/assets/javascripts/**/*.js'
-    ])
-    .pipe(concat('corporate.min.js'))
-    .pipe(uglify({
-      mangle: true,
-      compress: true
-    }))
-    .on('error', swallowError)
-    .pipe(gulp.dest('public/javascripts/'));
-});
-
-gulp.task('html5shiv', function () {
-  return gulp
-    .src([
-      'node_modules/html5shiv/dist/html5shiv.min.js'
-    ])
-    .pipe(gulp.dest('public/javascripts/'));
 });
 
 gulp.task('stylelint', function () {
@@ -81,20 +61,8 @@ gulp.task('css', function () {
     }))
     .pipe(rename('app.min.css'))
     .pipe(gulp.dest('public/stylesheets/'));
-
-  gulp
-    .src('resources/assets/stylesheets/corporate.scss')
-    .pipe(sass({
-      outputStyle: 'compressed'
-    }))
-    .on('error', swallowError)
-    .pipe(autoprefixer({
-      browsers: ['last 4 versions', '> 5%']
-    }))
-    .pipe(rename('corporate.min.css'))
-    .pipe(gulp.dest('public/stylesheets/'));
 });
 
 gulp.task('default', [
-  'eslint', 'uglify', 'html5shiv', 'stylelint', 'css'
+  'eslint', 'uglify', 'stylelint', 'css'
 ]);
