@@ -4,7 +4,7 @@
     @foreach ($guests as $guest)
     <li class="waiting-list__item">
         <div class="guest">
-            <h3 class="guest__title">#{{ $guest->waitid->number }}</h3>
+            <h3 class="guest__title"><a href="/guests/{{ $guest->id }}/edit">#{{ $guest->waitid->number }}</a></h3>
             <span class="guest__group-size">{{ $guest->group_size }}</span>
             <span class="guest__preordered">Vorbestellt: {{ $guest->preordered }}</span>
             <span class="guest__comment">Kommentar: {{ $guest->comment }}</span>

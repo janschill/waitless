@@ -13,6 +13,7 @@ class GuestsController extends Controller
     {
         $guests = Guest::waiting()->get();
         $states = State::all();
+
         return view('guests.index', compact('guests', 'states'));
     }
 
@@ -52,14 +53,34 @@ class GuestsController extends Controller
     }
 
     // GET /guests/{guest}/edit
-    public function edit()
+    public function edit(Guest $guest)
     {
-        dd(request());
+        $states = State::all();
+
+        return view('guests.edit', compact('guest', 'states'));
     }
 
     // PUT/PATCH /guests/{guest}
-    public function update()
+    public function update(Guest $guest)
     {
+        dd(request());
+
+        $this->validate(request(), [
+            'group_size' => 'required|max:12',
+            'comment' => 'max:12',
+        ]);
+
+        $editGuest = Guest::findOrFail($guest);
+
+        $editGuest::update([
+            'waitid_id' => $ediGguest->wait_id,
+            'state_id' => request('state'),
+            'group_size' => request('group_size'),
+            'comment' => request('comment'),
+            'preordered' => request('preordered'),
+            'arrival_time' => now(),
+            'last_state_change' => now(),
+        ]);
         dd(request());
     }
 
