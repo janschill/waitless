@@ -22,5 +22,7 @@
         "stylelint": "^9.1.1",
         "vanilla-datatables": "^1.6.11"
     },
-    "dependencies": {}
+    "dependencies": {
+        "jquery": "^3.3.1"
+    }
 }

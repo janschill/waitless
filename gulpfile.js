@@ -27,6 +27,7 @@ gulp.task('eslint', function () {
 gulp.task('uglify', function () {
   gulp
     .src([
+      'node_modules/jquery/dist/jquery.js',
       'resources/assets/javascripts/**/*.js'
     ])
     .pipe(concat('app.min.js'))
