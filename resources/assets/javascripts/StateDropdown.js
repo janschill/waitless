@@ -1,14 +1,35 @@
 (function () {
+  var initSelectorState = function ($selectorState) {
+    $selectorState.addEventListener('change', function () {
+      console.log('Dropdown AJAX');
+      var formData = {
+        state: 'YOLO',
+      };
 
-  var initPreorder = function ($inputPreorder) {
-    $inputPreorder.onclick = function () {
-      alert('test');
-    }
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+
+      $.ajax({
+        type: 'PATCH',
+        url: '/guests/1',
+        data: formData,
+        dataType: 'json',
+        success: function (data) {
+          console.log(data);
+        },
+        error: function (data) {
+          console.log('Error:', data);
+        }
+      });
+    });
   };
 
   document.addEventListener('DOMContentLoaded', function () {
-    var $inputPreorder = document.querySelector('.input-preorder');
+    var $selectorState = document.querySelector('.guest__select.guest__select--state');
 
-    initPreorder($inputPreorder);
+    initSelectorState($selectorState);
   });
 }());
