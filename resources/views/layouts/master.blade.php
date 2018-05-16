@@ -16,12 +16,9 @@
 
 <body>
 
-
-
   @yield('content')
 
   @include ('layouts.footer')
-
 
   <script src="/javascripts/app.min.js"></script>
 </body>
