@@ -74,28 +74,34 @@ class GuestsController extends Controller
     }
 
     // PUT/PATCH /guests/{guest}
-    public function update(Guest $guest)
+    public function update(Guest $guestFromRequest)
     {
-        return 'MOIN';
-        dd(request());
+        // $guest = Guest::find($guestFromRequest->id);
+        // $editGuest = Guest::findOrFail($guest);
+        $guestStateId = request('guestStateId');
+        $guestPreordered = request('preordered');
 
-        $this->validate(request(), [
-            'group_size' => 'required|max:12',
-            'comment' => 'max:12',
-        ]);
+        if (is_null($guestStateId)) {
+            $guestStateId = $guestFromRequest->state_id;
+        }
 
-        $editGuest = Guest::findOrFail($guest);
+        if (is_null($guestPreordered)) {
+            $guestPreordered = $guestFromRequest->preordered;
+        }
 
-        $editGuest::update([
-            'waitid_id' => $ediGguest->wait_id,
-            'state_id' => request('state'),
-            'group_size' => request('group_size'),
-            'comment' => request('comment'),
-            'preordered' => request('preordered'),
-            'arrival_time' => now(),
+        // $this->validate(request(), [
+        //     'group_size' => 'required|max:12',
+        //     'comment' => 'max:12',
+        // ]);
+
+
+        Guest::where('id', $guestFromRequest->id)->update([
+            'state_id' => $guestStateId,
+            'preordered' => $guestPreordered,
             'last_state_change' => now(),
         ]);
-        dd(request());
+
+        return $guest;
     }
 
     // DELETE /guests/{guest}
