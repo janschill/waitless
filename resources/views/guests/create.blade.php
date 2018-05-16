@@ -1,6 +1,9 @@
 @extends ('layouts.master') @section('content')
 
 <h1>Neuen Gast hinzufügen</h1>
+@if ($errors->has('no_waitid_available'))
+    <small class="error">{{ $errors->first('no_waitid_available') }}</small>
+@endif
 
 <form method="POST" action="/guests">
   {{ csrf_field() }}

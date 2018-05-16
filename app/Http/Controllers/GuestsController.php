@@ -46,15 +46,21 @@ class GuestsController extends Controller
 
         $unoccupiedWaitid = Waitid::unoccupiedWaitids();
 
-        Guest::create([
-            'waitid_id' => $unoccupiedWaitid,
-            'state_id' => 1,
-            'group_size' => request('group_size'),
-            'comment' => request('comment'),
-            'preordered' => request('preordered'),
-            'arrival_time' => now(),
-            'last_state_change' => now(),
-        ]);
+        if (is_null($unoccupiedWaitid)) {
+            return \Redirect::back()->withErrors([
+                'no_waitid_available' => 'Alle Wartenummern sind besetzt.'
+            ]);
+        } else {
+            Guest::create([
+                'waitid_id' => $unoccupiedWaitid,
+                'state_id' => 1,
+                'group_size' => request('group_size'),
+                'comment' => request('comment'),
+                'preordered' => request('preordered'),
+                'arrival_time' => now(),
+                'last_state_change' => now(),
+            ]);
+        }
 
         return redirect('/guests');
     }
