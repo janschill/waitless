@@ -76,6 +76,7 @@ class GuestsController extends Controller
     // PUT/PATCH /guests/{guest}
     public function update(Guest $guest)
     {
+        return 'MOIN';
         dd(request());
 
         $this->validate(request(), [
