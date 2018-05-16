@@ -1,9 +1,13 @@
 <footer class="footer">
-<a href="/guests"><button class="button 
+  <a href="/guests">
+    <button class="button
 @if (request()->route()->uri === 'guests') button--state-selected @endif
-">G&auml;ste verwalten</button></a>
+">G&auml;ste verwalten</button>
+  </a>
 
-<a href="/waitids"><button class="button
+  <a href="/waitids">
+    <button class="button
 @if (request()->route()->uri === 'waitids') button--state-selected @endif
-">Wartenummern verwalten</button></a>
+">Wartenummern verwalten</button>
+  </a>
 </footer>
