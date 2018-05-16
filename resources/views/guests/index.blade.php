@@ -1,6 +1,4 @@
-@extends ('layouts.master_guests')
-
-@section('content')
+@extends ('layouts.master') @section('content')
 
 <table class "list">
     <tr>
@@ -21,14 +19,14 @@
         <th>{{ $guest->comment }}</th>
         <th>{{ $guest->arrival_time->diffForHumans() }}</th>
         <th>
-            <select class="guest__select" name="inputState">
+            <select class="guest__select guest__select--state" name="inputState">
                 @foreach ($states as $state)
                 <option class="guest__option" value="state[{{ $state->id }}]" {{ $state->state === $guest->state->state ? 'selected=\'selected\'' : '' }}>{{ $state->state }}</option>
                 @endforeach
             </select>
         </th>
     </tr>
-        @endforeach
+    @endforeach
 </table>
 
 @endsection

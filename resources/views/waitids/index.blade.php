@@ -1,4 +1,4 @@
-@extends ('layouts.master_waitids') @section('content')
+@extends ('layouts.master') @section('content')
 
 <table class "list">
     <tr>
