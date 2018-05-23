@@ -80,6 +80,7 @@ class GuestsController extends Controller
         // $editGuest = Guest::findOrFail($guest);
         $guestStateId = request('guestStateId');
         $guestPreordered = request('preordered');
+        $guestId = request('guestId');
 
         if (is_null($guestStateId)) {
             $guestStateId = $guestFromRequest->state_id;
@@ -88,6 +89,18 @@ class GuestsController extends Controller
         if (is_null($guestPreordered)) {
             $guestPreordered = $guestFromRequest->preordered;
         }
+
+        $guest = Guest::find($guestId);
+
+        $guest->state_id = $guestStateId;
+        $guest->preordered = $guestPreordered;
+
+        $guest->save();
+
+        return 'Gast:' . $guest->state_id;
+
+
+        // return 'Gast:' . $guestId . ' zu auf Status gesetzt: ' . $guestStateId;
 
         // $this->validate(request(), [
         //     'group_size' => 'required|max:12',
