@@ -76,10 +76,8 @@ class GuestsController extends Controller
     // PUT/PATCH /guests/{guest}
     public function update(Guest $guestFromRequest)
     {
-        // $guest = Guest::find($guestFromRequest->id);
-        // $editGuest = Guest::findOrFail($guest);
         $guestStateId = request('guestStateId');
-        $guestPreordered = request('preordered');
+        $guestPreordered = request('guestPreordered');
         $guestId = request('guestId');
 
         if (is_null($guestStateId)) {
@@ -97,24 +95,7 @@ class GuestsController extends Controller
 
         $guest->save();
 
-        return 'Gast:' . $guest->state_id;
-
-
-        // return 'Gast:' . $guestId . ' zu auf Status gesetzt: ' . $guestStateId;
-
-        // $this->validate(request(), [
-        //     'group_size' => 'required|max:12',
-        //     'comment' => 'max:12',
-        // ]);
-
-
-        Guest::where('id', $guestFromRequest->id)->update([
-            'state_id' => $guestStateId,
-            'preordered' => $guestPreordered,
-            'last_state_change' => now(),
-        ]);
-
-        return $guest;
+        return 'Guest:' . $guestId . ' State:' . $guest->state_id . ' Preordered:' . $guestPreordered;
     }
 
     // DELETE /guests/{guest}
