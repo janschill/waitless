@@ -1,4 +1,6 @@
-@extends ('layouts.master') @section('content')
+@extends ('layouts.master')
+
+@section('content')
 
 <div class "list">
     <ul>
