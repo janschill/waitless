@@ -29,7 +29,8 @@ class GuestsController extends Controller
         return view('guests.create');
     }
 
-    public static function switchPreorder($id){
+    public static function switchPreorder($id)
+    {
         $guest = Guest::find(1);
         $guest->preordered = 2;
         $guest->save();
@@ -48,7 +49,7 @@ class GuestsController extends Controller
 
         if (is_null($unoccupiedWaitid)) {
             return \Redirect::back()->withErrors([
-                'no_waitid_available' => 'Alle Wartenummern sind besetzt.'
+                'no_waitid_available' => 'Alle Wartenummern sind besetzt.',
             ]);
         } else {
             Guest::create([
