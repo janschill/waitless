@@ -11,3 +11,11 @@
 .guest__list-item {
   display: block;
 }
+
+.guest__form {
+  display: none;
+}
+
+.guest__form--expanded {
+  display: block;
+}
