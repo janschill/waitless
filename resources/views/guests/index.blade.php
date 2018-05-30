@@ -3,7 +3,7 @@
 @section('content')
 
 <div class "list">
-    <ul>
+    <ul class="">
         <li>Nummer</li>
         <li>Personen</li>
         <li>Vorbestellung?</li>
@@ -11,9 +11,12 @@
         <li>Wartedauer</li>
         <li>Status</li>
         <li>
-            <a href="#" class="guest__toggle-new">Neuen Gast hinzufuegen</a>
+            <div class="popup">
+                <a href="#" class="form__open-new">+</a>
+                <a href="#" class="form__close-new form__close-new--hidden">x</a>
 
-            @include ('guests.new-guest-form')
+                @include ('guests.new-guest-form')
+            </div>
         </li>
     </ul>
     <ul class="guest__list">

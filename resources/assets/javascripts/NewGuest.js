@@ -1,23 +1,29 @@
 (function () {
-  var initNewGuest = function ($newGuestLink, $newGuestForm) {
-    var newGuestFormExpanded = "guest__form--expanded";
+  var toggleClass = function ($element, className) {
+    if ($element.classList.contains(className)) {
+      $element.classList.remove(className);
+    } else {
+      $element.classList.add(className);
+    }
+  };
 
-    $newGuestLink.onclick = function (e) {
+  var initNewGuest = function ($popup) {
+    var $formNewOpen = $popup.querySelector('.form__open-new'),
+      $form = $popup.querySelector('.form');
+
+    $formNewOpen.onclick = function (e) {
       e.preventDefault();
 
-      if ($newGuestForm.classList.contains(newGuestFormExpanded)) {
-        $newGuestForm.classList.remove(newGuestFormExpanded);
-      } else {
-        $newGuestForm.classList.add(newGuestFormExpanded);
-      }
+      toggleClass($popup, 'popup--expanded');
+      toggleClass($form, 'form--expanded');
+      toggleClass($formNewOpen, 'form__open-new--expanded');
     }
   };
 
   document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM new guest');
-    var $newGuestLink = document.querySelector('.guest__toggle-new');
-    var $newGuestForm = document.querySelector('.guest__form');
+    var $popup = document.querySelector('.popup');
 
-    initNewGuest($newGuestLink, $newGuestForm);
+    initNewGuest($popup);
   });
 }());
