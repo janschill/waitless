@@ -1,4 +1,6 @@
-@extends ('layouts.master') @section('content')
+@extends ('layouts.master')
+
+@section('content')
 
 <!-- @if ($errors->has('no_waitid_available'))
     <small class="error">{{ $errors->first('no_waitid_available') }}</small>
