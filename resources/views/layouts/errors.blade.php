@@ -6,4 +6,4 @@
     @endforeach
   </ul>
 </div>
-@endif @endsection
+@endif

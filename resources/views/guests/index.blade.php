@@ -10,6 +10,11 @@
         <li>Kommentar</li>
         <li>Wartedauer</li>
         <li>Status</li>
+        <li>
+            <a href="#" class="guest__toggle-new">Neuen Gast hinzufuegen</a>
+
+            @include ('guests.new-guest-form')
+        </li>
     </ul>
     <ul class="guest__list">
         @foreach ($guests as $guest)
