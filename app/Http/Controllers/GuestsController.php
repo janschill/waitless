@@ -11,7 +11,7 @@ class GuestsController extends Controller
     // GET /guests
     public function index()
     {
-        $guests = Guest::waiting()->get();
+        $guests = Guest::waiting()->orderBy('last_state_change', 'desc')->get();
         $states = State::all();
 
         return view('guests.index', compact('guests', 'states', 'mode'));
