@@ -28,6 +28,7 @@ gulp.task('uglify', function () {
   gulp
     .src([
       'node_modules/jquery/dist/jquery.js',
+      'node_modules/pusher-js/dist/web/pusher.js',
       'resources/assets/javascripts/**/*.js'
     ])
     .pipe(concat('app.min.js'))
