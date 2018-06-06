@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'pusher' => [
+        'app_id' => getenv('PUSHER_APP_ID'),
+        'public' => getenv('PUSHER_APP_KEY'),
+        'secret' => getenv('PUSHER_APP_SECRET')
+    ]
+
 ];
