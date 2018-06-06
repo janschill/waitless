@@ -24,6 +24,8 @@
     console.log('DOM new guest');
     var $popup = document.querySelector('.popup');
 
-    initNewGuest($popup);
+    if ($popup) {
+      initNewGuest($popup);
+    }
   });
 }());
