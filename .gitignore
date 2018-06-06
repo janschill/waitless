@@ -6,7 +6,7 @@
 /public/css/*
 /public/js/*
 /public/stylesheets/*
-/public/javascripts
+/public/javascripts/*
 /public/storage/
 storage/*.key
 vendor/
