@@ -11,10 +11,10 @@ class GuestsController extends Controller
     // GET /guests
     public function index()
     {
-        $guests = Guest::waiting()->orderBy('last_state_change', 'desc')->get();
+        $guests = Guest::all();
         $states = State::all();
 
-        return view('guests.index', compact('guests', 'states', 'mode'));
+        return view('guests.index', compact('guests', 'states'));
     }
 
     // GET /guests/{guest}
@@ -37,19 +37,28 @@ class GuestsController extends Controller
             'comment' => 'max:12',
         ]);
 
-        $unoccupiedWaitid = Waitid::unoccupiedWaitids();
+        $guest = [
+            'unoccupiedWaitid' => Waitid::unoccupiedWaitids(),
+            'groupSize' => request('group_size'),
+            'comment' => request('comment'),
+            'preordered' => request('preordered')
+        ];
 
-        if (is_null($unoccupiedWaitid)) {
+        if (is_null($guest['comment'])) {
+            $guest['comment'] = '';
+        }
+
+        if (is_null($guest['unoccupiedWaitid'])) {
             return \Redirect::back()->withErrors([
                 'no_waitid_available' => 'Alle Wartenummern sind besetzt.',
             ]);
         } else {
             Guest::create([
-                'waitid_id' => $unoccupiedWaitid,
+                'waitid_id' => $guest['unoccupiedWaitid'],
                 'state_id' => 1,
-                'group_size' => request('group_size'),
-                'comment' => request('comment'),
-                'preordered' => request('preordered'),
+                'group_size' => $guest['groupSize'],
+                'comment' => $guest['comment'],
+                'preordered' => $guest['preordered'],
                 'arrival_time' => now(),
                 'last_state_change' => now(),
             ]);
@@ -82,13 +91,11 @@ class GuestsController extends Controller
         }
 
         $guest = Guest::find($guestId);
-
         $guest->state_id = $guestStateId;
         $guest->preordered = $guestPreordered;
-
         $guest->save();
 
-        return 'Guest:' . $guestId . ' State:' . $guest->state_id . ' Preordered:' . $guestPreordered;
+        return 'Gast: ' . $guest;
     }
 
     // DELETE /guests/{guest}
