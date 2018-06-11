@@ -17,6 +17,8 @@
 
                 @include ('guests.new-guest-form')
             </div>
+            <div class="overlay">lol
+            </div>
         </li>
     </ul>
     <ul class="guest__list guest__list--waiting">
