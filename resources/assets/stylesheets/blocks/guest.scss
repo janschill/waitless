@@ -6,8 +6,24 @@
 
 .guest * {
   display: inline-block;
+  width: 100%;
+  border-bottom: 2px solid rgb(177, 177, 177);
 }
 
 .guest__list-item {
   display: block;
+}
+
+.guest__list--placed {
+  opacity: 0.4;
+}
+
+.guest__list__heading {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+
+  li {
+    width: 100%;
+  }
 }
