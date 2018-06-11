@@ -3,15 +3,15 @@
 @section('content')
 
 <div class "list">
-    <ul class="">
+    <ul class="guest__list__heading">
         <li>Nummer</li>
         <li>Personen</li>
         <li>Vorbestellung?</li>
         <li>Kommentar</li>
         <li>Wartedauer</li>
         <li>Status</li>
-        <li>
-            <div class="popup">
+    </ul>
+    <div class="popup">
                 <a href="#" class="form__open-new">+</a>
                 <a href="#" class="form__close-new form__close-new--hidden">x</a>
 
@@ -19,8 +19,6 @@
             </div>
             <div class="overlay">lol
             </div>
-        </li>
-    </ul>
     <ul class="guest__list guest__list--waiting">
         @foreach ($guests as $guest)
             @if ($guest->state_id == 1  )
@@ -44,8 +42,6 @@
             @endif
         @endforeach
     </ul>
-    <br>
-    <h3>History</h3>
     <ul class="guest__list guest__list--placed">
         @foreach ($guests as $guest)
             @if ($guest->state_id != 1  )
