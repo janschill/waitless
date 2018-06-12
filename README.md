@@ -1,10 +1,22 @@
 # waitless
 
-Eine Client-Server Struktur für die Verwaltung von Tischen und Plätzen in einem Restaurant, durch Ziehen von Nummern und einer darauf folgenden Tisch-/ Platzzuweisung
+waitless is a client-server application using Laravel to manage the waiting guests in a restaraunt.
+
+It uses two clients, where one is used to welcome new guests and register them into the system and the other is used inside the restaurant by the service to allocate the guests to a table.
 
 ## Setup
 
+In the following we will introduce the technologies used in this project. We will give a brief introduction and explain: how it works, how we implemented it, error that may have occured and explain why we chose the service over others or at all.
+
+### Vagrant
+
+[Vagrant](https://www.vagrantup.com/) provides a simple, elegant way to manage and provision Virtual Machines.
+
 ### Homestead
+
+[Homestead](https://laravel.com/docs/5.6/homestead) is an official, pre-packaged Vagrant box that provides a development environment without requiring to install PHP, a web server, and any other server software on the local machine.
+
+#### Setting up
 
 After cloning the repository open `Homestead.yaml`, change `map` to absolute directory.
 When a vagrant environment existed, run `vagrant reload` in a terminal window.
@@ -35,7 +47,7 @@ cd code
 mv /home/vagrant/code/.env.example /home/vagrant/code/.env
 ```
 
-If this fails, check if .env.example existst. If not: touch .env and past this into it: https://github.com/laravel/laravel/blob/master/.env.example
+If this fails, check if .env.example existst. If not: touch .env and past this into it: [Example env file](https://github.com/laravel/laravel/blob/master/.env.example)
 
 In the vm:
 
@@ -44,7 +56,7 @@ php artisan key:generate
 php artisan migrate
 ```
 
-For now, connect to the database and execute the SQL-file to initialize the table data.
+Now connect to the database and execute the SQL-file to initialize the table data.
 
 #### Serving with Vagrant
 
