@@ -4,6 +4,19 @@ waitless is a client-server application using Laravel to manage the waiting gues
 
 It uses two clients, where one is used to welcome new guests and register them into the system and the other is used inside the restaurant by the service to allocate the guests to a table.
 
+## Feedback Papierprotoyp
+* Farbgestaltung an Corporate Design anpassen
+* Historie-Unterpunkt
+* Vorbestellung lieber Checkbox oder Schiebeschalter
+* Gast löschen Position ändern
+* Speichern und Abbrechen tauschen?
+* Hamburger-Menü vllt rechts?
+* Kommentar-Button wirkt wie Eingabe, ... reicht vllt
+* wartend wirkt inaktiv wegen Grauton
+    * vllt Abstand zwischen wartend, platziert
+    * platziert-Icon misverständlich
+
+
 ## Setup
 
 In the following we will introduce the technologies used in this project. We will give a brief introduction and explain: how it works, how we implemented it, error that may have occured and explain why we chose the service over others or at all.
