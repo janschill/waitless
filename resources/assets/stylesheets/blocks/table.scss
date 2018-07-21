@@ -3,6 +3,10 @@
   position: relative;
   width: 100%;
   border-collapse: collapse;
+
+  &.table--faded {
+    opacity: 0.2;
+  }
 }
 
 .table__head {
