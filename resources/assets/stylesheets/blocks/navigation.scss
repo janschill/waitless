@@ -1,6 +1,27 @@
 .navigation {
   display: block;
-  background: red;
-  padding: 5px 0;
-  text-align: center;
+  position: fixed;
+  background: lightgray;
+  top: 0;
+  bottom: 0;
+  left: -300px;
+  width: 300px;
+  transition: transform 200ms ease-out;
+
+  &.navigation--expanded {
+    transform: translateX(300px);
+  }
+}
+
+.navigation__list {
+  padding: 60px 20px;
+}
+
+.navigation__link {
+  text-decoration: none;
+  color: black;
+  height: 100%;
+  display: block;
+  padding: 20px 0;
+  border-bottom: 1px solid white;
 }
