@@ -1,0 +1,46 @@
+.table {
+  display: table;
+  position: relative;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table__head {
+  display: table-header-group;
+}
+
+.table__body {
+  display: table-row-group;
+
+  &.table__body--history {
+    border-top: 2px solid black;
+    opacity: 0.4;
+  }
+}
+
+.table__row {
+  display: table-row;
+  border-bottom: 1px solid #bfc5c6;
+}
+
+.table__head > .table__row {
+  color: #333333;
+  background-color: #dfe2e2;
+  font-weight: bolder;
+}
+
+.table__body > .table__row {
+  color: #555555;
+}
+
+.table__column {
+  display: table-cell;
+}
+
+.table__head .table__column {
+  padding: 0.5rem 10px;
+}
+
+.table__body .table__column {
+  padding: 1rem 10px;
+}
