@@ -1,10 +1,10 @@
 (function () {
   var initAnchorChanger = function () {
-    var a = document.getElementsByTagName('a');
+    var aTags = document.querySelectorAll('a');
 
-    a.forEach(function (element) {
-      if (!element.onclick && element.getAttribute('target') !== '_blank') {
-        element.onclick = function () {
+    aTags.forEach(function (aTag) {
+      if (!aTag.onclick && aTag.getAttribute('target') !== '_blank') {
+        aTag.onclick = function () {
           window.location = this.getAttribute('href');
           return false;
         }
