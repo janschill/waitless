@@ -56,10 +56,11 @@
     </div>
 </div>
 
-            <div class="popup">
-                <a href="#" class="form__open-new">+</a>
-                <a href="#" class="form__close-new form__close-new--hidden">x</a>
+<div class="popup">
+    <div class="popup__toggle"></div>
+    <div class="popup__content">
+        @include ('guests.new-guest-form')
+    </div>
+</div>
 
-                @include ('guests.new-guest-form')
-            </div>
 @endsection
