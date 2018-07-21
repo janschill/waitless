@@ -1,35 +1,17 @@
 .header {
-  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #e8e8e8;
   overflow: auto;
   font-size: 130%;
-  padding-left: 10px;
-  box-sizing: border-box;
-  border-bottom: 3px solid darkgray;
+  padding: 10px 30px;
+}
 
-  .branding {
-    float: left;
-  }
+.header__time {
+  display: inline-block;
+}
 
-  .time {
-    float: left;
-    margin-left: 45%;
-    margin-right: -100%;
-  }
-
-  .add {
-    float: right;
-    background-color: #63bd78;
-    color: white;
-    text-decoration: none;
-    text-align: center;
-    font-size: 160%;
-    width: 70px;
-    border: none;
-
-    .a {
-      color: white;
-      text-decoration: none;
-    }
-  }
+.header__branding {
+  display: inline-block;
 }
