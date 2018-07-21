@@ -7,6 +7,7 @@
   left: -300px;
   width: 300px;
   transition: transform 200ms ease-out;
+  z-index: 2;
 
   &.navigation--expanded {
     transform: translateX(300px);
