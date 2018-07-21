@@ -2,7 +2,7 @@
   var initAnchorChanger = function () {
     var a = document.getElementsByTagName('a');
 
-    a.forEach(element => {
+    a.forEach(function (element) {
       if (!element.onclick && element.getAttribute('target') !== '_blank') {
         element.onclick = function () {
           window.location = this.getAttribute('href');
