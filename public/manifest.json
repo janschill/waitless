@@ -1,5 +1,8 @@
 {
- "name": "App",
+ "name": "waitless",
+ "display": "standalone",
+ "background_color": "#369FD2",
+ "description": "Eine Applikation für die Verwaltung von wartenden Gästen.",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
