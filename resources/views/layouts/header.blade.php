@@ -11,5 +11,7 @@
     </ul>
   </nav>
   <div class="header__time">18:30</div>
-  <div class="header__branding">waitless</div>
+  <div class="header__branding">
+    @include ('layouts.logo')
+  </div>
 </header>
