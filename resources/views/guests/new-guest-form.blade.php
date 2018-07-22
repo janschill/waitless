@@ -8,17 +8,15 @@
       <input class="form__radio-input" type="radio" name="group_size" id="radio-{{$i}}" value="{{$i}}" {{ $i === 1 ? 'checked' : '' }}>
       <label class="form__radio-label" for="radio-{{$i}}">{{$i}}</label>
     @endfor
-      <input class="form__text-input" type="text" name="group_size" placeholder="…">
+      <input class="form__text-input" type="number" name="group_size" min="0" max="20" placeholder="…">
   </div>
-  <br>
-  <label>Kommentar:</label>
-  <input type="text" name="comment">
-  <br>
-  <label>Vorbestellung:</label>
+  <label class="form__label form__label--left">Kommentar:</label>
+  <input class="form__text-input" type="text" name="comment">
+  <label class="form__label form__label--left">Vorbestellung:</label>
   <input type="hidden" value="0" name="preordered">
-  <input type="checkbox" value="1" name="preordered">
+  <input class="form__checkbox-input" type="checkbox" value="1" name="preordered">
 
-  <button class="" type="submit"></button>
+  <button class="form__submit" type="submit"></button>
 </form>
 
 @include ('layouts.errors')

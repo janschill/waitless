@@ -57,6 +57,10 @@
   }
 }
 
+.popup__content {
+  display: none;
+}
+
 .popup--visible .popup__content {
   display: block;
 }
