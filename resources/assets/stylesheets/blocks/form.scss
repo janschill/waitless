@@ -22,6 +22,14 @@
   margin-bottom: 15px;
 }
 
+.form__text-input {
+  border: 1px solid black;
+  width: 54%;
+  font-size: 18px;
+  display: block;
+  margin-bottom: 15px;
+}
+
 .form__radio-wrap .form__text-input,
 .form__radio-label {
   display: inline-block;
@@ -43,14 +51,6 @@
 
 .form__radio-input:checked + .form__radio-label {
   background: $color-light;
-}
-
-.form__text-input {
-  border: 1px solid black;
-  width: 54%;
-  font-size: 18px;
-  display: block;
-  margin-bottom: 15px;
 }
 
 .form__submit {
