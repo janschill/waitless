@@ -15,9 +15,9 @@
         </div>
     </div>
     <div class="table__body table__body--active">
-        @foreach ($guests as $guest)
+        @foreach ($guests as $iterator=>$guest)
             @if ($guest->state_id == 1)
-                <div class="table__row">
+                <div class="table__row{{ $iterator % 2 === 0 ? ' table__row--highlight' : '' }}">
                     <input class="" type="hidden" name="guestId" value="{{ $guest->id }}">
                     <div class="table__column">#{{ $guest->waitid->number }}</div>
                     <div class="table__column">{{ $guest->group_size }}</div>
@@ -35,9 +35,9 @@
         @endforeach
     </div>
     <div class="table__body table__body--history">
-        @foreach ($guests as $guest)
+        @foreach ($guests as $iterator=>$guest)
             @if ($guest->state_id != 1)
-                <div class="table__row">
+                <div class="table__row{{ $iterator % 2 !== 0 ? ' table__row--highlight' : '' }}">
                     <input class="" type="hidden" name="guestId" value="{{ $guest->id }}">
                     <div class="table__column">#{{ $guest->waitid->number }}</div>
                     <div class="table__column">{{ $guest->group_size }}</div>

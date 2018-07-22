@@ -25,6 +25,10 @@
 .table__row {
   display: table-row;
   border-bottom: 1px solid #bfc5c6;
+
+  &.table__row--highlight {
+    background: $color-light;
+  }
 }
 
 .table__head > .table__row {
