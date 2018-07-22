@@ -1,3 +1,3 @@
 (function () {
-  console.log('Websocket.io');
+  console.log('Socket.io');
 }());
