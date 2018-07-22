@@ -8,7 +8,6 @@
       <input class="form__radio-input" type="radio" name="group_size" id="radio-{{$i}}" value="{{$i}}" {{ $i === 1 ? 'checked' : '' }}>
       <label class="form__radio-label" for="radio-{{$i}}">{{$i}}</label>
     @endfor
-      <input class="form__text-input" type="number" name="group_size" min="0" max="20" placeholder="…">
   </div>
   <label class="form__label form__label--left">Kommentar:</label>
   <input class="form__text-input" type="text" name="comment">
