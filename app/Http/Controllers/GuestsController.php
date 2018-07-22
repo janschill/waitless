@@ -11,7 +11,7 @@ class GuestsController extends Controller
     // GET /guests
     public function index()
     {
-        $guests = Guest::all();
+        $guests = Guest::orderBy('arrival_time', 'desc')->get();
         $states = State::all();
 
         return view('guests.index', compact('guests', 'states'));
