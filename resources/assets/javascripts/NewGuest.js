@@ -1,23 +1,23 @@
 (function () {
 
-  var initNewGuest = function ($popup) {
-    var $popupToggle = $popup.querySelector('.popup__toggle'),
+  var initNewGuest = function ($popupNewGuest) {
+    var $popupNewGuestToggle = $popupNewGuest.querySelector('.popup__toggle'),
       $table = document.querySelector('.table');
 
-    $popupToggle.addEventListener('click', function (event) {
+    $popupNewGuestToggle.addEventListener('click', function (event) {
       event.preventDefault();
 
-      $popupToggle.classList.toggle('popup__toggle--active');
-      $popup.classList.toggle('popup--visible');
+      $popupNewGuestToggle.classList.toggle('popup__toggle--active');
+      $popupNewGuest.classList.toggle('popup--visible');
       $table.classList.toggle('table--faded');
     });
   };
 
   document.addEventListener('DOMContentLoaded', function () {
-    var $popup = document.querySelector('.popup');
+    var $popupNewGuest = document.querySelector('.popup--new-guest');
 
-    if ($popup) {
-      initNewGuest($popup);
+    if ($popupNewGuest) {
+      initNewGuest($popupNewGuest);
     }
   });
 }());

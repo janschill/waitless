@@ -28,7 +28,9 @@
                         <a data-state-id="{{ $state->id }}" class="button{{ $state->state === $guest->state->state ? ' button--active' : '' }}" href="/">{{ $state->state }}</a>
                     @endforeach
                 </div>
-                <div class="table__column"><a class="button" href="/">Bearbeiten</a></div>
+                <div class="table__column">
+                    <a data-guest-id="{{ $guest->id }}" class="button button--edit" href="#">Bearbeiten</a>
+                </div>
             </div>
         @endforeach
     </div>
@@ -52,7 +54,7 @@
     </div>
 </div>
 
-<div class="popup">
+<div class="popup popup--new-guest">
     <div class="popup__toggle"></div>
     <div class="popup__content">
         @include ('guests.new-guest-form')
