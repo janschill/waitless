@@ -9,6 +9,11 @@
   }
 }
 
+.form__select {
+  display: block;
+  margin-bottom: 20px;
+}
+
 .form__radio-input {
   position: absolute;
   clip: rect(0, 0, 0, 0);
