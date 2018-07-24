@@ -30,13 +30,17 @@
     transition: transform 300ms ease-in, background-color 300ms ease-in;
   }
 
-  &.popup__toggle--active {
+  &.popup__toggle--danger {
     transform: rotate(45deg);
     background-color: red;
     top: 3%;
     right: 3%;
     bottom: auto;
     padding: 20px;
+  }
+
+  &.popup__toggle--hidden {
+    display: none;
   }
 
   &::before,
@@ -71,3 +75,6 @@
   display: block;
 }
 
+.popup--visible .popup__toggle--hidden {
+  display: inline-block;
+}
