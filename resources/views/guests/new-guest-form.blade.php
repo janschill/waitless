@@ -9,13 +9,14 @@
       <label class="form__radio-label" for="radio-{{$i}}">{{$i}}</label>
     @endfor
   </div>
+
   <label class="form__label form__label--left">Kommentar:</label>
   <input class="form__text-input" type="text" name="comment">
+
   <label class="form__label form__label--left">Vorbestellung:</label>
   <input type="hidden" value="0" name="preordered">
   <input class="form__checkbox-input" type="checkbox" value="1" name="preordered">
 
   <button class="form__submit" type="submit"></button>
 </form>
-
 @include ('layouts.errors')

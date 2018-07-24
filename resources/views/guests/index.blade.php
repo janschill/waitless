@@ -1,7 +1,5 @@
 @extends ('layouts.master')
-
 @section('content')
-
 <div class="table table--current">
     <div class="table__head">
         <div class="table__row">
@@ -29,7 +27,7 @@
                     @endforeach
                 </div>
                 <div class="table__column">
-                <a data-guest-id="{{ $guest->id }}" id="button--{{ $guest->id }}" class="button button--edit" href="#">Bearbeiten</a>
+                    <a data-guest-id="{{ $guest->id }}" id="button--{{ $guest->id }}" class="button button--edit" href="#">Bearbeiten</a>
                     @include ('guests.edit')
                 </div>
             </div>
@@ -49,17 +47,18 @@
                         <a data-state-id="{{ $state->id }}" class="button{{ $state->state === $historyGuest->state->state ? ' button--active' : '' }}" href="/">{{ $state->state }}</a>
                     @endforeach
                 </div>
-                <div class="table__column"><a class="button" href="/">Bearbeiten</a></div>
+                <div class="table__column">
+                    <a data-guest-id="{{ $guest->id }}" id="button--{{ $guest->id }}" class="button button--edit" href="#">Bearbeiten</a>
+                    @include ('guests.edit')
+                </div>
             </div>
         @endforeach
     </div>
 </div>
-
 <div class="popup popup--new-guest">
     <div class="popup__toggle popup__toggle--new-guest"></div>
     <div class="popup__content">
         @include ('guests.new-guest-form')
     </div>
 </div>
-
 @endsection

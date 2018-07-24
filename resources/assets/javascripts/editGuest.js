@@ -1,20 +1,4 @@
 (function() {
-  /**
-   * A
-  var retrieveEditForm = function($buttonEdit) {
-    $.ajax({
-      type: 'GET',
-      url: '/guests/' + $buttonEdit.dataset.guestId + '/edit',
-      dataType: 'html',
-      success: function(data) {
-        $buttonEdit.insertAdjacentHTML('afterend', data);
-      },
-      error: function(data) {
-        console.log('Error:', data);
-      }
-    });
-  };
-  */
   var initEditGuestPopup = function($editGuestPopup) {
     var $popupToggle = $editGuestPopup.querySelector('.popup__toggle');
 
@@ -40,7 +24,6 @@
       });
 
       $thisPopup.classList.add(popupVisible);
-      // A retrieveEditForm($buttonEdit);
     });
   };
 
