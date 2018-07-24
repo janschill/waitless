@@ -55,7 +55,7 @@
 </div>
 
 <div class="popup popup--new-guest">
-    <div class="popup__toggle"></div>
+    <div class="popup__toggle popup__toggle--new-guest"></div>
     <div class="popup__content">
         @include ('guests.new-guest-form')
     </div>

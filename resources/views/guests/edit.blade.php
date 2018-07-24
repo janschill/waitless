@@ -1,8 +1,8 @@
 <div class="popup popup--visible popup--edit-guest">
-  <div class="pop__toggle"></div>
+  <div class="popup__toggle"></div>
   <div class="popup__content">
       <h3 class="title title--medium">Gast bearbeiten</h3>
-  <form method="PATCH" action="/guests/{{ $guest->id }}" class="form">
+      <form method="PATCH" action="/guests/{{ $guest->id }}" class="form">
         {{ csrf_field() }}
         <label class="form__label form__label--left">Status</label>
         <select class="form__select" name="state">
