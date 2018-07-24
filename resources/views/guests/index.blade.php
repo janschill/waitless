@@ -29,7 +29,8 @@
                     @endforeach
                 </div>
                 <div class="table__column">
-                    <a data-guest-id="{{ $guest->id }}" class="button button--edit" href="#">Bearbeiten</a>
+                <a data-guest-id="{{ $guest->id }}" id="button--{{ $guest->id }}" class="button button--edit" href="#">Bearbeiten</a>
+                    @include ('guests.edit')
                 </div>
             </div>
         @endforeach

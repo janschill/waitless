@@ -18,12 +18,6 @@ class GuestsController extends Controller
         return view('guests.index', compact('guests', 'states', 'historyGuests'));
     }
 
-    // GET /guests/{guest}
-    public function show(Guest $guest)
-    {
-        return view('guests.show', compact('guest'));
-    }
-
     // GET /guests/create
     public function create()
     {
@@ -80,28 +74,43 @@ class GuestsController extends Controller
     public function update(Guest $guestFromRequest)
     {
         $guestStateId = request('guestStateId');
+        $guestGroupSize = request('guestGroupSize');
+        $guestComment = request('guestComment');
         $guestPreordered = request('guestPreordered');
         $guestId = request('guestId');
 
         if (is_null($guestStateId)) {
             $guestStateId = $guestFromRequest->state_id;
         }
-
+        if (is_null($guestGroupSize)) {
+            $guestGroupSize = $guestFromRequest->group_size;
+        }
+        if (is_null($guestComment)) {
+            $guestComment = $guestFromRequest->comment;
+        }
         if (is_null($guestPreordered)) {
             $guestPreordered = $guestFromRequest->preordered;
         }
 
         $guest = Guest::find($guestId);
         $guest->state_id = $guestStateId;
+        $guest->group_size = $guestGroupSize;
+        $guest->comment = $guestComment;
         $guest->preordered = $guestPreordered;
         $guest->save();
 
-        return 'Gast: ' . $guest;
+        return redirect('/guests');
     }
 
     // DELETE /guests/{guest}
     public function destroy()
     {
         dd(request());
+    }
+
+    // GET /guests/{guest}
+    public function show(Guest $guest)
+    {
+        return view('guests.show', compact('guest'));
     }
 }

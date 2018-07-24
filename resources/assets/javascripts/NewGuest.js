@@ -7,7 +7,7 @@
     $popupNewGuestToggle.addEventListener('click', function (event) {
       event.preventDefault();
 
-      $popupNewGuestToggle.classList.toggle('popup__toggle--active');
+      $popupNewGuestToggle.classList.toggle('popup__toggle--danger');
       $popupNewGuest.classList.toggle('popup--visible');
       $table.classList.toggle('table--faded');
     });
