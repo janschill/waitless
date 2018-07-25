@@ -11,11 +11,16 @@ class GuestsController extends Controller
     // GET /guests
     public function index()
     {
-        $guests = Guest::where('state_id', 1)->orderBy('arrival_time', 'desc')->get();
-        $historyGuests = Guest::where('state_id','!=', 1)->orderBy('last_state_change', 'desc')->get();
         $states = State::all();
+        $guests = Guest::where('state_id', 1)
+        ->orderBy('arrival_time', 'desc')
+        ->get();
+        $historyGuests = Guest::where('state_id','!=', 1)
+        ->limit(10)
+        ->orderBy('last_state_change', 'desc')
+        ->get();
 
-        return view('guests.index', compact('guests', 'states', 'historyGuests'));
+        return view('guests.index', compact('states', 'guests', 'historyGuests'));
     }
 
     // GET /guests/{guest}
@@ -45,10 +50,6 @@ class GuestsController extends Controller
             'preordered' => request('preordered')
         ];
 
-        if (is_null($guest['comment'])) {
-            $guest['comment'] = '';
-        }
-
         if (is_null($guest['unoccupiedWaitid'])) {
             return \Redirect::back()->withErrors([
                 'no_waitid_available' => 'Alle Wartenummern sind besetzt.',
@@ -64,7 +65,6 @@ class GuestsController extends Controller
                 'last_state_change' => now(),
             ]);
         }
-
         return redirect('/guests');
     }
 
