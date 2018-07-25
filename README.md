@@ -5,6 +5,7 @@ waitless is a client-server application using Laravel to manage the waiting gues
 It uses two clients, where one is used to welcome new guests and register them into the system and the other is used inside the restaurant by the service to allocate the guests to a table.
 
 ## Feedback Papierprotoyp
+
 * Farbgestaltung an Corporate Design anpassen
 * Historie-Unterpunkt
 * Vorbestellung lieber Checkbox oder Schiebeschalter
@@ -13,9 +14,8 @@ It uses two clients, where one is used to welcome new guests and register them i
 * Hamburger-Menü vllt rechts?
 * Kommentar-Button wirkt wie Eingabe, ... reicht vllt
 * wartend wirkt inaktiv wegen Grauton
-    * vllt Abstand zwischen wartend, platziert
-    * platziert-Icon misverständlich
-
+  * vllt Abstand zwischen wartend, platziert
+  * platziert-Icon misverständlich
 
 ## Setup
 
@@ -91,6 +91,57 @@ We are following Laravel coding conventions like [_Eloquent_](https://laravel.co
 Each model has a controller – when needed. These controllers control the data with functions like `index` (action to list all the data) or `show` (action to show single/specific data), these get called from the router and serve to the view, which render them in the browser.
 
 ### Migration
+
+### Seeding
+
+In the next chapter we talk about testing, to successfully test an application, the database needs data, which we populate in Laravel using `Seeds` and Factories`.
+
+Create a `ExampleTableSeeder.php` file in `database/seeds`.
+
+```php
+use Illuminate\Database\Seeder;
+
+class ExampleTableSeeder extends Seeder {
+    public function run ()
+    {
+        factory('App\ExampleModel', 10)->create();
+    }
+}
+```
+
+Now in the `database/factories/ModelFactory.php` file we will, tell the seeder with what kind of data we want to create our __seeds__.
+
+```php
+$factory->define(App\ExampleModel::class, function (Faker $faker) {
+    return [
+        'row_name_1' => $faker->sentence,
+        'row_name_2' => rand(0,10)
+    ];
+});
+```
+
+Here we can use the instance faker to let the Faker-library let us generate dummy data or we use our own.
+
+To prevent appending the generated data and just add the generated data to an empty table, we need to truncate the table. We do that in `database/seeds/DatabaseSeeder.php`. Here we also call our seeders.
+
+```php
+protected $toTruncate = ['example_table_1', 'example_table_2'];
+
+public function run()
+{
+    DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+    foreach ($this->toTruncate as $table) {
+        DB::table($table)->truncate();
+    }
+
+    $this->call('Example1TableSeeder');
+    $this->call('Example2TableSeeder');
+}
+```
+
+To run seeds
+`php artisan db:seed`
 
 ### Testing
 
