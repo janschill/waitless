@@ -11,7 +11,7 @@
 
 .form__select {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 .form__radio-input {
@@ -24,7 +24,7 @@
 }
 
 .form__radio-wrap {
-  margin-bottom: 15px;
+  margin-bottom: 50px;
 }
 
 .form__text-input {
@@ -32,7 +32,7 @@
   width: 54%;
   font-size: 18px;
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 50px;
 }
 
 .form__radio-wrap .form__text-input,
@@ -64,9 +64,9 @@
   position: fixed;
   bottom: 5%;
   right: 3%;
-  height: 40px;
-  width: 40px;
-  border-radius: 40px;
+  height: 60px;
+  width: 60px;
+  border-radius: 60px;
   background-color: lightgreen;
   border: none;
   box-shadow: 0 3px 3px 0 rgba(black, 0.16), 0 3px 3px 0 rgba(black, 0.23);
@@ -93,4 +93,8 @@
     transform: rotate(-45deg);
     top: 50%;
   }
+}
+
+.form__checkbox-input {
+  margin-bottom: 50px;
 }
