@@ -1,20 +1,12 @@
 (function() {
-  /**
-   * A
-  var retrieveEditForm = function($buttonEdit) {
-    $.ajax({
-      type: 'GET',
-      url: '/guests/' + $buttonEdit.dataset.guestId + '/edit',
-      dataType: 'html',
-      success: function(data) {
-        $buttonEdit.insertAdjacentHTML('afterend', data);
-      },
-      error: function(data) {
-        console.log('Error:', data);
-      }
+  var initGuestDeleteConfirm = function($thisPopup) {
+    var $deleteGuestForm = $thisPopup.querySelector('#form-delete-guest');
+
+    $deleteGuestForm.addEventListener('submit', function() {
+      return confirm('Do you really want to submit the form?');
     });
   };
-  */
+
   var initEditGuestPopup = function($editGuestPopup) {
     var $popupToggle = $editGuestPopup.querySelector('.popup__toggle');
 
@@ -30,15 +22,15 @@
 
     $buttonEdit.addEventListener('click', function(event) {
       event.preventDefault();
-
       var $editGuestPopups = document.querySelectorAll('.popup--edit-guest');
+
+      initGuestDeleteConfirm($thisPopup);
 
       $editGuestPopups.forEach(function($editGuestPopup) {
         initEditGuestPopup($editGuestPopup);
         $editGuestPopup.classList.remove(popupVisible);
       });
       $thisPopup.classList.add(popupVisible);
-      // A retrieveEditForm($buttonEdit);
     });
   };
 
