@@ -1,8 +1,4 @@
 (function () {
-  var getNegativeCheckboxState = function ($checkbox) {
-    return $checkbox.checked ? 1 : 0;
-  };
-
   var initTableRowForm = function ($tableRowForm) {
     var $inputPreorder = $tableRowForm.querySelector('#input-preorder'),
       $buttonStates = $tableRowForm.querySelectorAll('.button--state');
