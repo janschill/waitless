@@ -31,6 +31,12 @@
 
         <button class="form__submit" type="submit"></button>
       </form>
+      <form id="form-delete-guest" method="POST" action="/guests/{{ $guest->id }}">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+        <input type="hidden" name="guestId" value="{{ $guest->id }}">
+        <button type="submit">Delete</button>
+      </form>
       @include ('layouts.errors')
   </div>
 </div>
