@@ -140,6 +140,9 @@ public function run()
 }
 ```
 
+When working in database, we need to dump the composer autoload.
+`composer dump-autoload`
+
 To run seeds
 `php artisan db:seed`
 
