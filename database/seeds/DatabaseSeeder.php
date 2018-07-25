@@ -4,6 +4,8 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+    protected $toTruncate = ['guests'];
+
     /**
      * Run the database seeds.
      *
@@ -11,18 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(WaitIdTableSeeder::class);
-    }
-}
+        foreach ($this->toTruncate as $table) {
+            DB::table($table)->truncate();
+        }
 
-class WaitIdTableSeeder extends Seeder {
-
-    public function run()
-    {
-        DB::table('waitid')->delete();
-
-        WaitId::create(['created_at' => date('Y-m-d H:i:s')]);
-        WaitId::create(['updated_at' => date('Y-m-d H:i:s')]);
-        WaitId::create(['number' => rand(33, 6666)]);
+        $this->call('GuestTableSeeder');
     }
 }
