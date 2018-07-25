@@ -41,7 +41,7 @@ class GuestsController extends Controller
         $guest = [
             'unoccupiedWaitid' => Waitid::unoccupiedWaitids(),
             'groupSize' => request('group_size'),
-            'comment' => request('comment'),
+            'comment' => request('comment', ''),
             'preordered' => request('preordered')
         ];
 
@@ -82,7 +82,7 @@ class GuestsController extends Controller
         $guestId = request('guestId');
         $guestStateId = request('guestState');
         $guestGroupSize = request('guestGroupSize');
-        $guestComment = request('guestComment');
+        $guestComment = request('guestComment', '');
         $guestPreordered = request('guestPreorder');
 
         if (is_null($guestStateId)) {
@@ -110,8 +110,11 @@ class GuestsController extends Controller
     }
 
     // DELETE /guests/{guest}
-    public function destroy()
+    public function destroy(Guest $guestFromRequest)
     {
-        dd(request());
+        $guest = Guest::find(request('guestId'));
+        $guest->delete();
+
+        return redirect('/guests');
     }
 }
