@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Guest;
 use App\State;
 use App\Waitid;
+use App\Events\GuestUpdated;
 
 class GuestsController extends Controller
 {
     // GET /guests
     public function index()
     {
+        GuestUpdated::dispatch(1);
+
         $states = State::all();
         $guests = Guest::where('state_id', 1)
         ->orderBy('arrival_time', 'desc')
