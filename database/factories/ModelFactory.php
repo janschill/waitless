@@ -2,6 +2,18 @@
 
 use Faker\Generator as Faker;
 
+function randomState () {
+    $number = rand(0,100);
+
+    if ($number < 6) {
+        return 1;
+    } else if ($number < 90) {
+        return 2;
+    } else {
+        return 3;
+    }
+}
+
 $factory->define(App\User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
@@ -13,8 +25,8 @@ $factory->define(App\User::class, function (Faker $faker) {
 
 $factory->define(App\Guest::class, function (Faker $faker) {
     return [
-        'waitid_id' => rand(1,10),
-        'state_id' => rand(2,3),
+        'waitid_id' => rand(1, 10),
+        'state_id' => randomState(),
         'group_size' => rand(1, 12),
         'comment' => $faker->sentence,
         'preordered' => rand(0, 1),
