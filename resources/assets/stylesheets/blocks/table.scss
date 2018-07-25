@@ -44,6 +44,10 @@
 
 .table__column {
   display: table-cell;
+
+  &.table__column--text {
+    width: 200px;
+  }
 }
 
 .table__head .table__column {

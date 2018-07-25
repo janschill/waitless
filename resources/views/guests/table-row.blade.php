@@ -8,7 +8,7 @@
   <div class="table__column">#{{ $guest->waitid->number }}</div>
   <div class="table__column">{{ $guest->group_size }}</div>
   <div class="table__column table__column--preorder"><input id="input-preorder" type="checkbox" class="input input--preorder" {{ $guest->preordered ? 'checked' : ''}}></div>
-  <div class="table__column">{{ $guest->comment }}</div>
+  <div class="table__column table__column--text">{{ $guest->comment }}</div>
   <div class="table__column">{{ $guest->arrival_time->diffForHumans() }}</div>
   <div class="table__column">
       @foreach ($states as $state)
