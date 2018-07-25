@@ -13,12 +13,18 @@ $factory->define(App\User::class, function (Faker $faker) {
 
 $factory->define(App\Guest::class, function (Faker $faker) {
     return [
-        'waitid_id' => rand(1, 5),
+        'waitid_id' => rand(1,10),
         'state_id' => rand(2,3),
         'group_size' => rand(1, 12),
         'comment' => $faker->sentence,
         'preordered' => rand(0, 1),
         'arrival_time' => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now'),
         'last_state_change' => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now'),
+    ];
+});
+
+$factory->define(App\WaitId::class, function (Faker $faker) {
+    return [
+        'number' => rand(1, 500)
     ];
 });
