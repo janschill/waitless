@@ -17,6 +17,8 @@ Route::post('/guests', 'GuestsController@store');
 
 Route::patch('/guests/{guest}', 'GuestsController@update');
 
+Route::delete('/guests/{guest}', 'GuestsController@destroy');
+
 // Waitids
 
 Route::get('/waitids', 'WaitidsController@index');
