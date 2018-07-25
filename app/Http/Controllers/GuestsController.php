@@ -18,6 +18,12 @@ class GuestsController extends Controller
         return view('guests.index', compact('guests', 'states', 'historyGuests'));
     }
 
+    // GET /guests/{guest}
+    public function show(Guest $guest)
+    {
+        return view('guests.show', compact('guest'));
+    }
+
     // GET /guests/create
     public function create()
     {
@@ -73,11 +79,11 @@ class GuestsController extends Controller
     // PUT/PATCH /guests/{guest}
     public function update(Guest $guestFromRequest)
     {
-        $guestStateId = request('guestStateId');
+        $guestId = request('guestId');
+        $guestStateId = request('guestState');
         $guestGroupSize = request('guestGroupSize');
         $guestComment = request('guestComment');
-        $guestPreordered = request('guestPreordered');
-        $guestId = request('guestId');
+        $guestPreordered = request('guestPreorder');
 
         if (is_null($guestStateId)) {
             $guestStateId = $guestFromRequest->state_id;
@@ -97,6 +103,7 @@ class GuestsController extends Controller
         $guest->group_size = $guestGroupSize;
         $guest->comment = $guestComment;
         $guest->preordered = $guestPreordered;
+        $guest->last_state_change = now();
         $guest->save();
 
         return redirect('/guests');
@@ -106,11 +113,5 @@ class GuestsController extends Controller
     public function destroy()
     {
         dd(request());
-    }
-
-    // GET /guests/{guest}
-    public function show(Guest $guest)
-    {
-        return view('guests.show', compact('guest'));
     }
 }

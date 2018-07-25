@@ -50,14 +50,12 @@
   document.addEventListener('DOMContentLoaded', function () {
     var $guests = document.querySelectorAll('.guest');
 
-    if ($guests) {
-      $guests.forEach(function (guest) {
-        var $guestStateSelector = guest.querySelector('.guest__select.guest__select--state'),
-          $guestPreordered = guest.querySelector('.input-preorder'),
-          $guestIdInput = guest.querySelector('.guest__id');
+    $guests.forEach(function (guest) {
+      var $guestStateSelector = guest.querySelector('.guest__select.guest__select--state'),
+        $guestPreordered = guest.querySelector('.input-preorder'),
+        $guestIdInput = guest.querySelector('.guest__id');
 
-        initSelector($guestStateSelector, $guestPreordered, $guestIdInput.value);
-      });
-    }
+      initSelector($guestStateSelector, $guestPreordered, $guestIdInput.value);
+    });
   });
 }());
