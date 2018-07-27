@@ -9,7 +9,6 @@
             <div class="table__column">Hinweis</div>
             <div class="table__column">Wartedauer</div>
             <div class="table__column">Status</div>
-            <div class="table__column">Bearbeiten</div>
         </div>
     </div>
     <div class="table__body table__body--active">
@@ -26,7 +25,7 @@
 <div class="popup popup--new-guest">
     <div class="popup__toggle popup__toggle--new-guest"></div>
     <div class="popup__content">
-        @include ('guests.new-guest-form')
+        @include ('guests.create')
     </div>
 </div>
 @endsection
