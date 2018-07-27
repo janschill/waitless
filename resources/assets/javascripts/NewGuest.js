@@ -13,10 +13,10 @@
 
   var validateForm = function($form) {
     var guest = {
-      'waitidId': $form['guest[waitidId]'].value,
-      'groupSize': $form['guest[groupSize]'].value,
-      'comment': $form['guest[comment]'].value,
-      'preordered': $form['guest[preordered]'].value
+      'waitidId': $form['guest_waitidId'].value,
+      'groupSize': $form['guest_groupSize'].value,
+      'comment': $form['guest_comment'].value,
+      'preordered': $form['guest_preordered'].value
     }
 
     var $smallError = document.createElement('small');
