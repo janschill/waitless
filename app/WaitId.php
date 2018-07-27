@@ -24,6 +24,7 @@ class Waitid extends Model
             ->get()
             ->all();
 
+
         $waitingWaitidsIndexed = [];
 
         foreach ($waitingWaitids as $waitingWaitid) {
@@ -33,8 +34,14 @@ class Waitid extends Model
         $avaiblabeWaitidsID = DB::table('waitids')
             ->select('waitids.*')
             ->whereNotIn('number', $waitingWaitidsIndexed)
-            ->value('id');
+            ->orderBy('number', 'asc')
+            ->get();
 
-        return $avaiblabeWaitidsID;
+        return $avaiblabeWaitidsID->toArray();
+    }
+
+    public static function randomUnoccupiedWaitid()
+    {
+        return array_rand(Waitid::unoccupiedWaitids());
     }
 }
