@@ -1,5 +1,4 @@
 (function () {
-
   var initNewGuest = function ($popupNewGuest) {
     var $popupNewGuestToggle = $popupNewGuest.querySelector('.popup__toggle'),
       $table = document.querySelector('.table');

@@ -27,8 +27,6 @@ gulp.task('eslint', function () {
 gulp.task('uglify', function () {
   gulp
     .src([
-      'node_modules/pusher-js/dist/web/pusher.min.js',
-      'node_modules/laravel-echo/dist/echo.js',
       'node_modules/jquery/dist/jquery.js',
       'resources/assets/javascripts/**/*.js'
     ])

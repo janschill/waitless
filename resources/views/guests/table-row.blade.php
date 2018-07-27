@@ -15,8 +15,4 @@
           <a data-guest-state-id="{{ $state->id }}" class="button button--state{{ $state->state === $guest->state->state ? ' button--active' : '' }}" href="#">{{ $state->state }}</a>
       @endforeach
   </div>
-  <div class="table__column">
-      <a data-guest-id="{{ $guest->id }}" id="button--{{ $guest->id }}" class="button button--edit" href="#">Bearbeiten</a>
-      @include ('guests.edit')
-  </div>
 </form>
