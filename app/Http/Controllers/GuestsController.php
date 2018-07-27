@@ -45,6 +45,7 @@ class GuestsController extends Controller
     public function store()
     {
         $this->validate(request(), [
+            'guest.waitidId' => 'required',
             'guest.groupSize' => 'required|max:12',
             'guest.comment' => 'max:12',
         ]);
@@ -52,7 +53,7 @@ class GuestsController extends Controller
         $guest = [
             'waitid_id' => request('guest')['waitidId'],
             'groupSize' => request('guest')['groupSize'],
-            'comment' => request('guest', '')['comment'],
+            'comment' => request('guest.comment', ''),
             'preordered' => request('guest')['preordered']
         ];
 
