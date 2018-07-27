@@ -14,16 +14,19 @@ class GuestsController extends Controller
     {
         GuestUpdated::dispatch('1');
 
+        $unoccupiedWaitids = Waitid::unoccupiedWaitids();
         $states = State::all();
+
         $guests = Guest::where('state_id', 1)
         ->orderBy('arrival_time', 'desc')
         ->get();
+
         $historyGuests = Guest::where('state_id','!=', 1)
         ->limit(10)
         ->orderBy('last_state_change', 'desc')
         ->get();
 
-        return view('guests.index', compact('states', 'guests', 'historyGuests'));
+        return view('guests.index', compact('states', 'guests', 'historyGuests', 'unoccupiedWaitids'));
     }
 
     // GET /guests/{guest}
@@ -42,32 +45,27 @@ class GuestsController extends Controller
     public function store()
     {
         $this->validate(request(), [
-            'group_size' => 'required|max:12',
-            'comment' => 'max:12',
+            'guest.groupSize' => 'required|max:12',
+            'guest.comment' => 'max:12',
         ]);
 
         $guest = [
-            'unoccupiedWaitid' => Waitid::unoccupiedWaitids(),
-            'groupSize' => request('group_size'),
-            'comment' => request('comment', ''),
-            'preordered' => request('preordered')
+            'waitid_id' => request('guest')['waitidId'],
+            'groupSize' => request('guest')['groupSize'],
+            'comment' => request('guest', '')['comment'],
+            'preordered' => request('guest')['preordered']
         ];
 
-        if (is_null($guest['unoccupiedWaitid'])) {
-            return \Redirect::back()->withErrors([
-                'no_waitid_available' => 'Alle Wartenummern sind besetzt.',
-            ]);
-        } else {
-            Guest::create([
-                'waitid_id' => $guest['unoccupiedWaitid'],
-                'state_id' => 1,
-                'group_size' => $guest['groupSize'],
-                'comment' => $guest['comment'],
-                'preordered' => $guest['preordered'],
-                'arrival_time' => now(),
-                'last_state_change' => now(),
-            ]);
-        }
+        Guest::create([
+            'waitid_id' => $guest['waitid_id'],
+            'state_id' => 1,
+            'group_size' => $guest['groupSize'],
+            'comment' => $guest['comment'],
+            'preordered' => $guest['preordered'],
+            'arrival_time' => now(),
+            'last_state_change' => now(),
+        ]);
+
         return redirect('/guests');
     }
 
