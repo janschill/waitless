@@ -8,7 +8,7 @@
         <input type="hidden" name="guestId" value="{{ $guest->id }}">
 
         <label class="form__label form__label--left">Status</label>
-        <select class="form__select" name="guestStateId">
+        <select class="form__select" name="guestState">
             @foreach ($states as $state)
             <option class="form__option" value="{{ $state->id }}" {{ $state->state === $guest->state->state ? 'selected=\'selected\'' : '' }}>{{ $state->state }}</option>
             @endforeach
@@ -26,8 +26,8 @@
         <input class="form__text-input" type="text" name="guestComment" value="{{ $guest->comment }}">
 
         <label class="form__label form__label--left">Vorbestellung:</label>
-        <input type="hidden" value="0" name="guestPreordered">
-        <input class="form__checkbox-input" type="checkbox" value="1" name="guestPreordered" {{ $guest->preordered ? 'checked' : ''}}>
+        <input type="hidden" value="0" name="guestPreorder">
+        <input class="form__checkbox-input" type="checkbox" value="1" name="guestPreorder" {{ $guest->preordered ? 'checked' : ''}}>
 
         <button class="form__submit" type="submit"></button>
       </form>

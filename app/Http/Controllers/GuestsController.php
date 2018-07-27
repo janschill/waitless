@@ -12,7 +12,7 @@ class GuestsController extends Controller
     // GET /guests
     public function index()
     {
-        GuestUpdated::dispatch(1);
+        GuestUpdated::dispatch('1');
 
         $states = State::all();
         $guests = Guest::where('state_id', 1)
