@@ -3,11 +3,14 @@
 @endif -->
 
 <h3 class="title title--medium">Gast hinzufügen</h3>
-<form method="POST" action="/guests" class="form">
+<form id="form-new-guest" method="POST" action="/guests" class="form">
   {{ csrf_field() }}
 
   <label class="form__label form__label--left">Wartenummer:</label>
   <div class="form__radio-wrap">
+    @if ($unoccupiedWaitids < 1)
+      <small class="error">Keine Wartenummer verfügbar</small>
+    @endif
     @foreach ($unoccupiedWaitids as $unoccupiedWaitid)
       <input class="form__radio-input" type="radio" name="guest[waitidId]" id="radio-{{$unoccupiedWaitid->number}}" value="{{$unoccupiedWaitid->id}}">
       <label class="form__radio-label" for="radio-{{$unoccupiedWaitid->number}}">{{$unoccupiedWaitid->number}}</label>
