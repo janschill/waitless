@@ -12,7 +12,7 @@ class GuestsController extends Controller
     // GET /guests
     public function index()
     {
-        GuestUpdated::dispatch('1');
+        // GuestUpdated::dispatch('1');
 
         $unoccupiedWaitids = Waitid::unoccupiedWaitids();
         $states = State::all();
@@ -80,6 +80,15 @@ class GuestsController extends Controller
     // PUT/PATCH /guests/{guest}
     public function update(Guest $guestFromRequest)
     {
+        $guestWithRequestValues = [
+            'id' => request('guest_id'),
+            'waitid_id' => request('guest_waitidId'),
+            'state_id' => request('guest_waitidId'),
+            'group_size' => request('guest_groupSize'),
+            'comment' => request('guest_comment', ''),
+            'preordered' => request('guest_preordered')
+        ];
+
         $guestId = request('guestId');
         $guestStateId = request('guestState');
         $guestGroupSize = request('guestGroupSize');
