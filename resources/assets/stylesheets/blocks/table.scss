@@ -44,6 +44,8 @@
 
 .table__column {
   display: table-cell;
+  position: relative;
+  overflow: visible;
 
   &.table__column--text {
     width: 200px;
