@@ -80,39 +80,34 @@ class GuestsController extends Controller
     // PUT/PATCH /guests/{guest}
     public function update(Guest $guestFromRequest)
     {
-        $guestWithRequestValues = [
+        $newGuest = [
             'id' => request('guest_id'),
-            'waitid_id' => request('guest_waitidId'),
-            'state_id' => request('guest_waitidId'),
-            'group_size' => request('guest_groupSize'),
+            'waitid_id' => request('guest_waitid_id'),
+            'group_size' => request('guest_group_size'),
+            'preordered' => request('guest_preordered'),
             'comment' => request('guest_comment', ''),
-            'preordered' => request('guest_preordered')
+            'state_id' => request('guest_state_id'),
         ];
 
-        $guestId = request('guestId');
-        $guestStateId = request('guestState');
-        $guestGroupSize = request('guestGroupSize');
-        $guestComment = request('guestComment', '');
-        $guestPreordered = request('guestPreorder');
-
-        if (is_null($guestStateId)) {
-            $guestStateId = $guestFromRequest->state_id;
+        if (is_null($newGuest['state_id'])) {
+            $newGuest['state_id'] = $guestFromRequest->state_id;
         }
-        if (is_null($guestGroupSize)) {
-            $guestGroupSize = $guestFromRequest->group_size;
+        if (is_null($newGuest['group_size'])) {
+            $newGuest['group_size'] = $guestFromRequest->group_size;
         }
-        if (is_null($guestComment)) {
-            $guestComment = $guestFromRequest->comment;
+        if (is_null($newGuest['comment'])) {
+            $newGuest['comment'] = $guestFromRequest->comment;
         }
-        if (is_null($guestPreordered)) {
-            $guestPreordered = $guestFromRequest->preordered;
+        if (is_null($newGuest['preordered'])) {
+            $newGuest['preordered'] = $guestFromRequest->preordered;
         }
 
-        $guest = Guest::find($guestId);
-        $guest->state_id = $guestStateId;
-        $guest->group_size = $guestGroupSize;
-        $guest->comment = $guestComment;
-        $guest->preordered = $guestPreordered;
+        $guest = Guest::find($newGuest['id']);
+        $guest->waitid_id = $newGuest['waitid_id'];
+        $guest->group_size = $newGuest['group_size'];
+        $guest->preordered = $newGuest['preordered'];
+        $guest->comment = $newGuest['comment'];
+        $guest->state_id = $newGuest['state_id'];
         $guest->last_state_change = now();
         $guest->save();
 
