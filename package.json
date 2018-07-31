@@ -1,30 +1,31 @@
 {
-    "name": "waitless",
-    "description": "waitless",
-    "repository": {
-        "type": "git",
-        "url": "git@github.com:janschill/waitless.git"
-    },
-    "license": "UNLICENSED",
-    "main": "gulpfile.js",
-    "devDependencies": {
-        "gulp": "^3.9.1",
-        "gulp-autoprefixer": "^5.0.0",
-        "gulp-concat": "^2.6.1",
-        "gulp-eslint": "^4.0.2",
-        "gulp-imagemin": "^4.1.0",
-        "gulp-rename": "^1.2.2",
-        "gulp-sass": "^3.1.0",
-        "gulp-stylelint": "^7.0.0",
-        "gulp-uglify": "^3.0.0",
-        "html5shiv": "^3.7.3",
-        "minireset.css": "0.0.3",
-        "stylelint": "^9.1.1",
-        "vanilla-datatables": "^1.6.11"
-    },
-    "dependencies": {
-        "jquery": "^3.3.1",
-        "laravel-echo": "^1.4.0",
-        "pusher-js": "^4.2.2"
-    }
+  "name": "waitless",
+  "description": "waitless",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:janschill/waitless.git"
+  },
+  "license": "UNLICENSED",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^4.0.2",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-stylelint": "^7.0.0",
+    "gulp-uglify": "^3.0.1",
+    "html5shiv": "^3.7.3",
+    "laravel-elixir": "^6.0.0-18",
+    "minireset.css": "0.0.3",
+    "stylelint": "^9.4.0",
+    "vanilla-datatables": "^1.6.11"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "laravel-echo": "^1.4.0",
+    "pusher-js": "^4.2.2"
+  }
 }
