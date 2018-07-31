@@ -47,6 +47,10 @@
   position: relative;
   overflow: visible;
 
+  &.table__column--danger-text {
+    color: red;
+  }
+
   &.table__column--comment {
     width: 200px;
   }

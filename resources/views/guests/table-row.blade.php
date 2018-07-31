@@ -42,7 +42,7 @@
             <textarea cols="30" rows="5">{{ $guest->comment }}</textarea>
         </div>
     </div>
-    <div class="table__column">{{ $guest->arrival_time->diffForHumans() }}</div>
+    <div data-year="{{ $guest->arrival_time->year }}" data-month="{{ $guest->arrival_time->month }}" data-day="{{ $guest->arrival_time->day }}" data-hours="{{ $guest->arrival_time->hour }}" data-minutes="{{ $guest->arrival_time->minute }}" data-seconds="{{ $guest->arrival_time->second }}" class="table__column table__column--arrival-time{{ $guest->arrival_time->diffForHumans() > 15 ? ' table__column--danger-text' : '' }}">{{ $guest->arrival_time->diffForHumans() }}</div>
     <div class="table__column table__column--state">
         <ul class="modal__list">
             @foreach ($states as $state)
