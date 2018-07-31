@@ -22,10 +22,15 @@
     $thisInput.value = value;
   }
 
-  var setComment = function($tableRow, value) {
-    var $thisInput = $tableRow.querySelector('.input__guest-comment');
-    $thisInput.value = value;
-  }
+  /**
+   *
+   * @param {*} $tableRow
+   * @param {*} value
+   var setComment = function($tableRow, value) {
+     var $thisInput = $tableRow.querySelector('.input__guest-comment');
+     $thisInput.value = value;
+    }
+  */
 
   var setState = function($tableRow, value) {
     var $thisInput = $tableRow.querySelector('.input__guest-state-id');
