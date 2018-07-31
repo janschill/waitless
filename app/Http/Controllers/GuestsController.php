@@ -18,7 +18,6 @@ class GuestsController extends Controller
         $states = State::all();
 
         $guests = Guest::where('state_id', 1)
-        ->orderBy('arrival_time', 'desc')
         ->get();
 
         $historyGuests = Guest::where('state_id','!=', 1)
@@ -62,8 +61,8 @@ class GuestsController extends Controller
             'group_size' => $guest['groupSize'],
             'comment' => $guest['comment'],
             'preordered' => $guest['preordered'],
-            'arrival_time' => now(),
-            'last_state_change' => now(),
+            'arrival_time' => now('Europe/Berlin'),
+            'last_state_change' => now('Europe/Berlin'),
         ]);
 
         return redirect('/guests');
@@ -108,7 +107,7 @@ class GuestsController extends Controller
         $guest->preordered = $newGuest['preordered'];
         $guest->comment = $newGuest['comment'];
         $guest->state_id = $newGuest['state_id'];
-        $guest->last_state_change = now();
+        $guest->last_state_change = now('Europe/Berlin');
         $guest->save();
 
         return redirect('/guests');
