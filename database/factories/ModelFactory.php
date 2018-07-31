@@ -30,8 +30,8 @@ $factory->define(App\Guest::class, function (Faker $faker) {
         'group_size' => rand(1, 12),
         'comment' => $faker->sentence,
         'preordered' => rand(0, 1),
-        'arrival_time' => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now'),
-        'last_state_change' => $faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now'),
+        'arrival_time' => $faker->dateTimeBetween($startDate = '-1 day', $endDate = 'now'),
+        'last_state_change' => $faker->dateTimeBetween($startDate = '-1 day', $endDate = 'now'),
     ];
 });
 
