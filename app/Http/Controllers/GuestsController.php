@@ -12,8 +12,6 @@ class GuestsController extends Controller
     // GET /guests
     public function index()
     {
-        // GuestUpdated::dispatch('1');
-
         $unoccupiedWaitids = Waitid::unoccupiedWaitids();
         $states = State::all();
 
@@ -48,22 +46,24 @@ class GuestsController extends Controller
             'guest_groupSize' => 'required|max:12',
         ]);
 
-        $guest = [
+        $newGuest = [
             'waitid_id' => request('guest_waitidId'),
             'groupSize' => request('guest_groupSize'),
             'comment' => request('guest_comment', ''),
             'preordered' => request('guest_preordered')
         ];
 
-        Guest::create([
-            'waitid_id' => $guest['waitid_id'],
+        $guest = Guest::create([
+            'waitid_id' => $newGuest['waitid_id'],
             'state_id' => 1,
-            'group_size' => $guest['groupSize'],
-            'comment' => $guest['comment'],
-            'preordered' => $guest['preordered'],
+            'group_size' => $newGuest['groupSize'],
+            'comment' => $newGuest['comment'],
+            'preordered' => $newGuest['preordered'],
             'arrival_time' => now('Europe/Berlin'),
             'last_state_change' => now('Europe/Berlin'),
         ]);
+
+        event((new GuestUpdated($guest)));
 
         return redirect('/guests');
     }
