@@ -1,18 +1,18 @@
 (function () {
-  var initAnchorChanger = function () {
-    var aTags = document.querySelectorAll('a');
+  function initAnchorChanger () {
+    let aTags = document.querySelectorAll('a');
 
-    aTags.forEach(function (aTag) {
+    aTags.forEach((aTag) => {
       if (!aTag.onclick && aTag.getAttribute('target') !== '_blank') {
-        aTag.onclick = function () {
-          window.location = this.getAttribute('href');
+        aTag.onclick = () => {
+          window.location = aTag.getAttribute('href');
           return false;
         }
       }
     });
-  };
+  }
 
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', () => {
     initAnchorChanger();
   })
 }());
