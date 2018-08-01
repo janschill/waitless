@@ -10,7 +10,9 @@
     },
     "globals": {
         "Pusher": true,
-        "Echo": true
+        "Echo": true,
+        "GuestRow": true,
+        "Form": true
     },
     "rules": {
         "strict": "error",

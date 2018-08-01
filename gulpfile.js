@@ -15,7 +15,7 @@ function swallowError(error) {
 
 gulp.task('lintJavaScripts', function () {
   gulp.src([
-    'resources/assets/javascripts/**/*.js'
+    'resources/assets/javascripts/custom/**/*.js'
   ])
   .pipe(eslint())
   .pipe(eslint.format())
@@ -26,6 +26,7 @@ gulp.task('lintJavaScripts', function () {
 gulp.task('processJavaScripts', function () {
   gulp.src([
     'node_modules/jquery/dist/jquery.js',
+    'resources/assets/javascripts/global/**/*.js',
     'resources/assets/javascripts/custom/**/*.js'
   ])
   .pipe(babel({
