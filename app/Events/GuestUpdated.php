@@ -15,18 +15,23 @@ class GuestUpdated implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $guest;
+    public $unoccupiedWaitids;
+    public $waitidNumber;
+    public $states;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($guest)
+    public function __construct($guest, $unoccupiedWaitids, $waitidNumber, $states)
     {
         $this->guest = $guest;
+        $this->unoccupiedWaitids = $unoccupiedWaitids;
+        $this->waitidNumber = $waitidNumber;
+        $this->states = $states;
 
         $this->dontBroadcastToCurrentUser();
-
     }
 
     /**

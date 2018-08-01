@@ -9,6 +9,16 @@ class Waitid extends Model
 {
     protected $fillable = ['number'];
 
+    public static function getNumberOfWaitid($id)
+    {
+        $waitidNumber = DB::table('waitids')
+            ->select('number')
+            ->where('id', $id)
+            ->get();
+
+        return $waitidNumber->toArray()[0];
+    }
+
     public function guests()
     {
         return $this->hasMany(Guest::class);
