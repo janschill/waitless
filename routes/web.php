@@ -1,7 +1,13 @@
 <?php
 
-Route::get('/', function () {
+use App\Events\GuestUpdated;
+
+Route::get('/info', function () {
     phpinfo();
+});
+
+Route::get('/pusher', function () {
+    GuestUpdated::dispatch();
 });
 
 // Guests

@@ -49,7 +49,7 @@
       event.preventDefault();
 
       if (validateForm($formNewGuest)) {
-        this.submit();
+        $formNewGuest.submit();
       }
     });
 
