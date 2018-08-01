@@ -1,25 +1,25 @@
 (function () {
-  var validateWaitidId = function(waitidId) {
+  function validateWaitidId (waitidId) {
     return waitidId !== '';
-  };
+  }
 
-  var validateGroupSize = function(groupSize) {
+  function validateGroupSize (groupSize) {
     return groupSize !== '' || parseInt(groupSize) > 12;
-  };
+  }
 
-  var validateComment = function(comment) {
+  function validateComment (comment) {
     return comment.length < 22;
-  };
+  }
 
-  var validateForm = function($form) {
-    var guest = {
+  function validateForm ($form) {
+    let guest = {
       'waitidId': $form['guest_waitidId'].value,
       'groupSize': $form['guest_groupSize'].value,
       'comment': $form['guest_comment'].value,
       'preordered': $form['guest_preordered'].value
     }
 
-    var $smallError = document.createElement('small');
+    let $smallError = document.createElement('small');
     $smallError.classList.add('error');
 
     if (!validateWaitidId(guest.waitidId)) {
@@ -40,20 +40,20 @@
     return true;
   };
 
-  var initNewGuest = function ($popupNewGuest) {
-    var $popupNewGuestToggle = $popupNewGuest.querySelector('.popup__toggle'),
+  function initNewGuest ($popupNewGuest) {
+    let $popupNewGuestToggle = $popupNewGuest.querySelector('.popup__toggle'),
       $table = document.querySelector('.table'),
       $formNewGuest = document.querySelector('#form-new-guest');
 
-    $formNewGuest.addEventListener('submit', function(event) {
+    $formNewGuest.addEventListener('submit', event => {
       event.preventDefault();
 
-      if (validateForm(this)) {
+      if (validateForm($formNewGuest)) {
         this.submit();
       }
     });
 
-    $popupNewGuestToggle.addEventListener('click', function (event) {
+    $popupNewGuestToggle.addEventListener('click', event => {
       event.preventDefault();
 
       $popupNewGuestToggle.classList.toggle('popup__toggle--danger');
@@ -62,8 +62,8 @@
     });
   };
 
-  document.addEventListener('DOMContentLoaded', function () {
-    var $popupNewGuest = document.querySelector('.popup--new-guest');
+  document.addEventListener('DOMContentLoaded', () => {
+    let $popupNewGuest = document.querySelector('.popup--new-guest');
 
     if ($popupNewGuest) {
       initNewGuest($popupNewGuest);
