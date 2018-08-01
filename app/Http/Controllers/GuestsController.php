@@ -15,8 +15,7 @@ class GuestsController extends Controller
         $unoccupiedWaitids = Waitid::unoccupiedWaitids();
         $states = State::all();
 
-        $guests = Guest::where('state_id', 1)
-        ->get();
+        $guests = Guest::where('state_id', 1)->get();
 
         $historyGuests = Guest::where('state_id','!=', 1)
         ->limit(10)
@@ -63,7 +62,11 @@ class GuestsController extends Controller
             'last_state_change' => now('Europe/Berlin'),
         ]);
 
-        event((new GuestUpdated($guest)));
+        $waitidNumber = Waitid::getNumberOfWaitid($guest['waitid_id'])->number;
+        $unoccupiedWaitids = Waitid::unoccupiedWaitids();
+        $states = State::all();
+
+        event((new GuestUpdated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
 
         return redirect('/guests');
     }

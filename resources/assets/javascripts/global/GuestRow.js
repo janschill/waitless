@@ -1,4 +1,14 @@
 class GuestRow {
+  static createGuestForm(guest) {
+    let $guestForm = document.createElement('form');
+    $guestForm.method = 'POST';
+    $guestForm.action = `/guests/${guest.id}`;
+    $guestForm.classList.add('table__row');
+    $guestForm.classList.add('table__row--form');
+
+    return $guestForm;
+  }
+
   static createInputList(guest) {
     const $inputs = GuestHiddenInputs.createAllInputs(guest);
     let $inputList = document.createElement('div');
@@ -11,21 +21,56 @@ class GuestRow {
     return $inputList;
   }
 
-  static createGuestRow(guest) {
+  // Add modal eventlistener
+  static createTableColumnWaitidId(guest, unoccupiedWaitids, waitidNumber) {
+    let $tableColumn = document.createElement('div');
+    $tableColumn.classList.add('table__column');
+    $tableColumn.classList.add('table__column--waitid-id');
+
+    let $button = document.createElement('a');
+    $button.setAttribute('data-guest-waitid-id', guest.waitid_id);
+    $button.classList.add('button');
+    $button.classList.add('button--waitid-id');
+    $button.appendChild(document.createTextNode(waitidNumber));
+    $tableColumn.appendChild($button);
+
+    let $modal = document.createElement('div');
+    $modal.classList.add('modal');
+    $modal.classList.add('modal--hidden');
+    $modal.classList.add('modal--waitid-id');
+    $tableColumn.appendChild($modal);
+
+    let $modalList = document.createElement('ul');
+    $modalList.classList.add('modal__list');
+    $modal.appendChild($modalList);
+
+    unoccupiedWaitids.forEach(unoccupiedWaitid => {
+      let $modalListItem = document.createElement('li');
+      $modalListItem.setAttribute('data-waitid-id', unoccupiedWaitid.id);
+      $modalListItem.classList.add('modal__list-item');
+      $modalListItem.appendChild(document.createTextNode(unoccupiedWaitid.number));
+      $modalList.appendChild($modalListItem);
+    });
+
+    let $modalClose = document.createElement('span');
+    $modalClose.classList.add('modal__close');
+    $modal.appendChild($modalClose);
+
+    return $tableColumn;
+  }
+
+  static createGuestRow(guest, unoccupiedWaitids, waitidNumber, states) {
     let $tableBody = document.querySelector('.table__body');
-    let $guestRow = document.createElement('form');
-    $guestRow.method = 'POST';
-    $guestRow.action = `/guests/${guest.id}`;
-    $guestRow.classList.add('table__row');
-    $guestRow.classList.add('table__row--form');
 
-    const $inputList = this.createInputList(guest);
+    let $guestForm = this.createGuestForm(guest);
+    $tableBody.appendChild($guestForm);
 
-    console.log($inputList);
+    let $inputList = this.createInputList(guest);
+    $guestForm.appendChild($inputList);
 
-    $guestRow.appendChild($inputList);
+    let $tableColumnWaitidId = this.createTableColumnWaitidId(guest, unoccupiedWaitids, waitidNumber);
+    $guestForm.appendChild($tableColumnWaitidId);
 
-    $tableBody.appendChild($guestRow);
     // this.initGuestRow($tableBody, $guestRow);
   }
 
