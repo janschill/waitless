@@ -40,7 +40,7 @@
   @yield('content')
 
   @include ('layouts.footer')
-
+  <script src="/javascripts/bootstrap.js"></script>
   <script src="/javascripts/app.min.js"></script>
 </body>
 
