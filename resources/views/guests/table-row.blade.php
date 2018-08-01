@@ -1,14 +1,14 @@
-<form id="form-guest-row" method="POST" action="/guests/{{ $guest->id }}" class="table__row table__row--form{{ $iterator % 2 === 0 ? ' table__row--highlight' : '' }}">
+<form method="POST" action="/guests/{{ $guest->id }}" class="table__row table__row--form{{ $iterator % 2 === 0 ? ' table__row--highlight' : '' }}">
     {{ csrf_field() }}
     {{ method_field('PATCH') }}
 
     <div class="input__list input__list--guest">
-        <input class="input__guest-id" id="guest-id-hidden" type="hidden" name="guest_id" value="{{ $guest->id }}">
-        <input class="input__guest-waitid-id" id="guest-waitid-id-hidden" type="hidden" name="guest_waitid_id" value="{{ $guest->waitid->id }}">
-        <input class="input__guest-group-size" id="guest-group-size-hidden" type="hidden" name="guest_group_size" value="{{ $guest->group_size }}">
-        <input class="input__guest-preordered" id="guest-preordered-hidden" type="hidden" name="guest_preordered" value="{{ $guest->preordered }}">
-        <input class="input__guest-comment" id="guest-comment-hidden" type="hidden" name="guest_comment" value="{{ $guest->comment }}">
-        <input class="input__guest-state-id" id="guest-state-id-hidden" type="hidden" name="guest_state_id" value="{{ $guest->state->id }}">
+        <input class="input__guest-id"  type="hidden" name="guest_id" value="{{ $guest->id }}">
+        <input class="input__guest-waitid-id" type="hidden" name="guest_waitid_id" value="{{ $guest->waitid->id }}">
+        <input class="input__guest-group-size" type="hidden" name="guest_group_size" value="{{ $guest->group_size }}">
+        <input class="input__guest-preordered" type="hidden" name="guest_preordered" value="{{ $guest->preordered }}">
+        <input class="input__guest-comment" type="hidden" name="guest_comment" value="{{ $guest->comment }}">
+        <input class="input__guest-state-id" type="hidden" name="guest_state_id" value="{{ $guest->state->id }}">
     </div>
     <div class="table__column table__column--waitid-id">
         <a data-guest-waitid-id="{{ $guest->waitid->id }}" class="button button--waitid-id" href="#">{{ $guest->waitid->number }}</a>

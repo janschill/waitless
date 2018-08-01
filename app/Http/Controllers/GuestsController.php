@@ -55,10 +55,10 @@ class GuestsController extends Controller
 
         $guest = Guest::create([
             'waitid_id' => $newGuest['waitid_id'],
-            'state_id' => 1,
             'group_size' => $newGuest['groupSize'],
-            'comment' => $newGuest['comment'],
             'preordered' => $newGuest['preordered'],
+            'comment' => $newGuest['comment'],
+            'state_id' => 1,
             'arrival_time' => now('Europe/Berlin'),
             'last_state_change' => now('Europe/Berlin'),
         ]);
