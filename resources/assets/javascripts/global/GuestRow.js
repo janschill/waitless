@@ -29,7 +29,11 @@ class GuestRow {
       let $modalListItem = document.createElement('li');
       $modalListItem.setAttribute(dataAttribute.name, listItem.id);
       $modalListItem.classList.add('modal__list-item');
-      $modalListItem.appendChild(document.createTextNode(listItem.number));
+      if (listItem.number !== undefined) {
+        $modalListItem.appendChild(document.createTextNode(listItem.number));
+      } else if (listItem.state !== undefined) {
+        $modalListItem.appendChild(document.createTextNode(listItem.state));
+      }
       $modalList.appendChild($modalListItem);
     });
 
@@ -117,6 +121,42 @@ class GuestRow {
     if (guest.preordered === 1) {
       $checkbox.setAttribute('checked', 'checked');
     }
+    $tableColumn.appendChild($checkbox);
+
+    return $tableColumn;
+  }
+
+  static createTableColumnComment(classnames, guest) {
+    let $tableColumn = document.createElement('div');
+    this.addClassnames($tableColumn, classnames);
+
+    let $button = this.createTableColumnButton({
+      'name': 'data-guest-comment',
+      'value': 'comment'
+    }, ['button', 'button--comment'], guest.comment);
+    $tableColumn.appendChild($button);
+
+    return $tableColumn;
+  }
+
+  static createTableColumnArrivalTime(classnames, guest) {
+    let $tableColumn = document.createElement('div');
+    this.addClassnames($tableColumn, classnames);
+
+    $tableColumn.appendChild(document.createTextNode('<1 Minute +'))
+    // If table__column--danger-text
+
+    return $tableColumn;
+  }
+
+  static createTableColumnStates(classnames, guest, states) {
+    let $tableColumn = document.createElement('div');
+    this.addClassnames($tableColumn, classnames);
+
+    let $modalList = this.createTableColumnModalList(['modal__list'], states, {'name': 'data-state-id'});
+    $tableColumn.appendChild($modalList);
+
+    // If table__column--danger-text
 
     return $tableColumn;
   }
@@ -133,14 +173,22 @@ class GuestRow {
     let $tableColumnWaitidId = this.createTableColumnWaitidId(['table__column', 'table__column--waitid-id'], guest, unoccupiedWaitids, waitidNumber);
     $guestForm.appendChild($tableColumnWaitidId);
 
-    let $tableColumnGroupSize = this.createTableColumnGroupSize(['table__column', 'table__column--waitid-id'], guest, [1,2,3,4,5,6,7,8,9,10,11]);
+    let $tableColumnGroupSize = this.createTableColumnGroupSize(['table__column', 'table__column--group-size'], guest, [1,2,3,4,5,6,7,8,9,10,11]);
     $guestForm.appendChild($tableColumnGroupSize);
 
     let $tableColumnPreordered = this.createTableColumnPreordered(['table__column', 'table__column--preordered'], guest);
     $guestForm.appendChild($tableColumnPreordered);
 
+    let $tableColumnComment = this.createTableColumnComment(['table__column', 'table__column--comment'], guest);
+    $guestForm.appendChild($tableColumnComment);
 
-    // this.initGuestRow($tableBody, $guestRow);
+    let $tableColumnArrivalTime = this.createTableColumnArrivalTime(['table__column', 'table__column--arrival-time'], guest);
+    $guestForm.appendChild($tableColumnArrivalTime);
+
+    let $tableColumnStates = this.createTableColumnStates(['table__column', 'table__column--state'], guest, states);
+    $guestForm.appendChild($tableColumnStates);
+
+    this.initGuestRow($tableBody, $guestForm);
   }
 
   static initGuestRow($tableBody, $tableRow) {
