@@ -152,3 +152,6 @@ To run seeds
 
 Unit testing concetrates on the smallest portion of the program code – a single unit or function. It tests if a function returns an expected result.
 Theses test will be written in the `tests/Unit` directory and are excuted with `phpunit` in the command line.
+
+### WebSocket
+

@@ -1,4 +1,4 @@
-(function () {
+(() => {
   document.addEventListener('DOMContentLoaded', () => {
     let $tableBody = document.querySelector('.table__body'),
       $tableRows = $tableBody.querySelectorAll('.table__row');
@@ -7,4 +7,4 @@
       GuestRow.initGuestRow($tableBody, $tableRow);
     });
   });
-}());
+})();

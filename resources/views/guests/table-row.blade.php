@@ -1,4 +1,4 @@
-<form method="POST" action="/guests/{{ $guest->id }}" class="table__row table__row--form{{ $iterator % 2 === 0 ? ' table__row--highlight' : '' }}">
+<form id="guest-id-{{ $guest->id }}" method="POST" action="/guests/{{ $guest->id }}" class="table__row table__row--form{{ $iterator % 2 === 0 ? ' table__row--highlight' : '' }}">
     {{ csrf_field() }}
     {{ method_field('PATCH') }}
 

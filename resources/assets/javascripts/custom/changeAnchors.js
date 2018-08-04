@@ -1,4 +1,4 @@
-(function () {
+(() => {
   function initAnchorChanger () {
     let aTags = document.querySelectorAll('a');
 
@@ -14,5 +14,5 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     initAnchorChanger();
-  })
-}());
+  });
+})();

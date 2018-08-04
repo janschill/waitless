@@ -1,4 +1,4 @@
-(function () {
+(() => {
   function initNavigation ($navigation) {
     let $hamburger = document.querySelector('.hamburger');
 
@@ -23,4 +23,4 @@
       initNavigation($navigation);
     });
   });
-}());
+})();
