@@ -1,4 +1,4 @@
-(function () {
+(() => {
   function initNewGuest ($popupNewGuest) {
     let $popupNewGuestToggle = $popupNewGuest.querySelector('.popup__toggle'),
       $table = document.querySelector('.table'),
@@ -28,4 +28,4 @@
       initNewGuest($popupNewGuest);
     }
   });
-}());
+})();
