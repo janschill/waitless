@@ -27,12 +27,16 @@ class GuestRow {
 
     listItems.forEach(listItem => {
       let $modalListItem = document.createElement('li');
-      $modalListItem.setAttribute(dataAttribute.name, listItem.id);
       $modalListItem.classList.add('modal__list-item');
-      if (listItem.number !== undefined) {
-        $modalListItem.appendChild(document.createTextNode(listItem.number));
-      } else if (listItem.state !== undefined) {
+      if (listItem.state !== undefined) {
+        $modalListItem.setAttribute(dataAttribute.name, listItem.id);
         $modalListItem.appendChild(document.createTextNode(listItem.state));
+      } else if (listItem.number !== undefined) {
+        $modalListItem.setAttribute(dataAttribute.name, listItem.id);
+        $modalListItem.appendChild(document.createTextNode(listItem.number));
+      } else {
+        $modalListItem.setAttribute(dataAttribute.name, listItem);
+        $modalListItem.appendChild(document.createTextNode(listItem));
       }
       $modalList.appendChild($modalListItem);
     });
@@ -48,6 +52,15 @@ class GuestRow {
     $guestForm.classList.add('table__row--form');
 
     return $guestForm;
+  }
+
+  static createInputMethod() {
+    let $input = document.createElement('input');
+    $input.type = 'hidden';
+    $input.name = '_method';
+    $input.value = 'PATCH';
+
+    return $input;
   }
 
   static createInputList(guest) {
@@ -161,11 +174,40 @@ class GuestRow {
     return $tableColumn;
   }
 
+  static initGuestRow($tableBody, $tableRow) {
+    let $guestWaitid = $tableRow.querySelector('.table__column--waitid-id'),
+      $guestGroupSize = $tableRow.querySelector('.table__column--group-size'),
+      $guestPreordered = $tableRow.querySelector('.table__column--preordered'),
+      $guestComment = $tableRow.querySelector('.table__column--comment'),
+      $guestStates = $tableRow.querySelectorAll('.table__column--state'),
+      $modals = document.querySelectorAll('.modal'),
+      $closeModals = $tableBody.querySelectorAll('.modal__close');
+
+    $closeModals.forEach($closeModal => {
+      Modal.initCloseModal($closeModal, $modals);
+    });
+    Guest.initGuestWaitid($tableRow, $guestWaitid, $modals);
+    Guest.initGuestGroupSize($tableRow, $guestGroupSize, $modals);
+    Guest.initGuestPreordered($tableRow, $guestPreordered);
+    Guest.initGuestComment($tableRow, $guestComment, $modals);
+
+    $guestStates.forEach($guestState => {
+      Guest.initGuestState($tableRow, $guestState);
+    });
+
+    $tableRow.addEventListener('submit', event => {
+      event.preventDefault();
+    });
+  }
+
   static createGuestRow(guest, unoccupiedWaitids, waitidNumber, states) {
     let $tableBody = document.querySelector('.table__body');
 
     let $guestForm = this.createGuestForm(guest);
     $tableBody.appendChild($guestForm);
+
+    let $inputMethod = this.createInputMethod();
+    $guestForm.appendChild($inputMethod);
 
     let $inputList = this.createInputList(guest);
     $guestForm.appendChild($inputList);
@@ -191,29 +233,25 @@ class GuestRow {
     this.initGuestRow($tableBody, $guestForm);
   }
 
-  static initGuestRow($tableBody, $tableRow) {
-    let $guestWaitid = $tableRow.querySelector('.table__column--waitid-id'),
-      $guestGroupSize = $tableRow.querySelector('.table__column--group-size'),
-      $guestPreordered = $tableRow.querySelector('.table__column--preordered'),
-      $guestComment = $tableRow.querySelector('.table__column--comment'),
-      $guestStates = $tableRow.querySelectorAll('.table__column--state'),
-      $modals = document.querySelectorAll('.modal'),
-      $closeModals = $tableBody.querySelectorAll('.modal__close');
+  static updateGuestRow(guest, unoccupiedWaitids, waitidNumber, states) {
+    let $guestForm = document.getElementById('guest-id-' + guest.id);
 
-    $closeModals.forEach($closeModal => {
-      Modal.initCloseModal($closeModal, $modals);
-    });
-    Guest.initGuestWaitid($tableRow, $guestWaitid, $modals);
-    Guest.initGuestGroupSize($tableRow, $guestGroupSize, $modals);
-    Guest.initGuestPreordered($tableRow, $guestPreordered);
-    Guest.initGuestComment($tableRow, $guestComment, $modals);
-
-    $guestStates.forEach($guestState => {
-      Guest.initGuestState($tableRow, $guestState);
-    });
-
-    $tableRow.addEventListener('submit', event => {
-      event.preventDefault();
-    });
+      if (guest.waitid_id !== Guest.getInputWaitidIdValue($guestForm)) {
+        Guest.setWaitidIdValue($guestForm, waitidNumber);
+        Guest.setInputWaitidIdValue($guestForm, guest.waitid_id);
+        console.log('here we need to update waitids');
+      } else if (guest.group_size !== Guest.getInputGroupSizeValue($guestForm)) {
+        Guest.setInputGroupSizeValue($guestForm, guest.group_size);
+        console.log('here we need to update group sizes not really');
+      } else if (guest.preordered !== Guest.getInputPreorderedValue($guestForm)) {
+        Guest.setInputPreorderedValue($guestForm, guest.preordered);
+        console.log('here we need to update preordered');
+      } else if (guest.comment !== Guest.getInputCommentValue($guestForm)) {
+        Guest.setInputCommentValue($guestForm, guest.comment);
+        console.log('here we need to update preordered');
+      } else if (guest.state !== Guest.getInputStateValue($guestForm)) {
+        Guest.setInputStateValue($guestForm, guest.state);
+        console.log('here we need to update guest form');
+      }
   }
 }

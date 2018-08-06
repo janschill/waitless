@@ -1,11 +1,17 @@
-(function() {
+(() => {
   function initLaravelEcho() {
-    window.Echo.channel('guests').listen('GuestUpdated', event => {
-
+    /**
+     * Fired when new guest is created
+     */
+    window.Echo.channel('guests').listen('GuestCreated', event => {
       GuestRow.createGuestRow(event.guest, event.unoccupiedWaitids, event.waitidNumber, event.states);
-      console.log(event);
+    });
 
-      // A reloadPage();
+    /**
+     * Fired when existing guest is update
+     */
+    window.Echo.channel('guests').listen('GuestUpdated', event => {
+      GuestRow.updateGuestRow(event.guest, event.unoccupiedWaitids, event.waitidNumber, event.states);
     });
   }
 

@@ -6,6 +6,7 @@ use App\Guest;
 use App\State;
 use App\Waitid;
 use App\Events\GuestUpdated;
+use App\Events\GuestCreated;
 
 class GuestsController extends Controller
 {
@@ -66,7 +67,7 @@ class GuestsController extends Controller
         $unoccupiedWaitids = Waitid::unoccupiedWaitids();
         $states = State::all();
 
-        event((new GuestUpdated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
+        event((new GuestCreated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
 
         return redirect('/guests');
     }
@@ -112,6 +113,12 @@ class GuestsController extends Controller
         $guest->state_id = $newGuest['state_id'];
         $guest->last_state_change = now('Europe/Berlin');
         $guest->save();
+
+        $waitidNumber = Waitid::getNumberOfWaitid($guest['waitid_id'])->number;
+        $unoccupiedWaitids = Waitid::unoccupiedWaitids();
+        $states = State::all();
+
+        event((new GuestUpdated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
 
         return redirect('/guests');
     }

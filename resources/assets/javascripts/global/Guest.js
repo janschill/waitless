@@ -1,4 +1,55 @@
 class Guest {
+  static getInputWaitidIdValue($tableRow) {
+    return $tableRow.querySelector('.input__guest-waitid-id').value;
+  }
+
+  static setInputWaitidIdValue($tableRow, value) {
+    let $thisInput = $tableRow.querySelector('.input__guest-waitid-id');
+    $thisInput.value = value;
+  }
+
+  static getInputGroupSizeValue($tableRow) {
+    return $tableRow.querySelector('.input__guest-group-size').value;
+  }
+
+  static setInputGroupSizeValue($tableRow, value) {
+    let $thisInput = $tableRow.querySelector('.input__guest-group-size');
+    $thisInput.value = value;
+  }
+
+  static getInputPreorderedValue($tableRow) {
+    return $tableRow.querySelector('.input__guest-preordered').value;
+  }
+
+  static setInputPreorderedValue($tableRow, value) {
+    let $thisInput = $tableRow.querySelector('.input__guest-preordered');
+    $thisInput.value = value;
+  }
+
+  static getInputCommentValue($tableRow) {
+    return $tableRow.querySelector('.input__guest-comment').value;
+  }
+
+  static setInputCommentValue($tableRow, value) {
+    let $thisInput = $tableRow.querySelector('.input__guest-comment');
+    $thisInput.value = value;
+  }
+
+  static getInputStateValue($tableRow) {
+    return $tableRow.querySelector('.input__guest-state-id').value;
+  }
+
+  static setInputStateValue($tableRow, value) {
+    let $thisInput = $tableRow.querySelector('.input__guest-state-id');
+    $thisInput.value = value;
+  }
+
+  static setWaitidIdValue($tableRow, value) {
+    let $buttonWaitidId = $tableRow.querySelector('.button--waitid-id');
+    $buttonWaitidId.innerText = value;
+  }
+
+
   static initGuestWaitid($tableRow, $tableColumn, $modals) {
     let $guestWaitidButton = $tableColumn.querySelector('.button--waitid-id');
     $guestWaitidButton.addEventListener('click', event => {
@@ -16,7 +67,7 @@ class Guest {
       .forEach($modalListItem => {
         $modalListItem.addEventListener('click', event => {
           event.preventDefault();
-          Guest.setWaitidId($tableRow, $modalListItem.dataset.waitidId);
+          Guest.setInputWaitidIdValue($tableRow, $modalListItem.dataset.waitidId);
           $tableRow.submit();
         });
       });
@@ -42,7 +93,7 @@ class Guest {
       .forEach($modalListItem => {
         $modalListItem.addEventListener('click', event => {
           event.preventDefault();
-          Guest.setGroupSize($tableRow, $modalListItem.dataset.groupSize);
+          Guest.setInputGroupSizeValue($tableRow, $modalListItem.dataset.groupSize);
           $tableRow.submit();
         });
       });
@@ -52,7 +103,7 @@ class Guest {
     $tableColumn
       .querySelector('.input--preordered')
       .addEventListener('change', () => {
-        Guest.setPreordered($tableRow, $tableColumn.checked ? 1 : 0);
+        Guest.setInputPreorderedValue($tableRow, $tableColumn.checked ? 1 : 0);
         $tableRow.submit();
       });
   }
@@ -74,30 +125,9 @@ class Guest {
       .querySelectorAll('.modal__list-item')
       .forEach($guestStateButton => {
         $guestStateButton.addEventListener('click', () => {
-          Guest.setState($tableRow, $guestStateButton.dataset.stateId);
+          Guest.setInputStateValue($tableRow, $guestStateButton.dataset.stateId);
           $tableRow.submit();
         });
       });
   }
-
-  static setGroupSize($tableRow, value) {
-    let $thisInput = $tableRow.querySelector('.input__guest-group-size');
-    $thisInput.value = value;
-  }
-
-  static setPreordered($tableRow, value) {
-    let $thisInput = $tableRow.querySelector('.input__guest-preordered');
-    $thisInput.value = value;
-  }
-
-  static setWaitidId($tableRow, value) {
-    let $thisInput = $tableRow.querySelector('.input__guest-waitid-id');
-    $thisInput.value = value;
-  }
-
-  static setState($tableRow, value) {
-    let $thisInput = $tableRow.querySelector('.input__guest-state-id');
-    $thisInput.value = value;
-  }
-
 }
