@@ -30,10 +30,9 @@ class Waitid extends Model
             ->join('guests', 'waitids.id', '=', 'guests.waitid_id')
             ->join('states', 'states.id', '=', 'guests.state_id')
             ->select('waitids.number')
-            ->where('state', '=', 'wartend')
+            ->where('state', '=', 'warten')
             ->get()
             ->all();
-
 
         $waitingWaitidsIndexed = [];
 
