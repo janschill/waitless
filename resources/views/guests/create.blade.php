@@ -30,10 +30,10 @@
 
   <label class="form__label">Offene Rechnung:</label>
   <div class="form__radio-wrap form__radio-wrap--condensed">
-    <input class="form__radio-input" type="radio" name="guest_preordered" id="radio-preordered-0" value="0" checked>
-    <label class="button-toggle" for="radio-preordered-0">nein</label>
-    <input class="form__radio-input" type="radio" name="guest_preordered" id="radio-preordered-1" value="1">
-    <label class="button-toggle" for="radio-preordered-1">ja</label>
+    <input class="form__radio-input" type="radio" name="guest_preordered" id="radio-create-preordered-0" value="0" checked>
+    <label class="button-toggle" for="radio-create-preordered-0">nein</label>
+    <input class="form__radio-input" type="radio" name="guest_preordered" id="radio-create-preordered-1" value="1">
+    <label class="button-toggle" for="radio-create-preordered-1">ja</label>
   </div>
   <div class="form__submit-wrap">
     <div class="form__submit form__submit--cancel">abbrechen</div>

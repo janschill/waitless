@@ -5,9 +5,7 @@
   left: 0;
   z-index: 100;
   background: white;
-  padding: 10px;
   white-space: nowrap;
-  box-shadow: 0 3px 3px 0 rgba(black, 0.16), 0 3px 3px 0 rgba(black, 0.23);
 
   &.modal--hidden {
     display: none;
@@ -53,4 +51,8 @@
 .modal__list {
   display: inline-block;
   box-shadow: 0 1px 1.5px 0 rgba(black, 0.12), 0 1px 1px 0 rgba(black, 0.24);
+
+  &.modal__list--waitid-ids {
+    width: 150px;
+  }
 }

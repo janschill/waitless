@@ -13,7 +13,7 @@
     <div class="table__column table__column--waitid-id">
         <a data-guest-waitid-id="{{ $guest->waitid->id }}" class="button-toggle button-toggle--shadow button-toggle--short button-toggle--waitid-id" href="#">{{ $guest->waitid->number }}</a>
         <div class="modal modal--hidden modal--waitid-id">
-            <ul class="modal__list">
+            <ul class="modal__list modal__list--waitid-ids">
                 @foreach ($unoccupiedWaitids as $unoccupiedWaitid)
                     <li data-waitid-id="{{ $unoccupiedWaitid->id }}" class="button-toggle button-toggle-unoccupied-waitid-id button-toggle--short{{ $guest->waitid->id === $unoccupiedWaitid->id ? ' button-toggle--highlight' : '' }}">{{ $unoccupiedWaitid->number }}</li>
                 @endforeach
@@ -34,10 +34,10 @@
     </div>
     <div class="table__column table__column--preordered">
         <div class="modal__list">
-            <input class="form__radio-input form__radio--preordered form__radio--off" type="radio" name="guest_preordered" id="radio-preordered-0" value="0"{{ $guest->preordered ? '' : 'checked'}}>
-            <label class="button-toggle button-toggle--short button-toggle--preordered-off" for="radio-preordered-0">nein</label>
-            <input class="form__radio-input form__radio--preordered form__radio--on" type="radio" name="guest_preordered" id="radio-preordered-1" value="1"{{ $guest->preordered ? 'checked' : ''}}>
-            <label class="button-toggle button-toggle--short button-toggle--preordered-on" for="radio-preordered-1">ja</label>
+            <input class="form__radio-input form__radio--preordered form__radio--off" type="radio" name="guest_preordered" id="{{ $guest->id }}-radio-preordered-0" value="0"{{ $guest->preordered ? '' : 'checked'}}>
+            <label class="button-toggle button-toggle--short button-toggle--preordered-off" for="{{ $guest->id }}-radio-preordered-0">nein</label>
+            <input class="form__radio-input form__radio--preordered form__radio--on" type="radio" name="guest_preordered" id="{{ $guest->id }}-radio-preordered-1" value="1"{{ $guest->preordered ? 'checked' : ''}}>
+            <label class="button-toggle button-toggle--short button-toggle--preordered-on" for="{{ $guest->id }}-radio-preordered-1">ja</label>
         </div>
     </div>
     <div class="table__column table__column--comment">
