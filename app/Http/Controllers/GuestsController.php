@@ -14,16 +14,16 @@ class GuestsController extends Controller
     public function index()
     {
         $unoccupiedWaitids = Waitid::unoccupiedWaitids();
-        $states = State::all();
+        $states = State::getDefiniteStates();
 
         $guests = Guest::where('state_id', 1)->get();
-
         $historyGuests = Guest::where('state_id','!=', 1)
         ->limit(10)
         ->orderBy('last_state_change', 'desc')
         ->get();
+        $assignedGuests = Guest::where('state_id', 4)->get();
 
-        return view('guests.index', compact('states', 'guests', 'historyGuests', 'unoccupiedWaitids'));
+        return view('guests.index', compact('states', 'guests', 'historyGuests', 'assignedGuests', 'unoccupiedWaitids'));
     }
 
     // GET /guests/{guest}

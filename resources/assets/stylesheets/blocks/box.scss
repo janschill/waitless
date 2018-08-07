@@ -1,5 +1,28 @@
 .box {
-  padding: 50px;
-  border: 1px solid black;
+  padding: 15px 5px 5px;
+  border: 1px solid $color-light;
   margin: 0 10px;
+  position: relative;
+  text-align: center;
+  width: 125px;
+  height: 125px;
+}
+
+.box__headline {
+  font-size: 1.25rem;
+  font-weight: 700;
+
+  &.box__headline--large {
+    font-size: 1.75rem;
+  }
+}
+
+.box__time {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 3px;
+  left: 5px;
+  right: 5px;
+  font-size: 0.8rem;
 }
