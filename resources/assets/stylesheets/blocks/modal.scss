@@ -1,11 +1,16 @@
 .modal {
-  display: flex;
-  position: absolute;
-  bottom: -50px;
-  left: 0;
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 30px 30px;
+  background-color: white;
+  border-radius: 3px;
+  width: 75%;
+  box-shadow: 0 3px 3px 0 rgba(black, 0.16), 0 3px 3px 0 rgba(black, 0.23);
+  overflow: hidden;
   z-index: 100;
-  background: white;
-  white-space: nowrap;
 
   &.modal--hidden {
     display: none;
@@ -13,23 +18,25 @@
 }
 
 .modal__close {
+  position: absolute;
+  top: -35px;
+  right: -35px;
   display: inline-block;
   transform: rotate(45deg);
-  position: relative;
-  border-radius: 20px;
-  border: 1px solid black;
+  border-radius: 25px;
   padding: 20px;
+  background-color: $color-accent-secondary;
 
   &::before,
   &::after {
     content: '';
     position: absolute;
-    background: black;
+    background: white;
   }
 
   &::before {
     height: 50%;
-    width: 1px;
+    width: 2px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -37,7 +44,7 @@
 
   &::after {
     width: 50%;
-    height: 1px;
+    height: 2px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -52,7 +59,24 @@
   display: inline-block;
   box-shadow: 0 1px 1.5px 0 rgba(black, 0.12), 0 1px 1px 0 rgba(black, 0.24);
 
-  &.modal__list--waitid-ids {
-    width: 150px;
+  &.modal__list--update {
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 1px 1.5px 0 rgba(black, 0.12), 0 1px 1px 0 rgba(black, 0.24);
+    height: 41px;
+    margin-bottom: 25px;
+
   }
+}
+
+.modal__text {
+  font-size: 1rem;
+  -webkit-box-shadow: 0 1px 1.5px 0 rgba(0,0,0,0.12), 0 1px 1px 0 rgba(0,0,0,0.24);
+  box-shadow: 0 1px 1.5px 0 rgba(0,0,0,0.12), 0 1px 1px 0 rgba(0,0,0,0.24);
+  border: none;
+  line-height: 2;
+  padding: 0 10px;
+  height: 41px;
+  margin-bottom: 25px;
+  width: 100%;
 }

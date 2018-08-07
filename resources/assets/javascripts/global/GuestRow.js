@@ -116,7 +116,7 @@ class GuestRow {
     $modal.appendChild($modalList);
 
     let $modalClose = document.createElement('span');
-    $modalClose.classList.add('modal__close');
+    this.addClassnames($modalClose, ['form__submit', 'form__submit--update', 'form__submit--cancel']);
     $modal.appendChild($modalClose);
 
     return $tableColumn;
@@ -139,7 +139,7 @@ class GuestRow {
     $modal.appendChild($modalList);
 
     let $modalClose = document.createElement('span');
-    $modalClose.classList.add('modal__close');
+    this.addClassnames($modalClose, ['form__submit', 'form__submit--update', 'form__submit--cancel']);
     $modal.appendChild($modalClose);
 
     return $tableColumn;
@@ -207,7 +207,7 @@ class GuestRow {
       $guestComment = $tableRow.querySelector('.table__column--comment'),
       $guestStates = $tableRow.querySelectorAll('.table__column--state'),
       $modals = document.querySelectorAll('.modal'),
-      $closeModals = $tableBody.querySelectorAll('.modal__close');
+      $closeModals = $tableBody.querySelectorAll('.form__submit--update.form__submit--cancel');
 
     $closeModals.forEach($closeModal => {
       Modal.initCloseModal($closeModal, $modals);

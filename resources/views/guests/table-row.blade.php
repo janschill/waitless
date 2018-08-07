@@ -13,23 +13,31 @@
     <div class="table__column table__column--waitid-id">
         <a data-guest-waitid-id="{{ $guest->waitid->id }}" class="button-toggle button-toggle--shadow button-toggle--short button-toggle--waitid-id" href="#">{{ $guest->waitid->number }}</a>
         <div class="modal modal--hidden modal--waitid-id">
-            <ul class="modal__list modal__list--waitid-ids">
+            <h3 class="title title--medium">Wartenummer bearbeiten</h3>
+            <ul class="modal__list modal__list--update modal__list--waitid-ids">
                 @foreach ($unoccupiedWaitids as $unoccupiedWaitid)
-                    <li data-waitid-id="{{ $unoccupiedWaitid->id }}" class="button-toggle button-toggle-unoccupied-waitid-id button-toggle--short{{ $guest->waitid->id === $unoccupiedWaitid->id ? ' button-toggle--highlight' : '' }}">{{ $unoccupiedWaitid->number }}</li>
+                    <li data-waitid-id="{{ $unoccupiedWaitid->id }}" class="button-toggle button-toggle-unoccupied-waitid-id{{ $guest->waitid->id === $unoccupiedWaitid->id ? ' button-toggle--highlight' : '' }}">{{ $unoccupiedWaitid->number }}</li>
                 @endforeach
             </ul>
-            <span class="modal__close"></span>
+            <div class="form__submit-wrap">
+                <div class="form__submit form__submit--update form__submit--cancel">abbrechen</div>
+                <div class="form__submit form__submit--success">bearbeiten</div>
+            </div>
         </div>
     </div>
     <div class="table__column table__column--group-size">
         <a data-guest-group-size="{{ $guest->group_size }}" class="button-toggle button-toggle--short button-toggle--shadow button-toggle--group-size" href="#">{{ $guest->group_size }}</a>
         <div class="modal modal--hidden modal--group-size">
-            <ul class="modal__list">
+            <h3 class="title title--medium">Gruppengröße bearbeiten</h3>
+            <ul class="modal__list modal__list--update">
                 @for ($i = 1; $i < 12; $i++)
                     <li data-group-size="{{$i}}" class="button-toggle button-toggle--all-group-size{{ $guest->group_size === $i ? ' button-toggle--highlight' : '' }}">{{$i}}</li>
                 @endfor
             </ul>
-            <span class="modal__close"></span>
+            <div class="form__submit-wrap">
+                <div class="form__submit form__submit--update form__submit--cancel">abbrechen</div>
+                <div class="form__submit form__submit--success">bearbeiten</div>
+            </div>
         </div>
     </div>
     <div class="table__column table__column--preordered">
@@ -43,10 +51,12 @@
     <div class="table__column table__column--comment">
         <div data-guest-comment="{{ $guest->comment }}" class="button-toggle button-toggle--shadow button-toggle--comment" href="#">{{ $guest->comment }}</div>
         <div class="modal modal--hidden modal--comment">
-            <div class="">
-                <span class="modal__close"></span>
+            <h3 class="title title--medium">Gruppengröße bearbeiten</h3>
+            <input type="text" class="modal__text" value="{{ $guest->comment }}">
+            <div class="form__submit-wrap">
+                <div class="form__submit form__submit--update form__submit--cancel">abbrechen</div>
+                <div class="form__submit form__submit--success">bearbeiten</div>
             </div>
-            <textarea cols="30" rows="5">{{ $guest->comment }}</textarea>
         </div>
     </div>
     <div data-year="{{ $guest->arrival_time->year }}" data-month="{{ $guest->arrival_time->month }}" data-day="{{ $guest->arrival_time->day }}" data-hours="{{ $guest->arrival_time->hour }}" data-minutes="{{ $guest->arrival_time->minute }}" data-seconds="{{ $guest->arrival_time->second }}" class="table__column table__column--arrival-time{{ $guest->arrival_time->diffForHumans() > 15 ? ' table__column--danger-text' : '' }}">{{ $guest->arrival_time->diffForHumans() }}</div>
