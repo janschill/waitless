@@ -33,9 +33,7 @@
 
 .table__head > .table__row {
   color: #333333;
-  background-color: $color-light;
   font-weight: bolder;
-  box-shadow: 0 1px 1.5px 0 rgba(black, 0.12), 0 1px 1px 0 rgba(black, 0.24);
 }
 
 .table__body > .table__row {
@@ -62,4 +60,9 @@
 
 .table__body .table__column {
   padding: 1rem 10px;
+}
+
+.table__column--settings {
+  position: relative;
+  width: 50px;
 }

@@ -7,7 +7,6 @@
 }
 
 .hamburger__inner::before,
-.hamburger__inner::after,
 .hamburger__inner {
   position: absolute;
   left: 0;
@@ -25,11 +24,6 @@
     content: '';
     top: -8px;
   }
-
-  &::after {
-    content: '';
-    bottom: -8px;
-  }
 }
 
 .hamburger--active {
@@ -38,11 +32,6 @@
 
     &::before {
       transform: rotate(90deg);
-      top: 0;
-    }
-
-    &::after {
-      transform: rotate(-90deg);
       top: 0;
     }
   }
