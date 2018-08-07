@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    protected $toTruncate = ['guests', 'waitids'];
+    protected $toTruncate = ['guests', 'waitids', 'states'];
 
     /**
      * Run the database seeds.
@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call('WaitIdTableSeeder');
         $this->call('GuestTableSeeder');
+        $this->call('StatesTableSeeder');
     }
 }
