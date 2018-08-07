@@ -1,4 +1,4 @@
-<form id="guest-id-{{ $guest->id }}" method="POST" action="/guests/{{ $guest->id }}" class="table__row table__row--form{{ $iterator % 2 === 0 ? ' table__row--highlight' : '' }}">
+<form id="guest-id-{{ $guest->id }}" method="POST" action="/guests/{{ $guest->id }}" class="table__row table__row--form">
     {{ csrf_field() }}
     {{ method_field('PATCH') }}
 
@@ -15,7 +15,7 @@
         <div class="modal modal--hidden modal--waitid-id">
             <ul class="modal__list">
                 @foreach ($unoccupiedWaitids as $unoccupiedWaitid)
-                    <li data-waitid-id="{{ $unoccupiedWaitid->id }}" class="modal__list-item{{ $guest->waitid->id === $unoccupiedWaitid->id ? ' modal__list-item--highlight' : '' }}">{{ $unoccupiedWaitid->number }}</li>
+                    <li data-waitid-id="{{ $unoccupiedWaitid->id }}" class="button-toggle button-toggle--short{{ $guest->waitid->id === $unoccupiedWaitid->id ? ' button-toggle--highlight' : '' }}">{{ $unoccupiedWaitid->number }}</li>
                 @endforeach
             </ul>
             <span class="modal__close"></span>
@@ -26,13 +26,20 @@
         <div class="modal modal--hidden modal--group-size">
             <ul class="modal__list">
                 @for ($i = 1; $i < 12; $i++)
-                    <li data-group-size="{{$i}}" class="modal__list-item{{ $guest->group_size === $i ? ' modal__list-item--highlight' : '' }}">{{$i}}</li>
+                    <li data-group-size="{{$i}}" class="button-toggle{{ $guest->group_size === $i ? ' button-toggle--highlight' : '' }}">{{$i}}</li>
                 @endfor
             </ul>
             <span class="modal__close"></span>
         </div>
     </div>
-    <div class="table__column table__column--preordered"><input type="checkbox" class="input input--preordered" {{ $guest->preordered ? 'checked' : ''}}></div>
+    <div class="table__column table__column--preordered">
+        <div class="modal__list">
+            <input class="form__radio-input" type="radio" name="guest_preordered" id="radio-preordered-0" value="0"{{ $guest->preordered ? '' : 'checked'}}>
+            <label class="button-toggle button-toggle--short" for="radio-preordered-0">nein</label>
+            <input class="form__radio-input" type="radio" name="guest_preordered" id="radio-preordered-1" value="1"{{ $guest->preordered ? 'checked' : ''}}>
+            <label class="button-toggle button-toggle--short" for="radio-preordered-1">ja</label>
+        </div>
+    </div>
     <div class="table__column table__column--comment">
         <a data-guest-comment="{{ $guest->comment }}" class="button button--comment" href="#">{{ $guest->comment }}</a>
         <div class="modal modal--hidden modal--comment">
@@ -46,8 +53,9 @@
     <div class="table__column table__column--state">
         <ul class="modal__list">
             @foreach ($states as $state)
-                <li data-state-id="{{ $state->id }}" class="modal__list-item{{ $guest->state->id === $state->id ? ' modal__list-item--highlight' : '' }}">{{ $state->state }}</li>
+                <li data-state-id="{{ $state->id }}" class="button-toggle button-toggle--long{{ $guest->state->id === $state->id ? ' button-toggle--highlight' : '' }}">{{ $state->state }}</li>
             @endforeach
         </ul>
     </div>
+    <div class="table__column table__column--settings"><div class="more-actions"></div></div>
 </form>

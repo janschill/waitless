@@ -1,8 +1,15 @@
 (() => {
+  function toggleClassListPopupCreate($popupNewGuestToggle, $popupNewGuest, $table) {
+    $popupNewGuestToggle.classList.toggle('popup__toggle--hidden');
+    $popupNewGuest.classList.toggle('popup--visible');
+    $table.classList.toggle('table--faded');
+  }
+
   function initNewGuest ($popupNewGuest) {
     let $popupNewGuestToggle = $popupNewGuest.querySelector('.popup__toggle'),
       $table = document.querySelector('.table'),
-      $formNewGuest = document.querySelector('#form-new-guest');
+      $formNewGuest = document.querySelector('#form-new-guest'),
+      $formSubmitCancel = $popupNewGuest.querySelector('.form__submit--cancel');
 
     $formNewGuest.addEventListener('submit', event => {
       event.preventDefault();
@@ -14,10 +21,12 @@
 
     $popupNewGuestToggle.addEventListener('click', event => {
       event.preventDefault();
+      toggleClassListPopupCreate($popupNewGuestToggle, $popupNewGuest, $table);
+    });
 
-      $popupNewGuestToggle.classList.toggle('popup__toggle--danger');
-      $popupNewGuest.classList.toggle('popup--visible');
-      $table.classList.toggle('table--faded');
+    $formSubmitCancel.addEventListener('click', event => {
+      event.preventDefault();
+      toggleClassListPopupCreate($popupNewGuestToggle, $popupNewGuest, $table);
     });
   };
 
