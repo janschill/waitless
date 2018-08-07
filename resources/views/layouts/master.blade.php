@@ -35,6 +35,7 @@
 </head>
 
 <body>
+  <div class="time">18:30</div>
 
   @include ('layouts.header')
 

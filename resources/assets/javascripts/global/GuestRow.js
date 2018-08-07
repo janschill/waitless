@@ -27,7 +27,7 @@ class GuestRow {
 
     listItems.forEach(listItem => {
       let $modalListItem = document.createElement('li');
-      $modalListItem.classList.add('modal__list-item');
+      $modalListItem.classList.add('button-toggle');
       if (listItem.state !== undefined) {
         $modalListItem.setAttribute(dataAttribute.name, listItem.id);
         $modalListItem.appendChild(document.createTextNode(listItem.state));
