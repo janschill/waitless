@@ -45,13 +45,13 @@ class Guest {
   }
 
   static setWaitidIdValue($tableRow, value) {
-    let $buttonWaitidId = $tableRow.querySelector('.button--waitid-id');
+    let $buttonWaitidId = $tableRow.querySelector('.button-toggle--waitid-id');
     $buttonWaitidId.innerText = value;
   }
 
 
   static initGuestWaitid($tableRow, $tableColumn, $modals) {
-    let $guestWaitidButton = $tableColumn.querySelector('.button--waitid-id');
+    let $guestWaitidButton = $tableColumn.querySelector('.button-toggle--waitid-id');
     $guestWaitidButton.addEventListener('click', event => {
       event.preventDefault();
       let $thisGuestWaitidPopup = $tableRow.querySelector('.modal--waitid-id');
@@ -72,7 +72,7 @@ class Guest {
   }
 
   static initGuestGroupSize($tableRow, $tableColumn, $modals) {
-    let $guestGroupSizeButton = $tableColumn.querySelector('.button--group-size');
+    let $guestGroupSizeButton = $tableColumn.querySelector('.button-toggle--group-size');
     $guestGroupSizeButton.addEventListener('click', () => {
       let $thisGuestGroupSizePopup = $tableRow.querySelector(
         '.modal--group-size'
@@ -101,7 +101,7 @@ class Guest {
   }
 
   static initGuestComment($tableRow, $tableColumn, $modals) {
-    let $guestCommentButton = $tableColumn.querySelector('.button--comment');
+    let $guestCommentButton = $tableColumn.querySelector('.button-toggle--comment');
     $guestCommentButton.addEventListener('click', () => {
       let $thisGuestCommentPopup = $tableRow.querySelector('.modal--comment');
 

@@ -1,4 +1,5 @@
 .button-toggle {
+  text-decoration: none;
   color: $color-dark;
   font-size: 18px;
   font-weight: normal;
@@ -8,6 +9,16 @@
   cursor: pointer;
   position: relative;
   width: 100%;
+
+  &.button-toggle--comment {
+    text-align: left;
+    max-width: 200px;
+    height: 41px;
+  }
+
+  &.button-toggle--shadow {
+    box-shadow: 0 1px 1.5px 0 rgba(black, 0.12), 0 1px 1px 0 rgba(black, 0.24);
+  }
 
   &.button-toggle--short {
     width: 50px;
