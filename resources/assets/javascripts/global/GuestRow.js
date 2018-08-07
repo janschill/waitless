@@ -83,7 +83,7 @@ class GuestRow {
     let $button = this.createTableColumnButton({
       'name': 'data-guest-waitid-id',
       'value': guest.waitid_id
-    }, ['button', 'button--waitid-id'], waitidNumber);
+    }, ['button', 'button-toggle--waitid-id'], waitidNumber);
     $tableColumn.appendChild($button);
 
     let $modal = this.createTableColumnModal(['modal','modal--hidden','modal--waitid-id']);
@@ -106,7 +106,7 @@ class GuestRow {
     let $button = this.createTableColumnButton({
       'name': 'data-guest-group-size',
       'value': guest.group_size
-    }, ['button', 'button--group-size'], guest.group_size);
+    }, ['button', 'button-toggle--group-size'], guest.group_size);
     $tableColumn.appendChild($button);
 
     let $modal = this.createTableColumnModal(['modal','modal--hidden','modal--group-size']);
@@ -146,7 +146,7 @@ class GuestRow {
     let $button = this.createTableColumnButton({
       'name': 'data-guest-comment',
       'value': 'comment'
-    }, ['button', 'button--comment'], guest.comment);
+    }, ['button', 'button-toggle--comment'], guest.comment);
     $tableColumn.appendChild($button);
 
     return $tableColumn;

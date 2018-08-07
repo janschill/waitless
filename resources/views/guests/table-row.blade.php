@@ -11,7 +11,7 @@
         <input class="input__guest-state-id" type="hidden" name="guest_state_id" value="{{ $guest->state->id }}">
     </div>
     <div class="table__column table__column--waitid-id">
-        <a data-guest-waitid-id="{{ $guest->waitid->id }}" class="button button--waitid-id" href="#">{{ $guest->waitid->number }}</a>
+        <a data-guest-waitid-id="{{ $guest->waitid->id }}" class="button-toggle button-toggle--shadow button-toggle--short button-toggle--waitid-id" href="#">{{ $guest->waitid->number }}</a>
         <div class="modal modal--hidden modal--waitid-id">
             <ul class="modal__list">
                 @foreach ($unoccupiedWaitids as $unoccupiedWaitid)
@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="table__column table__column--group-size">
-        <a data-guest-group-size="{{ $guest->group_size }}" class="button button--group-size" href="#">{{ $guest->group_size }}</a>
+        <a data-guest-group-size="{{ $guest->group_size }}" class="button-toggle button-toggle--short button-toggle--shadow button-toggle--group-size" href="#">{{ $guest->group_size }}</a>
         <div class="modal modal--hidden modal--group-size">
             <ul class="modal__list">
                 @for ($i = 1; $i < 12; $i++)
@@ -41,7 +41,7 @@
         </div>
     </div>
     <div class="table__column table__column--comment">
-        <a data-guest-comment="{{ $guest->comment }}" class="button button--comment" href="#">{{ $guest->comment }}</a>
+        <div data-guest-comment="{{ $guest->comment }}" class="button-toggle button-toggle--shadow button-toggle--comment" href="#">{{ $guest->comment }}</div>
         <div class="modal modal--hidden modal--comment">
             <div class="">
                 <span class="modal__close"></span>

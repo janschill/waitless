@@ -56,6 +56,11 @@
   position: relative;
   overflow: visible;
 
+  &.table__column--arrival-time {
+    float: left;
+    padding: 10px;
+  }
+
   &.table__column--danger-text {
     color: red;
   }
