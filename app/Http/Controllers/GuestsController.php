@@ -81,10 +81,10 @@ class GuestsController extends Controller
     }
 
     // PUT/PATCH /guests/{guest}
-    public function update(Guest $guestFromRequest)
+    public function update(Guest $guest)
     {
         $newGuest = [
-            'id' => request('guest_id'),
+            'id' => $guest->id,
             'waitid_id' => request('guest_waitid_id'),
             'group_size' => request('guest_group_size'),
             'preordered' => request('guest_preordered'),
@@ -92,29 +92,32 @@ class GuestsController extends Controller
             'state_id' => request('guest_state_id'),
         ];
 
+        if (is_null($newGuest['waitid_id'])) {
+            $newGuest['waitid_id'] = $guest->waitid_id;
+        }
         if (is_null($newGuest['state_id'])) {
-            $newGuest['state_id'] = $guestFromRequest->state_id;
+            $newGuest['state_id'] = $guest->state_id;
         }
         if (is_null($newGuest['group_size'])) {
-            $newGuest['group_size'] = $guestFromRequest->group_size;
+            $newGuest['group_size'] = $guest->group_size;
         }
         if (is_null($newGuest['comment'])) {
-            $newGuest['comment'] = $guestFromRequest->comment;
+            $newGuest['comment'] = $guest->comment;
         }
         if (is_null($newGuest['preordered'])) {
-            $newGuest['preordered'] = $guestFromRequest->preordered;
+            $newGuest['preordered'] = $guest->preordered;
         }
 
-        $guest = Guest::find($newGuest['id']);
-        $guest->waitid_id = $newGuest['waitid_id'];
-        $guest->group_size = $newGuest['group_size'];
-        $guest->preordered = $newGuest['preordered'];
-        $guest->comment = $newGuest['comment'];
-        $guest->state_id = $newGuest['state_id'];
-        $guest->last_state_change = now('Europe/Berlin');
-        $guest->save();
+        $updatedGuest = Guest::find($guest->id);
+        $updatedGuest->waitid_id = $newGuest['waitid_id'];
+        $updatedGuest->group_size = $newGuest['group_size'];
+        $updatedGuest->preordered = $newGuest['preordered'];
+        $updatedGuest->comment = $newGuest['comment'];
+        $updatedGuest->state_id = $newGuest['state_id'];
+        $updatedGuest->last_state_change = now('Europe/Berlin');
+        $updatedGuest->save();
 
-        $waitidNumber = Waitid::getNumberOfWaitid($guest['waitid_id'])->number;
+        $waitidNumber = Waitid::getNumberOfWaitid($updatedGuest['waitid_id'])->number;
         $unoccupiedWaitids = Waitid::unoccupiedWaitids();
         $states = State::all();
 
