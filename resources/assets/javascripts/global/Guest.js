@@ -62,7 +62,7 @@ class Guest {
       Modal.showModal($thisGuestWaitidPopup);
     });
 
-    $tableColumn.querySelectorAll('.button-toggle').forEach($buttonToggle => {
+    $tableColumn.querySelectorAll('.button-toggle-unoccupied-waitid-id').forEach($buttonToggle => {
         $buttonToggle.addEventListener('click', event => {
           event.preventDefault();
           Guest.setInputWaitidIdValue($tableRow, $buttonToggle.dataset.waitidId);
@@ -74,9 +74,7 @@ class Guest {
   static initGuestGroupSize($tableRow, $tableColumn, $modals) {
     let $guestGroupSizeButton = $tableColumn.querySelector('.button-toggle--group-size');
     $guestGroupSizeButton.addEventListener('click', () => {
-      let $thisGuestGroupSizePopup = $tableRow.querySelector(
-        '.modal--group-size'
-      );
+      let $thisGuestGroupSizePopup = $tableRow.querySelector('.modal--group-size');
 
       $modals.forEach($modal => {
         Modal.hideModal($modal);
@@ -84,7 +82,7 @@ class Guest {
       Modal.showModal($thisGuestGroupSizePopup);
     });
 
-    $tableColumn.querySelectorAll('.button-toggle').forEach($buttonToggle => {
+    $tableColumn.querySelectorAll('.button-toggle--all-group-size').forEach($buttonToggle => {
         $buttonToggle.addEventListener('click', event => {
           event.preventDefault();
           Guest.setInputGroupSizeValue($tableRow, $buttonToggle.dataset.groupSize);
@@ -94,8 +92,13 @@ class Guest {
   }
 
   static initGuestPreordered($tableRow, $tableColumn) {
-    $tableColumn.querySelector('.input--preordered').addEventListener('change', () => {
-        Guest.setInputPreorderedValue($tableRow, $tableColumn.checked ? 1 : 0);
+    $tableColumn.querySelector('.form__radio--preordered.form__radio--off').addEventListener('click', () => {
+        Guest.setInputPreorderedValue($tableRow, 0);
+        $tableRow.submit();
+      });
+
+    $tableColumn.querySelector('.form__radio--preordered.form__radio--on').addEventListener('click', () => {
+        Guest.setInputPreorderedValue($tableRow, 1);
         $tableRow.submit();
       });
   }

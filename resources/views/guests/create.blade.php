@@ -25,7 +25,7 @@
     @endfor
   </div>
 
-  <label class="form__label">Kommentar:</label>
+  <label class="form__label">Hinweis:</label>
   <input class="form__text-input" type="text" name="guest_comment">
 
   <label class="form__label">Offene Rechnung:</label>

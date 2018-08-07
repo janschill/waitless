@@ -11,6 +11,7 @@
   width: 100%;
 
   &.button-toggle--comment {
+    overflow: scroll;
     text-align: left;
     max-width: 200px;
     height: 41px;
@@ -29,7 +30,7 @@
   }
 
   &.button-toggle--highlight {
-    background: rgba($color-accent-secondary, 0.3);
+    background: rgba($color-accent-primary, 0.3);
 
     &::after {
       content: '';
@@ -38,7 +39,7 @@
       left: 0;
       right: 0;
       height: 3px;
-      background-color: $color-accent-secondary;
+      background-color: $color-accent-primary;
     }
   }
 }
