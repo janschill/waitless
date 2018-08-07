@@ -75,6 +75,29 @@ class GuestRow {
     return $inputList;
   }
 
+  static createInputRadio(guest, classnames, name, id, value) {
+    let $inputRadio = document.createElement('input');
+    this.addClassnames($inputRadio, classnames);
+    $inputRadio.setAttribute('type', 'radio');
+    $inputRadio.setAttribute('name', name);
+    $inputRadio.id = id;
+    $inputRadio.value = value.toString();
+
+    if (guest.preordered === value) {
+      $inputRadio.setAttribute('checked', 'checked');
+    }
+    return $inputRadio;
+  }
+
+  static createLabelRadio(classnames, htmlFor, text) {
+    let $labelRadio = document.createElement('label');
+    this.addClassnames($labelRadio, classnames);
+    $labelRadio.htmlFor = htmlFor;
+    $labelRadio.innerText = text;
+
+    return $labelRadio;
+  }
+
   // Add modal eventlistener
   static createTableColumnWaitidId(classnames, guest, unoccupiedWaitids, waitidNumber) {
     let $tableColumn = document.createElement('div');
@@ -126,15 +149,18 @@ class GuestRow {
     let $tableColumn = document.createElement('div');
     this.addClassnames($tableColumn, classnames);
 
-    let $checkbox = document.createElement('input');
-    $checkbox.type = 'checkbox';
-    $checkbox.classList.add('input');
-    $checkbox.classList.add('input--preordered');
+    let $modalList = document.createElement('div');
+    this.addClassnames($modalList, 'modal__list');
+    $tableColumn.appendChild($modalList);
 
-    if (guest.preordered === 1) {
-      $checkbox.setAttribute('checked', 'checked');
-    }
-    $tableColumn.appendChild($checkbox);
+    let $labelRadioOn = this.createLabelRadio(['button-toggle','button-toggle--short','button-toggle--preordered-on'], 'radio-preordered-1', 'ja');
+    $modalList.appendChild($labelRadioOn);
+    let $inputRadioOn = this.createInputRadio(guest, ['form__radio-input','form__radio--preordered','form__radio--on'], 'guest_preordered', 'radio-preordered-1', 1);
+    $modalList.appendChild($inputRadioOn);
+    let $labelRadioOff = this.createLabelRadio(['button-toggle','button-toggle--short','button-toggle--preordered-off'], 'radio-preordered-0', 'nein');
+    $modalList.appendChild($labelRadioOff);
+    let $inputRadioOff = this.createInputRadio(guest, ['form__radio-input','form__radio--preordered','form__radio--off'], 'guest_preordered', 'radio-preordered-0', 0);
+    $modalList.appendChild($inputRadioOff);
 
     return $tableColumn;
   }

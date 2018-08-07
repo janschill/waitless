@@ -37,7 +37,7 @@
 }
 
 .form__radio-input:checked + .button-toggle {
-  background: rgba($color-accent-secondary, 0.3);
+  background: rgba($color-accent-primary, 0.3);
 
   &::after {
     content: '';
@@ -46,7 +46,7 @@
     left: 0;
     right: 0;
     height: 3px;
-    background-color: $color-accent-secondary;
+    background-color: $color-accent-primary;
   }
 }
 
@@ -74,7 +74,7 @@
   font-size: 1.3rem;
 
   &.form__submit--success {
-    background-color: $color-accent-secondary;
+    background-color: $color-accent-primary;
     color: white;
   }
 

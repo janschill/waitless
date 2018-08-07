@@ -15,7 +15,7 @@
         <div class="modal modal--hidden modal--waitid-id">
             <ul class="modal__list">
                 @foreach ($unoccupiedWaitids as $unoccupiedWaitid)
-                    <li data-waitid-id="{{ $unoccupiedWaitid->id }}" class="button-toggle button-toggle--short{{ $guest->waitid->id === $unoccupiedWaitid->id ? ' button-toggle--highlight' : '' }}">{{ $unoccupiedWaitid->number }}</li>
+                    <li data-waitid-id="{{ $unoccupiedWaitid->id }}" class="button-toggle button-toggle-unoccupied-waitid-id button-toggle--short{{ $guest->waitid->id === $unoccupiedWaitid->id ? ' button-toggle--highlight' : '' }}">{{ $unoccupiedWaitid->number }}</li>
                 @endforeach
             </ul>
             <span class="modal__close"></span>
@@ -26,7 +26,7 @@
         <div class="modal modal--hidden modal--group-size">
             <ul class="modal__list">
                 @for ($i = 1; $i < 12; $i++)
-                    <li data-group-size="{{$i}}" class="button-toggle{{ $guest->group_size === $i ? ' button-toggle--highlight' : '' }}">{{$i}}</li>
+                    <li data-group-size="{{$i}}" class="button-toggle button-toggle--all-group-size{{ $guest->group_size === $i ? ' button-toggle--highlight' : '' }}">{{$i}}</li>
                 @endfor
             </ul>
             <span class="modal__close"></span>
@@ -34,10 +34,10 @@
     </div>
     <div class="table__column table__column--preordered">
         <div class="modal__list">
-            <input class="form__radio-input" type="radio" name="guest_preordered" id="radio-preordered-0" value="0"{{ $guest->preordered ? '' : 'checked'}}>
-            <label class="button-toggle button-toggle--short" for="radio-preordered-0">nein</label>
-            <input class="form__radio-input" type="radio" name="guest_preordered" id="radio-preordered-1" value="1"{{ $guest->preordered ? 'checked' : ''}}>
-            <label class="button-toggle button-toggle--short" for="radio-preordered-1">ja</label>
+            <input class="form__radio-input form__radio--preordered form__radio--off" type="radio" name="guest_preordered" id="radio-preordered-0" value="0"{{ $guest->preordered ? '' : 'checked'}}>
+            <label class="button-toggle button-toggle--short button-toggle--preordered-off" for="radio-preordered-0">nein</label>
+            <input class="form__radio-input form__radio--preordered form__radio--on" type="radio" name="guest_preordered" id="radio-preordered-1" value="1"{{ $guest->preordered ? 'checked' : ''}}>
+            <label class="button-toggle button-toggle--short button-toggle--preordered-on" for="radio-preordered-1">ja</label>
         </div>
     </div>
     <div class="table__column table__column--comment">
