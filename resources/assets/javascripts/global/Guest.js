@@ -51,7 +51,14 @@ class Guest {
 
 
   static initGuestWaitid($tableRow, $tableColumn, $modals) {
-    let $guestWaitidButton = $tableColumn.querySelector('.button-toggle--waitid-id');
+    let $guestWaitidButton = $tableColumn.querySelector('.button-toggle--waitid-id'),
+      $guestWaitidSubmit = $tableColumn.querySelector('.form__submit--waitid-id.form__submit--success');
+
+    $guestWaitidSubmit.addEventListener('click', event => {
+      event.preventDefault();
+      $tableRow.submit();
+    });
+
     $guestWaitidButton.addEventListener('click', event => {
       event.preventDefault();
       let $thisGuestWaitidPopup = $tableRow.querySelector('.modal--waitid-id');
@@ -62,18 +69,31 @@ class Guest {
       Modal.showModal($thisGuestWaitidPopup);
     });
 
-    $tableColumn.querySelectorAll('.button-toggle-unoccupied-waitid-id').forEach($buttonToggle => {
+    let $buttonToggles = $tableColumn.querySelectorAll('.button-toggle--unoccupied-waitid-id');
+    $buttonToggles.forEach($buttonToggle => {
         $buttonToggle.addEventListener('click', event => {
           event.preventDefault();
           Guest.setInputWaitidIdValue($tableRow, $buttonToggle.dataset.waitidId);
-          $tableRow.submit();
+
+          $buttonToggles.forEach($thisButtonToggle => {
+            $thisButtonToggle.classList.remove('button-toggle--highlight');
+          });
+          $buttonToggle.classList.add('button-toggle--highlight');
         });
       });
   }
 
   static initGuestGroupSize($tableRow, $tableColumn, $modals) {
-    let $guestGroupSizeButton = $tableColumn.querySelector('.button-toggle--group-size');
-    $guestGroupSizeButton.addEventListener('click', () => {
+    let $guestGroupSizeButton = $tableColumn.querySelector('.button-toggle--group-size'),
+    $guestGroupSizeSubmit = $tableColumn.querySelector('.form__submit--group-size.form__submit--success');
+
+    $guestGroupSizeSubmit.addEventListener('click', event => {
+      event.preventDefault();
+      $tableRow.submit();
+    });
+
+    $guestGroupSizeButton.addEventListener('click', event => {
+      event.preventDefault();
       let $thisGuestGroupSizePopup = $tableRow.querySelector('.modal--group-size');
 
       $modals.forEach($modal => {
@@ -82,11 +102,16 @@ class Guest {
       Modal.showModal($thisGuestGroupSizePopup);
     });
 
-    $tableColumn.querySelectorAll('.button-toggle--all-group-size').forEach($buttonToggle => {
+    let $buttonToggles = $tableColumn.querySelectorAll('.button-toggle--all-group-size');
+    $buttonToggles.forEach($buttonToggle => {
         $buttonToggle.addEventListener('click', event => {
           event.preventDefault();
           Guest.setInputGroupSizeValue($tableRow, $buttonToggle.dataset.groupSize);
-          $tableRow.submit();
+
+          $buttonToggles.forEach($thisButtonToggle => {
+            $thisButtonToggle.classList.remove('button-toggle--highlight');
+          });
+          $buttonToggle.classList.add('button-toggle--highlight');
         });
       });
   }
@@ -104,7 +129,16 @@ class Guest {
   }
 
   static initGuestComment($tableRow, $tableColumn, $modals) {
-    let $guestCommentButton = $tableColumn.querySelector('.button-toggle--comment');
+    let $guestCommentButton = $tableColumn.querySelector('.button-toggle--comment'),
+      $guestInputComment = $tableColumn.querySelector('.modal__text.modal__text--comment'),
+      $guestCommentSubmit = $tableColumn.querySelector('.form__submit--comment.form__submit--success');
+
+    $guestCommentSubmit.addEventListener('click', event => {
+      event.preventDefault();
+      Guest.setInputCommentValue($tableRow, $guestInputComment.value);
+      $tableRow.submit();
+    });
+
     $guestCommentButton.addEventListener('click', () => {
       let $thisGuestCommentPopup = $tableRow.querySelector('.modal--comment');
 

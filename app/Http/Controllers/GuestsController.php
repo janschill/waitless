@@ -67,7 +67,7 @@ class GuestsController extends Controller
         $unoccupiedWaitids = Waitid::unoccupiedWaitids();
         $states = State::all();
 
-        event((new GuestCreated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
+        // event((new GuestCreated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
 
         return redirect('/guests');
     }
