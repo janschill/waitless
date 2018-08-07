@@ -3,10 +3,11 @@
 }
 
 .form__label {
-  &.form__label--left {
-    float: left;
-    width: 30%;
-  }
+  color: $color-dark;
+  font-size: 1.5rem;
+  display: block;
+  font-weight: 700;
+  margin-bottom: 5px;
 }
 
 .form__select {
@@ -24,78 +25,61 @@
 }
 
 .form__radio-wrap {
-  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0 1px 1.5px 0 rgba(black, 0.12), 0 1px 1px 0 rgba(black, 0.24);
+  height: 41px;
+  margin-bottom: 25px;
+
+  &.form__radio-wrap--condensed {
+    width: 25%;
+  }
+}
+
+.form__radio-input:checked + .button-toggle {
+  background: rgba($color-accent-secondary, 0.3);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: $color-accent-secondary;
+  }
 }
 
 .form__text-input {
-  border: 1px solid black;
-  width: 54%;
-  font-size: 18px;
-  display: block;
-  margin-bottom: 50px;
+  font-size: 1rem;
+  box-shadow: 0 1px 1.5px 0 rgba(black, 0.12), 0 1px 1px 0 rgba(black, 0.24);
+  border: none;
+  line-height: 2;
+  padding: 0 10px;
+  height: 41px;
+  margin-bottom: 25px;
+  width: 100%;
 }
 
-.form__radio-wrap .form__text-input,
-.form__radio-label {
-  display: inline-block;
-  padding: 7px 17px;
-  margin-right: 5px;
-  background-color: white;
-  border: 1px solid black;
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 18px;
-  font-weight: normal;
+.form__submit-wrap {
   text-align: center;
-  cursor: pointer;
-}
-
-.form__radio-wrap .form__text-input {
-  max-width: 47px;
-  padding-left: 8px;
-  padding-right: 8px;
-}
-
-.form__radio-input:checked + .form__radio-label {
-  background: $color-light;
 }
 
 .form__submit {
   appearance: none;
   display: inline-block;
-  position: fixed;
-  bottom: 5%;
-  right: 3%;
-  height: 60px;
-  width: 60px;
-  border-radius: 60px;
-  background-color: lightgreen;
+  border-radius: 5px;
   border: none;
-  box-shadow: 0 3px 3px 0 rgba(black, 0.16), 0 3px 3px 0 rgba(black, 0.23);
+  padding: 10px 15px;
+  font-size: 1.3rem;
 
-  &::after,
-  &::before {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    height: 3px;
-    background-color: white;
+  &.form__submit--success {
+    background-color: $color-accent-secondary;
+    color: white;
   }
 
-  &::before {
-    width: 25%;
-    top: 60%;
-    transform: rotate(45deg);
-    left: 20%;
+  &.form__submit--cancel {
+    background-color: $color-light;
+    color: $color-dark;
   }
-
-  &::after {
-    width: 55%;
-    right: 12%;
-    transform: rotate(-45deg);
-    top: 50%;
-  }
-}
-
-.form__checkbox-input {
-  margin-bottom: 50px;
 }

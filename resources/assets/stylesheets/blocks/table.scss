@@ -13,21 +13,32 @@
   display: table-header-group;
 }
 
-.table__body {
-  display: table-row-group;
-
-  &.table__body--history {
-    border-top: 2px solid black;
-    opacity: 0.4;
-  }
-}
-
 .table__row {
   display: table-row;
   border-bottom: 1px solid #bfc5c6;
 
+  &:last-of-type {
+    border: none;
+  }
+
   &.table__row--highlight {
     background: $color-light;
+  }
+}
+
+.table__head--hidden {
+  visibility: collapse;
+
+  .table__row {
+    border: none;
+  }
+}
+
+.table__body {
+  display: table-row-group;
+
+  &.table__body--history {
+    opacity: 0.4;
   }
 }
 
@@ -65,4 +76,26 @@
 .table__column--settings {
   position: relative;
   width: 50px;
+}
+
+.table__caption {
+  padding: 7px 10px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: lighten($color-dark, 20%);
+  background-color: $color-section;
+
+  &.table__caption--table {
+    display: table-caption;
+  }
+}
+
+.table__caption-sub {
+  text-transform: initial;
+  font-style: italic;
+  color: $color-neutral;
+  font-size: 1rem;
+  margin-left: 5px;
+  font-weight: 400;
 }
