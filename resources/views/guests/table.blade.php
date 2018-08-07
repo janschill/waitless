@@ -36,4 +36,4 @@
             @include('guests.table-row', ['guest' => $historyGuest])
         @endforeach
     </div>
-<div>
+</div>
