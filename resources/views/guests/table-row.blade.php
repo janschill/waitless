@@ -16,12 +16,12 @@
             <h3 class="title title--medium">Wartenummer bearbeiten</h3>
             <ul class="modal__list modal__list--update modal__list--waitid-ids">
                 @foreach ($unoccupiedWaitids as $unoccupiedWaitid)
-                    <li data-waitid-id="{{ $unoccupiedWaitid->id }}" class="button-toggle button-toggle-unoccupied-waitid-id{{ $guest->waitid->id === $unoccupiedWaitid->id ? ' button-toggle--highlight' : '' }}">{{ $unoccupiedWaitid->number }}</li>
+                    <li data-waitid-id="{{ $unoccupiedWaitid->id }}" class="button-toggle button-toggle--unoccupied-waitid-id{{ $guest->waitid->id === $unoccupiedWaitid->id ? ' button-toggle--highlight' : '' }}">{{ $unoccupiedWaitid->number }}</li>
                 @endforeach
             </ul>
             <div class="form__submit-wrap">
                 <div class="form__submit form__submit--update form__submit--cancel">abbrechen</div>
-                <div class="form__submit form__submit--success">bearbeiten</div>
+                <div class="form__submit form__submit--waitid-id form__submit--success">bearbeiten</div>
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@
             </ul>
             <div class="form__submit-wrap">
                 <div class="form__submit form__submit--update form__submit--cancel">abbrechen</div>
-                <div class="form__submit form__submit--success">bearbeiten</div>
+                <div class="form__submit form__submit--group-size form__submit--success">bearbeiten</div>
             </div>
         </div>
     </div>
@@ -52,10 +52,10 @@
         <div data-guest-comment="{{ $guest->comment }}" class="button-toggle button-toggle--shadow button-toggle--comment" href="#">{{ $guest->comment }}</div>
         <div class="modal modal--hidden modal--comment">
             <h3 class="title title--medium">Gruppengröße bearbeiten</h3>
-            <input type="text" class="modal__text" value="{{ $guest->comment }}">
+            <input type="text" class="modal__text modal__text--comment" value="{{ $guest->comment }}">
             <div class="form__submit-wrap">
                 <div class="form__submit form__submit--update form__submit--cancel">abbrechen</div>
-                <div class="form__submit form__submit--success">bearbeiten</div>
+                <div class="form__submit form__submit--comment form__submit--success">bearbeiten</div>
             </div>
         </div>
     </div>
