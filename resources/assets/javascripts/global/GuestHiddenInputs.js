@@ -6,7 +6,6 @@ class GuestHiddenInputs {
     $input.name = name;
     $input.value = value;
 
-    console.log($input);
     return $input;
   }
 

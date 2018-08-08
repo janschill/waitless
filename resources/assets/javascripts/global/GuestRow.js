@@ -7,6 +7,7 @@ class GuestRow {
 
   static createTableColumnButton(dataAttribute, classnames, textNode) {
     let $button = document.createElement('a');
+    $button.href = '#';
     $button.setAttribute(dataAttribute.name, dataAttribute.value);
     this.addClassnames($button, classnames);
     $button.appendChild(document.createTextNode(textNode));
@@ -14,26 +15,40 @@ class GuestRow {
     return $button;
   }
 
-  static createTableColumnModal(classnames) {
+  static createTableColumnModal(classnames, title) {
     let $modal = document.createElement('div');
     this.addClassnames($modal, classnames);
 
     return $modal;
   }
 
-  static createTableColumnModalList(classnames, listItems, dataAttribute) {
+  static createModalTitle(title, classnames = ['title', 'title--medium']) {
+    let $title = document.createElement('h3');
+    this.addClassnames($title, classnames);
+    $title.appendChild(document.createTextNode(title));
+
+    return $title;
+  }
+
+  static createTableColumnModalList(guest, classnames, listItems, dataAttribute, buttonClassnames) {
     let $modalList = document.createElement('ul');
     this.addClassnames($modalList, classnames);
 
     listItems.forEach(listItem => {
       let $modalListItem = document.createElement('li');
-      $modalListItem.classList.add('button-toggle');
+      this.addClassnames($modalListItem, buttonClassnames);
       if (listItem.state !== undefined) {
         $modalListItem.setAttribute(dataAttribute.name, listItem.id);
         $modalListItem.appendChild(document.createTextNode(listItem.state));
+        if (guest.state_id === listItem.id) {
+          $modalListItem.classList.add('button-toggle--highlight');
+        }
       } else if (listItem.number !== undefined) {
         $modalListItem.setAttribute(dataAttribute.name, listItem.id);
         $modalListItem.appendChild(document.createTextNode(listItem.number));
+        if (guest.group_size === listItem.number) {
+          $modalListItem.classList.add('button-toggle--highlight');
+        }
       } else {
         $modalListItem.setAttribute(dataAttribute.name, listItem);
         $modalListItem.appendChild(document.createTextNode(listItem));
@@ -44,6 +59,23 @@ class GuestRow {
     return $modalList;
   }
 
+  static createTableColumnFormSubmit(classname) {
+    let $formSubmit = document.createElement('div');
+    this.addClassnames($formSubmit, ['form__submit-wrap']);
+
+    let $formClose = document.createElement('div');
+    this.addClassnames($formClose, ['form__submit', 'form__submit--update', 'form__submit--cancel']);
+    $formClose.appendChild(document.createTextNode('abbrechen'));
+
+    let $formSuccess = document.createElement('div');
+    this.addClassnames($formSuccess, ['form__submit', 'form__submit--success', classname]);
+    $formSuccess.appendChild(document.createTextNode('bearbeiten'));
+    $formSubmit.appendChild($formClose);
+    $formSubmit.appendChild($formSuccess);
+
+    return $formSubmit;
+  }
+
   static createGuestForm(guest) {
     let $guestForm = document.createElement('form');
     $guestForm.method = 'POST';
@@ -52,6 +84,15 @@ class GuestRow {
     $guestForm.classList.add('table__row--form');
 
     return $guestForm;
+  }
+
+  static createInputComment(guest, classnames) {
+    let $input = document.createElement('input');
+    this.addClassnames($input, classnames);
+    $input.type = 'text';
+    $input.value = guest.comment;
+
+    return $input;
   }
 
   static createInputMethod() {
@@ -66,8 +107,7 @@ class GuestRow {
   static createInputList(guest) {
     const $inputs = GuestHiddenInputs.createAllInputs(guest);
     let $inputList = document.createElement('div');
-    $inputList.classList.add('input__list');
-    $inputList.classList.add('input__list--guest');
+    this.addClassnames($inputList,['input__list', 'input__list--guest']);
     $inputs.forEach($input => {
       $inputList.appendChild($input);
     });
@@ -80,7 +120,7 @@ class GuestRow {
     this.addClassnames($inputRadio, classnames);
     $inputRadio.setAttribute('type', 'radio');
     $inputRadio.setAttribute('name', name);
-    $inputRadio.id = id;
+    $inputRadio.id = `${guest.id}-${id}`;
     $inputRadio.value = value.toString();
 
     if (guest.preordered === value) {
@@ -89,10 +129,10 @@ class GuestRow {
     return $inputRadio;
   }
 
-  static createLabelRadio(classnames, htmlFor, text) {
+  static createLabelRadio(guest, classnames, htmlFor, text) {
     let $labelRadio = document.createElement('label');
     this.addClassnames($labelRadio, classnames);
-    $labelRadio.htmlFor = htmlFor;
+    $labelRadio.htmlFor = `${guest.id}-${htmlFor}`;
     $labelRadio.innerText = text;
 
     return $labelRadio;
@@ -106,18 +146,20 @@ class GuestRow {
     let $button = this.createTableColumnButton({
       'name': 'data-guest-waitid-id',
       'value': guest.waitid_id
-    }, ['button', 'button-toggle--waitid-id'], waitidNumber);
+    }, ['button-toggle', 'button-toggle--shadow', 'button-toggle--short', 'button-toggle--waitid-id'], waitidNumber);
     $tableColumn.appendChild($button);
 
-    let $modal = this.createTableColumnModal(['modal','modal--hidden','modal--waitid-id']);
+    let $modal = this.createTableColumnModal(['modal','modal--hidden','modal--waitid-id'], 'Wartenummer bearbeiten');
     $tableColumn.appendChild($modal);
 
-    let $modalList = this.createTableColumnModalList(['modal__list'], unoccupiedWaitids, {'name': 'data-waitid-id'});
+    let $title = this.createModalTitle('Wartemarke bearbeiten');
+    $modal.appendChild($title);
+
+    let $modalList = this.createTableColumnModalList(guest, ['modal__list', 'modal__list--update', 'modal__list--waitid-ids'], unoccupiedWaitids, {'name': 'data-waitid-id'}, ['button-toggle', 'button-toggle--unoccupied-waitid-id']);
     $modal.appendChild($modalList);
 
-    let $modalClose = document.createElement('span');
-    this.addClassnames($modalClose, ['form__submit', 'form__submit--update', 'form__submit--cancel']);
-    $modal.appendChild($modalClose);
+    let $formSubmit = this.createTableColumnFormSubmit('form__submit--waitid-id');
+    $modal.appendChild($formSubmit);
 
     return $tableColumn;
   }
@@ -129,18 +171,20 @@ class GuestRow {
     let $button = this.createTableColumnButton({
       'name': 'data-guest-group-size',
       'value': guest.group_size
-    }, ['button', 'button-toggle--group-size'], guest.group_size);
+    }, ['button-toggle', 'button-toggle--shadow', 'button-toggle--short', 'button-toggle--group-size'], guest.group_size);
     $tableColumn.appendChild($button);
 
-    let $modal = this.createTableColumnModal(['modal','modal--hidden','modal--group-size']);
+    let $modal = this.createTableColumnModal(['modal','modal--hidden','modal--group-size'], 'Gruppengröße bearbeiten');
     $tableColumn.appendChild($modal);
 
-    let $modalList = this.createTableColumnModalList(['modal__list'], groupSizes, {'name': 'data-group-size'});
+    let $title = this.createModalTitle('Gruppengröße bearbeiten');
+    $modal.appendChild($title);
+
+    let $modalList = this.createTableColumnModalList(guest, ['modal__list'], groupSizes, {'name': 'data-group-size'}, ['button-toggle', 'button-toggle--all-group-size']);
     $modal.appendChild($modalList);
 
-    let $modalClose = document.createElement('span');
-    this.addClassnames($modalClose, ['form__submit', 'form__submit--update', 'form__submit--cancel']);
-    $modal.appendChild($modalClose);
+    let $formSubmit = this.createTableColumnFormSubmit('form__submit--group-size');
+    $modal.appendChild($formSubmit);
 
     return $tableColumn;
   }
@@ -148,19 +192,17 @@ class GuestRow {
   static createTableColumnPreordered(classnames, guest) {
     let $tableColumn = document.createElement('div');
     this.addClassnames($tableColumn, classnames);
-
     let $modalList = document.createElement('div');
-    this.addClassnames($modalList, 'modal__list');
-    $tableColumn.appendChild($modalList);
-
-    let $labelRadioOn = this.createLabelRadio(['button-toggle','button-toggle--short','button-toggle--preordered-on'], 'radio-preordered-1', 'ja');
-    $modalList.appendChild($labelRadioOn);
-    let $inputRadioOn = this.createInputRadio(guest, ['form__radio-input','form__radio--preordered','form__radio--on'], 'guest_preordered', 'radio-preordered-1', 1);
-    $modalList.appendChild($inputRadioOn);
-    let $labelRadioOff = this.createLabelRadio(['button-toggle','button-toggle--short','button-toggle--preordered-off'], 'radio-preordered-0', 'nein');
-    $modalList.appendChild($labelRadioOff);
+    this.addClassnames($modalList, ['modal__list']);
     let $inputRadioOff = this.createInputRadio(guest, ['form__radio-input','form__radio--preordered','form__radio--off'], 'guest_preordered', 'radio-preordered-0', 0);
     $modalList.appendChild($inputRadioOff);
+    let $labelRadioOff = this.createLabelRadio(guest, ['button-toggle','button-toggle--short','button-toggle--preordered-off'], 'radio-preordered-0', 'nein');
+    $modalList.appendChild($labelRadioOff);
+    let $inputRadioOn = this.createInputRadio(guest, ['form__radio-input','form__radio--preordered','form__radio--on'], 'guest_preordered', 'radio-preordered-1', 1);
+    $modalList.appendChild($inputRadioOn);
+    let $labelRadioOn = this.createLabelRadio(guest, ['button-toggle','button-toggle--short','button-toggle--preordered-on'], 'radio-preordered-1', 'ja');
+    $modalList.appendChild($labelRadioOn);
+    $tableColumn.appendChild($modalList);
 
     return $tableColumn;
   }
@@ -172,8 +214,20 @@ class GuestRow {
     let $button = this.createTableColumnButton({
       'name': 'data-guest-comment',
       'value': 'comment'
-    }, ['button', 'button-toggle--comment'], guest.comment);
+    }, ['button-toggle', 'button-toggle--comment', 'button-toggle--shadow'], guest.comment);
     $tableColumn.appendChild($button);
+
+    let $modal = this.createTableColumnModal(['modal','modal--hidden','modal--comment'], 'Hinweis bearbeiten');
+    $tableColumn.appendChild($modal);
+
+    let $title = this.createModalTitle('Hinweis bearbeiten');
+    $modal.appendChild($title);
+
+    let $input = this.createInputComment(guest, ['modal__text', 'modal__text--comment']);
+    $modal.appendChild($input);
+
+    let $formSubmit = this.createTableColumnFormSubmit('form__submit--comment');
+    $modal.appendChild($formSubmit);
 
     return $tableColumn;
   }
@@ -192,7 +246,7 @@ class GuestRow {
     let $tableColumn = document.createElement('div');
     this.addClassnames($tableColumn, classnames);
 
-    let $modalList = this.createTableColumnModalList(['modal__list'], states, {'name': 'data-state-id'});
+    let $modalList = this.createTableColumnModalList(guest, ['modal__list'], states, {'name': 'data-state-id'}, ['button-toggle', 'button-toggle--long']);
     $tableColumn.appendChild($modalList);
 
     // If table__column--danger-text
