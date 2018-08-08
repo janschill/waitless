@@ -313,25 +313,44 @@ class GuestRow {
     this.initGuestRow($tableBody, $guestForm);
   }
 
+  /**
+   * Gets called by Pusher event listener (when table was updated)
+   */
   static updateGuestRow(guest, unoccupiedWaitids, waitidNumber, states) {
-    let $guestForm = document.getElementById('guest-id-' + guest.id);
+    let $tableRowForms = document.querySelectorAll('.table__row--form'),
+      $guestForm = document.getElementById('guest-id-' + guest.id);
 
-      if (guest.waitid_id !== Guest.getInputWaitidIdValue($guestForm)) {
-        Guest.setWaitidIdValue($guestForm, waitidNumber);
-        Guest.setInputWaitidIdValue($guestForm, guest.waitid_id);
-        console.log('here we need to update waitids');
-      } else if (guest.group_size !== Guest.getInputGroupSizeValue($guestForm)) {
-        Guest.setInputGroupSizeValue($guestForm, guest.group_size);
-        console.log('here we need to update group sizes not really');
-      } else if (guest.preordered !== Guest.getInputPreorderedValue($guestForm)) {
-        Guest.setInputPreorderedValue($guestForm, guest.preordered);
-        console.log('here we need to update preordered');
-      } else if (guest.comment !== Guest.getInputCommentValue($guestForm)) {
-        Guest.setInputCommentValue($guestForm, guest.comment);
-        console.log('here we need to update preordered');
-      } else if (guest.state !== Guest.getInputStateValue($guestForm)) {
-        Guest.setInputStateValue($guestForm, guest.state);
-        console.log('here we need to update guest form');
-      }
+    /* Set button to new waitid number */
+    if (guest.waitid_id != Guest.getInputWaitidIdValue($guestForm)) {
+      Guest.setInnerText($guestForm, '.button-toggle--waitid-id', waitidNumber);
+      Guest.setInputWaitidIdValue($guestForm, guest.waitid_id);
+
+      /* Update all selectable waitidIds of all rows */
+      $tableRowForms.forEach($tableRowForm => {
+        Guest.setModalList($tableRowForm, unoccupiedWaitids);
+      });
+    } else if (guest.group_size != Guest.getInputGroupSizeValue($guestForm)) {
+      Guest.setInnerText($guestForm, '.button-toggle--group-size', guest.group_size);
+      Guest.setInputGroupSizeValue($guestForm, guest.group_size);
+
+      /* Highlight newly selected groupSize button */
+      let $modalButtonToggles = $guestForm.querySelectorAll('.button-toggle--all-group-size');
+      $modalButtonToggles.forEach($modalButtonToggle => {
+        if ($modalButtonToggle.dataset.groupSize == guest.group_size) {
+          $modalButtonToggle.classList.add('button-toggle--highlight');
+        } else {
+          $modalButtonToggle.classList.remove('button-toggle--highlight');
+        }
+      });
+    } else if (guest.preordered != Guest.getInputPreorderedValue($guestForm)) {
+      Guest.setInputPreorderedValue($guestForm, guest.preordered);
+      Guest.setPreorderedValue($guestForm);
+    } else if (guest.comment != Guest.getInputCommentValue($guestForm)) {
+      Guest.setInputCommentValue($guestForm, guest.comment);
+      Guest.setCommentValue($guestForm, guest.comment);
+    } else if (guest.state != Guest.getInputStateValue($guestForm)) {
+      Guest.setInputStateValue($guestForm, guest.state);
+      console.log('here we need to update guest form');
+    }
   }
 }
