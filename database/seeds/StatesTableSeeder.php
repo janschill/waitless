@@ -9,8 +9,8 @@ class StatesTableSeeder extends Seeder {
   public function run ()
   {
     State::create(['state' => 'warten']);
+    State::create(['state' => 'zuweisen']);
     State::create(['state' => 'platziert']);
     State::create(['state' => 'weg']);
-    State::create(['state' => 'zugewiesen']);
   }
 }

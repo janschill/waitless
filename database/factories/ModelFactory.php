@@ -7,10 +7,12 @@ function randomState () {
 
     if ($number < 6) {
         return 1;
-    } else if ($number < 90) {
+    } else if ($number < 16) {
         return 2;
-    } else {
+    } else if ($number < 90) {
         return 3;
+    } else {
+        return 4;
     }
 }
 
