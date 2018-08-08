@@ -1,4 +1,4 @@
-var gulp = require('gulp'),
+const gulp = require('gulp'),
   eslint = require('gulp-eslint'),
   uglify = require('gulp-uglify'),
   concat = require('gulp-concat'),
@@ -13,7 +13,7 @@ function swallowError(error) {
   console.log(error.messageFormatted);
 };
 
-gulp.task('lintJavaScripts', function () {
+gulp.task('lintJavaScripts', () => {
   gulp.src([
     'resources/assets/javascripts/custom/**/*.js'
   ])
@@ -23,7 +23,7 @@ gulp.task('lintJavaScripts', function () {
   .on('error', swallowError);
 });
 
-gulp.task('processJavaScripts', function () {
+gulp.task('processJavaScripts', () => {
   gulp.src([
     'node_modules/jquery/dist/jquery.js',
     'resources/assets/javascripts/global/**/*.js',
@@ -41,7 +41,7 @@ gulp.task('processJavaScripts', function () {
   .pipe(gulp.dest('public/javascripts/'));
 });
 
-gulp.task('lintStyleSheets', function () {
+gulp.task('lintStyleSheets', () => {
   gulp.src([
     'resources/assets/stylesheets/**/*.scss'
   ])
@@ -54,7 +54,7 @@ gulp.task('lintStyleSheets', function () {
   .on('error', swallowError);
 });
 
-gulp.task('processStyleSheets', function () {
+gulp.task('processStyleSheets', () => {
   gulp.src([
     'resources/assets/stylesheets/app.scss'
   ])
@@ -76,7 +76,7 @@ gulp.task('default', [
   'processStyleSheets'
 ]);
 
-gulp.task('watch', function () {
+gulp.task('watch', () => {
   gulp.watch('resources/assets/stylesheets/**/*.scss', [
     'lintStyleSheets',
     'processStyleSheets'
