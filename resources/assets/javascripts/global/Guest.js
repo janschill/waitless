@@ -26,6 +26,20 @@ class Guest {
     $thisInput.value = value;
   }
 
+  static setPreorderedValue($tableRow) {
+    let $tableColumn = $tableRow.querySelector('.table__column--preordered'),
+      $formRadioOn = $tableColumn.querySelector('.form__radio--preordered.form__radio--on'),
+      $formRadioOff = $tableColumn.querySelector('.form__radio--preordered.form__radio--off');
+
+      if ($formRadioOn.getAttribute('checked') == null) {
+        $formRadioOn.setAttribute('checked', 'checked');
+        $formRadioOff.removeAttribute('checked');
+      } else {
+        $formRadioOn.removeAttribute('checked');
+        $formRadioOff.setAttribute('checked', 'checked');
+      }
+  }
+
   static getInputCommentValue($tableRow) {
     return $tableRow.querySelector('.input__guest-comment').value;
   }
@@ -33,6 +47,13 @@ class Guest {
   static setInputCommentValue($tableRow, value) {
     let $thisInput = $tableRow.querySelector('.input__guest-comment');
     $thisInput.value = value;
+  }
+
+  static setCommentValue($tableRow, value) {
+    let $thisInput = $tableRow.querySelector('.button-toggle--comment'),
+      $thisModalInput = $tableRow.querySelector('.modal__text--comment');
+    $thisInput.innerText = value;
+    $thisModalInput.value = value;
   }
 
   static getInputStateValue($tableRow) {
@@ -44,11 +65,19 @@ class Guest {
     $thisInput.value = value;
   }
 
-  static setWaitidIdValue($tableRow, value) {
-    let $buttonWaitidId = $tableRow.querySelector('.button-toggle--waitid-id');
-    $buttonWaitidId.innerText = value;
+  static setInnerText($tableRow, classname, value) {
+    let $element = $tableRow.querySelector(classname);
+    $element.innerText = value;
   }
 
+  static setModalList($guestForm, unoccupiedWaitidIds) {
+    let $buttonToggles = $guestForm.querySelectorAll('.button-toggle--unoccupied-waitid-id');
+
+    $buttonToggles.forEach(($buttonToggle, index) => {
+      $buttonToggle.setAttribute('waitid-id', unoccupiedWaitidIds[index].id)
+      $buttonToggle.innerText = unoccupiedWaitidIds[index].number;
+    });
+  }
 
   static initGuestWaitid($tableRow, $tableColumn, $modals) {
     let $guestWaitidButton = $tableColumn.querySelector('.button-toggle--waitid-id'),
