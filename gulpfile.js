@@ -69,12 +69,7 @@ gulp.task('processStyleSheets', () => {
   .pipe(gulp.dest('public/stylesheets/'));
 });
 
-gulp.task('default', [
-  'lintJavaScripts',
-  'processJavaScripts',
-  'lintStyleSheets',
-  'processStyleSheets'
-]);
+gulp.task('default', gulp.parallel('lintJavaScripts', 'processJavaScripts', 'lintStyleSheets', 'processStyleSheets'));
 
 gulp.task('watch', () => {
   gulp.watch('resources/assets/stylesheets/**/*.scss', [
