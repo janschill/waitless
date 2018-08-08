@@ -51,7 +51,7 @@
     <div class="table__column table__column--comment">
         <div data-guest-comment="{{ $guest->comment }}" class="button-toggle button-toggle--shadow button-toggle--comment" href="#">{{ $guest->comment }}</div>
         <div class="modal modal--hidden modal--comment">
-            <h3 class="title title--medium">Gruppengröße bearbeiten</h3>
+            <h3 class="title title--medium">Hinweis bearbeiten</h3>
             <input type="text" class="modal__text modal__text--comment" value="{{ $guest->comment }}">
             <div class="form__submit-wrap">
                 <div class="form__submit form__submit--update form__submit--cancel">abbrechen</div>
