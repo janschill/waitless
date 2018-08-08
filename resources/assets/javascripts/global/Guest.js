@@ -1,4 +1,8 @@
 class Guest {
+  static destroyRow($tableRow) {
+    console.log('destroy');
+  }
+
   static getInputWaitidIdValue($tableRow) {
     return $tableRow.querySelector('.input__guest-waitid-id').value;
   }
@@ -77,6 +81,13 @@ class Guest {
       $buttonToggle.setAttribute('waitid-id', unoccupiedWaitidIds[index].id)
       $buttonToggle.innerText = unoccupiedWaitidIds[index].number;
     });
+  }
+
+  static setAssignedState(guest, waitidNumber, $tableRow) {
+    let $pendingList = document.querySelector('.pending__list'),
+      $box = PendingList.createBox(guest, waitidNumber);
+    $pendingList.appendChild($box);
+    Guest.destroyRow($tableRow);
   }
 
   static initGuestWaitid($tableRow, $tableColumn, $modals) {
