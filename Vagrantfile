@@ -38,6 +38,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     if File.exist? afterScriptPath then
         config.vm.provision "shell", path: afterScriptPath, privileged: false, keep_color: true
+        config.vm.provision :shell, :inline => "sudo rm /etc/localtime && sudo ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime", run: "always"
     end
 
     if defined? VagrantPlugins::HostsUpdater
