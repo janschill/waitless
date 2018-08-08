@@ -1,15 +1,9 @@
 class GuestRow {
-  static addClassnames($element, classnames) {
-    classnames.forEach(classname => {
-      $element.classList.add(classname);
-    });
-  }
-
   static createTableColumnButton(dataAttribute, classnames, textNode) {
     let $button = document.createElement('a');
     $button.href = '#';
     $button.setAttribute(dataAttribute.name, dataAttribute.value);
-    this.addClassnames($button, classnames);
+    Helper.addClassnames($button, classnames);
     $button.appendChild(document.createTextNode(textNode));
 
     return $button;
@@ -17,14 +11,14 @@ class GuestRow {
 
   static createTableColumnModal(classnames, title) {
     let $modal = document.createElement('div');
-    this.addClassnames($modal, classnames);
+    Helper.addClassnames($modal, classnames);
 
     return $modal;
   }
 
   static createModalTitle(title, classnames = ['title', 'title--medium']) {
     let $title = document.createElement('h3');
-    this.addClassnames($title, classnames);
+    Helper.addClassnames($title, classnames);
     $title.appendChild(document.createTextNode(title));
 
     return $title;
@@ -32,11 +26,11 @@ class GuestRow {
 
   static createTableColumnModalList(guest, classnames, listItems, dataAttribute, buttonClassnames) {
     let $modalList = document.createElement('ul');
-    this.addClassnames($modalList, classnames);
+    Helper.addClassnames($modalList, classnames);
 
     listItems.forEach(listItem => {
       let $modalListItem = document.createElement('li');
-      this.addClassnames($modalListItem, buttonClassnames);
+      Helper.addClassnames($modalListItem, buttonClassnames);
       if (listItem.state !== undefined) {
         $modalListItem.setAttribute(dataAttribute.name, listItem.id);
         $modalListItem.appendChild(document.createTextNode(listItem.state));
@@ -61,14 +55,14 @@ class GuestRow {
 
   static createTableColumnFormSubmit(classname) {
     let $formSubmit = document.createElement('div');
-    this.addClassnames($formSubmit, ['form__submit-wrap']);
+    Helper.addClassnames($formSubmit, ['form__submit-wrap']);
 
     let $formClose = document.createElement('div');
-    this.addClassnames($formClose, ['form__submit', 'form__submit--update', 'form__submit--cancel']);
+    Helper.addClassnames($formClose, ['form__submit', 'form__submit--update', 'form__submit--cancel']);
     $formClose.appendChild(document.createTextNode('abbrechen'));
 
     let $formSuccess = document.createElement('div');
-    this.addClassnames($formSuccess, ['form__submit', 'form__submit--success', classname]);
+    Helper.addClassnames($formSuccess, ['form__submit', 'form__submit--success', classname]);
     $formSuccess.appendChild(document.createTextNode('bearbeiten'));
     $formSubmit.appendChild($formClose);
     $formSubmit.appendChild($formSuccess);
@@ -88,7 +82,7 @@ class GuestRow {
 
   static createInputComment(guest, classnames) {
     let $input = document.createElement('input');
-    this.addClassnames($input, classnames);
+    Helper.addClassnames($input, classnames);
     $input.type = 'text';
     $input.value = guest.comment;
 
@@ -107,7 +101,7 @@ class GuestRow {
   static createInputList(guest) {
     const $inputs = GuestHiddenInputs.createAllInputs(guest);
     let $inputList = document.createElement('div');
-    this.addClassnames($inputList,['input__list', 'input__list--guest']);
+    Helper.addClassnames($inputList, ['input__list', 'input__list--guest']);
     $inputs.forEach($input => {
       $inputList.appendChild($input);
     });
@@ -117,7 +111,7 @@ class GuestRow {
 
   static createInputRadio(guest, classnames, name, id, value) {
     let $inputRadio = document.createElement('input');
-    this.addClassnames($inputRadio, classnames);
+    Helper.addClassnames($inputRadio, classnames);
     $inputRadio.setAttribute('type', 'radio');
     $inputRadio.setAttribute('name', name);
     $inputRadio.id = `${guest.id}-${id}`;
@@ -131,7 +125,7 @@ class GuestRow {
 
   static createLabelRadio(guest, classnames, htmlFor, text) {
     let $labelRadio = document.createElement('label');
-    this.addClassnames($labelRadio, classnames);
+    Helper.addClassnames($labelRadio, classnames);
     $labelRadio.htmlFor = `${guest.id}-${htmlFor}`;
     $labelRadio.innerText = text;
 
@@ -141,7 +135,7 @@ class GuestRow {
   // Add modal eventlistener
   static createTableColumnWaitidId(classnames, guest, unoccupiedWaitids, waitidNumber) {
     let $tableColumn = document.createElement('div');
-    this.addClassnames($tableColumn, classnames);
+    Helper.addClassnames($tableColumn, classnames);
 
     let $button = this.createTableColumnButton({
       'name': 'data-guest-waitid-id',
@@ -166,7 +160,7 @@ class GuestRow {
 
   static createTableColumnGroupSize(classnames, guest, groupSizes) {
     let $tableColumn = document.createElement('div');
-    this.addClassnames($tableColumn, classnames);
+    Helper.addClassnames($tableColumn, classnames);
 
     let $button = this.createTableColumnButton({
       'name': 'data-guest-group-size',
@@ -191,9 +185,9 @@ class GuestRow {
 
   static createTableColumnPreordered(classnames, guest) {
     let $tableColumn = document.createElement('div');
-    this.addClassnames($tableColumn, classnames);
+    Helper.addClassnames($tableColumn, classnames);
     let $modalList = document.createElement('div');
-    this.addClassnames($modalList, ['modal__list']);
+    Helper.addClassnames($modalList, ['modal__list']);
     let $inputRadioOff = this.createInputRadio(guest, ['form__radio-input','form__radio--preordered','form__radio--off'], 'guest_preordered', 'radio-preordered-0', 0);
     $modalList.appendChild($inputRadioOff);
     let $labelRadioOff = this.createLabelRadio(guest, ['button-toggle','button-toggle--short','button-toggle--preordered-off'], 'radio-preordered-0', 'nein');
@@ -209,7 +203,7 @@ class GuestRow {
 
   static createTableColumnComment(classnames, guest) {
     let $tableColumn = document.createElement('div');
-    this.addClassnames($tableColumn, classnames);
+    Helper.addClassnames($tableColumn, classnames);
 
     let $button = this.createTableColumnButton({
       'name': 'data-guest-comment',
@@ -234,7 +228,7 @@ class GuestRow {
 
   static createTableColumnArrivalTime(classnames, guest) {
     let $tableColumn = document.createElement('div');
-    this.addClassnames($tableColumn, classnames);
+    Helper.addClassnames($tableColumn, classnames);
 
     $tableColumn.appendChild(document.createTextNode('<1 Minute +'))
     // If table__column--danger-text
@@ -244,7 +238,7 @@ class GuestRow {
 
   static createTableColumnStates(classnames, guest, states) {
     let $tableColumn = document.createElement('div');
-    this.addClassnames($tableColumn, classnames);
+    Helper.addClassnames($tableColumn, classnames);
 
     let $modalList = this.createTableColumnModalList(guest, ['modal__list'], states, {'name': 'data-state-id'}, ['button-toggle', 'button-toggle--long']);
     $tableColumn.appendChild($modalList);
@@ -348,9 +342,24 @@ class GuestRow {
     } else if (guest.comment != Guest.getInputCommentValue($guestForm)) {
       Guest.setInputCommentValue($guestForm, guest.comment);
       Guest.setCommentValue($guestForm, guest.comment);
-    } else if (guest.state != Guest.getInputStateValue($guestForm)) {
+    } else if (guest.state_id != Guest.getInputStateValue($guestForm)) {
+      switch (guest.state_id) {
+        case 1:
+          // setWaitingState
+          break;
+        case 2:
+          Guest.setAssignedState(guest, waitidNumber, $guestForm);
+          break;
+        case 3:
+          // Guest.setSeatedState(guest, $guestForm);
+          break;
+        case 4:
+          // Guest.setGoneState(guest, $guestForm);
+          break;
+        default:
+          //
+      }
       Guest.setInputStateValue($guestForm, guest.state);
-      console.log('here we need to update guest form');
     }
   }
 }
