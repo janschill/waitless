@@ -20,9 +20,21 @@ class Guest extends Model
         return $query->where('state_id', 2);
     }
 
-    public function scopeGone($query)
+    public function scopeSeated($query)
     {
         return $query->where('state_id', 3);
+    }
+
+    public function scopeGone($query)
+    {
+        return $query->where('state_id', 4);
+    }
+
+    public function scopeFilter($query, $stateId, $conditional = 'or')
+    {
+        if ($stateId) {
+            return $query->where('state_id','LIKE', '%'.$stateId.'%', $conditional);
+        }
     }
 
     public function state()

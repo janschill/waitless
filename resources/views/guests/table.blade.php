@@ -13,7 +13,7 @@
     <div class="table__caption table__caption--table">Aktuell <span class="table__caption-sub">wartende Gäste ({{ count($guests) }})</span></div>
     <div class="table__body table__body--active">
         @foreach ($guests as $iterator=>$guest)
-            @include('guests.table-row', ['guest' => $guest])
+            @include('guests.table-row', ['guest' => $guest, 'states' => $statesForCurrent])
         @endforeach
     </div>
 </div>
@@ -33,7 +33,7 @@
     </div>
     <div class="table__body table__body--history">
         @foreach ($historyGuests as $iterator=>$historyGuest)
-            @include('guests.table-row', ['guest' => $historyGuest])
+            @include('guests.table-row', ['guest' => $historyGuest, 'states' => $statesForHistory])
         @endforeach
     </div>
 </div>

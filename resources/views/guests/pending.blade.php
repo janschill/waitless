@@ -12,7 +12,7 @@
       <form class="form form--set-state" action="/guests/{{ $assignedGuest->id }}" method="POST">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
-        <input type="hidden" name="guest_state_id" value="2">
+        <input type="hidden" name="guest_state_id" value="{{ $stateSeated->id }}">
       </form>
     </li>
   @endforeach

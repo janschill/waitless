@@ -13,17 +13,22 @@ class GuestsController extends Controller
     // GET /guests
     public function index()
     {
+        /* waitids  */
         $unoccupiedWaitids = Waitid::unoccupiedWaitids();
-        $states = State::getDefiniteStates();
-
-        $guests = Guest::where('state_id', 1)->get();
-        $historyGuests = Guest::where('state_id','!=', 1)
+        /* states  */
+        $statesForCurrent = State::current()->get();
+        $statesForHistory = State::history()->get();
+        $stateSeated = State::seated()->first();
+        /* guests  */
+        $guests = Guest::waiting()->get();
+        $historyGuests = Guest::filter(3)
+        ->filter(4)
         ->limit(10)
         ->orderBy('last_state_change', 'desc')
         ->get();
-        $assignedGuests = Guest::where('state_id', 4)->get();
+        $assignedGuests = Guest::assigned()->get();
 
-        return view('guests.index', compact('states', 'guests', 'historyGuests', 'assignedGuests', 'unoccupiedWaitids'));
+        return view('guests.index', compact('stateSeated', 'statesForCurrent', 'statesForHistory', 'guests', 'historyGuests', 'assignedGuests', 'unoccupiedWaitids'));
     }
 
     // GET /guests/{guest}
@@ -67,7 +72,7 @@ class GuestsController extends Controller
         $unoccupiedWaitids = Waitid::unoccupiedWaitids();
         $states = State::all();
 
-        event((new GuestCreated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
+        // event((new GuestCreated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
 
         return redirect('/guests');
     }
@@ -121,7 +126,7 @@ class GuestsController extends Controller
         $unoccupiedWaitids = Waitid::unoccupiedWaitids();
         $states = State::all();
 
-        event((new GuestUpdated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
+        // event((new GuestUpdated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
 
         return redirect('/guests');
     }
