@@ -1,32 +1,21 @@
 @extends ('layouts.master') @section('content')
 
-<ul class="box__list">
-
-</ul>
-
-<div class="table">
-    <div class="table__caption">Wartemarken <span class="table__caption-sub">Anzahl ({{ count($waitids) }})</span></div>
-
-    <div class="table__head">
-        <div class="table__row">
-            <div class="table__column">Wartenummer</div>
-            <div class="table__column">Entfernen</div>
-        </div>
-    </div>
-    <div class="table__body">
-        @foreach ($waitids as $waitid)
-        <div class="table__row">
-            <div class="table__column">#{{ $waitid->number }}</div>
-            <div class="table__column">
-                <form action="/waitids/{{ $waitid->id }}" method="post">
-                    {{ csrf_field() }}
-                    {{ method_field('DELETE') }}
-                    <button class="button button--delete" type="submit"></button>
-                </form>
+<ul class="box__list box__list--waitid">
+    @foreach ($waitids as $waitid)
+        <li class="box box--waitid">
+            {{-- <h2 class="box__headline box__headline--large">T.10</h2> --}}
+            <h3 class="box__headline box__headline--large">#{{ $waitid->number }}</h3>
+            <p>Wartenmarke</p>
+            <div class="box__time">
+                <p>Erstellt:</p>
+                <p>{{ $waitid->created_at->format('d.m.') }}</p>
             </div>
-        </div>
-        @endforeach
-    </div>
-</div>
-
+            <form class="form form--delete-waitid" action="/waitids/{{ $waitid->id }}" method="POST">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <input type="hidden" name="waitid_id" value="{{ $waitid->id }}">
+            </form>
+        </li>
+    @endforeach
+</ul>
 @endsection
