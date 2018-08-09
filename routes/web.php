@@ -33,4 +33,4 @@ Route::get('/waitids/create', 'WaitidsController@create');
 
 Route::post('/waitids', 'WaitidsController@store');
 
-Route::delete('/waitids/{waitd}', 'WaitidsController@destroy');
+Route::delete('/waitids/{waitid}', 'WaitidsController@destroy');

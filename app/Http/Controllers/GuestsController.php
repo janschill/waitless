@@ -14,6 +14,7 @@ class GuestsController extends Controller
     public function index()
     {
         /* waitids  */
+        $allWaitids = Waitid::withTrashed()->get();
         $unoccupiedWaitids = Waitid::unoccupiedWaitids();
         /* states  */
         $statesForCurrent = State::current()->get();
