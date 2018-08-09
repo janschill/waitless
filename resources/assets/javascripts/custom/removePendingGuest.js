@@ -13,6 +13,8 @@
   document.addEventListener('DOMContentLoaded', () => {
     let $pendingList = document.querySelector('.box__list--pending');
 
-    initPendingList($pendingList);
+    if ($pendingList) {
+      initPendingList($pendingList);
+    }
   });
 })();
