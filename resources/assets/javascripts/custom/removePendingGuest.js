@@ -11,7 +11,7 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    let $pendingList = document.querySelector('.pending__list');
+    let $pendingList = document.querySelector('.box__list--pending');
 
     initPendingList($pendingList);
   });
