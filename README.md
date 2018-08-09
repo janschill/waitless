@@ -153,5 +153,20 @@ To run seeds
 Unit testing concetrates on the smallest portion of the program code – a single unit or function. It tests if a function returns an expected result.
 Theses test will be written in the `tests/Unit` directory and are excuted with `phpunit` in the command line.
 
+### Tinker
+
+Laravel's tinker is a `read-eval-print-loop`, which takes user input and returns the result to command line. Tinker allows direct interaction with the application. For example if we want to restor a soft delted record, we do as follows:
+
+```shell
+php artisan tinker
+# Tinker shell gets opened
+App\Model::withTrashed()->where('id', 1)->restore();
+```
+
 ### WebSocket
 
+Our application had to have at least two active clients, where one would create records, which get added dynamically to the frontend, without a page reload and immediately the other client should retrieve this new entry as well. To achieve this the WebSocket protocoll had to be used.
+
+Laravel has a built-in support for Pusher, which we then chose, based on the great integration. Signing up with Pusher and creating an application on its dashboard, we were able to implement the needed keys to our front- and backend.
+
+With Laravel's events and broadcasting we created a channel on which the clients listened for the change, which then triggered JavaScript, which updated the DOM accordingly.
