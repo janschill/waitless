@@ -274,8 +274,8 @@ class GuestRow {
     });
   }
 
-  static createGuestRow(guest, unoccupiedWaitids, waitidNumber, states) {
-    let $tableBody = document.querySelector('.table__body');
+  static createGuestRow(table, guest, unoccupiedWaitids, waitidNumber, states) {
+    let $tableBody = document.querySelector(`.table__body--${table}`);
 
     let $guestForm = this.createGuestForm(guest);
     $tableBody.appendChild($guestForm);
@@ -351,7 +351,7 @@ class GuestRow {
           Guest.setAssignedState(guest, waitidNumber, $guestForm);
           break;
         case 3:
-          // Guest.setSeatedState(guest, $guestForm);
+          Guest.setSeatedState('history', guest, unoccupiedWaitids, waitidNumber, states, $guestForm);
           break;
         case 4:
           // Guest.setGoneState(guest, $guestForm);

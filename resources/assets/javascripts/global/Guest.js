@@ -1,6 +1,6 @@
 class Guest {
-  static destroyRow($tableRow) {
-    console.log('destroy');
+  static destroyRow($element) {
+    $element.parentNode.removeChild($element);
   }
 
   static getInputWaitidIdValue($tableRow) {
@@ -84,10 +84,16 @@ class Guest {
   }
 
   static setAssignedState(guest, waitidNumber, $tableRow) {
-    let $pendingList = document.querySelector('.pending__list'),
+    let $pendingList = document.querySelector('.box__list--pending'),
       $box = PendingList.createBox(guest, waitidNumber);
     $pendingList.appendChild($box);
     Guest.destroyRow($tableRow);
+  }
+
+  /* Creates the guestrow in history table and destroys old one */
+  static setSeatedState(table, guest, unoccupiedWaitidIds, waitidNumber, states, $tableRow) {
+    GuestRow.createGuestRow(table, guest, unoccupiedWaitidIds, waitidNumber, states);
+    this.destroyRow($tableRow);
   }
 
   static initGuestWaitid($tableRow, $tableColumn, $modals) {
