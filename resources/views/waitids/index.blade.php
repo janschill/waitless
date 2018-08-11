@@ -1,5 +1,4 @@
 @extends ('layouts.master') @section('content')
-
 <h2 class="table__caption">Aktiviert</h2>
 <ul class="box__list box__list--waitid box__list--waitid-enabled">
     @foreach ($enabledWaitids as $waitid)
@@ -38,6 +37,7 @@
         </li>
     @endforeach
 </ul>
+<div class="background background--hidden"></div>
 <div data-form-id="form-new-waitid" class="popup popup--new popup--new-waitid">
     <div class="popup__toggle popup__toggle--new-waitid"></div>
     <div class="popup__content">

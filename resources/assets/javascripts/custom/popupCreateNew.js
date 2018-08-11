@@ -22,14 +22,16 @@
     }
   }
 
-  function toggleVisibility($popup, $popupToggle) {
+  function toggleVisibility($popup, $popupToggle, $background) {
     $popup.classList.toggle('popup--visible');
     $popupToggle.classList.toggle('popup__toggle--hidden');
+    $background.classList.toggle('background--hidden');
   }
 
   function initPopup($popup) {
     let $popupToggle = $popup.querySelector('.popup__toggle'),
       $formSubmitCancel = $popup.querySelector('.form__submit--cancel'),
+      $background = document.querySelector('.background'),
       formId = $popup.dataset.formId;
     const $form = document.querySelector(`#${formId}`);
 
@@ -44,12 +46,12 @@
 
     $formSubmitCancel.addEventListener('click', event => {
       event.preventDefault();
-      toggleVisibility($popup, $popupToggle);
+      toggleVisibility($popup, $popupToggle, $background);
     });
 
     $popupToggle.addEventListener('click', event => {
       event.preventDefault();
-      toggleVisibility($popup, $popupToggle);
+      toggleVisibility($popup, $popupToggle, $background);
     });
   }
 
