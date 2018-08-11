@@ -33,7 +33,7 @@
     "laravel-mix": "^2.0",
     "lodash": "^4.17.4",
     "minireset.css": "0.0.3",
-    "popper.js": "^1.12",
+    "popper.js": "^1.14.4",
     "stylelint": "^9.4.0",
     "vanilla-datatables": "^1.6.11"
   },
