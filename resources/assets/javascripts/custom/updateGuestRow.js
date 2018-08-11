@@ -1,12 +1,12 @@
 (() => {
   document.addEventListener('DOMContentLoaded', () => {
-    let $tableBody = document.querySelector('.table__body');
+    let $tableBodys = document.querySelectorAll('.table__body');
 
-    if ($tableBody) {
+    $tableBodys.forEach($tableBody => {
       let $tableRows = $tableBody.querySelectorAll('.table__row');
       $tableRows.forEach($tableRow => {
         GuestRow.initGuestRow($tableBody, $tableRow);
       });
-    }
+    })
   });
 })();

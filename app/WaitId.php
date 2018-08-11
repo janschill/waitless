@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Guest;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -38,34 +39,17 @@ class Waitid extends Model
         return $this->hasMany(Guest::class);
     }
 
-    public static function unoccupiedWaitids()
+    public function scopeUnoccupied($query)
     {
-        $waitingWaitids = DB::table('waitids')
-            ->join('guests', 'waitids.id', '=', 'guests.waitid_id')
-            ->join('states', 'states.id', '=', 'guests.state_id')
-            ->select('waitids.number')
-            ->where('state', '=', 'warten')
-            ->get()
-            ->all();
+        $activeGuests = Guest::filter(1)->filter(2)->get();
+        $activeGuestsIndexed = [];
 
-        $waitingWaitidsIndexed = [];
-
-        foreach ($waitingWaitids as $waitingWaitid) {
-            array_push($waitingWaitidsIndexed, $waitingWaitid->number);
+        foreach ($activeGuests as $activeGuest) {
+            array_push($activeGuestsIndexed, $activeGuest->waitid_id);
         }
-
-        $avaiblabeWaitidsID = DB::table('waitids')
-            ->select('waitids.*')
-            ->where('disabled', '=', 0)
-            ->whereNotIn('number', $waitingWaitidsIndexed)
-            ->orderBy('number', 'asc')
-            ->get();
-
-        return $avaiblabeWaitidsID->toArray();
-    }
-
-    public static function randomUnoccupiedWaitid()
-    {
-        return array_rand(Waitid::unoccupiedWaitids());
+        return $query->select('waitids.*')
+            ->where('disabled', 0)
+            ->whereNotIn('id', $activeGuestsIndexed)
+            ->orderBy('number', 'asc');
     }
 }
