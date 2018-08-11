@@ -8,7 +8,7 @@
 
   <div class="form__label">Wartenummer:</div>
   <div class="form__radio-wrap">
-    @if ($unoccupiedWaitids < 1)
+    @if (count($unoccupiedWaitids) < 1)
       <small class="error">Keine Wartenummer verfügbar. <a href="/waitids">Hier können neue Wartenummer hinzugefügt werden.</a></small>
     @endif
     @foreach ($unoccupiedWaitids as $iterator=>$unoccupiedWaitid)

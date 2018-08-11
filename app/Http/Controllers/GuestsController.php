@@ -15,7 +15,7 @@ class GuestsController extends Controller
     {
         /* waitids  */
         $allWaitids = Waitid::withTrashed()->get();
-        $unoccupiedWaitids = Waitid::unoccupiedWaitids();
+        $unoccupiedWaitids = Waitid::unoccupied()->get();
         /* states  */
         $statesForCurrent = State::current()->get();
         $statesForHistory = State::history()->get();
@@ -70,10 +70,10 @@ class GuestsController extends Controller
         ]);
 
         $waitidNumber = Waitid::getNumberOfWaitid($guest['waitid_id'])->number;
-        $unoccupiedWaitids = Waitid::unoccupiedWaitids();
+        $unoccupiedWaitids = Waitid::unoccupied()->get();
         $states = State::current()->get();
 
-        event((new GuestCreated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
+        // event((new GuestCreated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
 
         return redirect('/guests');
     }
@@ -124,10 +124,10 @@ class GuestsController extends Controller
         $updatedGuest->save();
 
         $waitidNumber = Waitid::getNumberOfWaitid($updatedGuest['waitid_id'])->number;
-        $unoccupiedWaitids = Waitid::unoccupiedWaitids();
+        $unoccupiedWaitids = Waitid::unoccupied()->get();
         $states = State::current()->get();
 
-        event((new GuestUpdated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
+        // event((new GuestUpdated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
 
         return redirect('/guests');
     }
