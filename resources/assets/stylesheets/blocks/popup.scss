@@ -13,11 +13,17 @@
     overflow: hidden;
     z-index: 100;
   }
+
+  &--visible.popup--new-waitid {
+    width: 40%;
+  }
 }
 
 .popup__toggle {
+  cursor: pointer;
   box-shadow: 0 3px 3px 0 rgba(black, 0.16), 0 3px 3px 0 rgba(black, 0.23);
 
+  &.popup__toggle--new-waitid,
   &.popup__toggle--new-guest {
     display: inline-block;
     position: fixed;

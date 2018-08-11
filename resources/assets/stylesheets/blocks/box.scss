@@ -6,11 +6,12 @@
   text-align: center;
   width: 125px;
   height: 125px;
+  cursor: pointer;
 
   &.box--waitid {
     width: 150px;
     height: 130px;
-    margin-top: 30px;
+    margin-bottom: 30px;
   }
 }
 
@@ -39,4 +40,12 @@
   width: 90%;
   margin: 0 auto;
   padding: 10px;
+}
+
+.box__list--waitid {
+  padding-bottom: 30px;
+}
+
+.box__list--waitid-enabled {
+  border-bottom: 1px solid $color-light;
 }
