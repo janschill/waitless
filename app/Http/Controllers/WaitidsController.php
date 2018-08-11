@@ -14,9 +14,14 @@ class WaitidsController extends Controller
      */
     public function index(Waitid $waitid)
     {
-        $waitids = Waitid::all();
+        $enabledWaitids = Waitid::enabled()
+            ->orderBy('created_at', 'desc')
+            ->get();
+        $disabledWaitids = Waitid::disabled()
+            ->orderBy('updated_at', 'desc')
+            ->get();
         $currentlyUsed  = $waitid->guests;
-        return view('waitids.index', compact('waitids', 'currentlyUsed'));
+        return view('waitids.index', compact('enabledWaitids', 'disabledWaitids', 'currentlyUsed'));
     }
 
     /**
@@ -38,11 +43,11 @@ class WaitidsController extends Controller
     public function store(Request $request)
     {
         $this->validate(request(), [
-            'number' => 'required|unique:waitids,number'
+            'waitid_number' => 'required|unique:waitids,number'
         ]);
 
         Waitid::create([
-            'number' => request('number'),
+            'number' => request('waitid_number'),
         ]);
 
         return redirect('/waitids');
@@ -91,8 +96,8 @@ class WaitidsController extends Controller
     public function destroy($id)
     {
         $waitid = Waitid::findOrFail($id);
-
-        $waitid->delete();
+        $waitid->disabled = $waitid->disabled == 0 ? 1 : 0;
+        $waitid->save();
 
         return redirect()->action('WaitidsController@index');
     }

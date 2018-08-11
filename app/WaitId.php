@@ -13,6 +13,16 @@ class Waitid extends Model
     protected $dates = ['deleted_at'];
     protected $fillable = ['number'];
 
+    public function scopeEnabled($query)
+    {
+        return $query->where('disabled', 0);
+    }
+
+    public function scopeDisabled($query)
+    {
+        return $query->where('disabled', 1);
+    }
+
     public static function getNumberOfWaitid($id)
     {
         $waitidNumber = DB::table('waitids')
@@ -46,6 +56,7 @@ class Waitid extends Model
 
         $avaiblabeWaitidsID = DB::table('waitids')
             ->select('waitids.*')
+            ->where('disabled', '=', 0)
             ->whereNotIn('number', $waitingWaitidsIndexed)
             ->orderBy('number', 'asc')
             ->get();
