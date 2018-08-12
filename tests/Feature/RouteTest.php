@@ -15,8 +15,8 @@ class RouteTest extends TestCase
      */
     public function testRoutes()
     {
-        $routesGet = ['/', '/guests', 'guests/create'];
-        $routesPost = ['/guests'];
+        $routesGet = ['/', '/guests', '/guests/create', '/waitids', '/waitids/create'];
+        $routesPost = ['/guests', '/waitids'];
 
         array_walk($routesGet, function ($element) {
             $this->get($element)->assertStatus(200);
