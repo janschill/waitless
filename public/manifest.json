@@ -1,7 +1,7 @@
 {
  "name": "waitless",
  "display": "standalone",
- "background_color": "#369FD2",
+ "background_color": "#fffff",
  "description": "Eine Applikation für die Verwaltung von wartenden Gästen.",
  "icons": [
   {
