@@ -85,15 +85,17 @@ class Guest {
 
   static setAssignedState(guest, waitidNumber, $tableRow) {
     let $pendingList = document.querySelector('.box__list--pending'),
-      $box = PendingList.createBox(guest, waitidNumber);
+      $box = GuestBox.createBox(guest, waitidNumber);
     $pendingList.appendChild($box);
     Guest.destroyRow($tableRow);
   }
 
   /* Creates the guestrow in history table and destroys old one */
   static setSeatedState(table, guest, unoccupiedWaitidIds, waitidNumber, states, $tableRow) {
-    GuestRow.createGuestRow(table, guest, unoccupiedWaitidIds, waitidNumber, states);
+    let $newGuest = GuestRow.createGuestRow(table, guest, unoccupiedWaitidIds, waitidNumber, states);
     this.destroyRow($tableRow);
+
+    return $newGuest;
   }
 
   static initGuestWaitid($tableRow, $tableColumn, $modals) {
