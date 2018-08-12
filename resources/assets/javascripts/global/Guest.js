@@ -83,14 +83,18 @@ class Guest {
     });
   }
 
+  /* Creates the guestrow in pending list and destroys old one */
+  static setWaitingState(table, guest, unoccupiedWaitidIds, waitidNumber, statesForCurrent, statesForHistory, $tableRow) {
+    GuestRow.createGuestRow(Position.end(), table, guest, unoccupiedWaitidIds, waitidNumber, statesForCurrent, statesForHistory);
+    this.destroyRow($tableRow);
+  }
+
+  /* Creates the guestrow in pending list and destroys old one */
   static setAssignedState(guest, waitidNumber, $tableRow) {
     let $pendingList = document.querySelector('.box__list--pending'),
       $box = GuestBox.createBox(guest, waitidNumber);
     $pendingList.appendChild($box);
     Guest.destroyRow($tableRow);
-
-    console.log(guest);
-    return $box;
   }
 
   /* Creates the guestrow in history table and destroys old one */

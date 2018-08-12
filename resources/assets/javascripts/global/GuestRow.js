@@ -339,8 +339,7 @@ class GuestRow {
   static updateGuestRow(guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory) {
     let $tableRowForms = document.querySelectorAll('.table__row--form'),
       $guestForm = document.getElementById('guest-id-' + guest.id);
-    console.log(guest.state_id);
-    console.log(Guest.getInputStateValue($guestForm));
+
     /**
      * Find out what was updated and call corresponding method to update
      */
@@ -374,7 +373,7 @@ class GuestRow {
     } else if (guest.state_id != Guest.getInputStateValue($guestForm)) {
       switch (guest.state_id) {
         case 1:
-          // setWaitingState
+          Guest.setWaitingState('active', guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory, $guestForm);
           break;
         case 2:
           Guest.setAssignedState(guest, waitidNumber, $guestForm);
