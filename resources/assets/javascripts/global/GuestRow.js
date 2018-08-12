@@ -98,6 +98,16 @@ class GuestRow {
     return $input;
   }
 
+  static createInputToken() {
+    let $input = document.createElement('input');
+    const CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    $input.type = 'hidden';
+    $input.name = '_token';
+    $input.value = CSRF_TOKEN;
+
+    return $input;
+  }
+
   static createInputList(guest) {
     const $inputs = GuestHiddenInputs.createAllInputs(guest);
     let $inputList = document.createElement('div');
@@ -248,24 +258,30 @@ class GuestRow {
     return $tableColumn;
   }
 
+  /* initialize GuestRow with eventListeners  */
   static initGuestRow($tableBody, $tableRow) {
-    let $guestWaitid = $tableRow.querySelector('.table__column--waitid-id'),
-      $guestGroupSize = $tableRow.querySelector('.table__column--group-size'),
-      $guestPreordered = $tableRow.querySelector('.table__column--preordered'),
-      $guestComment = $tableRow.querySelector('.table__column--comment'),
-      $guestStates = $tableRow.querySelectorAll('.table__column--state'),
-      $modals = document.querySelectorAll('.modal'),
+    /* initialize Modals */
+    let $modals = document.querySelectorAll('.modal'),
       $closeModals = $tableBody.querySelectorAll('.form__submit--update.form__submit--cancel'),
       $background = document.querySelector('.background--update');
-
     $closeModals.forEach($closeModal => {
       Modal.initCloseModal($closeModal, $modals, $background);
     });
-    Guest.initGuestWaitid($tableRow, $guestWaitid, $modals);
-    Guest.initGuestGroupSize($tableRow, $guestGroupSize, $modals);
-    Guest.initGuestPreordered($tableRow, $guestPreordered);
-    Guest.initGuestComment($tableRow, $guestComment, $modals);
 
+    /* initialize Waitid */
+    let $guestWaitid = $tableRow.querySelector('.table__column--waitid-id');
+    Guest.initGuestWaitid($tableRow, $guestWaitid, $modals);
+    /* initialize GroupSize */
+    let $guestGroupSize = $tableRow.querySelector('.table__column--group-size');
+    Guest.initGuestGroupSize($tableRow, $guestGroupSize, $modals);
+    /* initialize Preordered */
+    let $guestPreordered = $tableRow.querySelector('.table__column--preordered');
+    Guest.initGuestPreordered($tableRow, $guestPreordered);
+    /* initialize Comment */
+    let $guestComment = $tableRow.querySelector('.table__column--comment');
+    Guest.initGuestComment($tableRow, $guestComment, $modals);
+    /* initialize States */
+    let $guestStates = $tableRow.querySelectorAll('.table__column--state');
     $guestStates.forEach($guestState => {
       Guest.initGuestState($tableRow, $guestState);
     });
@@ -275,11 +291,15 @@ class GuestRow {
     });
   }
 
+  /* create DOM elements for a new GuestRow  */
   static createGuestRow(table, guest, unoccupiedWaitids, waitidNumber, states) {
     let $tableBody = document.querySelector(`.table__body--${table}`);
 
     let $guestForm = this.createGuestForm(guest);
     $tableBody.appendChild($guestForm);
+
+    let $inputToken = this.createInputToken();
+    $guestForm.appendChild($inputToken);
 
     let $inputMethod = this.createInputMethod();
     $guestForm.appendChild($inputMethod);

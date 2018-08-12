@@ -69,7 +69,7 @@ class GuestsController extends Controller
         $unoccupiedWaitids = Waitid::unoccupied()->get();
         $states = State::current()->get();
 
-        // event((new GuestCreated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
+        event((new GuestCreated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
 
         return redirect('/guests');
     }
@@ -123,7 +123,7 @@ class GuestsController extends Controller
         $unoccupiedWaitids = Waitid::unoccupied()->get();
         $states = State::current()->get();
 
-        // event((new GuestUpdated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
+        event((new GuestUpdated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
 
         return redirect('/guests');
     }
