@@ -31,7 +31,7 @@
   function initPopup($popup) {
     let $popupToggle = $popup.querySelector('.popup__toggle'),
       $formSubmitCancel = $popup.querySelector('.form__submit--cancel'),
-      $background = document.querySelector('.background'),
+      $background = document.querySelector('.background--create-new'),
       formId = $popup.dataset.formId;
     const $form = document.querySelector(`#${formId}`);
 
