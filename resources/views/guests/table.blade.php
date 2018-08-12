@@ -1,3 +1,4 @@
+<div class="background background--update background--hidden"></div>
 <div class="table table--current">
     <div class="table__head table__head--hidden">
         <div class="table__row">

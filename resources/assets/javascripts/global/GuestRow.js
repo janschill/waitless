@@ -255,10 +255,11 @@ class GuestRow {
       $guestComment = $tableRow.querySelector('.table__column--comment'),
       $guestStates = $tableRow.querySelectorAll('.table__column--state'),
       $modals = document.querySelectorAll('.modal'),
-      $closeModals = $tableBody.querySelectorAll('.form__submit--update.form__submit--cancel');
+      $closeModals = $tableBody.querySelectorAll('.form__submit--update.form__submit--cancel'),
+      $background = document.querySelector('.background--update');
 
     $closeModals.forEach($closeModal => {
-      Modal.initCloseModal($closeModal, $modals);
+      Modal.initCloseModal($closeModal, $modals, $background);
     });
     Guest.initGuestWaitid($tableRow, $guestWaitid, $modals);
     Guest.initGuestGroupSize($tableRow, $guestGroupSize, $modals);
