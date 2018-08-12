@@ -69,9 +69,9 @@ class GuestBox {
 
   static createBox(guest, waitidNumber) {
     let $box = document.createElement('li');
-    $box.classList.add('box');
+    $box.id = `guest-id-${guest.id}`
     Helper.addClassnames($box, ['box', 'box--guest']);
-    $box.setAttribute('guest-id', guest.id);
+    $box.setAttribute('data-guest-id', guest.id);
     let $boxHeadline = this.createBoxHeadline(['box__headline', 'box__headline--large'], `#${waitidNumber}`);
     $box.appendChild($boxHeadline);
     let $paragraph = this.createBoxParagraph(guest);
