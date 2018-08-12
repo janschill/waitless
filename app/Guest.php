@@ -30,10 +30,15 @@ class Guest extends Model
         return $query->where('state_id', 4);
     }
 
+    public function scopeHistory($query)
+    {
+        return $query->filter(3)->filter(4)->limit(10)->orderBy('last_state_change', 'desc');
+    }
+
     public function scopeFilter($query, $stateId, $conditional = 'or')
     {
         if ($stateId) {
-            return $query->where('state_id','LIKE', '%'.$stateId.'%', $conditional);
+            return $query->where('state_id', 'LIKE', '%' . $stateId . '%', $conditional);
         }
     }
 
