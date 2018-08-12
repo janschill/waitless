@@ -38,6 +38,7 @@
     "vanilla-datatables": "^1.6.11"
   },
   "dependencies": {
+    "cross-env": "^5.2.0",
     "jquery": "^3.3.1",
     "laravel-echo": "^1.4.0",
     "pusher-js": "^4.2.2"
