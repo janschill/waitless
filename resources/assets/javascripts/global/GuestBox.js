@@ -1,4 +1,11 @@
-class PendingList {
+class GuestBox {
+  static initGuestBox($box) {
+    $box.addEventListener('click', event => {
+      event.preventDefault();
+      $box.querySelector('.form--set-state').submit();
+    });
+  }
+
   static createBoxParagraph(guest) {
     let $boxParagraph = document.createElement('p');
     $boxParagraph.appendChild(document.createTextNode(guest.group_size));
@@ -52,7 +59,7 @@ class PendingList {
   static createBox(guest, waitidNumber) {
     let $box = document.createElement('li');
     $box.classList.add('box');
-    Helper.addClassnames($box, ['box']);
+    Helper.addClassnames($box, ['box', 'box--guest']);
     $box.setAttribute('guest-id', guest.id);
     let $boxHeadline = this.createBoxHeadline(['box__headline', 'box__headline--large'], `#${waitidNumber}`);
     $box.appendChild($boxHeadline);
@@ -62,6 +69,8 @@ class PendingList {
     $box.appendChild($boxTime);
     let $boxForm = this.createBoxForm(['form', 'form--set-state'], guest);
     $box.appendChild($boxForm);
+
+    this.initGuestBox($box);
 
     return $box;
   }

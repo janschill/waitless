@@ -1,7 +1,7 @@
 <div class="table__caption">Zugewiesen <span class="table__caption-sub">Gäste</span></div>
 <ul class="box__list box__list--pending">
   @foreach ($assignedGuests as $iterator=>$assignedGuest)
-    <li data-guest-id="{{ $assignedGuest->id }}" class="box">
+    <li data-guest-id="{{ $assignedGuest->id }}" class="box box--guest">
       {{-- <h2 class="box__headline box__headline--large">T.10</h2> --}}
       <h3 class="box__headline box__headline--large">#{{ $assignedGuest->waitid->number }}</h3>
       <p>Personen: {{ $assignedGuest->group_size }}</p>

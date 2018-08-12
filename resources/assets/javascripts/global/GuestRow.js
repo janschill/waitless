@@ -326,6 +326,8 @@ class GuestRow {
     $guestForm.appendChild($tableColumnStates);
 
     this.initGuestRow($tableBody, $guestForm);
+
+    return $guestForm;
   }
 
   /**
@@ -334,8 +336,12 @@ class GuestRow {
   static updateGuestRow(guest, unoccupiedWaitids, waitidNumber, states) {
     let $tableRowForms = document.querySelectorAll('.table__row--form'),
       $guestForm = document.getElementById('guest-id-' + guest.id);
+    alert(guest.state_id);
+    alert(Guest.getInputStateValue($guestForm));
 
-    /* Set button to new waitid number */
+    /**
+     * Find out what was updated and call corresponding method to update
+     */
     if (guest.waitid_id != Guest.getInputWaitidIdValue($guestForm)) {
       Guest.setInnerText($guestForm, '.button-toggle--waitid-id', waitidNumber);
       Guest.setInputWaitidIdValue($guestForm, guest.waitid_id);
@@ -370,9 +376,12 @@ class GuestRow {
           break;
         case 2:
           Guest.setAssignedState(guest, waitidNumber, $guestForm);
+          Guest.setInputStateValue($guestForm, guest.state);
           break;
         case 3:
-          Guest.setSeatedState('history', guest, unoccupiedWaitids, waitidNumber, states, $guestForm);
+          let $newGuest = Guest.setSeatedState('history', guest, unoccupiedWaitids, waitidNumber, states, $guestForm);
+          alert($newGuest);
+          Guest.setInputStateValue($newGuest, guest.state);
           break;
         case 4:
           // Guest.setGoneState(guest, $guestForm);
@@ -380,7 +389,6 @@ class GuestRow {
         default:
           //
       }
-      Guest.setInputStateValue($guestForm, guest.state);
     }
   }
 }

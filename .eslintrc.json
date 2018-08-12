@@ -12,7 +12,8 @@
         "Pusher": true,
         "Echo": true,
         "GuestRow": true,
-        "Form": true
+        "Form": true,
+        "GuestBox": true
     },
     "rules": {
         "strict": "error",

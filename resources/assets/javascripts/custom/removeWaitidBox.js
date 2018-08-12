@@ -1,5 +1,5 @@
 (() => {
-  function initWaitidBoxes($waitidBox) {
+  function initWaitidBox($waitidBox) {
     let $waitidBoxForm = $waitidBox.querySelector('.form--delete-waitid');
 
     if ($waitidBoxForm) {
@@ -20,7 +20,7 @@
     const $waitidBoxes = document.querySelectorAll('.box--waitid');
 
     $waitidBoxes.forEach($waitidBox => {
-      initWaitidBoxes($waitidBox);
+      initWaitidBox($waitidBox);
     });
   });
 })();
