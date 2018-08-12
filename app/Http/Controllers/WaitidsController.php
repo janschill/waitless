@@ -15,10 +15,10 @@ class WaitidsController extends Controller
     public function index(Waitid $waitid)
     {
         $enabledWaitids = Waitid::enabled()
-            ->orderBy('created_at', 'desc')
+            ->orderBy('number', 'asc')
             ->get();
         $disabledWaitids = Waitid::disabled()
-            ->orderBy('updated_at', 'desc')
+            ->orderBy('number', 'asc')
             ->get();
         $currentlyUsed  = $waitid->guests;
         return view('waitids.index', compact('enabledWaitids', 'disabledWaitids', 'currentlyUsed'));
