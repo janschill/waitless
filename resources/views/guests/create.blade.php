@@ -13,7 +13,7 @@
     @endif
     @foreach ($unoccupiedWaitids as $iterator=>$unoccupiedWaitid)
       <input class="form__radio-input" type="radio" name="guest_waitidId" id="radio-{{$unoccupiedWaitid->number}}" value="{{$unoccupiedWaitid->id}}" {{ $iterator === 0 ? 'checked' : '' }}>
-      <label class="button-toggle" for="radio-{{$unoccupiedWaitid->number}}">{{$unoccupiedWaitid->number}}</label>
+      <label class="button-toggle button-toggle--waitid" for="radio-{{$unoccupiedWaitid->number}}">{{$unoccupiedWaitid->number}}</label>
     @endforeach
   </div>
 
@@ -21,7 +21,7 @@
   <div class="form__radio-wrap">
     @for ($i = 1; $i < 12; $i++)
       <input class="form__radio-input" type="radio" name="guest_groupSize" id="radio-{{$i}}" value="{{$i}}" {{ $i === 1 ? 'checked' : '' }}>
-      <label class="button-toggle" for="radio-{{$i}}">{{$i}}</label>
+      <label class="button-toggle button-toggle--group-size" for="radio-{{$i}}">{{$i}}</label>
     @endfor
   </div>
 
@@ -37,7 +37,7 @@
   </div>
   <div class="form__submit-wrap">
     <div class="form__submit form__submit--cancel">abbrechen</div>
-    <button class="form__submit form__submit--success" type="submit">hinzufügen</button>
+    <button class="form__submit form__submit--success" type="submit" value="hinzufügen">hinzufügen</button>
   </div>
 </form>
 
