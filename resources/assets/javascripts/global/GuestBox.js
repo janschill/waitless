@@ -57,21 +57,19 @@ class GuestBox {
     $boxForm.method = 'POST';
     $boxForm.appendChild(this.createInput('hidden', '_token', CSRF_TOKEN));
     $boxForm.appendChild(this.createInput('hidden', '_method', 'PATCH'));
-    $boxForm.appendChild(this.createInput('hidden', 'guest_id', guest.id));
-    $boxForm.appendChild(this.createInput('hidden', 'guest_waitid_id', guest.waitid_id));
-    $boxForm.appendChild(this.createInput('hidden', 'guest_group_size', guest.group_size));
-    $boxForm.appendChild(this.createInput('hidden', 'guest_preordered', guest.preordered));
-    $boxForm.appendChild(this.createInput('hidden', 'guest_comment', guest.comment));
-    $boxForm.appendChild(this.createInput('hidden', 'guest_state_id', guest.state_id));
+    const $inputs = GuestHiddenInputs.createAllInputs(guest);
+    $inputs.forEach($input => {
+      $boxForm.appendChild($input);
+    });
 
     return $boxForm;
   }
 
   static createBox(guest, waitidNumber) {
     let $box = document.createElement('li');
+    $box.setAttribute('data-guest-id', guest.id);
     $box.id = `guest-id-${guest.id}`
     Helper.addClassnames($box, ['box', 'box--guest']);
-    $box.setAttribute('data-guest-id', guest.id);
     let $boxHeadline = this.createBoxHeadline(['box__headline', 'box__headline--large'], `#${waitidNumber}`);
     $box.appendChild($boxHeadline);
     let $paragraph = this.createBoxParagraph(guest);
