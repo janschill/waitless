@@ -292,11 +292,15 @@ class GuestRow {
   }
 
   /* create DOM elements for a new GuestRow  */
-  static createGuestRow(table, guest, unoccupiedWaitids, waitidNumber, states) {
+  static createGuestRow(position, table, guest, unoccupiedWaitids, waitidNumber, states) {
     let $tableBody = document.querySelector(`.table__body--${table}`);
 
     let $guestForm = this.createGuestForm(guest);
-    $tableBody.appendChild($guestForm);
+    if (position === 'start') {
+      $tableBody.insertBefore($guestForm, $tableBody.firstChild);
+    } else {
+      $tableBody.appendChild($guestForm);
+    }
 
     let $inputToken = this.createInputToken();
     $guestForm.appendChild($inputToken);
@@ -326,8 +330,6 @@ class GuestRow {
     $guestForm.appendChild($tableColumnStates);
 
     this.initGuestRow($tableBody, $guestForm);
-
-    return $guestForm;
   }
 
   /**
@@ -336,8 +338,6 @@ class GuestRow {
   static updateGuestRow(guest, unoccupiedWaitids, waitidNumber, states) {
     let $tableRowForms = document.querySelectorAll('.table__row--form'),
       $guestForm = document.getElementById('guest-id-' + guest.id);
-    alert(guest.state_id);
-    alert(Guest.getInputStateValue($guestForm));
 
     /**
      * Find out what was updated and call corresponding method to update
@@ -379,12 +379,10 @@ class GuestRow {
           Guest.setInputStateValue($guestForm, guest.state);
           break;
         case 3:
-          let $newGuest = Guest.setSeatedState('history', guest, unoccupiedWaitids, waitidNumber, states, $guestForm);
-          alert($newGuest);
-          Guest.setInputStateValue($newGuest, guest.state);
+          Guest.setSeatedState('history', guest, unoccupiedWaitids, waitidNumber, states, $guestForm);
           break;
         case 4:
-          // Guest.setGoneState(guest, $guestForm);
+          Guest.setGoneState('history', guest, unoccupiedWaitids, waitidNumber, states, $guestForm);
           break;
         default:
           //

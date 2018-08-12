@@ -13,7 +13,8 @@
         "Echo": true,
         "GuestRow": true,
         "Form": true,
-        "GuestBox": true
+        "GuestBox": true,
+        "Position": true
     },
     "rules": {
         "strict": "error",

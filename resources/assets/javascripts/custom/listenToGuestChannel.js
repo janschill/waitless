@@ -4,7 +4,7 @@
      * Fired when new guest is created
      */
     window.Echo.channel('guests').listen('GuestCreated', event => {
-      GuestRow.createGuestRow('active', event.guest, event.unoccupiedWaitids, event.waitidNumber, event.states);
+      GuestRow.createGuestRow(Position.end(), 'active', event.guest, event.unoccupiedWaitids, event.waitidNumber, event.states);
     });
 
     /**

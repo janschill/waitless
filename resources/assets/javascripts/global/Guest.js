@@ -92,10 +92,14 @@ class Guest {
 
   /* Creates the guestrow in history table and destroys old one */
   static setSeatedState(table, guest, unoccupiedWaitidIds, waitidNumber, states, $tableRow) {
-    let $newGuest = GuestRow.createGuestRow(table, guest, unoccupiedWaitidIds, waitidNumber, states);
+    GuestRow.createGuestRow(Position.start(), table, guest, unoccupiedWaitidIds, waitidNumber, states);
     this.destroyRow($tableRow);
+  }
 
-    return $newGuest;
+  /* Creates the guestrow in history table and destroys old one */
+  static setGoneState(table, guest, unoccupiedWaitidIds, waitidNumber, states, $tableRow) {
+    GuestRow.createGuestRow(Position.start(), table, guest, unoccupiedWaitidIds, waitidNumber, states);
+    this.destroyRow($tableRow);
   }
 
   static initGuestWaitid($tableRow, $tableColumn, $modals) {
