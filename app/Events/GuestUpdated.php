@@ -17,19 +17,21 @@ class GuestUpdated implements ShouldBroadcast
     public $guest;
     public $unoccupiedWaitids;
     public $waitidNumber;
-    public $states;
+    public $statesForCurrent;
+    public $statesForHistory;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($guest, $unoccupiedWaitids, $waitidNumber, $states)
+    public function __construct($guest, $unoccupiedWaitids, $waitidNumber, $statesForCurrent, $statesForHistory)
     {
         $this->guest = $guest;
         $this->unoccupiedWaitids = $unoccupiedWaitids;
         $this->waitidNumber = $waitidNumber;
-        $this->states = $states;
+        $this->statesForCurrent = $statesForCurrent;
+        $this->statesForHistory = $statesForHistory;
 
         $this->dontBroadcastToCurrentUser();
     }

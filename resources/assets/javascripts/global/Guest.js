@@ -88,17 +88,20 @@ class Guest {
       $box = GuestBox.createBox(guest, waitidNumber);
     $pendingList.appendChild($box);
     Guest.destroyRow($tableRow);
+
+    console.log(guest);
+    return $box;
   }
 
   /* Creates the guestrow in history table and destroys old one */
-  static setSeatedState(table, guest, unoccupiedWaitidIds, waitidNumber, states, $tableRow) {
-    GuestRow.createGuestRow(Position.start(), table, guest, unoccupiedWaitidIds, waitidNumber, states);
+  static setSeatedState(table, guest, unoccupiedWaitidIds, waitidNumber, statesForCurrent, statesForHistory, $tableRow) {
+    GuestRow.createGuestRow(Position.start(), table, guest, unoccupiedWaitidIds, waitidNumber, statesForCurrent, statesForHistory);
     this.destroyRow($tableRow);
   }
 
   /* Creates the guestrow in history table and destroys old one */
-  static setGoneState(table, guest, unoccupiedWaitidIds, waitidNumber, states, $tableRow) {
-    GuestRow.createGuestRow(Position.start(), table, guest, unoccupiedWaitidIds, waitidNumber, states);
+  static setGoneState(table, guest, unoccupiedWaitidIds, waitidNumber, statesForCurrent, statesForHistory, $tableRow) {
+    GuestRow.createGuestRow(Position.start(), table, guest, unoccupiedWaitidIds, waitidNumber, statesForCurrent, statesForHistory);
     this.destroyRow($tableRow);
   }
 

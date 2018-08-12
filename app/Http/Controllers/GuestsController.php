@@ -67,9 +67,10 @@ class GuestsController extends Controller
 
         $waitidNumber = Waitid::getNumberOfWaitid($guest['waitid_id'])->number;
         $unoccupiedWaitids = Waitid::unoccupied()->get();
-        $states = State::current()->get();
+        $statesForCurrent = State::current()->get();
+        $statesForHistory = State::history()->get();
 
-        event((new GuestCreated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
+        event((new GuestCreated($guest, $unoccupiedWaitids, $waitidNumber, $statesForCurrent, $statesForHistory)));
 
         return redirect('/guests');
     }
@@ -97,17 +98,17 @@ class GuestsController extends Controller
         if (is_null($newGuest['waitid_id'])) {
             $newGuest['waitid_id'] = $guest->waitid_id;
         }
-        if (is_null($newGuest['state_id'])) {
-            $newGuest['state_id'] = $guest->state_id;
-        }
         if (is_null($newGuest['group_size'])) {
             $newGuest['group_size'] = $guest->group_size;
+        }
+        if (is_null($newGuest['preordered'])) {
+            $newGuest['preordered'] = $guest->preordered;
         }
         if (is_null($newGuest['comment'])) {
             $newGuest['comment'] = $guest->comment;
         }
-        if (is_null($newGuest['preordered'])) {
-            $newGuest['preordered'] = $guest->preordered;
+        if (is_null($newGuest['state_id'])) {
+            $newGuest['state_id'] = $guest->state_id;
         }
 
         $updatedGuest = Guest::find($guest->id);
@@ -121,9 +122,10 @@ class GuestsController extends Controller
 
         $waitidNumber = Waitid::getNumberOfWaitid($updatedGuest['waitid_id'])->number;
         $unoccupiedWaitids = Waitid::unoccupied()->get();
-        $states = State::current()->get();
+        $statesForCurrent = State::current()->get();
+        $statesForHistory = State::history()->get();
 
-        event((new GuestUpdated($guest, $unoccupiedWaitids, $waitidNumber, $states)));
+        event((new GuestUpdated($guest, $unoccupiedWaitids, $waitidNumber, $statesForCurrent, $statesForHistory)));
 
         return redirect('/guests');
     }

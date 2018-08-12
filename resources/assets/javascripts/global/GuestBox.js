@@ -1,7 +1,13 @@
 class GuestBox {
+  static setSeatedState($box) {
+    let $inputState = $box.querySelector('input[name="guest_state_id"]');
+    $inputState.value = 3;
+  }
+
   static initGuestBox($box) {
     $box.addEventListener('click', event => {
       event.preventDefault();
+      this.setSeatedState($box);
       $box.querySelector('.form--set-state').submit();
     });
   }
@@ -51,6 +57,11 @@ class GuestBox {
     $boxForm.method = 'POST';
     $boxForm.appendChild(this.createInput('hidden', '_token', CSRF_TOKEN));
     $boxForm.appendChild(this.createInput('hidden', '_method', 'PATCH'));
+    $boxForm.appendChild(this.createInput('hidden', 'guest_id', guest.id));
+    $boxForm.appendChild(this.createInput('hidden', 'guest_waitid_id', guest.waitid_id));
+    $boxForm.appendChild(this.createInput('hidden', 'guest_group_size', guest.group_size));
+    $boxForm.appendChild(this.createInput('hidden', 'guest_preordered', guest.preordered));
+    $boxForm.appendChild(this.createInput('hidden', 'guest_comment', guest.comment));
     $boxForm.appendChild(this.createInput('hidden', 'guest_state_id', guest.state_id));
 
     return $boxForm;

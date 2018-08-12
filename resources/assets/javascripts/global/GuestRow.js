@@ -246,11 +246,11 @@ class GuestRow {
     return $tableColumn;
   }
 
-  static createTableColumnStates(classnames, guest, states) {
+  static createTableColumnStates(classnames, guest, statesForCurrent) {
     let $tableColumn = document.createElement('div');
     Helper.addClassnames($tableColumn, classnames);
 
-    let $modalList = this.createTableColumnModalList(guest, ['modal__list'], states, {'name': 'data-state-id'}, ['button-toggle', 'button-toggle--long']);
+    let $modalList = this.createTableColumnModalList(guest, ['modal__list'], statesForCurrent, {'name': 'data-state-id'}, ['button-toggle', 'button-toggle--long']);
     $tableColumn.appendChild($modalList);
 
     // If table__column--danger-text
@@ -292,11 +292,12 @@ class GuestRow {
   }
 
   /* create DOM elements for a new GuestRow  */
-  static createGuestRow(position, table, guest, unoccupiedWaitids, waitidNumber, states) {
+  static createGuestRow(position, table, guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory) {
     let $tableBody = document.querySelector(`.table__body--${table}`);
+    let isTableHistory = position === 'start' ? true : false;
 
     let $guestForm = this.createGuestForm(guest);
-    if (position === 'start') {
+    if (isTableHistory) {
       $tableBody.insertBefore($guestForm, $tableBody.firstChild);
     } else {
       $tableBody.appendChild($guestForm);
@@ -326,7 +327,7 @@ class GuestRow {
     let $tableColumnArrivalTime = this.createTableColumnArrivalTime(['table__column', 'table__column--arrival-time'], guest);
     $guestForm.appendChild($tableColumnArrivalTime);
 
-    let $tableColumnStates = this.createTableColumnStates(['table__column', 'table__column--state'], guest, states);
+    let $tableColumnStates = this.createTableColumnStates(['table__column', 'table__column--state'], guest, isTableHistory ? statesForHistory : statesForCurrent);
     $guestForm.appendChild($tableColumnStates);
 
     this.initGuestRow($tableBody, $guestForm);
@@ -335,10 +336,11 @@ class GuestRow {
   /**
    * Gets called by Pusher event listener (when table was updated)
    */
-  static updateGuestRow(guest, unoccupiedWaitids, waitidNumber, states) {
+  static updateGuestRow(guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory) {
     let $tableRowForms = document.querySelectorAll('.table__row--form'),
       $guestForm = document.getElementById('guest-id-' + guest.id);
-
+    console.log(guest.state_id);
+    console.log(Guest.getInputStateValue($guestForm));
     /**
      * Find out what was updated and call corresponding method to update
      */
@@ -376,13 +378,12 @@ class GuestRow {
           break;
         case 2:
           Guest.setAssignedState(guest, waitidNumber, $guestForm);
-          Guest.setInputStateValue($guestForm, guest.state);
           break;
         case 3:
-          Guest.setSeatedState('history', guest, unoccupiedWaitids, waitidNumber, states, $guestForm);
+          Guest.setSeatedState('history', guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory, $guestForm);
           break;
         case 4:
-          Guest.setGoneState('history', guest, unoccupiedWaitids, waitidNumber, states, $guestForm);
+          Guest.setGoneState('history', guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory, $guestForm);
           break;
         default:
           //
