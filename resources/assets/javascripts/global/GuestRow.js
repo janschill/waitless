@@ -74,8 +74,8 @@ class GuestRow {
     let $guestForm = document.createElement('form');
     $guestForm.method = 'POST';
     $guestForm.action = `/guests/${guest.id}`;
-    $guestForm.classList.add('table__row');
-    $guestForm.classList.add('table__row--form');
+    Helper.addClassnames($guestForm, ['table__row', 'table__row--form']);
+    $guestForm.id = `guest-id-${guest.id}`;
 
     return $guestForm;
   }
