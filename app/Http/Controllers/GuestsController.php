@@ -22,11 +22,7 @@ class GuestsController extends Controller
         $stateSeated = State::seated()->first();
         /* guests  */
         $guests = Guest::waiting()->get();
-        $historyGuests = Guest::filter(3)
-        ->filter(4)
-        ->limit(10)
-        ->orderBy('last_state_change', 'desc')
-        ->get();
+        $historyGuests = Guest::history()->get();
         $assignedGuests = Guest::assigned()->get();
 
         return view('guests.index', compact('stateSeated', 'statesForCurrent', 'statesForHistory', 'guests', 'historyGuests', 'assignedGuests', 'unoccupiedWaitids'));
