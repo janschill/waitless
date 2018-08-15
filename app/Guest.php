@@ -12,7 +12,7 @@ class Guest extends Model
 
     public function scopeWaiting($query)
     {
-        return $query->where('state_id', 1);
+        return $query->where('state_id', 1)->orderBy('arrival_time', 'asc');
     }
 
     public function scopeAssigned($query)
