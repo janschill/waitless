@@ -159,7 +159,7 @@ class GuestRow {
     let $title = this.createModalTitle('Wartemarke bearbeiten');
     $modal.appendChild($title);
 
-    let $modalList = this.createTableColumnModalList(guest, ['modal__list', 'modal__list--update', 'modal__list--waitid-ids'], unoccupiedWaitids, {'name': 'data-waitid-id'}, ['button-toggle', 'button-toggle--unoccupied-waitid-id']);
+    let $modalList = this.createTableColumnModalList(guest, ['modal__list', 'modal__list--flex', 'modal__list--update', 'modal__list--waitid-ids'], unoccupiedWaitids, {'name': 'data-waitid-id'}, ['button-toggle', 'button-toggle--unoccupied-waitid-id']);
     $modal.appendChild($modalList);
 
     let $formSubmit = this.createTableColumnFormSubmit('form__submit--waitid-id');
@@ -184,7 +184,7 @@ class GuestRow {
     let $title = this.createModalTitle('Gruppengröße bearbeiten');
     $modal.appendChild($title);
 
-    let $modalList = this.createTableColumnModalList(guest, ['modal__list'], groupSizes, {'name': 'data-group-size'}, ['button-toggle', 'button-toggle--all-group-size']);
+    let $modalList = this.createTableColumnModalList(guest, ['modal__list', 'modal__list--flex'], groupSizes, {'name': 'data-group-size'}, ['button-toggle', 'button-toggle--all-group-size']);
     $modal.appendChild($modalList);
 
     let $formSubmit = this.createTableColumnFormSubmit('form__submit--group-size');

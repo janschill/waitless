@@ -14,7 +14,7 @@
         <a data-guest-waitid-id="{{ $guest->waitid->id }}" class="button-toggle button-toggle--shadow button-toggle--short button-toggle--waitid-id" href="#">{{ $guest->waitid->number }}</a>
         <div class="modal modal--hidden modal--waitid-id">
             <h3 class="title title--medium">Wartenummer bearbeiten</h3>
-            <ul class="modal__list modal__list--update modal__list--waitid-ids">
+            <ul class="modal__list modal__list--flex modal__list--update modal__list--waitid-ids">
                 @foreach ($unoccupiedWaitids as $unoccupiedWaitid)
                     <li data-waitid-id="{{ $unoccupiedWaitid->id }}" class="button-toggle button-toggle--unoccupied-waitid-id{{ $guest->waitid->id === $unoccupiedWaitid->id ? ' button-toggle--highlight' : '' }}">{{ $unoccupiedWaitid->number }}</li>
                 @endforeach
@@ -29,7 +29,7 @@
         <a data-guest-group-size="{{ $guest->group_size }}" class="button-toggle button-toggle--short button-toggle--shadow button-toggle--group-size" href="#">{{ $guest->group_size }}</a>
         <div class="modal modal--hidden modal--group-size">
             <h3 class="title title--medium">Gruppengröße bearbeiten</h3>
-            <ul class="modal__list modal__list--update">
+            <ul class="modal__list modal__list--flex modal__list--update">
                 @for ($i = 1; $i < 12; $i++)
                     <li data-group-size="{{$i}}" class="button-toggle button-toggle--all-group-size{{ $guest->group_size === $i ? ' button-toggle--highlight' : '' }}">{{$i}}</li>
                 @endfor
