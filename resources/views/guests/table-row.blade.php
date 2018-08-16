@@ -67,5 +67,4 @@
             @endforeach
         </ul>
     </div>
-    <div class="table__column table__column--settings"><div class="more-actions"></div></div>
 </form>
