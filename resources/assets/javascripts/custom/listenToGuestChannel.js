@@ -4,7 +4,7 @@
      * Fired when new guest is created
      */
     window.Echo.channel('guests').listen('GuestCreated', event => {
-      GuestRow.createGuestRow(Position.end(), 'active', event.guest, event.unoccupiedWaitids, event.waitidNumber, event.statesForCurrent, event.statesForHistory);
+      GuestRow.createGuestRow(TablePosition.end(), 'active', event.guest, event.unoccupiedWaitids, event.waitidNumber, event.statesForCurrent, event.statesForHistory);
       Notification.showNew(event.guest, event.waitidNumber);
     });
 
