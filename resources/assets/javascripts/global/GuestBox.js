@@ -14,7 +14,7 @@ class GuestBox {
 
   static createBoxParagraph(guest) {
     let $boxParagraph = document.createElement('p');
-    $boxParagraph.appendChild(document.createTextNode(guest.group_size));
+    $boxParagraph.appendChild(document.createTextNode(`Personen: ${guest.group_size}`));
 
     return $boxParagraph;
   }
@@ -28,13 +28,15 @@ class GuestBox {
   }
 
   static createBoxTime(classnames, guest) {
+    const dateTimeArrivalTime = new Date(guest.arrival_time),
+      dateTimeLastStateChange = new Date(guest.last_state_change);
     let $boxTime = document.createElement('div');
     Helper.addClassnames($boxTime, classnames);
     let $paragraphArrival = document.createElement('div');
-    $paragraphArrival.appendChild(document.createTextNode(guest.arrival_time));
+    $paragraphArrival.appendChild(document.createTextNode(`${Helper.stringPadding(dateTimeArrivalTime.getHours())}:${Helper.stringPadding(dateTimeArrivalTime.getMinutes())}`));
     $boxTime.appendChild($paragraphArrival);
     let $paragraphAssigned = document.createElement('div');
-    $paragraphAssigned.appendChild(document.createTextNode(guest.last_state_change));
+    $paragraphAssigned.appendChild(document.createTextNode(`${Helper.stringPadding(dateTimeLastStateChange.getHours())}:${Helper.stringPadding(dateTimeLastStateChange.getMinutes())}`));
     $boxTime.appendChild($paragraphAssigned);
 
     return $boxTime;

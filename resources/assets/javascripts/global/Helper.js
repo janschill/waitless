@@ -4,4 +4,8 @@ class Helper {
       $element.classList.add(classname);
     });
   }
+
+  static stringPadding(number) {
+    return String('00' + number).slice(-2);
+  }
 }
