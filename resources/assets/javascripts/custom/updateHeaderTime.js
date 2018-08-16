@@ -1,8 +1,8 @@
 (() => {
   function updateTime($time) {
-    let date = new Date();
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
+    const date = new Date(),
+      hours = date.getHours(),
+      minutes = date.getMinutes();
     $time.innerHTML = `${Helper.stringPadding(hours)}:${Helper.stringPadding(minutes)}`;
 
     setTimeout(() => {
