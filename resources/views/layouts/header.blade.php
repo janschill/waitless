@@ -6,7 +6,7 @@
     <ul class="navigation__list">
       <li class="navigation__list-item"><a class="navigation__link" href="/guests">Gäste</a></li>
       <li class="navigation__list-item"><a class="navigation__link" href="/waitids">Wartenummer</a></li>
-      <li class="navigation__list-item"><a class="navigation__link" href="/">Statistik</a></li>
+      <li class="navigation__list-item"><a class="navigation__link" href="/statistics">Statistik</a></li>
       <li class="navigation__list-item"><a class="navigation__link" href="/">Einstellungen</a></li>
     </ul>
   </nav>
