@@ -25,7 +25,7 @@ gulp.task('lintJavaScripts', () => {
 
 gulp.task('processJavaScripts', () => {
   gulp.src([
-    'node_modules/jquery/dist/jquery.js',
+    'node_modules/chart.js/dist/Chart.bundle.min.js',
     'resources/assets/javascripts/global/**/*.js',
     'resources/assets/javascripts/custom/**/*.js'
   ])

@@ -9,14 +9,15 @@
         "jquery": true
     },
     "globals": {
-        "Pusher": true,
+        "Chart": true,
         "Echo": true,
-        "GuestRow": true,
         "Form": true,
+        "GuestRow": true,
         "GuestBox": true,
-        "TablePosition": true,
+        "Helper": true,
         "Notification": true,
-        "Helper": true
+        "TablePosition": true,
+        "Pusher": true
     },
     "rules": {
         "strict": "error",
