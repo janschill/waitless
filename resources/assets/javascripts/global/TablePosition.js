@@ -1,4 +1,4 @@
-class Position {
+class TablePosition {
   static start() {
     return 'start';
   }

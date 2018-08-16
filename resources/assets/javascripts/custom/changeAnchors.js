@@ -5,7 +5,7 @@
     aTags.forEach((aTag) => {
       if (!aTag.onclick && aTag.getAttribute('target') !== '_blank') {
         aTag.onclick = () => {
-          window.location = aTag.getAttribute('href');
+          window.location.href = aTag.getAttribute('href');
           return false;
         }
       }
