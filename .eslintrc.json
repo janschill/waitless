@@ -15,7 +15,8 @@
         "Form": true,
         "GuestBox": true,
         "TablePosition": true,
-        "Notification": true
+        "Notification": true,
+        "Helper": true
     },
     "rules": {
         "strict": "error",
