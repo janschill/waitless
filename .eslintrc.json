@@ -14,7 +14,7 @@
         "GuestRow": true,
         "Form": true,
         "GuestBox": true,
-        "Position": true,
+        "TablePosition": true,
         "Notification": true
     },
     "rules": {
