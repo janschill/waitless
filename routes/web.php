@@ -27,4 +27,4 @@ Route::delete('/waitids/{waitid}', 'WaitidsController@destroy');
 
 /* Statistics */
 Route::get('/statistics', 'StatisticsController@index');
-Route::get('/statistics/guests', 'StatisticsController@guests');
+Route::get('/statistics/guests/{year?}/{month?}/{day?}', 'StatisticsController@guests');

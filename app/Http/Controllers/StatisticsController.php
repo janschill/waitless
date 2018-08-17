@@ -17,8 +17,19 @@ class StatisticsController extends Controller
         return view('statistics.index');
     }
 
-    public function guests()
+    public function guests($year = null, $month = null, $day = null)
     {
-        return Guest::all();
+        if (isset($day)) {
+            $guests = Guest::whereDay('arrival_time', '=', $day)
+                           ->whereMonth('arrival_time', '=', $month)
+                           ->whereYear('arrival_time', '=', $year)->get();
+        } else if (isset($month)) {
+            $guests = Guest::whereMonth('arrival_time', '=', $month)
+                           ->whereYear('arrival_time', '=', $year)->get();
+        } else if (isset($year)) {
+            $guests = Guest::whereYear('arrival_time', '=', $year)->get();
+        }
+
+        return $guests;
     }
 }
