@@ -175,12 +175,15 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     const $chart = document.querySelector('.chart'),
-      $statisticsControl = document.querySelector('.statistics-control'),
-      $buttonToggles = $statisticsControl.querySelectorAll('.button-toggle');
-    let chart = initChart($chart);
+      $statisticsControl = document.querySelector('.statistics-control');
 
-    $buttonToggles.forEach(($button) => {
-      initButton($buttonToggles, $button, chart);
-    });
+    if ($statisticsControl) {
+      const $buttonToggles = $statisticsControl.querySelectorAll('.button-toggle'),
+        chart = initChart($chart);
+
+      $buttonToggles.forEach(($button) => {
+        initButton($buttonToggles, $button, chart);
+      });
+    }
   });
 })();
