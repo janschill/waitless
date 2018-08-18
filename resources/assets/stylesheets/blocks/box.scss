@@ -1,4 +1,7 @@
 .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 15px 5px 5px;
   border: 1px solid $color-light;
   margin: 0 10px;

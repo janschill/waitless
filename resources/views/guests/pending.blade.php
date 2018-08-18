@@ -5,10 +5,6 @@
       {{-- <h2 class="box__headline box__headline--large">T.10</h2> --}}
       <h3 class="box__headline box__headline--large">#{{ $assignedGuest->waitid->number }}</h3>
       <p>Personen: {{ $assignedGuest->group_size }}</p>
-      <div class="box__time">
-        <p>A.{{ $assignedGuest->arrival_time->format('H:i') }}</p>
-        <p>Z.{{ $assignedGuest->last_state_change->format('H:i') }}</p>
-      </div>
       <form class="form form--set-state" action="/guests/{{ $assignedGuest->id }}" method="POST">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
