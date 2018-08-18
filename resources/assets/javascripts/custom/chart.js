@@ -28,13 +28,7 @@
   }
 
   function initChart(data, $chart) {
-    console.log(data);
-    console.log(dataMappedToWorkingHours(data));
-
-
-    //A let backgroundColor = data.map(() => { return 'rgba(255, 99, 132, 0.2)' })
-    //A let borderColor = data.map(() => { return 'rgba(255, 99, 132, 1)' })
-    let chart = new Chart($chart, {
+    return new Chart($chart, {
       type: 'bar',
       data: {
         labels: getHoursWorkingHours(),
@@ -42,34 +36,19 @@
           label: 'Gäste',
           data: dataMappedToWorkingHours(data),
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 99, 132, 0.2)'
-          ],
-          borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255,99,132,1)'
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 99, 132, 0.5)'
           ],
           borderWidth: 1
         }]
@@ -84,7 +63,6 @@
         }
       }
     });
-    console.log(chart);
   }
 
   function fetchData(url, returnData, $chart) {
