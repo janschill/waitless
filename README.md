@@ -4,18 +4,15 @@ waitless is a client-server application using Laravel to manage the waiting gues
 
 It uses two clients, where one is used to welcome new guests and register them into the system and the other is used inside the restaurant by the service to allocate the guests to a table.
 
-## Feedback Papierprotoyp
+## Getting started
 
-* Farbgestaltung an Corporate Design anpassen
-* Historie-Unterpunkt
-* Vorbestellung lieber Checkbox oder Schiebeschalter
-* Gast löschen Position ändern
-* Speichern und Abbrechen tauschen?
-* Hamburger-Menü vllt rechts?
-* Kommentar-Button wirkt wie Eingabe, ... reicht vllt
-* wartend wirkt inaktiv wegen Grauton
-  * vllt Abstand zwischen wartend, platziert
-  * platziert-Icon misverständlich
+### Installation
+
+* Clone repository
+
+### Usage
+
+Happy coding
 
 ## Setup
 
@@ -170,3 +167,17 @@ Our application had to have at least two active clients, where one would create 
 Laravel has a built-in support for Pusher, which we then chose, based on the great integration. Signing up with Pusher and creating an application on its dashboard, we were able to implement the needed keys to our front- and backend.
 
 With Laravel's events and broadcasting we created a channel on which the clients listened for the change, which then triggered JavaScript, which updated the DOM accordingly.
+
+
+## Feedback Papierprotoyp
+
+* Farbgestaltung an Corporate Design anpassen
+* Historie-Unterpunkt
+* Vorbestellung lieber Checkbox oder Schiebeschalter
+* Gast löschen Position ändern
+* Speichern und Abbrechen tauschen?
+* Hamburger-Menü vllt rechts?
+* Kommentar-Button wirkt wie Eingabe, ... reicht vllt
+* wartend wirkt inaktiv wegen Grauton
+  * vllt Abstand zwischen wartend, platziert
+  * platziert-Icon misverständlich
