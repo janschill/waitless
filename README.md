@@ -1,5 +1,17 @@
 # waitless
 
+## Feedback 27.08.
+* evtl. Backup-Funktion?
+* Bearbeiten-Button ist bei Personenanzahl oder Nummer verwirrend -> Umbenennen, vllt Speichern
+* Buttons optisch buttoniger machen
+* Bei Bearbeiten Autofokus in Textfeld
+* größter Kritikpunkt: Plus-Button ungünstig, blockiert Elemente. Anders darstellen, vllt in der Nähe von Aktuelles, da die Nummer dort hinzugefügt wird?
+* Hinweise-Edit in Historie crashed
+* Lieber ... bei langen Kommentaren, abgeschnittener Text wirkt unruhig
+* Statistik an Stil anpassen, Schrift schwarz
+* Wichtig bei Doku: Warum? Irrwege
+* Kleine Designsachen: Abstände von Karten zu allen Seiten gleich, Waitless größer, waitless, Zeit und Menu auf einer Höhe, Einträge links rechts Abstand gleich
+
 waitless is a client-server application using Laravel to manage the waiting guests in a restaraunt.
 
 It uses two clients, where one is used to welcome new guests and register them into the system and the other is used inside the restaurant by the service to allocate the guests to a table.
