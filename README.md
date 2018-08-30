@@ -8,13 +8,15 @@ In Gaststätten mit begrenzten Sitzplätzen kommt es oft zu Problemen bei der Zu
 Um diese Problematik zu beheben, soll eine Webanwendung zur Verwaltung von Gästen erstellt werden. Mit Tablets können Mitarbeitern von Restaurants darauf zugreifen.
 #### Ablauf
 * Gäste kommen an
+* Mitarbeiter dr
 ...
 
 Da die Anwendung für dei Mitarbeiter drinnen und draußen identisch ist, können alle Aktionen sowohl von Mitarbeitern draußen als auch drinnen vorgenommen werden. Dies erlaubt flexible Abläufe.
 ### Anforderungen
 Mehrere Geräte müssen gleichzeitig auf die Anwendung zugreifen können und Änderungen auf beiden aktualisiert werden.
 Gäste müssen angelegt werden können und ihnen Personenanzahl, eine Wartenummer
-Damit Gäste die ihnen zugewiesene Wartenummer nicht vergessen, 
+Damit Gäste die ihnen zugewiesene Wartenummer nicht vergessen, können Mitarbeiter Ihnen Karten geben, auf denen die Nummer steht. Das System sollte daher bei neuen Nutzern freie Nummern aus einer Liste anbieten.
+Damit Kunden schon während sie warten Getränke bekommen können, müssen Mitarbeiter in dem System vermerken können, wenn bereits eine Rechnung besteht.
 
 
 ### Iterationen
