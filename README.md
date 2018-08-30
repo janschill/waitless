@@ -13,16 +13,31 @@ Um diese Problematik zu beheben, soll eine Webanwendung zur Verwaltung von Gäst
 Da die Anwendung für dei Mitarbeiter drinnen und draußen identisch ist, können alle Aktionen sowohl von Mitarbeitern draußen als auch drinnen vorgenommen werden. Dies erlaubt flexible Abläufe.
 ### Anforderungen
 Mehrere Geräte müssen gleichzeitig auf die Anwendung zugreifen können und Änderungen auf beiden aktualisiert werden.
+Gäste müssen angelegt werden können und ihnen Personenanzahl, eine Wartenummer
+Damit Gäste die ihnen zugewiesene Wartenummer nicht vergessen, 
+
 
 ### Iterationen
-Nach der Festlegung der Anforderungen an das Projekt wurden erste Skizzen angefertigt. Das Konzept war zu Beginn allerdings noch etwas anders: Der Plan war zuerst, dass Gäste sich selbstständig an einem Tochscreen anmelden:
+Nach der Festlegung der Anforderungen an das Projekt wurden erste Skizzen angefertigt. Das Konzept war zu Beginn allerdings noch etwas anders: Der Plan war zuerst, dass Gäste sich selbstständig an einem Tochscreen anmelden. Es sollte drei Clients geben: Einen Touchscreen, der im Eingangsbereich steht, auf dem sich die Gäste anmelden können:
+<img src="https://imgur.com/M68zmDg.jpg" width="50%"><img src="https://imgur.com/6O6MO2y.jpg" width="50%">
+<img src="https://imgur.com/U4WzmIU.jpg" width="50%">
+Einen großen Bildschirm, der die Liste aller wartender Gäste anzeigt:
+<img src="https://imgur.com/ubnRs4F.jpg" width="40%"><img src="https://imgur.com/4i8lAXO.jpg" width="60%">
+...
 
-Dieses Konzept wurde jedoch 
+
+
+Dieses Konzept wurde jedoch nicht weiter verfolgt, da wir bemerkt haben, dass in der Praxis besser nur Mitarebeoiter.
+Um dieses Konzept zu testen, haben wir einen neuen Papierprototypen angefertigt:
+
+XD-Skizzen??
+
+
+### Endergebnis
 
 ### Umsetzung
 Laravel...
 
-### Endergebnis
 
 ### Installationsanleitung
 
