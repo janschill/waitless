@@ -23,10 +23,13 @@ Mehrere Geräte müssen gleichzeitig auf die Anwendung zugreifen können und Än
 Gäste müssen angelegt werden können und ihnen Personenanzahl, eine Wartenummer
 Damit Gäste die ihnen zugewiesene Wartenummer nicht vergessen, können Mitarbeiter Ihnen Karten geben, auf denen die Nummer steht. Das System sollte daher bei neuen Nutzern freie Nummern aus einer Liste anbieten.
 Damit Kunden schon während sie warten Getränke bekommen können, müssen Mitarbeiter in dem System vermerken können, wenn bereits eine Rechnung besteht.
+Falsche Eingaben sollen schnell behoben werden können.
+Für die Leitung der Gaststätte sollen die erfassten Daten in Diagrammen angezeigt werden können.
+Neue Wartenummern sollen angelegt werden können, bereits angelegte deaktivert werden.
 
 
 ### Iterationen
-Nach der Festlegung der Anforderungen an das Projekt wurden erste Skizzen angefertigt. Das Konzept war zu Beginn allerdings noch etwas anders: Der Plan war zuerst, dass Gäste sich selbstständig an einem Tochscreen anmelden. Es sollte drei Clients geben: Einen Touchscreen, der im Eingangsbereich steht, auf dem sich die Gäste anmelden können:
+Nach der Festlegung der Anforderungen an die Anwendung wurden erste Skizzen angefertigt. Das Konzept war zu Beginn allerdings noch etwas anders: Der Plan war zuerst, dass Gäste sich selbstständig an einem Tochscreen anmelden. Es sollte drei Clients geben: Einen Touchscreen, der im Eingangsbereich steht, auf dem sich die Gäste anmelden können:
 <img src="https://imgur.com/M68zmDg.jpg" width="50%"><img src="https://imgur.com/6O6MO2y.jpg" width="50%">
 <img src="https://imgur.com/U4WzmIU.jpg" width="50%">
 Einen großen Bildschirm, der die Liste aller wartender Gäste anzeigt:
@@ -34,14 +37,17 @@ Einen großen Bildschirm, der die Liste aller wartender Gäste anzeigt:
 ...
 
 
-
-Dieses Konzept wurde jedoch nicht weiter verfolgt, da wir bemerkt haben, dass in der Praxis besser nur Mitarebeoiter.
-Um dieses Konzept zu testen, haben wir einen neuen Papierprototypen angefertigt:
+Allerdings haben wir bemerkt, dass es für Gaststätten verlässlicher ist, von Mitarbeitern die Eingaben machen zu lassen und auch die Gäste bevorzugen einen direkten Kontakt mit Mitarbeitern.
+Daher haben wir um dieses Konzept zu testen, einen neuen Papierprototypen angefertigt:
 
 XD-Skizzen??
 
 
 ### Endergebnis
+
+#### Designentscheidungen
+Da die Anwendung von vielen Nutzern über lange Zeit verwendet wird, lag der Fokus auf schnellen Interaktionen mit der Anwendung.
+Daher sind die wichtigsten Aktionen mit einfachem touchen??? auf große Bedienelemente durchzuführen.
 
 ### Umsetzung
 Laravel...
