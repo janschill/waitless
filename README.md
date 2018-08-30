@@ -7,7 +7,13 @@ In Gaststätten mit begrenzten Sitzplätzen kommt es oft zu Problemen bei der Zu
 ### Lösungsansatz
 Um diese Problematik zu beheben, soll eine Webanwendung zur Verwaltung von Gästen erstellt werden. Mit Tablets können Mitarbeitern von Restaurants darauf zugreifen.
 #### Ablauf
-* Gäste kommen an
+* Gäste kommen an, da alle Plätze belegt sind, werden sie vor der Gaststätte von einem Mitarbeiter begrüßt.
+* Dieser fügt die Gäste in der Anwendung hinzu und gibt ihnen eine Wartekarte mit der Wartenummer.
+* Drinnen wird ein Platz frei, ein Mitarbeiter drinne stelt den Status der Gäste auf "zugewiesen"
+* Der Mitarbeiter draußen sagt den Gästen Bescheid.
+* Die Gäste gehen in das Restaurant und werden von einem Mitarbeiter zu dem Tisch geführt.
+* Der Mitarbeiter beendet
+
 * Mitarbeiter dr
 ...
 
