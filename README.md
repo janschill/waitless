@@ -1,5 +1,32 @@
 # waitless
 
+## Projektdokumentation
+## Einleitung
+### Problem
+In Gaststätten mit begrenzten Sitzplätzen kommt es oft zu Problemen bei der Zuweisung der wartenden Gäste auf verfügbare Plätze. Diese Situation ist für die Mitarbeiter unübersichtliich, da nicht klar ist, wie viele Gäste auf freie Plätze warten und welche Personen zuerst erschienen sind. Auch die Gäste können nicht direkt ersehen, ob Plätze frei sind. Oft müssen Gäste weggeshickt werden, wenn keine freien Plätze verfügbar sind. Es ist keine effiziente und faire Platzzuweisung möglich. Außerdem wäre es wünschenswert, dass gesammelten Information analysiert werden, wie zum Beispiel, zu welcher Zeit kommen die meisten Gäste, bzw. wann wird das System benötigt. Wie lange müssen die Gäste warten, hier auch die durchschnittliche Wartezeit in Abhängigkeit zur Gruppengröße.
+### Lösungsansatz
+Um diese Problematik zu beheben, soll eine Webanwendung zur Verwaltung von Gästen erstellt werden. Mit Tablets können Mitarbeitern von Restaurants darauf zugreifen.
+#### Ablauf
+* Gäste kommen an
+...
+
+Da die Anwendung für dei Mitarbeiter drinnen und draußen identisch ist, können alle Aktionen sowohl von Mitarbeitern draußen als auch drinnen vorgenommen werden. Dies erlaubt flexible Abläufe.
+### Anforderungen
+Mehrere Geräte müssen gleichzeitig auf die Anwendung zugreifen können und Änderungen auf beiden aktualisiert werden.
+
+### Iterationen
+Nach der Festlegung der Anforderungen an das Projekt wurden erste Skizzen angefertigt. Das Konzept war zu Beginn allerdings noch etwas anders: Der Plan war zuerst, dass Gäste sich selbstständig an einem Tochscreen anmelden:
+
+Dieses Konzept wurde jedoch 
+
+### Umsetzung
+Laravel...
+
+### Endergebnis
+
+### Installationsanleitung
+
+
 ## Feedback 27.08.
 * evtl. Backup-Funktion?
 * Bearbeiten-Button ist bei Personenanzahl oder Nummer verwirrend -> Umbenennen, vllt Speichern
