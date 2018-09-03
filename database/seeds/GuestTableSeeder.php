@@ -6,6 +6,6 @@ class GuestTableSeeder extends Seeder {
 
   public function run ()
   {
-    factory('App\Guest', 50)->create();
+    factory('App\Guest', 30)->create();
   }
 }
