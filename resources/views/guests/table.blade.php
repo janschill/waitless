@@ -8,7 +8,6 @@
             <div class="table__column">Hinweis</div>
             <div class="table__column">Wartezeit</div>
             <div class="table__column">Status</div>
-            <div class="table__column"></div>
         </div>
     </div>
     <div class="table__caption table__caption--table">Aktuell <span class="table__caption-sub">wartende Gäste ({{ count($guests) }})</span></div>
@@ -29,7 +28,6 @@
             <div class="table__column">Hinweis</div>
             <div class="table__column">Wartezeit</div>
             <div class="table__column">Status</div>
-            <div class="table__column"></div>
         </div>
     </div>
     <div class="table__body table__body--history">

@@ -11,9 +11,11 @@
   width: 100%;
 
   &.button-toggle--comment {
-    overflow: overlay;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     text-align: left;
-    max-width: 200px;
+    max-width: 300px;
     height: 41px;
   }
 
