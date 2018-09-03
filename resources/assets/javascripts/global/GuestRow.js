@@ -63,7 +63,7 @@ class GuestRow {
 
     let $formSuccess = document.createElement('div');
     Helper.addClassnames($formSuccess, ['form__submit', 'form__submit--success', classname]);
-    $formSuccess.appendChild(document.createTextNode('bearbeiten'));
+    $formSuccess.appendChild(document.createTextNode('speichern'));
     $formSubmit.appendChild($formClose);
     $formSubmit.appendChild($formSuccess);
 
@@ -153,10 +153,10 @@ class GuestRow {
     }, ['button-toggle', 'button-toggle--shadow', 'button-toggle--short', 'button-toggle--waitid-id'], waitidNumber);
     $tableColumn.appendChild($button);
 
-    let $modal = this.createTableColumnModal(['modal','modal--hidden','modal--waitid-id'], 'Wartenummer bearbeiten');
+    let $modal = this.createTableColumnModal(['modal','modal--hidden','modal--waitid-id'], 'Wartenummer ändern');
     $tableColumn.appendChild($modal);
 
-    let $title = this.createModalTitle('Wartemarke bearbeiten');
+    let $title = this.createModalTitle('Wartemarke ändern');
     $modal.appendChild($title);
 
     let $modalList = this.createTableColumnModalList(guest, ['modal__list', 'modal__list--flex', 'modal__list--update', 'modal__list--waitid-ids'], unoccupiedWaitids, {'name': 'data-waitid-id'}, ['button-toggle', 'button-toggle--unoccupied-waitid-id']);
@@ -178,10 +178,10 @@ class GuestRow {
     }, ['button-toggle', 'button-toggle--shadow', 'button-toggle--short', 'button-toggle--group-size'], guest.group_size);
     $tableColumn.appendChild($button);
 
-    let $modal = this.createTableColumnModal(['modal','modal--hidden','modal--group-size'], 'Gruppengröße bearbeiten');
+    let $modal = this.createTableColumnModal(['modal','modal--hidden','modal--group-size'], 'Gruppengröße ändern');
     $tableColumn.appendChild($modal);
 
-    let $title = this.createModalTitle('Gruppengröße bearbeiten');
+    let $title = this.createModalTitle('Gruppengröße ändern');
     $modal.appendChild($title);
 
     let $modalList = this.createTableColumnModalList(guest, ['modal__list', 'modal__list--flex'], groupSizes, {'name': 'data-group-size'}, ['button-toggle', 'button-toggle--all-group-size']);
@@ -221,10 +221,10 @@ class GuestRow {
     }, ['button-toggle', 'button-toggle--comment', 'button-toggle--shadow'], guest.comment);
     $tableColumn.appendChild($button);
 
-    let $modal = this.createTableColumnModal(['modal','modal--hidden','modal--comment'], 'Hinweis bearbeiten');
+    let $modal = this.createTableColumnModal(['modal','modal--hidden','modal--comment'], 'Hinweis ändern');
     $tableColumn.appendChild($modal);
 
-    let $title = this.createModalTitle('Hinweis bearbeiten');
+    let $title = this.createModalTitle('Hinweis ändern');
     $modal.appendChild($title);
 
     let $input = this.createInputComment(guest, ['modal__text', 'modal__text--comment']);
