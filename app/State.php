@@ -19,27 +19,11 @@ class State extends Model
 
     public function scopeCurrent($query)
     {
-        return $query->where('id','!=', 3);
+        return $query->where('id', '!=', 1);
     }
 
     public static function scopeHistory($query)
     {
-        return $query->where('id','!=', 2);
-    }
-
-    public static function getCurrentStates()
-    {
-        $states = DB::table('states')
-            ->where('id', '!=', 3)
-            ->get();
-        return $states;
-    }
-
-    public static function getHistoryStates()
-    {
-        $states = DB::table('states')
-            ->where('id', '!=', 2)
-            ->get();
-        return $states;
+        return $query->where('id','=', 1);
     }
 }
