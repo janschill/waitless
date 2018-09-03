@@ -2,13 +2,13 @@
 
 ## Projektdokumentation
 
-## Einleitung
+### Einleitung
 
-### Problem
+#### Problem
 
 In Gaststätten mit begrenzten Sitzplätzen kommt es oft zu Problemen bei der Zuweisung der wartenden Gäste auf verfügbare Plätze. Diese Situation ist für die Mitarbeiter unübersichtliich, da nicht klar ist, wie viele Gäste auf freie Plätze warten und welche Personen zuerst erschienen sind. Auch die Gäste können nicht direkt ersehen, ob Plätze frei sind. Oft müssen Gäste weggeshickt werden, wenn keine freien Plätze verfügbar sind. Es ist keine effiziente und faire Platzzuweisung möglich. Außerdem wäre es wünschenswert, dass gesammelten Information analysiert werden, wie zum Beispiel, zu welcher Zeit kommen die meisten Gäste, bzw. wann wird das System benötigt. Wie lange müssen die Gäste warten, hier auch die durchschnittliche Wartezeit in Abhängigkeit zur Gruppengröße.
 
-### Lösungsansatz
+#### Lösungsansatz
 
 Um diese Problematik zu beheben, soll eine Webanwendung zur Verwaltung von Gästen erstellt werden. Mit Tablets können Mitarbeitern von Restaurants darauf zugreifen.
 
@@ -63,19 +63,6 @@ Daher sind die wichtigsten Aktionen mit einfachem touchen??? auf große Bedienel
 Laravel...
 
 ### Installationsanleitung
-
-## Feedback 27.08
-
-* evtl. Backup-Funktion?
-* Bearbeiten-Button ist bei Personenanzahl oder Nummer verwirrend -> Umbenennen, vllt Speichern
-* Buttons optisch buttoniger machen
-* Bei Bearbeiten Autofokus in Textfeld
-* größter Kritikpunkt: Plus-Button ungünstig, blockiert Elemente. Anders darstellen, vllt in der Nähe von Aktuelles, da die Nummer dort hinzugefügt wird?
-* Hinweise-Edit in Historie crashed
-* Lieber ... bei langen Kommentaren, abgeschnittener Text wirkt unruhig
-* Statistik an Stil anpassen, Schrift schwarz
-* Wichtig bei Doku: Warum? Irrwege
-* Kleine Designsachen: Abstände von Karten zu allen Seiten gleich, Waitless größer, waitless, Zeit und Menu auf einer Höhe, Einträge links rechts Abstand gleich
 
 waitless is a client-server application using Laravel to manage the waiting guests in a restaraunt.
 
@@ -245,8 +232,9 @@ Laravel has a built-in support for Pusher, which we then chose, based on the gre
 
 With Laravel's events and broadcasting we created a channel on which the clients listened for the change, which then triggered JavaScript, which updated the DOM accordingly.
 
+## Feedback
 
-## Feedback Papierprotoyp
+### Papierprotoyp
 
 * Farbgestaltung an Corporate Design anpassen
 * Historie-Unterpunkt
@@ -258,3 +246,16 @@ With Laravel's events and broadcasting we created a channel on which the clients
 * wartend wirkt inaktiv wegen Grauton
   * vllt Abstand zwischen wartend, platziert
   * platziert-Icon misverständlich
+
+### 27.08.2018
+
+* evtl. Backup-Funktion?
+* Bearbeiten-Button ist bei Personenanzahl oder Nummer verwirrend -> Umbenennen, vllt Speichern
+* Buttons optisch buttoniger machen
+* Bei Bearbeiten Autofokus in Textfeld
+* größter Kritikpunkt: Plus-Button ungünstig, blockiert Elemente. Anders darstellen, vllt in der Nähe von Aktuelles, da die Nummer dort hinzugefügt wird?
+* Hinweise-Edit in Historie crashed
+* Lieber ... bei langen Kommentaren, abgeschnittener Text wirkt unruhig
+* Statistik an Stil anpassen, Schrift schwarz
+* Wichtig bei Doku: Warum? Irrwege
+* Kleine Designsachen: Abstände von Karten zu allen Seiten gleich, Waitless größer, waitless, Zeit und Menu auf einer Höhe, Einträge links rechts Abstand gleich
