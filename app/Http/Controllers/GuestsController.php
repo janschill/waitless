@@ -7,23 +7,23 @@ use App\State;
 use App\Waitid;
 use App\Events\GuestUpdated;
 use App\Events\GuestCreated;
+use Carbon\Carbon;
 
 class GuestsController extends Controller
 {
     // GET /guests
     public function index()
     {
-        /* waitids  */
         $allWaitids = Waitid::withTrashed()->get();
         $unoccupiedWaitids = Waitid::unoccupied()->get();
-        /* states  */
+
         $statesForCurrent = State::current()->get();
         $statesForHistory = State::history()->get();
         $stateSeated = State::seated()->first();
-        /* guests  */
-        $guests = Guest::waiting()->get();
-        $historyGuests = Guest::history()->get();
-        $assignedGuests = Guest::assigned()->get();
+
+        $guests = Guest::waiting()->whereDate('arrival_time', Carbon::today())->get();
+        $historyGuests = Guest::history()->whereDate('arrival_time', Carbon::today())->get();
+        $assignedGuests = Guest::assigned()->whereDate('arrival_time', Carbon::today())->get();
 
         return view('guests.index', compact('stateSeated', 'statesForCurrent', 'statesForHistory', 'guests', 'historyGuests', 'assignedGuests', 'unoccupiedWaitids'));
     }

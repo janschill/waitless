@@ -61,10 +61,22 @@
     </div>
     <div data-year="{{ $guest->arrival_time->year }}" data-month="{{ $guest->arrival_time->month }}" data-day="{{ $guest->arrival_time->day }}" data-hours="{{ $guest->arrival_time->hour }}" data-minutes="{{ $guest->arrival_time->minute }}" data-seconds="{{ $guest->arrival_time->second }}" class="table__column table__column--arrival-time{{ $guest->arrival_time->diffForHumans() > 15 ? ' table__column--danger-text' : '' }}">{{ $guest->arrival_time->diffForHumans() }}</div>
     <div class="table__column table__column--state">
-        <ul class="modal__list">
-            @foreach ($states as $state)
-                <li data-state-id="{{ $state->id }}" class="button-toggle button-toggle--long{{ $guest->state->id === $state->id ? ' button-toggle--highlight' : '' }}">{{ $state->state }}</li>
-            @endforeach
-        </ul>
+        @if (isset($currentTable))
+            <div class="modal__list modal__list--dropdown">
+                <div class="button-toggle button-toggle--long">zuweisen</div>
+                <div class="button-toggle">x</div>
+                <ul class="modal__child-list modal__child-list--hidden">
+                    @foreach ($statesForHistory as $state)
+                        <li data-state-id="{{ $state->id }}" class="">{{ $state->state }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @else
+            <ul class="modal__list">
+                @foreach ($statesForHistory as $state)
+                    <li data-state-id="{{ $state->id }}" class="button-toggle button-toggle--long">{{ $state->state }}</li>
+                @endforeach
+            </ul>
+        @endif
     </div>
 </form>
