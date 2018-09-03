@@ -13,10 +13,8 @@
     switch (formId) {
     case 'form-new-guest':
       return Form.validateNewGuestForm($form);
-      break;
     case 'form-new-waitid':
       return Form.validateNewWaitidForm($form, getAllWaitids());
-      break;
     default:
       return false;
     }
