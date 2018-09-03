@@ -13,7 +13,7 @@
     <div class="table__column table__column--waitid-id">
         <a data-guest-waitid-id="{{ $guest->waitid->id }}" class="button-toggle button-toggle--shadow button-toggle--short button-toggle--waitid-id" href="#">{{ $guest->waitid->number }}</a>
         <div class="modal modal--hidden modal--waitid-id">
-            <h3 class="title title--medium">Wartenummer bearbeiten</h3>
+            <h3 class="title title--medium">Wartenummer ändern</h3>
             <ul class="modal__list modal__list--flex modal__list--update modal__list--waitid-ids">
                 @foreach ($unoccupiedWaitids as $unoccupiedWaitid)
                     <li data-waitid-id="{{ $unoccupiedWaitid->id }}" class="button-toggle button-toggle--unoccupied-waitid-id{{ $guest->waitid->id === $unoccupiedWaitid->id ? ' button-toggle--highlight' : '' }}">{{ $unoccupiedWaitid->number }}</li>
@@ -21,14 +21,14 @@
             </ul>
             <div class="form__submit-wrap">
                 <div class="form__submit form__submit--update form__submit--cancel">abbrechen</div>
-                <div class="form__submit form__submit--waitid-id form__submit--success">bearbeiten</div>
+                <div class="form__submit form__submit--waitid-id form__submit--success">speichern</div>
             </div>
         </div>
     </div>
     <div class="table__column table__column--group-size">
         <a data-guest-group-size="{{ $guest->group_size }}" class="button-toggle button-toggle--short button-toggle--shadow button-toggle--group-size" href="#">{{ $guest->group_size }}</a>
         <div class="modal modal--hidden modal--group-size">
-            <h3 class="title title--medium">Gruppengröße bearbeiten</h3>
+            <h3 class="title title--medium">Gruppengröße ändern</h3>
             <ul class="modal__list modal__list--flex modal__list--update">
                 @for ($i = 1; $i < 12; $i++)
                     <li data-group-size="{{$i}}" class="button-toggle button-toggle--all-group-size{{ $guest->group_size === $i ? ' button-toggle--highlight' : '' }}">{{$i}}</li>
@@ -36,7 +36,7 @@
             </ul>
             <div class="form__submit-wrap">
                 <div class="form__submit form__submit--update form__submit--cancel">abbrechen</div>
-                <div class="form__submit form__submit--group-size form__submit--success">bearbeiten</div>
+                <div class="form__submit form__submit--group-size form__submit--success">speichern</div>
             </div>
         </div>
     </div>
@@ -51,11 +51,11 @@
     <div class="table__column table__column--comment">
         <div data-guest-comment="{{ $guest->comment }}" class="button-toggle button-toggle--shadow button-toggle--comment" href="#">{{ $guest->comment }}</div>
         <div class="modal modal--hidden modal--comment">
-            <h3 class="title title--medium">Hinweis bearbeiten</h3>
+            <h3 class="title title--medium">Hinweis ändern</h3>
             <input type="text" class="modal__text modal__text--comment" value="{{ $guest->comment }}">
             <div class="form__submit-wrap">
                 <div class="form__submit form__submit--update form__submit--cancel">abbrechen</div>
-                <div class="form__submit form__submit--comment form__submit--success">bearbeiten</div>
+                <div class="form__submit form__submit--comment form__submit--success">speichern</div>
             </div>
         </div>
     </div>
