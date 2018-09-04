@@ -52,7 +52,7 @@
         <div data-guest-comment="{{ $guest->comment }}" class="button-toggle button-toggle--shadow button-toggle--comment" href="#">{{ $guest->comment }}</div>
         <div class="modal modal--hidden modal--comment">
             <h3 class="title title--medium">Hinweis ändern</h3>
-            <input type="text" class="modal__text modal__text--comment" value="{{ $guest->comment }}">
+            <input type="text" class="modal__text modal__text--comment" value="{{ $guest->comment }}" autofocus>
             <div class="form__submit-wrap">
                 <div class="form__submit form__submit--update form__submit--cancel">abbrechen</div>
                 <div class="form__submit form__submit--comment form__submit--success">speichern</div>
