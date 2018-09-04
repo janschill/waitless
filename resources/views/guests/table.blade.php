@@ -18,6 +18,15 @@
     </div>
 </div>
 
+<div data-form-id="form-new-guest" class="popup popup--new popup--new-guest">
+    <div class="popup__toggle popup__toggle--new-guest">
+        <div class="popup__button">neuen Gast hinzufügen</div>
+    </div>
+    <div class="popup__content">
+        @include ('guests.create')
+    </div>
+</div>
+
 <div class="table table--history">
     <div class="table__caption table__caption--table">Historie <span class="table__caption-sub">letzten 10 Gäste</span></div>
     <div class="table__head table__head--hidden">
