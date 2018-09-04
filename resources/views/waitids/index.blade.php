@@ -39,7 +39,7 @@
 </ul>
 <div class="background background--create-new background--hidden"></div>
 <div data-form-id="form-new-waitid" class="popup popup--new popup--new-waitid">
-    <div class="popup__toggle popup__toggle--new-waitid"></div>
+    <div class="popup__toggle-waitid popup__toggle--new-waitid"></div>
     <div class="popup__content">
         @include ('waitids.create')
     </div>

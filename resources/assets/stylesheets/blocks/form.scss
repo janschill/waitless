@@ -73,6 +73,7 @@
   border: none;
   padding: 10px 15px;
   font-size: 1.3rem;
+  box-shadow: 0 1px 1.5px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.24);
 
   &.form__submit--success {
     background-color: $color-accent-primary;

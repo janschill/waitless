@@ -10,6 +10,11 @@
   position: relative;
   width: 100%;
 
+  &.button-toggle--new-guest {
+    padding: 10px;
+    color: white;
+  }
+
   &.button-toggle--comment {
     white-space: nowrap;
     overflow: hidden;
