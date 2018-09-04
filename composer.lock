@@ -683,16 +683,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.6.37",
+            "version": "v5.6.38",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "975e182d42403b0efdf847c05f6bfb99144f95f5"
+                "reference": "38d838bab9434af79e8ab274ae63f52f7ed45d6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/975e182d42403b0efdf847c05f6bfb99144f95f5",
-                "reference": "975e182d42403b0efdf847c05f6bfb99144f95f5",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/38d838bab9434af79e8ab274ae63f52f7ed45d6e",
+                "reference": "38d838bab9434af79e8ab274ae63f52f7ed45d6e",
                 "shasum": ""
             },
             "require": {
@@ -818,7 +818,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-09-02T13:51:42+00:00"
+            "time": "2018-09-04T13:15:09+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -2875,16 +2875,16 @@
         },
         {
             "name": "laravel/homestead",
-            "version": "v7.15.1",
+            "version": "v7.16.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/homestead.git",
-                "reference": "068814af93aced781d33b4712f211c1c55cedfbc"
+                "reference": "74749a570897421782a4762f30d2d348aa030838"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/homestead/zipball/068814af93aced781d33b4712f211c1c55cedfbc",
-                "reference": "068814af93aced781d33b4712f211c1c55cedfbc",
+                "url": "https://api.github.com/repos/laravel/homestead/zipball/74749a570897421782a4762f30d2d348aa030838",
+                "reference": "74749a570897421782a4762f30d2d348aa030838",
                 "shasum": ""
             },
             "require": {
@@ -2922,7 +2922,7 @@
                 }
             ],
             "description": "A virtual machine for web artisans.",
-            "time": "2018-08-23T16:14:12+00:00"
+            "time": "2018-09-04T14:48:26+00:00"
         },
         {
             "name": "mockery/mockery",
