@@ -20,12 +20,13 @@ class GuestsController extends Controller
         $statesForCurrent = State::current()->get();
         $statesForHistory = State::history()->get();
         $stateSeated = State::seated()->first();
+        $stateAssign = State::assign()->first();
 
         $guests = Guest::waiting()->whereDate('arrival_time', Carbon::today())->get();
         $historyGuests = Guest::history()->whereDate('arrival_time', Carbon::today())->get();
         $assignedGuests = Guest::assigned()->whereDate('arrival_time', Carbon::today())->get();
 
-        return view('guests.index', compact('stateSeated', 'statesForCurrent', 'statesForHistory', 'guests', 'historyGuests', 'assignedGuests', 'unoccupiedWaitids'));
+        return view('guests.index', compact('stateAssign', 'stateSeated', 'statesForCurrent', 'statesForHistory', 'guests', 'historyGuests', 'assignedGuests', 'unoccupiedWaitids'));
     }
 
     // GET /guests/{guest}

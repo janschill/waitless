@@ -62,12 +62,12 @@
     <div data-year="{{ $guest->arrival_time->year }}" data-month="{{ $guest->arrival_time->month }}" data-day="{{ $guest->arrival_time->day }}" data-hours="{{ $guest->arrival_time->hour }}" data-minutes="{{ $guest->arrival_time->minute }}" data-seconds="{{ $guest->arrival_time->second }}" class="table__column table__column--arrival-time{{ $guest->arrival_time->diffForHumans() > 15 ? ' table__column--danger-text' : '' }}">{{ $guest->arrival_time->diffForHumans() }}</div>
     <div class="table__column table__column--state">
         @if (isset($currentTable))
-            <div class="modal__list modal__list--dropdown">
-                <div class="button-toggle button-toggle--long">zuweisen</div>
-                <div class="button-toggle">x</div>
+            <div class="modal__list">
+                <div data-state-id="{{ $stateAssign->id }}" class="button-toggle button-toggle--auto-width">{{ $stateAssign->state }}</div>
+                <div class="button-toggle__dropdown button-toggle__dropdown--state"></div>
                 <ul class="modal__child-list modal__child-list--hidden">
                     @foreach ($statesForCurrent as $state)
-                        <li data-state-id="{{ $state->id }}" class="">{{ $state->state }}</li>
+                        <li data-state-id="{{ $state->id }}" class="button-toggle button-toggle--no-border">{{ $state->state }}</li>
                     @endforeach
                 </ul>
             </div>

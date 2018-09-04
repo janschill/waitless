@@ -215,5 +215,8 @@ class Guest {
           $tableRow.submit();
         });
       });
+    $tableColumn.querySelector('.button-toggle__dropdown').addEventListener('click', () => {
+      $tableColumn.querySelector('.modal__child-list').classList.toggle('modal__child-list--hidden');
+    });
   }
 }

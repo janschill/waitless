@@ -24,6 +24,23 @@ class GuestRow {
     return $title;
   }
 
+  static createModalChildList(modalListClassnames, buttonToggleStateClassnames, buttonToggleDropdownClassnames, stateAssign) {
+    let $modalList = document.createElement('div');
+    Helper.addClassnames($modalList, modalListClassnames);
+
+    let $buttonToggle = document.createElement('div');
+    Helper.addClassnames($buttonToggle, buttonToggleStateClassnames);
+    $buttonToggle.setAttribute('state-id', stateAssign.id);
+    $buttonToggle.appendChild(document.createTextNode(stateAssign.state));
+    $modalList.appendChild($buttonToggle);
+
+    let $buttonToggleDropdown = document.createElement('div');
+    Helper.addClassnames($buttonToggleDropdown, buttonToggleDropdownClassnames);
+    $modalList.appendChild($buttonToggleDropdown);
+
+    return $modalList;
+  }
+
   static createTableColumnModalList(guest, classnames, listItems, dataAttribute, buttonClassnames) {
     let $modalList = document.createElement('ul');
     Helper.addClassnames($modalList, classnames);
@@ -240,20 +257,24 @@ class GuestRow {
     let $tableColumn = document.createElement('div');
     Helper.addClassnames($tableColumn, classnames);
 
-    $tableColumn.appendChild(document.createTextNode('<1 Minute +'))
-    // If table__column--danger-text
+    $tableColumn.appendChild(document.createTextNode('<1 Minute'))
 
     return $tableColumn;
   }
 
-  static createTableColumnStates(classnames, guest, statesForCurrent) {
+  static createTableColumnStates(classnames, guest, states, stateAssign) {
     let $tableColumn = document.createElement('div');
     Helper.addClassnames($tableColumn, classnames);
+    let $modalList;
 
-    let $modalList = this.createTableColumnModalList(guest, ['modal__list'], statesForCurrent, {'name': 'data-state-id'}, ['button-toggle', 'button-toggle--long']);
+    if (stateAssign !== null) {
+      $modalList = this.createModalChildList(['modal__list'], ['button-toggle', 'button-toggle--auto-width'], ['button-toggle__dropdown', 'button-toggle__dropdown--state'], stateAssign);
+      let $modalChildList = this.createTableColumnModalList(guest, ['modal__child-list', 'modal__child-list--hidden'], states, {'name': 'data-state-id'}, ['button-toggle', 'button-toggle--long', 'button-toggle--no-border']);
+      $modalList.appendChild($modalChildList);
+    } else {
+      $modalList = this.createTableColumnModalList(guest, ['modal__list'], states, {'name': 'data-state-id'}, ['button-toggle', 'button-toggle--long']);
+    }
     $tableColumn.appendChild($modalList);
-
-    // If table__column--danger-text
 
     return $tableColumn;
   }
@@ -292,7 +313,7 @@ class GuestRow {
   }
 
   /* create DOM elements for a new GuestRow  */
-  static createGuestRow(position, table, guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory) {
+  static createGuestRow(position, table, guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory, stateAssign) {
     let $tableBody = document.querySelector(`.table__body--${table}`);
     let isTableHistory = position === 'start' ? true : false;
 
@@ -327,7 +348,7 @@ class GuestRow {
     let $tableColumnArrivalTime = this.createTableColumnArrivalTime(['table__column', 'table__column--arrival-time'], guest);
     $guestForm.appendChild($tableColumnArrivalTime);
 
-    let $tableColumnStates = this.createTableColumnStates(['table__column', 'table__column--state'], guest, isTableHistory ? statesForHistory : statesForCurrent);
+    let $tableColumnStates = this.createTableColumnStates(['table__column', 'table__column--state'], guest, isTableHistory ? statesForHistory : statesForCurrent, isTableHistory ? null : stateAssign);
     $guestForm.appendChild($tableColumnStates);
 
     this.initGuestRow($tableBody, $guestForm);
@@ -336,7 +357,7 @@ class GuestRow {
   /**
    * Gets called by Pusher event listener (when table was updated)
    */
-  static updateGuestRow(guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory) {
+  static updateGuestRow(guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory, stateAssign) {
     let $tableRowForms = document.querySelectorAll('.table__row--form'),
       $guestForm = document.getElementById('guest-id-' + guest.id);
 
