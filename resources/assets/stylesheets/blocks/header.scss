@@ -4,11 +4,17 @@
   align-items: center;
   overflow: auto;
   font-size: 130%;
-  padding: 10px 30px 0;
-  margin-bottom: 10px;
+  padding: 20px 30px 0;
   border-bottom: 1px solid $color-light;
 }
 
 .header__branding {
   display: inline-block;
+}
+
+.header__statistics-list {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  width: 300px;
 }
