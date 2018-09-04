@@ -59,6 +59,11 @@
   border-left: 1px solid rgba($color-neutral, 0.3);
 }
 
+.button-toggle--top-border + .button-toggle--top-border {
+  border-left: none;
+  border-top: 1px solid rgba($color-neutral, 0.3);
+}
+
 .button-toggle--no-border {
   border-left: none;
 }
@@ -66,7 +71,7 @@
 .button-toggle__dropdown {
   position: relative;
   float: left;
-  border-left: 1px solid;
+  border-left: 1px solid rgba($color-neutral, 0.3);
   height: 41px;
   padding: 10px 20px;
 }

@@ -67,7 +67,7 @@
                 <div class="button-toggle__dropdown button-toggle__dropdown--state"></div>
                 <ul class="modal__child-list modal__child-list--hidden">
                     @foreach ($statesForCurrent as $state)
-                        <li data-state-id="{{ $state->id }}" class="button-toggle button-toggle--no-border">{{ $state->state }}</li>
+                        <li data-state-id="{{ $state->id }}" class="button-toggle button-toggle--top-border">{{ $state->state }}</li>
                     @endforeach
                 </ul>
             </div>
