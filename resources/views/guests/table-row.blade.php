@@ -66,7 +66,7 @@
                 <div class="button-toggle button-toggle--long">zuweisen</div>
                 <div class="button-toggle">x</div>
                 <ul class="modal__child-list modal__child-list--hidden">
-                    @foreach ($statesForHistory as $state)
+                    @foreach ($statesForCurrent as $state)
                         <li data-state-id="{{ $state->id }}" class="">{{ $state->state }}</li>
                     @endforeach
                 </ul>

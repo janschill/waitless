@@ -13,11 +13,10 @@
     <div class="table__caption table__caption--table">Aktuell <span class="table__caption-sub">wartende Gäste ({{ count($guests) }})</span></div>
     <div class="table__body table__body--active">
         @foreach ($guests as $iterator=>$guest)
-            @include('guests.table-row', ['currentTable' => true])
+            @include('guests.table-row', ['currentTable' => true, 'guest' => $guest, 'states' => $statesForCurrent])
         @endforeach
     </div>
 </div>
-
 <div data-form-id="form-new-guest" class="popup popup--new popup--new-guest">
     <div class="popup__toggle popup__toggle--new-guest">
         <div class="popup__button">neuen Gast hinzufügen</div>
@@ -26,7 +25,6 @@
         @include ('guests.create')
     </div>
 </div>
-
 <div class="table table--history">
     <div class="table__caption table__caption--table">Historie <span class="table__caption-sub">letzten 10 Gäste</span></div>
     <div class="table__head table__head--hidden">
@@ -41,7 +39,7 @@
     </div>
     <div class="table__body table__body--history">
         @foreach ($historyGuests as $iterator=>$historyGuest)
-            @include('guests.table-row')
+            @include('guests.table-row', ['guest' => $historyGuest, 'states' => $statesForHistory])
         @endforeach
     </div>
 </div>

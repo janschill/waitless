@@ -7,8 +7,7 @@
   {{ csrf_field() }}
 
   <label class="form__label" for="waitid-number"></label>
-  <input class="form__text-input" type="number" name="waitid_number" id="waitid-number">
-
+  <input class="form__text-input" type="number" name="waitid_number" id="waitid-number" autofocus>
   <div class="form__submit-wrap">
     <div class="form__submit form__submit--cancel">abbrechen</div>
     <button class="form__submit form__submit--success" type="submit">hinzufügen</button>
