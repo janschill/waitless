@@ -10,6 +10,10 @@
   position: relative;
   width: 100%;
 
+  &.button-toggle--auto-width {
+    width: auto;
+  }
+
   &.button-toggle--new-guest {
     padding: 10px;
     color: white;
@@ -53,4 +57,36 @@
 
 .button-toggle + .button-toggle {
   border-left: 1px solid rgba($color-neutral, 0.3);
+}
+
+.button-toggle--no-border {
+  border-left: none;
+}
+
+.button-toggle__dropdown {
+  position: relative;
+  float: left;
+  border-left: 1px solid;
+  height: 41px;
+  padding: 10px 20px;
+}
+
+.button-toggle__dropdown::before,
+.button-toggle__dropdown::after {
+  content: '';
+  position: absolute;
+  background-color: black;
+  top: 50%;
+  height: 1px;
+  width: 12px;
+}
+
+.button-toggle__dropdown::before {
+  left: 25%;
+  transform: rotate(45deg);
+}
+
+.button-toggle__dropdown::after {
+  right: 25%;
+  transform: rotate(-45deg);
 }
