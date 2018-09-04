@@ -1,7 +1,11 @@
 (() => {
   /* Fill array with color using length of variable length */
   function backgroundColorMappedToData(dataLength) {
-    return Array(dataLength).fill('rgba(255, 99, 132, 0.2)');
+    return Array(dataLength).fill('rgba(52, 152, 219, 0.3)');
+  }
+
+  function borderColorMappedToData(dataLength) {
+    return Array(dataLength).fill('rgba(52, 152, 219, 1)');
   }
 
   /* DAY **************************** */
@@ -81,6 +85,7 @@
       dataset.label = label;
       dataset.data = getMappedToRangeData(timeRange, data);
       dataset.backgroundColor = backgroundColorMappedToData(timeRange.label().length);
+      dataset.borderColor = borderColorMappedToData(timeRange.label().length);
     });
 
     chart.update();
@@ -94,7 +99,8 @@
         datasets: [{
           label: 'Gäste',
           data: [],
-          backgroundColor: []
+          backgroundColor: [],
+          borderColor: []
         }]
       },
       options: {
