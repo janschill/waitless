@@ -18,6 +18,15 @@
         </li>
     @endforeach
 </ul>
+<div class="background background--create-new background--hidden"></div>
+<div data-form-id="form-new-waitid" class="popup popup--new popup--new-waitid">
+    <div class="popup__toggle popup__toggle--new">
+        <div class="popup__button">neue Wartenmarke hinzufügen</div>
+    </div>
+    <div class="popup__content">
+        @include ('waitids.create')
+    </div>
+</div>
 <h2 class="table__caption">Deaktiviert</h2>
 <ul class="box__list box__list--waitid box__list--waitid-disabled">
     @foreach ($disabledWaitids as $waitid)
@@ -37,11 +46,4 @@
         </li>
     @endforeach
 </ul>
-<div class="background background--create-new background--hidden"></div>
-<div data-form-id="form-new-waitid" class="popup popup--new popup--new-waitid">
-    <div class="popup__toggle-waitid popup__toggle--new-waitid"></div>
-    <div class="popup__content">
-        @include ('waitids.create')
-    </div>
-</div>
 @endsection
