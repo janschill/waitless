@@ -30,7 +30,7 @@ class GuestRow {
 
     let $buttonToggle = document.createElement('div');
     Helper.addClassnames($buttonToggle, buttonToggleStateClassnames);
-    $buttonToggle.setAttribute('state-id', stateAssign.id);
+    $buttonToggle.setAttribute('data-state-id', stateAssign.id);
     $buttonToggle.appendChild(document.createTextNode(stateAssign.state));
     $modalList.appendChild($buttonToggle);
 
@@ -271,6 +271,7 @@ class GuestRow {
       $modalList = this.createModalChildList(['modal__list'], ['button-toggle', 'button-toggle--auto-width'], ['button-toggle__dropdown', 'button-toggle__dropdown--state'], stateAssign);
       let $modalChildList = this.createTableColumnModalList(guest, ['modal__child-list', 'modal__child-list--hidden'], states, {'name': 'data-state-id'}, ['button-toggle', 'button-toggle--long', 'button-toggle--no-border']);
       $modalList.appendChild($modalChildList);
+      console.log($modalList);
     } else {
       $modalList = this.createTableColumnModalList(guest, ['modal__list'], states, {'name': 'data-state-id'}, ['button-toggle', 'button-toggle--long']);
     }
