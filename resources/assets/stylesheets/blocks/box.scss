@@ -7,15 +7,8 @@
   margin: 0 10px;
   position: relative;
   text-align: center;
-  width: 125px;
   height: 125px;
   cursor: pointer;
-
-  &.box--waitid {
-    width: 150px;
-    height: 130px;
-    margin-bottom: 30px;
-  }
 }
 
 .box__headline {
@@ -38,8 +31,9 @@
 }
 
 .box__list {
-  display: flex;
-  flex-flow: wrap;
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(6, 1fr);
   width: 100%;
   margin: 0 auto;
   padding: 10px 0;
