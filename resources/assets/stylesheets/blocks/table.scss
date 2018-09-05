@@ -11,11 +11,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 130px 300px 110px 2fr;
   grid-gap: 20px;
-  font-size: 12px;
-  text-transform: uppercase;
-  font-weight: 800;
-  color: $color-darkish;
-  background-color: $color-section;
+  font-size: 10px;
+  color: lighten($color-dark, 20%);
 }
 
 .table__row {
