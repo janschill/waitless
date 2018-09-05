@@ -62,6 +62,14 @@ Daher sind die wichtigsten Aktionen mit einfachem touchen??? auf große Bedienel
 
 Laravel...
 
+#### Problem bzw. Verbesserungen
+
+Da wir uns dafür entschieden kein Frontend-Framework, für die reaktive Darstellung von Inhalten, zu nutzen. Sind wir die ein oder andere Schwierigkeit gestoßen.
+
+1. **Event delegation** beschreibt ein Verfahren bei dem nicht auf die einzelen `Childs` ein `Event-Listener` gesetzt wird, sondern auf dem darüberliegenden `Parent`. Ein Standardbeispiel wäre eine ToDo-Liste. Anstelle die `Click-Event` auf die einzelnen Listenelemente zu setzen, setzen wir nur einen einzelnen auf die `<ul>` und fangen dann mit `if-statements` da geklickte Listenelement über das `Event-Objekt` ab. **Event delegation** hat dadurch den Vorteil, dass, wenn Elemente dynamisch hinzugefügt werden, diese sofort, ohne zusätzliche Programmierung einen `Event-listener` haben.
+
+Wir nutzen kein **Event delegation**, da wir zu spät dieses Konzept kennenlernten, werden es aber später integrieren.
+
 ### Installationsanleitung
 
 waitless is a client-server application using Laravel to manage the waiting guests in a restaraunt.
@@ -78,7 +86,7 @@ It uses two clients, where one is used to welcome new guests and register them i
 
 Happy coding
 
-## Setup
+## Setup for development
 
 In the following we will introduce the technologies used in this project. We will give a brief introduction and explain: how it works, how we implemented it, error that may have occured and explain why we chose the service over others or at all.
 
@@ -90,12 +98,12 @@ In the following we will introduce the technologies used in this project. We wil
 
 [Homestead](https://laravel.com/docs/5.6/homestead) is an official, pre-packaged Vagrant box that provides a development environment without requiring to install PHP, a web server, and any other server software on the local machine.
 
-#### Setting up
+#### Problems
 
 After cloning the repository open `Homestead.yaml`, change `map` to absolute directory.
 When a vagrant environment existed, run `vagrant reload` in a terminal window.
 To start the VM, run `vagrant up`.
-To connect to the database, find the ip of the VM with `ifconfig` when connected through ssh.
+To connect to the database, find the IP address of the VM with `ifconfig` when connected through ssh.
 
 If you encounter a problem like `The following SSH command responded with a non-zero exit status.
 Vagrant assumes that this means the command failed!`:
@@ -224,11 +232,11 @@ php artisan tinker
 App\Model::withTrashed()->where('id', 1)->restore();
 ```
 
-### WebSocket
+### WebSocket/Pusher
 
 Our application had to have at least two active clients, where one would create records, which get added dynamically to the frontend, without a page reload and immediately the other client should retrieve this new entry as well. To achieve this the WebSocket protocoll had to be used.
 
-Laravel has a built-in support for Pusher, which we then chose, based on the great integration. Signing up with Pusher and creating an application on its dashboard, we were able to implement the needed keys to our front- and backend.
+Laravel has a built-in support for Pusher, which we chose, based on the great integration. Signing up with Pusher and creating an application on its dashboard, we were able to implement the needed keys to our front- and backend.
 
 With Laravel's events and broadcasting we created a channel on which the clients listened for the change, which then triggered JavaScript, which updated the DOM accordingly.
 
