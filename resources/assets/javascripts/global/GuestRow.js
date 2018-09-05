@@ -256,7 +256,13 @@ class GuestRow {
   static createTableColumnArrivalTime(classnames, guest) {
     let $tableColumn = document.createElement('div');
     Helper.addClassnames($tableColumn, classnames);
-
+    const guestArrivalTime = new Date(guest.arrival_time);
+    $tableColumn.setAttribute('data-year', guestArrivalTime.getFullYear().toString());
+    $tableColumn.setAttribute('data-month', (guestArrivalTime.getMonth()+1).toString());
+    $tableColumn.setAttribute('data-day', guestArrivalTime.getDate().toString());
+    $tableColumn.setAttribute('data-hours', guestArrivalTime.getHours().toString());
+    $tableColumn.setAttribute('data-minutes', guestArrivalTime.getMinutes().toString());
+    $tableColumn.setAttribute('data-seconds', guestArrivalTime.getSeconds().toString());
     $tableColumn.appendChild(document.createTextNode('<1 Minute'))
 
     return $tableColumn;
@@ -271,7 +277,6 @@ class GuestRow {
       $modalList = this.createModalChildList(['modal__list'], ['button-toggle', 'button-toggle--auto-width'], ['button-toggle__dropdown', 'button-toggle__dropdown--state'], stateAssign);
       let $modalChildList = this.createTableColumnModalList(guest, ['modal__child-list', 'modal__child-list--hidden'], states, {'name': 'data-state-id'}, ['button-toggle', 'button-toggle--long', 'button-toggle--no-border']);
       $modalList.appendChild($modalChildList);
-      console.log($modalList);
     } else {
       $modalList = this.createTableColumnModalList(guest, ['modal__list'], states, {'name': 'data-state-id'}, ['button-toggle', 'button-toggle--long']);
     }
