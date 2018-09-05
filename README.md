@@ -186,6 +186,8 @@ For Laravel and this application in particular there are a few extra steps that 
 
 ### Deployment
 
+For deployment we are using a single `deploy.sh` Shell-script.
+
 ## Projektdokumentation
 
 ### Einleitung
