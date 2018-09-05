@@ -1,4 +1,8 @@
 class Notification {
+  static personSingularOrPlural(guestGroupSize) {
+    return guestGroupSize > 1 ? 'Personen' : 'Person';+
+  }
+
   static activateWindow($notification) {
     $notification.classList.add('notification--visible');
 
@@ -18,7 +22,7 @@ class Notification {
 
     $notificationHeaderTitle.innerHTML = title;
     $notificationMainTitle.innerHTML = `<strong>#${waitidNumber}</strong>`;
-    $notificationParagraph.innerHTML = `${guest.group_size} – ${guest.comment}`
+    $notificationParagraph.innerHTML = `${guest.group_size} ${this.personSingularOrPlural(guest.group_size)} – ${guest.comment}`
   }
 
   static showNew(guest, waitidNumber) {
