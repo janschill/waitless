@@ -70,8 +70,9 @@ class GuestsController extends Controller
         $unoccupiedWaitids = Waitid::unoccupied()->get();
         $statesForCurrent = State::current()->get();
         $statesForHistory = State::history()->get();
+        $stateAssign = State::assign()->first();
 
-        event((new GuestCreated($guest, $unoccupiedWaitids, $waitidNumber, $statesForCurrent, $statesForHistory)));
+        event((new GuestCreated($guest, $unoccupiedWaitids, $waitidNumber, $statesForCurrent, $statesForHistory, $stateAssign)));
 
         return redirect('/guests');
     }
@@ -125,8 +126,9 @@ class GuestsController extends Controller
         $unoccupiedWaitids = Waitid::unoccupied()->get();
         $statesForCurrent = State::current()->get();
         $statesForHistory = State::history()->get();
+        $stateAssign = State::assign()->first();
 
-        event((new GuestUpdated($guest, $unoccupiedWaitids, $waitidNumber, $statesForCurrent, $statesForHistory)));
+        event((new GuestUpdated($guest, $unoccupiedWaitids, $waitidNumber, $statesForCurrent, $statesForHistory, $stateAssign)));
 
         return redirect('/guests');
     }
