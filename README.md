@@ -170,6 +170,21 @@ Laravel has a built-in support for Pusher, which we chose, based on the great in
 
 With Laravel's events and broadcasting we created a channel on which the clients listened for the change, which then triggered JavaScript, which updated the DOM accordingly.
 
+### Continous Integration
+
+For continous integration we are using Travis CI, which allows private CI for students. Setting up is pretty straight forward:
+
+1. Sign up with GitHub
+1. Go to the to be integrated repository -> Settings -> Integrations & servives, add Travis CI.
+1. Generate ssh keys and add one to the Travis (private) repository settings and one to GitHub (public)
+1. Make sure a `.travis.yml` file is in the root of your repository
+
+For Laravel and this application in particular there are a few extra steps that have to be taken care of:
+
+1. Add a `.env.travis` file which holds the environment settings for a Laravel application.
+1. Add a database configuration to `app/config/database.php`
+
+### Deployment
 
 ## Projektdokumentation
 
