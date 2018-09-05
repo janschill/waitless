@@ -94,7 +94,7 @@ class Guest {
     let $pendingList = document.querySelector('.box__list--pending'),
       $box = GuestBox.createBox(guest, waitidNumber);
     $pendingList.appendChild($box);
-    Guest.destroyRow($tableRow);
+    this.destroyRow($tableRow);
   }
 
   /* Creates the guestrow in history table and destroys old one */
@@ -215,8 +215,11 @@ class Guest {
           $tableRow.submit();
         });
       });
-    $tableColumn.querySelector('.button-toggle__dropdown').addEventListener('click', () => {
-      $tableColumn.querySelector('.modal__child-list').classList.toggle('modal__child-list--hidden');
-    });
+    const $buttonToggleDropdown = $tableColumn.querySelector('.button-toggle__dropdown');
+    if ($buttonToggleDropdown) {
+      $buttonToggleDropdown.addEventListener('click', () => {
+        $tableColumn.querySelector('.modal__child-list').classList.toggle('modal__child-list--hidden');
+      });
+    }
   }
 }
