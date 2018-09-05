@@ -2,7 +2,7 @@
   <div class="header__branding">
   @include ('layouts.logo')
   </div>
-  <ul class="header__statistics-list">
+  <ul class="header__statistics-list header__statistics-list--hidden">
     <li class="header__statistics-list-item">100 Gäste</li>
     <li class="header__statistics-list-item">2 Personen</li>
     <li class="header__statistics-list-item">10 Minuten</li>
