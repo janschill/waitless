@@ -208,6 +208,10 @@ class Guest {
     });
   }
 
+  static initGuestArrivalTime($tableColumn) {
+    ArrivalTime.initArrivalTime($tableColumn);
+  }
+
   static initGuestState($tableRow, $tableColumn) {
     $tableColumn.querySelectorAll('.button-toggle').forEach($guestStateButton => {
         $guestStateButton.addEventListener('click', () => {
