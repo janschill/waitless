@@ -9,6 +9,7 @@ before_script:
   - mysql -e 'create database travis_database_test;'
   - composer install
   - npm install
+  - npm install -g gulp-cli
   - php artisan migrate
   - php artisan db:seed
 
