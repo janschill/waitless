@@ -1,6 +1,6 @@
 class Notification {
   static personSingularOrPlural(guestGroupSize) {
-    return guestGroupSize > 1 ? 'Personen' : 'Person';+
+    return guestGroupSize > 1 ? 'Personen' : 'Person';
   }
 
   static activateWindow($notification) {

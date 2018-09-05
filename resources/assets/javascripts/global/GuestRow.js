@@ -395,7 +395,7 @@ class GuestRow {
     } else if (guest.state_id != Guest.getInputStateValue($guestForm)) {
       switch (guest.state_id) {
         case 1:
-          Guest.setWaitingState('active', guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory, $guestForm);
+          Guest.setWaitingState('active', guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory, stateAssign, $guestForm);
           break;
         case 2:
           Guest.setAssignedState(guest, waitidNumber, $guestForm);

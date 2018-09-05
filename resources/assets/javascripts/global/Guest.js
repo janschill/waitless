@@ -84,8 +84,8 @@ class Guest {
   }
 
   /* Creates the guestrow in pending list and destroys old one */
-  static setWaitingState(table, guest, unoccupiedWaitidIds, waitidNumber, statesForCurrent, statesForHistory, $tableRow) {
-    GuestRow.createGuestRow(TablePosition.end(), table, guest, unoccupiedWaitidIds, waitidNumber, statesForCurrent, statesForHistory);
+  static setWaitingState(table, guest, unoccupiedWaitidIds, waitidNumber, statesForCurrent, statesForHistory, stateAssign, $tableRow) {
+    GuestRow.createGuestRow(TablePosition.end(), table, guest, unoccupiedWaitidIds, waitidNumber, statesForCurrent, statesForHistory, stateAssign);
     this.destroyRow($tableRow);
   }
 
