@@ -1,5 +1,7 @@
 # waitless
 
+[![Build Status](https://travis-ci.com/janschill/waitless.svg?token=kyy8x99kJVDJb9GoYEGS&branch=master)](https://travis-ci.com/janschill/waitless)
+
 waitless is a client-server application using Laravel to manage the waiting guests in a restaraunt.
 
 It uses two clients, where one is used to welcome new guests and register them into the system and the other is used inside the restaurant by the service to allocate the guests to a table.
