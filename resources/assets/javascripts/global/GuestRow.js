@@ -302,6 +302,9 @@ class GuestRow {
     /* initialize Comment */
     let $guestComment = $tableRow.querySelector('.table__column--comment');
     Guest.initGuestComment($tableRow, $guestComment, $modals);
+    /* initialize ArrivalTime */
+    let $guestArrivalTime = $tableRow.querySelector('.table__column--arrival-time');
+    Guest.initGuestArrivalTime($guestArrivalTime);
     /* initialize States */
     let $guestStates = $tableRow.querySelectorAll('.table__column--state');
     $guestStates.forEach($guestState => {
