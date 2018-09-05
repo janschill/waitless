@@ -1,7 +1,12 @@
 ---
-before_script:
-  - "composer install"
 language: php
+
 php:
   - '7.1'
+
+before_script:
+  - cp .env.travis .env
+  - mysql -e 'create database travis_database_test;'
+  - composer install
+
 
