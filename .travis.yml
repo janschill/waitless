@@ -8,7 +8,9 @@ before_script:
   - cp .env.travis .env
   - mysql -e 'create database travis_database_test;'
   - composer install
+  - npm install
   - php artisan migrate
   - php artisan db:seed
 
-
+script:
+  - gulp
