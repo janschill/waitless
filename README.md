@@ -188,6 +188,8 @@ For Laravel and this application in particular there are a few extra steps that 
 
 For deployment we are using a single `deploy.sh` Shell-script.
 
+On way to automatically trigger the deployment script is to use `Git hooks`. These are located in `./.git/hooks/` there you can configure the desired hook to call a script or even be the script.
+
 ## Projektdokumentation
 
 ### Einleitung
