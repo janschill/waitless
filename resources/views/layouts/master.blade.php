@@ -35,8 +35,6 @@
 </head>
 
 <body>
-  <div class="time"></div>
-
   @include ('layouts.header')
 
   @include ('layouts.notification')
