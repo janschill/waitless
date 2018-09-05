@@ -3,6 +3,10 @@ language: php
 
 php:
   - '7.1'
+cache:
+  directories:
+    - "node_modules"
+    - "vendor"
 
 before_script:
   - cp .env.travis .env
@@ -10,8 +14,8 @@ before_script:
   - composer install
   - npm install
   - npm install -g gulp-cli
-  - php artisan migrate
-  - php artisan db:seed
 
 script:
+  - php artisan migrate
+  - php artisan db:seed
   - gulp
