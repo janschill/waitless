@@ -23,12 +23,12 @@ Um diese Problematik zu beheben, soll eine Webanwendung zur Verwaltung von Gäst
 
 ...
 
-Da die Anwendung für dei Mitarbeiter drinnen und draußen identisch ist, können alle Aktionen sowohl von Mitarbeitern draußen als auch drinnen vorgenommen werden. Dies erlaubt flexible Abläufe.
+Da die Anwendung für die Mitarbeiter drinnen und draußen identisch ist, können alle Aktionen sowohl von Mitarbeitern draußen als auch drinnen vorgenommen werden. Dies erlaubt flexible Abläufe.
 
 ## Anforderungen
 
 Mehrere Geräte müssen gleichzeitig auf die Anwendung zugreifen können und Änderungen auf beiden aktualisiert werden.
-Gäste müssen angelegt werden können und ihnen Personenanzahl, eine Wartenummer
+Gäste müssen angelegt werden können und die Anzahl der Personen erfasst werden können. Den Gästen müssen Wartenummern zugewiesen werden können. 
 Damit Gäste die ihnen zugewiesene Wartenummer nicht vergessen, können Mitarbeiter Ihnen Karten geben, auf denen die Nummer steht. Das System sollte daher bei neuen Nutzern freie Nummern aus einer Liste anbieten.
 Damit Kunden schon während sie warten Getränke bekommen können, müssen Mitarbeiter in dem System vermerken können, wenn bereits eine Rechnung besteht.
 Falsche Eingaben sollen schnell behoben werden können.
@@ -54,7 +54,11 @@ XD-Skizzen??
 ### Designentscheidungen
 
 Da die Anwendung von vielen Nutzern über lange Zeit verwendet wird, lag der Fokus auf schnellen Interaktionen mit der Anwendung.
-Daher sind die wichtigsten Aktionen mit einfachem touchen??? auf große Bedienelemente durchzuführen.
+Daher sind die wichtigsten Aktionen mit einfachem touchen??? auf große Bedienelemente durchzuführen. Besonders präsent sind zugewiesene Gäste, weil dieser Zustand eine Aktion von den Mitarbeitern erfordert. Mitarbeiter drau'en müssen dann die Gäste in die Gaststätte führen. 
+Platzierte Gäste verschwinden nicht sofort, sondern werden in der Historie gelistet. Dies erlaubt den Anwendern, Fehler rückgängig zu machen. Au'erdem geben die Zeiten auch einen Uberblick, wie lange die sitzenden Gäste schon an ihrem Platz sind?
+## wird der Zeitpunkt der Platzierung angezeigt?
+was zu buttons
+
 
 ## Umsetzung
 
