@@ -6,21 +6,25 @@ class DatabaseSeeder extends Seeder
 {
     protected $toTruncate = ['guests', 'waitids', 'states'];
 
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
-        foreach ($this->toTruncate as $table) {
+        foreach ($this->toTruncate as $table)
+        {
             DB::table($table)->truncate();
         }
 
-        $this->call('WaitIdTableSeeder');
-        $this->call('GuestTableSeeder');
-        $this->call('StatesTableSeeder');
+        if (App::Environment() === 'production')
+        {
+            $this->call('StatesTableSeeder');
+        }
+
+        if (App::Environment() === 'local')
+        {
+            $this->call('WaitIdTableSeeder');
+            $this->call('GuestTableSeeder');
+            $this->call('StatesTableSeeder');
+        }
     }
 }
