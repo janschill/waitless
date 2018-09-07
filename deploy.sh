@@ -21,7 +21,7 @@ gulp
 echo '**************************'
 echo '* Connecting to server   *'
 echo '* Server:' $IPADDRESS   '*'
-echo '* User:' $USER '         *'
+echo '* User:' $USER '              *'
 echo '**************************'
 ssh -q -o ConnectTimeout=5 $USER@$IPADDRESS exit
 if [[ $? == 255 ]]; then
@@ -31,20 +31,25 @@ if [[ $? == 255 ]]; then
   exit
 else
   echo '********************************'
-  echo '*    Connection established    *'
+  echo '*          1/3 Upload          *'
   echo '* ---------------------------- *'
   echo '*                              *'
-  echo '* Begin upload …               *'
-  echo '*                              *'
-  echo '* 1/3 Uploading composer files *'
+  echo '* - Composer                   *'
   echo '********************************'
   rsync -av -e "ssh" composer.json composer.lock $USER@$IPADDRESS:$PATHTOAPPLICATION
-  echo '*******************************'
-  echo '* 2/3 Uploading laravel files *'
-  echo '*******************************'
+  echo '********************************'
+  echo '*          2/3 Upload          *'
+  echo '* ---------------------------- *'
+  echo '*                              *'
+  echo '* - Laravel                    *'
+  echo '* - Resources                  *'
+  echo '********************************'
   rsync -av -e "ssh" --delete --exclude="public/storage" --exclude="public/resources/assets/javascripts/bootstrap/bootstrap.js" app bootstrap config database public resources routes tests vendor artisan phpunit.xml $USER@$IPADDRESS:$PATHTOAPPLICATION
   echo '********************************'
-  echo '* 3/3 Uploading .env.live file *'
+  echo '*          3/3 Upload          *'
+  echo '* ---------------------------- *'
+  echo '*                              *'
+  echo '* - .env.live                  *'
   echo '********************************'
   rsync -av -e "ssh" .env.live $USER@$IPADDRESS:$PATHTOAPPLICATION.env
   echo '****************************'
@@ -72,7 +77,7 @@ EOF
   ssh $USER@$IPADDRESS << EOF
   cd $PATHTOAPPLICATION &&
     yes | php artisan migrate &&
-    yes | php artisan db:seed &&
+    yes | php artisan db:seed
 EOF
 echo '*********************************'
 echo '* Reverting pusher key to local *'
