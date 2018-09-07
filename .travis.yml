@@ -21,3 +21,4 @@ script:
   - php artisan migrate
   - php artisan db:seed
   - gulp
+  - vendor/bin/phpunit
