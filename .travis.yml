@@ -19,6 +19,6 @@ before_script:
 
 script:
   - php artisan migrate
-  - php artisan db:seed
+  - yes | php artisan db:seed
   - gulp
   - vendor/bin/phpunit
