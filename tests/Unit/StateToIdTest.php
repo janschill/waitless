@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -17,8 +18,10 @@ class StateToIdTest extends TestCase
             'weg' => 4
         ];
 
-        $this->assertDatabaseHas('states', ['state' => $states['warten']]);
-
-        $this->assertTrue(true);
+        foreach ($states as $state => $value)
+        {
+            $this->assertEquals($value, DB::table('states')->select('id')->where('state', $state)->first()->id);
+        }
     }
+
 }
