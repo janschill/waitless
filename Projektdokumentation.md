@@ -14,16 +14,12 @@ Um diese Problematik zu beheben, soll eine Webanwendung zur Verwaltung von Gäst
 
 * Gäste kommen an, da alle Plätze belegt sind, werden sie vor der Gaststätte von einem Mitarbeiter begrüßt.
 * Dieser fügt die Gäste in der Anwendung hinzu und gibt ihnen eine Wartekarte mit der Wartenummer.
-* Drinnen wird ein Platz frei, ein Mitarbeiter drinne stelt den Status der Gäste auf "zugewiesen"
-* Der Mitarbeiter draußen sagt den Gästen Bescheid.
+* Drinnen wird ein Platz frei, ein Mitarbeiter drinnen stelt den Status der Gäste auf "zugewiesen"
+* Der Mitarbeiter draußen sagt den Gästen Bescheid und nimmmt die Wartekarte entgegen.
 * Die Gäste gehen in das Restaurant und werden von einem Mitarbeiter zu dem Tisch geführt.
-* Der Mitarbeiter beendet
+* Der Mitarbeiter drinnen drückt auf die oben angezeigte Wartenummer und verschiebt diese damit in die Historie.
 
-* Mitarbeiter dr
-
-...
-
-Da die Anwendung für die Mitarbeiter drinnen und draußen identisch ist, können alle Aktionen sowohl von Mitarbeitern draußen als auch drinnen vorgenommen werden. Dies erlaubt flexible Abläufe.
+Da die Anwendung für die Mitarbeiter drinnen und draußen identisch ist, können alle Aktionen sowohl von Mitarbeitern draußen als auch drinnen vorgenommen werden. Dies erlaubt flexible Abläufe. 
 
 ## Anforderungen
 
@@ -31,6 +27,7 @@ Mehrere Geräte müssen gleichzeitig auf die Anwendung zugreifen können und Än
 Gäste müssen angelegt werden können und die Anzahl der Personen erfasst werden können. Den Gästen müssen Wartenummern zugewiesen werden können. 
 Damit Gäste die ihnen zugewiesene Wartenummer nicht vergessen, können Mitarbeiter Ihnen Karten geben, auf denen die Nummer steht. Das System sollte daher bei neuen Nutzern freie Nummern aus einer Liste anbieten.
 Damit Kunden schon während sie warten Getränke bekommen können, müssen Mitarbeiter in dem System vermerken können, wenn bereits eine Rechnung besteht.
+Bei wartenden Gästen soll angezeigt werden, wie lange diese bereits warten.
 Falsche Eingaben sollen schnell behoben werden können.
 Für die Leitung der Gaststätte sollen die erfassten Daten in Diagrammen angezeigt werden können.
 Neue Wartenummern sollen angelegt werden können, bereits angelegte deaktivert werden.
@@ -55,7 +52,7 @@ XD-Skizzen??
 
 Da die Anwendung von vielen Nutzern über lange Zeit verwendet wird, lag der Fokus auf schnellen Interaktionen mit der Anwendung.
 Daher sind die wichtigsten Aktionen mit einfachem touchen??? auf große Bedienelemente durchzuführen. Besonders präsent sind zugewiesene Gäste, weil dieser Zustand eine Aktion von den Mitarbeitern erfordert. Mitarbeiter drau'en müssen dann die Gäste in die Gaststätte führen. 
-Platzierte Gäste verschwinden nicht sofort, sondern werden in der Historie gelistet. Dies erlaubt den Anwendern, Fehler rückgängig zu machen. Au'erdem geben die Zeiten auch einen Uberblick, wie lange die sitzenden Gäste schon an ihrem Platz sind?
+Platzierte Gäste verschwinden nicht sofort, sondern werden in der Historie gelistet. Dies erlaubt den Anwendern, Fehler rückgängig zu machen. Außerdem geben die Zeiten auch einen Überblick, wie lange die sitzenden Gäste schon an ihrem Platz sind?
 ## wird der Zeitpunkt der Platzierung angezeigt?
 was zu buttons
 
@@ -63,6 +60,7 @@ was zu buttons
 ## Umsetzung
 
 Laravel...
+Warum für Laravel und co entschieden?
 
 ### Problem bzw. Verbesserungen
 
