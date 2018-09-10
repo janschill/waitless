@@ -48,14 +48,14 @@ Die Interaktion mit diesem Prototyp hat gut funktiioniert. Daher haben wir ein M
 
 
 <img src="http://up.picr.de/33792595po.png" width="40%">
- Bei diesem Prototypen haben wir festgestellt, dass nicht klar war, mit welchen Elementen interagiert werden kann. Daher haben wir uns für ein einheitliches Design von Buttons entschieden.
 
 
 <img src="http://up.picr.de/33792596la.png" width="40%">
 
 <img src="http://up.picr.de/33792597ht.png" width="40%">
-
+ Bei diesem Prototypen haben wir festgestellt, dass nicht klar war, welchen Status die Gäste haben und welche Schaltfläche diesen ändert. Daher haben wir die Gäste klar in Abschnitte eingeordnet:
 <img src="http://up.picr.de/33792598qf.png" width="40%">
+Bei diesem Design hat die Statuszuweisung besser funktioniert, aber Buttons unklar.
 
 ## Endergebnis
 
