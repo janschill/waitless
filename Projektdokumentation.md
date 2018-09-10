@@ -44,7 +44,18 @@ Einen großen Bildschirm, der die Liste aller wartender Gäste anzeigt:
 Allerdings haben wir bemerkt, dass es für Gaststätten verlässlicher ist, von Mitarbeitern die Eingaben machen zu lassen und auch die Gäste bevorzugen einen direkten Kontakt mit Mitarbeitern.
 Daher haben wir um dieses Konzept zu testen, einen neuen Papierprototypen angefertigt:
 
-XD-Skizzen??
+Die Interaktion mit diesem Prototyp hat gut funktiioniert. Daher haben wir ein Mockup in Adobe XD erstellt:
+
+
+<img src="http://up.picr.de/33792595po.png" width="40%">
+ Bei diesem Prototypen haben wir festgestellt, dass nicht klar war, mit welchen Elementen interagiert werden kann. Daher haben wir uns für ein einheitliches Design von Buttons entschieden.
+
+
+<img src="http://up.picr.de/33792596la.png" width="40%">
+
+<img src="http://up.picr.de/33792597ht.png" width="40%">
+
+<img src="http://up.picr.de/33792598qf.png" width="40%">
 
 ## Endergebnis
 
