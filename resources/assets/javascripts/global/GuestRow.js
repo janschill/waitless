@@ -293,7 +293,7 @@ class GuestRow {
       $background = document.querySelector('.background--update');
 
     $closeModals.forEach($closeModal => {
-      Modal.initCloseModal($closeModal, $modals, $background);
+      Modal.initCloseModal($tableRow, $closeModal, $modals, $background);
     });
 
     /* Initialize Waitid */
