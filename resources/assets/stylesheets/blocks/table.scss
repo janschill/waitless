@@ -10,7 +10,7 @@
 .table__head {
   display: grid;
   grid-template-columns: 1fr 1fr 130px 300px 130px 2fr;
-  grid-gap: 20px;
+  grid-gap: 10px;
   font-size: 10px;
   color: lighten($color-dark, 20%);
 }
