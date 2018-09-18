@@ -5,7 +5,7 @@
 # git clone
 echo -e "\n\033[33mPreparing database …\033[0m"
 echo -e "\n\033[33mCreating sqlite database …\033[0m"
-touch ./database/database.sqlite
+touch database/database.sqlite
 mv .env.sample .env
 echo -e "\n\033[33mInstalling …\033[0m"
 echo -e "\n\033[33mInstalling composer packages …\033[0m"
@@ -24,6 +24,15 @@ php artisan queue:restart
 
 echo -e "\n\033[33mSetting application environment to production …\033[0m"
 sed -i '' 's/APP_ENV=local/APP_ENV=production/g' .env
+
+echo -e "Installation finished. Thank you."
+
+read -p "Do you want me to start a server on localhost? [y/N]: " -n 1 -r
+echo
+if ! [[ $REPLY =~ ^[Yy]$ ]]; then
+  echo -e "\n\033[33mStarting server on http://localhost:8080/ …\033[0m"
+  php artisan serve --port=8080
+fi
 
 # read -p "Do you want me to take out the trash (remove node_modules etc.)? [y/N]: " -n 1 -r
 # echo
