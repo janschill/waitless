@@ -35,13 +35,13 @@ class Guest {
       $formRadioOn = $tableColumn.querySelector('.form__radio--preordered.form__radio--on'),
       $formRadioOff = $tableColumn.querySelector('.form__radio--preordered.form__radio--off');
 
-      if ($formRadioOn.getAttribute('checked') == null) {
-        $formRadioOn.setAttribute('checked', 'checked');
-        $formRadioOff.removeAttribute('checked');
-      } else {
-        $formRadioOn.removeAttribute('checked');
-        $formRadioOff.setAttribute('checked', 'checked');
-      }
+    if ($formRadioOn.getAttribute('checked') == null) {
+      $formRadioOn.setAttribute('checked', 'checked');
+      $formRadioOff.removeAttribute('checked');
+    } else {
+      $formRadioOn.removeAttribute('checked');
+      $formRadioOff.setAttribute('checked', 'checked');
+    }
   }
 
   static getInputCommentValue($tableRow) {
@@ -123,28 +123,28 @@ class Guest {
       let $thisGuestWaitidPopup = $tableRow.querySelector('.modal--waitid-id');
 
       $modals.forEach($modal => {
-        Modal.hideModal($modal);
+        Modal.hideModal($tableRow, $modal);
       });
-      Modal.showModal($thisGuestWaitidPopup);
+      Modal.showModal($tableRow, $thisGuestWaitidPopup);
     });
 
     let $buttonToggles = $tableColumn.querySelectorAll('.button-toggle--unoccupied-waitid-id');
     $buttonToggles.forEach($buttonToggle => {
-        $buttonToggle.addEventListener('click', event => {
-          event.preventDefault();
-          Guest.setInputWaitidIdValue($tableRow, $buttonToggle.dataset.waitidId);
+      $buttonToggle.addEventListener('click', event => {
+        event.preventDefault();
+        Guest.setInputWaitidIdValue($tableRow, $buttonToggle.dataset.waitidId);
 
-          $buttonToggles.forEach($thisButtonToggle => {
-            $thisButtonToggle.classList.remove('button-toggle--highlight');
-          });
-          $buttonToggle.classList.add('button-toggle--highlight');
+        $buttonToggles.forEach($thisButtonToggle => {
+          $thisButtonToggle.classList.remove('button-toggle--highlight');
         });
+        $buttonToggle.classList.add('button-toggle--highlight');
       });
+    });
   }
 
   static initGuestGroupSize($tableRow, $tableColumn, $modals) {
     let $guestGroupSizeButton = $tableColumn.querySelector('.button-toggle--group-size'),
-    $guestGroupSizeSubmit = $tableColumn.querySelector('.form__submit--group-size.form__submit--success');
+      $guestGroupSizeSubmit = $tableColumn.querySelector('.form__submit--group-size.form__submit--success');
 
     $guestGroupSizeSubmit.addEventListener('click', event => {
       event.preventDefault();
@@ -156,35 +156,35 @@ class Guest {
       let $thisGuestGroupSizePopup = $tableRow.querySelector('.modal--group-size');
 
       $modals.forEach($modal => {
-        Modal.hideModal($modal);
+        Modal.hideModal($tableRow, $modal);
       });
-      Modal.showModal($thisGuestGroupSizePopup);
+      Modal.showModal($tableRow, $thisGuestGroupSizePopup);
     });
 
     let $buttonToggles = $tableColumn.querySelectorAll('.button-toggle--all-group-size');
     $buttonToggles.forEach($buttonToggle => {
-        $buttonToggle.addEventListener('click', event => {
-          event.preventDefault();
-          Guest.setInputGroupSizeValue($tableRow, $buttonToggle.dataset.groupSize);
+      $buttonToggle.addEventListener('click', event => {
+        event.preventDefault();
+        Guest.setInputGroupSizeValue($tableRow, $buttonToggle.dataset.groupSize);
 
-          $buttonToggles.forEach($thisButtonToggle => {
-            $thisButtonToggle.classList.remove('button-toggle--highlight');
-          });
-          $buttonToggle.classList.add('button-toggle--highlight');
+        $buttonToggles.forEach($thisButtonToggle => {
+          $thisButtonToggle.classList.remove('button-toggle--highlight');
         });
+        $buttonToggle.classList.add('button-toggle--highlight');
       });
+    });
   }
 
   static initGuestPreordered($tableRow, $tableColumn) {
     $tableColumn.querySelector('.form__radio--preordered.form__radio--off').addEventListener('click', () => {
-        Guest.setInputPreorderedValue($tableRow, 0);
-        $tableRow.submit();
-      });
+      Guest.setInputPreorderedValue($tableRow, 0);
+      $tableRow.submit();
+    });
 
     $tableColumn.querySelector('.form__radio--preordered.form__radio--on').addEventListener('click', () => {
-        Guest.setInputPreorderedValue($tableRow, 1);
-        $tableRow.submit();
-      });
+      Guest.setInputPreorderedValue($tableRow, 1);
+      $tableRow.submit();
+    });
   }
 
   static initGuestComment($tableRow, $tableColumn, $modals) {
@@ -202,9 +202,9 @@ class Guest {
       let $thisGuestCommentPopup = $tableRow.querySelector('.modal--comment');
 
       $modals.forEach($guestCommentPopup => {
-        Modal.hideModal($guestCommentPopup);
+        Modal.hideModal($tableRow, $guestCommentPopup);
       });
-      Modal.showModal($thisGuestCommentPopup);
+      Modal.showModal($tableRow, $thisGuestCommentPopup);
     });
   }
 
@@ -214,11 +214,11 @@ class Guest {
 
   static initGuestState($tableRow, $tableColumn) {
     $tableColumn.querySelectorAll('.button-toggle').forEach($guestStateButton => {
-        $guestStateButton.addEventListener('click', () => {
-          Guest.setInputStateValue($tableRow, $guestStateButton.dataset.stateId);
-          $tableRow.submit();
-        });
+      $guestStateButton.addEventListener('click', () => {
+        Guest.setInputStateValue($tableRow, $guestStateButton.dataset.stateId);
+        $tableRow.submit();
       });
+    });
     const $buttonToggleDropdown = $tableColumn.querySelector('.button-toggle__dropdown');
     if ($buttonToggleDropdown) {
       $buttonToggleDropdown.addEventListener('click', () => {
