@@ -8,6 +8,8 @@ class DatabaseSeeder extends Seeder
 
     public function run()
     {
+        Eloquent::unguard();
+
         if (config('database.default') === 'sqlite') {
             DB::statement('PRAGMA foreign_keys = OFF;');
         } else {
@@ -19,16 +21,10 @@ class DatabaseSeeder extends Seeder
             DB::table($table)->truncate();
         }
 
-        if (App::Environment() === 'production')
-        {
-            $this->call('StatesTableSeeder');
-        }
-
         if (App::Environment() === 'local' || App::Environment() === 'testing')
         {
             $this->call('WaitIdTableSeeder');
             $this->call('GuestTableSeeder');
-            $this->call('StatesTableSeeder');
         }
     }
 }

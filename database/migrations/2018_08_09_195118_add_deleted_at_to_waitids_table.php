@@ -26,7 +26,7 @@ class AddDeletedAtToWaitidsTable extends Migration
     public function down()
     {
         Schema::table('waitids', function (Blueprint $table) {
-            $table->dropColum('deleted_at');
+            $table->dropColumn('deleted_at');
         });
     }
 }
