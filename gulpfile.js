@@ -99,7 +99,7 @@ function processStyleSheets() {
 }
 
 function watchStyles() {
-  gulp.watch(paths.private.styles.entryPoint, gulp.series(lintStyleSheets, processStyleSheets))
+  gulp.watch(paths.private.styles.all, gulp.series(lintStyleSheets, processStyleSheets))
 }
 
 function watchScripts() {
