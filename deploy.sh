@@ -73,10 +73,10 @@ EOF
   echo '*******************************************************'
   echo '*  Change .env.live application status to production  *'
   echo '*******************************************************'
-  sed -i '' 's/APP_ENV=local/APP_ENV=production/g' .env
   ssh $USER@$IPADDRESS << EOF
   cd $PATHTOAPPLICATION &&
-    yes | php artisan migrate &&
+    yes | php artisan migrate
+    sed -i 's/APP_ENV=local/APP_ENV=production/g' .env
     yes | php artisan db:seed
 EOF
 echo '*********************************'
