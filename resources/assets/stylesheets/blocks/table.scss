@@ -9,7 +9,7 @@
 
 .table__head {
   display: grid;
-  grid-template-columns: 1fr 1fr 130px 300px 110px 2fr;
+  grid-template-columns: 1fr 1fr 130px 300px 130px 2fr;
   grid-gap: 20px;
   font-size: 10px;
   color: lighten($color-dark, 20%);
@@ -17,7 +17,7 @@
 
 .table__row {
   display: grid;
-  grid-template-columns: 1fr 1fr 130px 300px 110px 2fr;
+  grid-template-columns: 1fr 1fr 160px 300px 130px 2fr;
   grid-gap: 20px;
   border-bottom: 1px solid #bfc5c6;
 
@@ -27,6 +27,10 @@
 
   &.table__row--highlight {
     background: $color-light;
+  }
+
+  &.table__row--appear {
+    opacity: 1;
   }
 }
 
