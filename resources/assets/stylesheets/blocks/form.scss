@@ -28,7 +28,7 @@
   display: flex;
   justify-content: space-around;
   box-shadow: 0 1px 1.5px 0 rgba(black, 0.12), 0 1px 1px 0 rgba(black, 0.24);
-  height: 41px;
+  height: 51px;
   margin-bottom: 25px;
 
   &.form__radio-wrap--condensed {
@@ -52,13 +52,17 @@
 
 .form__text-input {
   font-size: 1rem;
-  box-shadow: 0 1px 1.5px 0 rgba(black, 0.12), 0 1px 1px 0 rgba(black, 0.24);
   border: none;
   line-height: 2;
   padding: 0 10px;
+  height: 100%;
+  width: 100%;
+}
+
+.form__frame {
   height: 41px;
   margin-bottom: 25px;
-  width: 100%;
+  box-shadow: 0 1px 1.5px 0 rgba(black, 0.12), 0 1px 1px 0 rgba(black, 0.24);
 }
 
 .form__submit-wrap {

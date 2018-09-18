@@ -26,8 +26,9 @@
   </div>
 
   <label class="form__label">Hinweis:</label>
-  <input class="form__text-input" type="text" name="guest_comment">
-
+  <div class="form__frame">
+    <input class="form__text-input form__text-input--frame" type="text" name="guest_comment">
+  </div>
   <label class="form__label">Offene Rechnung:</label>
   <div class="form__radio-wrap form__radio-wrap--condensed">
     <input class="form__radio-input" type="radio" name="guest_preordered" id="radio-create-preordered-0" value="0" checked>
