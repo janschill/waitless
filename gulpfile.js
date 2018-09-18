@@ -1,5 +1,6 @@
 const gulp = require('gulp'),
   eslint = require('gulp-eslint'),
+  del = require('del'),
   uglify = require('gulp-uglify'),
   concat = require('gulp-concat'),
   sass = require('gulp-sass'),
@@ -8,27 +9,73 @@ const gulp = require('gulp'),
   autoprefixer = require('gulp-autoprefixer'),
   babel = require('gulp-babel');
 
+const paths = {
+  private: {
+    styles: {
+      all: 'resources/assets/stylesheets/**/*.scss',
+      entryPoint: 'resources/assets/stylesheets/app.scss',
+    },
+    scripts: [
+      'resources/assets/javascripts/global/**/*.js',
+      'resources/assets/javascripts/custom/**/*.js'
+    ]
+  },
+  public: {
+    styles: 'public/stylesheets/',
+    scripts: 'public/javascripts/'
+  },
+  vendor: {
+    scripts: {
+      others: [
+        'node_modules/chart.js/dist/Chart.bundle.min.js'
+      ]
+    },
+    styles: []
+  },
+  ignoreLinting: {
+    scripts: [
+      'resources/assets/javascripts/global/**/*.js'
+    ]
+  }
+};
+
+
 // Function that catch errors and will therefore prevent gulp to exit the watch task as long as an on listener is set.
 function swallowError(error) {
   console.log(error.messageFormatted);
 };
 
-gulp.task('lintJavaScripts', () => {
-  gulp.src([
-    'resources/assets/javascripts/custom/**/*.js'
-  ])
+// https://github.com/gulpjs/gulp from sample gulpfile.js
+function clean() {
+  return del(['assets']);
+}
+
+function lintStyleSheets() {
+  return gulp
+    .src(paths.private.styles.all)
+    .pipe(stylelint({
+      reporters: [{ formatter: 'string', console: true }]
+    }));
+}
+
+function lintJavaScripts() {
+  const scripts = paths.private.scripts.filter(path => {
+    return paths.ignoreLinting.scripts.indexOf(path) < 0;
+  });
+
+  return gulp
+    .src(scripts)
     .pipe(eslint())
     .pipe(eslint.format())
-    .pipe(eslint.failAfterError())
-    .on('error', swallowError);
-});
+    .pipe(eslint.failAfterError());
+};
 
-gulp.task('processJavaScripts', () => {
-  gulp.src([
-    'node_modules/chart.js/dist/Chart.bundle.min.js',
-    'resources/assets/javascripts/global/**/*.js',
-    'resources/assets/javascripts/custom/**/*.js'
-  ])
+
+function processJavaScripts() {
+  let scripts = paths.vendor.scripts.others.concat(paths.private.scripts);
+
+  return gulp
+    .src(scripts)
     .pipe(babel({
       presets: ['env']
     }))
@@ -38,52 +85,34 @@ gulp.task('processJavaScripts', () => {
       compress: true
     }))
     .on('error', swallowError)
-    .pipe(gulp.dest('public/javascripts/'));
-});
+    .pipe(gulp.dest(paths.public.scripts));
+}
 
-gulp.task('lintStyleSheets', () => {
-  gulp.src([
-    'resources/assets/stylesheets/**/*.scss'
-  ])
-    .pipe(stylelint({
-      reporters: [{
-        formatter: 'string',
-        console: true
-      }]
-    }))
-    .on('error', swallowError);
-});
-
-gulp.task('processStyleSheets', () => {
-  gulp.src([
-    'resources/assets/stylesheets/app.scss'
-  ])
-    .pipe(sass({
-      outputStyle: 'compressed'
-    }))
+function processStyleSheets() {
+  return gulp
+    .src(paths.private.styles.entryPoint)
+    .pipe(sass({outputStyle: 'compressed'}))
     .on('error', swallowError)
-    .pipe(autoprefixer({
-      browsers: ['last 4 versions', '> 5%']
-    }))
+    .pipe(autoprefixer('last 4 versions', '> 5%'))
     .pipe(rename('app.min.css'))
-    .pipe(gulp.dest('public/stylesheets/'));
-});
+    .pipe(gulp.dest(paths.public.styles));
+}
 
-gulp.task('default', [
-  'lintJavaScripts',
-  'processJavaScripts',
-  'lintStyleSheets',
-  'processStyleSheets'
-]);
+function watchStyles() {
+  gulp.watch(paths.private.styles.entryPoint, gulp.series(lintStyleSheets, processStyleSheets))
+}
 
-gulp.task('watch', () => {
-  gulp.watch('resources/assets/stylesheets/**/*.scss', [
-    'lintStyleSheets',
-    'processStyleSheets'
-  ]);
-  gulp.watch('resources/assets/javascripts/**/*.js', [
-    'lintJavaScripts',
-    'processJavaScripts'
-  ]);
-});
+function watchScripts() {
+  gulp.watch(paths.private.scripts, gulp.series(lintJavaScripts, processJavaScripts))
+}
 
+const buildScripts = gulp.series(clean, gulp.parallel(processJavaScripts));
+
+// Combine to three tasks
+const lint = gulp.series(clean, gulp.parallel(lintJavaScripts, lintStyleSheets));
+const build = gulp.series(clean, gulp.series(buildScripts, processStyleSheets));
+const watch = gulp.series(clean, gulp.parallel(watchStyles, watchScripts));
+
+// Final tasks: `gulp` and `gulp watch`
+gulp.task('default', gulp.series(lint, build));
+gulp.task('watch', gulp.series(lint, build, watch));
