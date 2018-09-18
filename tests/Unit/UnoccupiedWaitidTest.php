@@ -10,14 +10,8 @@ use App\Guest;
 
 class UnoccupiedWaitidTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
     public function testExample()
     {
-        $first = factory(Guest::class)->create();
         $this->assertTrue(true);
     }
 }
