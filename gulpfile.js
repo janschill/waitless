@@ -17,10 +17,10 @@ gulp.task('lintJavaScripts', () => {
   gulp.src([
     'resources/assets/javascripts/custom/**/*.js'
   ])
-  .pipe(eslint())
-  .pipe(eslint.format())
-  .pipe(eslint.failAfterError())
-  .on('error', swallowError);
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError())
+    .on('error', swallowError);
 });
 
 gulp.task('processJavaScripts', () => {
@@ -29,44 +29,44 @@ gulp.task('processJavaScripts', () => {
     'resources/assets/javascripts/global/**/*.js',
     'resources/assets/javascripts/custom/**/*.js'
   ])
-  .pipe(babel({
-    presets: ['env']
-  }))
-  .pipe(concat('app.min.js'))
-  .pipe(uglify({
-    mangle: true,
-    compress: true
-  }))
-  .on('error', swallowError)
-  .pipe(gulp.dest('public/javascripts/'));
+    .pipe(babel({
+      presets: ['env']
+    }))
+    .pipe(concat('app.min.js'))
+    .pipe(uglify({
+      mangle: true,
+      compress: true
+    }))
+    .on('error', swallowError)
+    .pipe(gulp.dest('public/javascripts/'));
 });
 
 gulp.task('lintStyleSheets', () => {
   gulp.src([
     'resources/assets/stylesheets/**/*.scss'
   ])
-  .pipe(stylelint({
-    reporters: [{
-      formatter: 'string',
-      console: true
-    }]
-  }))
-  .on('error', swallowError);
+    .pipe(stylelint({
+      reporters: [{
+        formatter: 'string',
+        console: true
+      }]
+    }))
+    .on('error', swallowError);
 });
 
 gulp.task('processStyleSheets', () => {
   gulp.src([
     'resources/assets/stylesheets/app.scss'
   ])
-  .pipe(sass({
-    outputStyle: 'compressed'
-  }))
-  .on('error', swallowError)
-  .pipe(autoprefixer({
-    browsers: ['last 4 versions', '> 5%']
-  }))
-  .pipe(rename('app.min.css'))
-  .pipe(gulp.dest('public/stylesheets/'));
+    .pipe(sass({
+      outputStyle: 'compressed'
+    }))
+    .on('error', swallowError)
+    .pipe(autoprefixer({
+      browsers: ['last 4 versions', '> 5%']
+    }))
+    .pipe(rename('app.min.css'))
+    .pipe(gulp.dest('public/stylesheets/'));
 });
 
 gulp.task('default', [
