@@ -285,32 +285,33 @@ class GuestRow {
     return $tableColumn;
   }
 
-  /* initialize GuestRow with eventListeners  */
+  /* Initialize GuestRow with eventListeners  */
   static initGuestRow($tableBody, $tableRow) {
-    /* initialize Modals */
+    /* Initialize Modals */
     let $modals = document.querySelectorAll('.modal'),
       $closeModals = $tableBody.querySelectorAll('.form__submit--update.form__submit--cancel'),
       $background = document.querySelector('.background--update');
+
     $closeModals.forEach($closeModal => {
       Modal.initCloseModal($closeModal, $modals, $background);
     });
 
-    /* initialize Waitid */
+    /* Initialize Waitid */
     let $guestWaitid = $tableRow.querySelector('.table__column--waitid-id');
     Guest.initGuestWaitid($tableRow, $guestWaitid, $modals);
-    /* initialize GroupSize */
+    /* Initialize GroupSize */
     let $guestGroupSize = $tableRow.querySelector('.table__column--group-size');
     Guest.initGuestGroupSize($tableRow, $guestGroupSize, $modals);
-    /* initialize Preordered */
+    /* Initialize Preordered */
     let $guestPreordered = $tableRow.querySelector('.table__column--preordered');
     Guest.initGuestPreordered($tableRow, $guestPreordered);
-    /* initialize Comment */
+    /* Initialize Comment */
     let $guestComment = $tableRow.querySelector('.table__column--comment');
     Guest.initGuestComment($tableRow, $guestComment, $modals);
-    /* initialize ArrivalTime */
+    /* Initialize ArrivalTime */
     let $guestArrivalTime = $tableRow.querySelector('.table__column--arrival-time');
     Guest.initGuestArrivalTime($guestArrivalTime);
-    /* initialize States */
+    /* Initialize States */
     let $guestStates = $tableRow.querySelectorAll('.table__column--state');
     $guestStates.forEach($guestState => {
       Guest.initGuestState($tableRow, $guestState);
@@ -321,7 +322,7 @@ class GuestRow {
     });
   }
 
-  /* create DOM elements for a new GuestRow  */
+  /* Create DOM elements for a new GuestRow  */
   static createGuestRow(position, table, guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory, stateAssign) {
     let $tableBody = document.querySelector(`.table__body--${table}`);
     let isTableHistory = position === 'start' ? true : false;
@@ -402,20 +403,20 @@ class GuestRow {
       Guest.setCommentValue($guestForm, guest.comment);
     } else if (guest.state_id != Guest.getInputStateValue($guestForm)) {
       switch (guest.state_id) {
-        case 1:
-          Guest.setWaitingState('active', guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory, stateAssign, $guestForm);
-          break;
-        case 2:
-          Guest.setAssignedState(guest, waitidNumber, $guestForm);
-          break;
-        case 3:
-          Guest.setSeatedState('history', guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory, $guestForm);
-          break;
-        case 4:
-          Guest.setGoneState('history', guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory, $guestForm);
-          break;
-        default:
-          //
+      case 1:
+        Guest.setWaitingState('active', guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory, stateAssign, $guestForm);
+        break;
+      case 2:
+        Guest.setAssignedState(guest, waitidNumber, $guestForm);
+        break;
+      case 3:
+        Guest.setSeatedState('history', guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory, $guestForm);
+        break;
+      case 4:
+        Guest.setGoneState('history', guest, unoccupiedWaitids, waitidNumber, statesForCurrent, statesForHistory, $guestForm);
+        break;
+      default:
+          // …
       }
     }
   }
