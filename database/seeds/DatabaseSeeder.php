@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             $this->call('StatesTableSeeder');
         }
 
-        if (App::Environment() === 'local')
+        if (App::Environment() === 'local' || App::Environment() === 'testing')
         {
             $this->call('WaitIdTableSeeder');
             $this->call('GuestTableSeeder');
