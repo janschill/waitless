@@ -67,7 +67,7 @@ else
     yes | php_cli artisan cache:clear &&
     yes | php_cli artisan view:clear &&
     yes | php_cli artisan queue:restart &&
-    yes | php_cli artisan config:cache
+    yes | php_cli artisan config:cache &&
     yes | php_cli artisan route:cache
 EOF
   echo '*******************************************************'
