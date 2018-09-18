@@ -19,6 +19,7 @@ before_script:
 
 script:
   - php artisan key:generate
+  - php artisan config:clear
   - php artisan migrate
   - php artisan db:seed
   - gulp
