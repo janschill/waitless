@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    protected $toTruncate = ['guests', 'waitids', 'states'];
+    protected $toTruncate = ['guests', 'waitids'];
 
     public function run()
     {
