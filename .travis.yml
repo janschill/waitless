@@ -18,6 +18,7 @@ before_script:
   - npm install -g gulp-cli
 
 script:
+  - php artisan key:generate
   - php artisan migrate
   - php artisan db:seed
   - gulp
