@@ -12,6 +12,16 @@
   display: inline-block;
 }
 
+.header__branding--centerize {
+  display: block;
+  text-align: center;
+}
+
+.header__branding--large .logo__svg {
+  width: 115px;
+  height: 115px;
+}
+
 .header__statistics-list {
   display: flex;
   justify-content: space-between;

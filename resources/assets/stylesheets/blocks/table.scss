@@ -18,7 +18,7 @@
 .table__row {
   display: grid;
   grid-template-columns: 1fr 1fr 160px 300px 130px 2fr;
-  grid-gap: 20px;
+  grid-gap: 10px;
   border-bottom: 1px solid #bfc5c6;
 
   &:last-of-type {

@@ -1,0 +1,13 @@
+.aside {
+  padding: 7px 10px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: lighten($color-dark, 20%);
+  background-color: $color-section;
+}
+
+.aside__list {
+  display: flex;
+  justify-content: space-between;
+}

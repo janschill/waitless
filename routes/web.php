@@ -2,6 +2,8 @@
 
 use App\Events\GuestUpdated;
 
+Route::get('/', 'HomeController@index');
+
 Route::get('/info', function () {
     phpinfo();
 });
