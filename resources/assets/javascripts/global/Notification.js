@@ -13,9 +13,9 @@ class Notification {
 
   static showNotification($notification, guest, waitidNumber, title) {
     let $notificationHeader = $notification.querySelector('.notification__header'),
-      $notificationHeaderTitle = $notificationHeader.querySelector('.title'),
+      $notificationHeaderTitle = $notificationHeader.querySelector('.notification__title'),
       $notificationMain = $notification.querySelector('.notification__main'),
-      $notificationMainTitle = $notificationMain.querySelector('.title'),
+      $notificationMainTitle = $notificationMain.querySelector('.notification__title'),
       $notificationParagraph = $notification.querySelector('.notification__paragraph');
 
     // Implement here fallback for empty comment
