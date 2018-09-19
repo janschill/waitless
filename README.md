@@ -48,10 +48,10 @@ In the following we will introduce the technologies used in this project. We wil
 
 #### Problems
 
-* After cloning the repository open `Homestead.yaml`, change `map` to absolute directory.
-* When a Vagrant environment existed, run `vagrant reload` in a terminal window.
-* To start the VM, run `vagrant up`.
-* To connect to the database, find the IP address of the VM with `ifconfig` when connected through ssh.
+- After cloning the repository open `Homestead.yaml`, change `map` to absolute directory.
+- When a Vagrant environment existed, run `vagrant reload` in a terminal window.
+- To start the VM, run `vagrant up`.
+- To connect to the database, find the IP address of the VM with `ifconfig` when connected through ssh.
 
 If you encounter a problem like `The following SSH command responded with a non-zero exit status.
 Vagrant assumes that this means the command failed!`:
@@ -227,3 +227,7 @@ For deployment we are using a single `deploy.sh` shell-script, because our appli
 In the shell script we make sure the composer and node packages are installed and updated, run our bundlers and other tasks and then upload the files using `rsync`. After that we set all necessary production setting to true.
 
 One way to automatically trigger the deployment script is to use `Git hooks`. These are located in `./.git/hooks/` there you can configure the desired hook to call a script or even be the script.
+
+### Issue tracking
+
+The GitHub Student Pack also includes some benefits to Sentry, so we included it in our project and we will try to see if is of any good use. So far in development it did not give any more insight, but I am sure, once the application is running in production (beta) we will be able to track down errors and find a solution quicker than just relying on descriptions of error occured during usage.
