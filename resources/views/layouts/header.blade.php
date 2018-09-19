@@ -12,6 +12,7 @@
       <li class="navigation__list-item"><a class="navigation__link" href="/guests">Gäste</a></li>
       <li class="navigation__list-item"><a class="navigation__link" href="/waitids">Wartenummer</a></li>
       <li class="navigation__list-item"><a class="navigation__link" href="/statistics">Statistik</a></li>
+      <li class="navigation__list-item"><a class="navigation__link" href="/">Hilfe</a></li>
     </ul>
   </nav>
   <div class="hamburger">

@@ -1,0 +1,22 @@
+.address {
+  display: flex;
+}
+
+.address__column {
+  padding: 0 25px 10px 0;
+}
+
+.address__row {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.address__icon {
+  margin-right: 10px;
+  height: 40px;
+  width: 40px;
+  padding: 10px;
+  background-color: $color-accent-primary;
+  border-radius: 5px;
+}
