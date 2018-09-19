@@ -6,7 +6,7 @@
   </ul>
 </aside>
 <main class="main">
-  <section class="section">
+  <section class="section section--smaller-head">
     <article class="article">
       <h1 class="title title--primary">waitless</h1>
       <p class="paragraph">waitless ist eine Wartesystem, das der Gastronomie bei der Verwaltung von wartenden Gästen helfen soll.</p>
@@ -17,7 +17,7 @@
       <li class="aside__list-item">Features</li>
     </ul>
   </aside>
-  <section class="section">
+  <section class="section section--smaller-head">
     <article class="article">
       <p class="paragraph">
         <ul class="article__list">
@@ -34,7 +34,7 @@
       <li class="aside__list-item">Hilfe oder Feedback</li>
     </ul>
   </aside>
-  <section class="section">
+  <section class="section section--smaller-head">
     <article class="article">
       <p class="paragraph">
         <address class="address">
