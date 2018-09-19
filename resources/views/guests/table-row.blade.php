@@ -59,7 +59,7 @@
             </div>
         </div>
     </div>
-    <div data-year="{{ $guest->arrival_time->year }}" data-month="{{ $guest->arrival_time->month }}" data-day="{{ $guest->arrival_time->day }}" data-hours="{{ $guest->arrival_time->hour }}" data-minutes="{{ $guest->arrival_time->minute }}" data-seconds="{{ $guest->arrival_time->second }}" class="table__column table__column--arrival-time{{ $guest->arrival_time->diffForHumans() > 15 ? ' table__column--danger-text' : '' }}">{{ $guest->arrival_time->diffForHumans() }}</div>
+    <div data-year="{{ $guest->last_state_change->year }}" data-month="{{ $guest->last_state_change->month }}" data-day="{{ $guest->last_state_change->day }}" data-hours="{{ $guest->last_state_change->hour }}" data-minutes="{{ $guest->last_state_change->minute }}" data-seconds="{{ $guest->last_state_change->second }}" class="table__column table__column--arrival-time{{ $guest->last_state_change->diffForHumans() > 15 ? ' table__column--danger-text' : '' }}">{{ $guest->last_state_change->diffForHumans() }}</div>
     <div class="table__column table__column--state">
         @if (isset($currentTable))
             <div class="modal__list">
