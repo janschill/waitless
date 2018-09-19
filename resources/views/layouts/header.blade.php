@@ -15,7 +15,10 @@
       <li class="navigation__list-item"><a class="navigation__link" href="/">Hilfe</a></li>
     </ul>
   </nav>
-  <div class="hamburger">
-    <div class="hamburger__inner"></div>
+  <div class="header__column">
+    <div class="header__refresh">@include('partials.refresh')</div>
+    <div class="hamburger">
+      <div class="hamburger__inner"></div>
+    </div>
   </div>
 </header>

@@ -32,3 +32,10 @@
 .header__statistics-list--hidden {
   display: none;
 }
+
+.header__column {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90px;
+}
