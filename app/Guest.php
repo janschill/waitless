@@ -38,8 +38,9 @@ class Guest extends Model
 
     public function scopeFilter($query, $stateId, $conditional = 'or')
     {
+        $time = Carbon::today();
         if ($stateId) {
-            return $query->where('state_id', 'LIKE', '%' . $stateId . '%', $conditional)->where('arrival_time', '>', Carbon::today());
+            return $query->where('state_id', 'LIKE', '%' . $stateId . '%', $conditional)->where('arrival_time', '>', $time);
         }
     }
 
