@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Guest extends Model
@@ -38,7 +39,7 @@ class Guest extends Model
     public function scopeFilter($query, $stateId, $conditional = 'or')
     {
         if ($stateId) {
-            return $query->where('state_id', 'LIKE', '%' . $stateId . '%', $conditional);
+            return $query->where('state_id', 'LIKE', '%' . $stateId . '%', $conditional)->where('arrival_time', '>', Carbon::today());
         }
     }
 
