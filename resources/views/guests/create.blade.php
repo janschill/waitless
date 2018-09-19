@@ -7,10 +7,10 @@
   {{ csrf_field() }}
 
   <div class="form__label">Wartenummer:</div>
+  @if (count($unoccupiedWaitids) < 1)
+    <small class="error">Keine Wartenummer verfügbar. <a class="error__link" href="/waitids">Hier können neue Wartenummer hinzugefügt werden.</a></small>
+  @endif
   <div class="form__radio-wrap">
-    @if (count($unoccupiedWaitids) < 1)
-      <small class="error">Keine Wartenummer verfügbar. <a href="/waitids">Hier können neue Wartenummer hinzugefügt werden.</a></small>
-    @endif
     @foreach ($unoccupiedWaitids as $iterator=>$unoccupiedWaitid)
       <input class="form__radio-input" type="radio" name="guest_waitidId" id="radio-{{$unoccupiedWaitid->number}}" value="{{$unoccupiedWaitid->id}}" {{ $iterator === 0 ? 'checked' : '' }}>
       <label class="button-toggle button-toggle--waitid" for="radio-{{$unoccupiedWaitid->number}}">{{$unoccupiedWaitid->number}}</label>

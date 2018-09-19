@@ -3,8 +3,9 @@
 namespace App;
 
 use App\Guest;
-use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Waitid extends Model
@@ -41,7 +42,10 @@ class Waitid extends Model
 
     public function scopeUnoccupied($query)
     {
-        $activeGuests = Guest::filter(1)->filter(2)->get();
+        $activeGuests = Guest::filter(1)
+            ->filter(2)
+            ->get();
+
         $activeGuestsIndexed = [];
 
         foreach ($activeGuests as $activeGuest) {
