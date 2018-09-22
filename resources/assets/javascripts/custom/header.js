@@ -1,7 +1,7 @@
 (() => {
   function initHeaderRefresh($headerRefresh) {
     $headerRefresh.addEventListener('click', () => {
-      location.reload();
+      location.reload(true);
     });
   }
 
