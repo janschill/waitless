@@ -53,23 +53,24 @@ Die Interaktion mit diesem Prototyp hat gut funktioniert. Daher haben wir ein Mo
 <img src="http://up.picr.de/33792596la.png" width="40%">
 
 <img src="http://up.picr.de/33792597ht.png" width="40%">
-Bei diesem Prototypen haben wir festgestellt, dass nicht klar war, welchen Status die Gäste haben und welche Schaltfläche diesen ändert. Daher haben wir die Gäste klar in Abschnitte eingeordnet:
+Bei diesem Prototypen haben wir festgestellt, dass nicht klar war, welchen Status die Gäste haben und welche Schaltfläche diesen ändert. Wir haben mit Buttons mit einer Pfeilspitze experimentiert, um den nächsten Status anzuzeigen. Dies hat sich aber als nicht intuitiv herausgestellt. Daher haben wir die Gäste klar in Abschnitte eingeordnet:
 <img src="http://up.picr.de/33792598qf.png" width="40%">
-Bei diesem Design hat die Statuszuweisung besser funktioniert, aber Buttons unklar.
+Bei diesem Design hat die Statuszuweisung besser funktioniert, es war aber nicht deutlich, welche Elemente Interaktionen haben. Außerdem waren die Elemente zwar geordnet, es hab aber keine Hierarche. Es sollte deutlich werden, dass der wichtigste Zustand "zugewiesen" ist, denn dann muss ein Mitarbeiter die Gäste informieren.
 
 ## Endergebnis
 
-### Designentscheidungen
+### Designentscheidungen & Besonderheiten
 
 Da die Anwendung von vielen Nutzern über lange Zeit verwendet wird, lag der Fokus auf schnellen Interaktionen mit der Anwendung.
 Daher sind die wichtigsten Aktionen mit einfachem berühreren auf große Bedienelemente durchzuführen. Besonders präsent sind zugewiesene Gäste, weil dieser Zustand eine Aktion von den Mitarbeitern erfordert. Mitarbeiter draußen müssen dann die Gäste in die Gaststätte führen.
-Platzierte Gäste verschwinden nicht sofort, sondern werden in der Historie gelistet. Dies erlaubt den Anwendern, Fehler rückgängig zu machen. Außerdem geben die Zeiten auch einen Überblick, wie lange die sitzenden Gäste schon an ihrem Platz sind.
 
-So hat man stets eine genau Übersicht über die aktuell wartenden Gäste und die letzten zehn. Wir haben uns für zehn entschieden, da die Funktion der History nur zum Fehler beheben genutzt werden sollte, also, falls man mal ausversehen einen Gast in die History schiebt und dies rückgängig machen muss.
+Platzierte Gäste verschwinden nicht sofort, sondern werden in der Historie gelistet. Dies erlaubt den Anwendern, Fehler rückgängig zu machen. Außerdem geben die Zeiten auch einen Überblick, wie lange die sitzenden Gäste schon an ihrem Platz sind.
+So hat man stets eine genaue Übersicht über die aktuell wartenden Gäste und die letzten zehn. Wir haben uns für zehn entschieden, da die Funktion der History nur zum Fehler beheben genutzt werden sollte, also, falls man mal aus Versehen einen Gast in die History schiebt und dies rückgängig machen muss.
+
+Es ist wichtig, dass die Applikation fehlerresistent ist, da sie in einem Kontext eingesetzt wird, wo Probleme mit dem System den gesamten Betrieb aufhalten könnten. 
+Auch in anderen Teilen der Applikation haben wir dafür gesorgt, dass es nicht zu Problemen durch falsche Eingaben kommen kann. Bei der Auswahl einer Wartenummer gibt der Nutzer keine Nummer ein, sondern wählt eine der verfügbaren. Angelegt Wartenummern können nur deaktiviert werden und nicht gelöscht werden. Im Index, also in der Listenansicht der Gäste, können zu jeder Zeit alle Parameter geändert werden, um Flexibilität zu gewährleisten und Fehler zu beheben.
 
 Das Hinzufügen von neuen Gästen ist die wichtigsten Funktion, die am schnellsten erreichbar sein muss. Aus diesem Grund gibt es für diese Funktion einen großen grünen Button in der Mitte des Bildschirms (unter den wartenden Gästen). In dem Formular für das Hinzufügen der Gäste gibt es minimale Bedienelemente. Zahlen werden mit vordefinierten Knöpfen schnell zugänglich gemacht.
-
-Im Index, also in der Listenansicht der Gäste, können zu jeder Zeit alle Parameter geändert werden, um Flexibilität zu gewährleisten und Fehler zu beheben.
 
 ## Umsetzung
 
@@ -77,7 +78,7 @@ Für eine genaue Programmierdokumentation und einem Stacküberblick haben wir ei
 
 ### Problem bzw. Verbesserungen
 
-Da wir uns dafür entschieden kein Frontend-Framework, für die reaktive Darstellung von Inhalten, zu nutzen. Sind wir an die ein oder andere Schwierigkeit gestoßen.
+Da wir uns dafür entschieden haben kein Frontend-Framework für die reaktive Darstellung von Inhalten zu nutzen, sind wir an die ein oder andere Schwierigkeit gestoßen.
 
 1. **Event delegation** beschreibt ein Verfahren bei dem nicht auf die einzelnen `Childs` ein `Event-Listener` gesetzt wird, sondern auf dem darüber liegenden `Parent`. Ein Standardbeispiel wäre eine ToDo-Liste. Anstelle die `Click-Event` auf die einzelnen Listenelemente zu setzen, setzen wir nur einen einzelnen auf die `<ul>` und fangen dann mit `if-statements` das geklickte Listenelement über das `Event-Objekt` ab. **Event delegation** hat dadurch den Vorteil, dass, wenn Elemente dynamisch hinzugefügt werden, diese sofort ohne zusätzliche Programmierung einen `Event-lListener` besitzen.
 
