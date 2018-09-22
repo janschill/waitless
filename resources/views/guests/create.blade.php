@@ -12,16 +12,16 @@
   @endif
   <div class="form__radio-wrap">
     @foreach ($unoccupiedWaitids as $iterator=>$unoccupiedWaitid)
-      <input class="form__radio-input" type="radio" name="guest_waitidId" id="radio-{{$unoccupiedWaitid->number}}" value="{{$unoccupiedWaitid->id}}" {{ $iterator === 0 ? 'checked' : '' }}>
-      <label class="button-toggle button-toggle--waitid" for="radio-{{$unoccupiedWaitid->number}}">{{$unoccupiedWaitid->number}}</label>
+      <input class="form__radio-input" type="radio" name="guest_waitidId" id="waitid-radio-{{$unoccupiedWaitid->number}}" value="{{$unoccupiedWaitid->id}}" {{ $iterator === 0 ? 'checked' : '' }}>
+      <label class="button-toggle button-toggle--waitid" for="waitid-radio-{{$unoccupiedWaitid->number}}">{{$unoccupiedWaitid->number}}</label>
     @endforeach
   </div>
 
   <div class="form__label">Personanzahl:</div>
   <div class="form__radio-wrap">
     @for ($i = 1; $i < 12; $i++)
-      <input class="form__radio-input" type="radio" name="guest_groupSize" id="radio-{{$i}}" value="{{$i}}" {{ $i === 1 ? 'checked' : '' }}>
-      <label class="button-toggle button-toggle--group-size" for="radio-{{$i}}">{{$i}}</label>
+      <input class="form__radio-input" type="radio" name="guest_groupSize" id="group-size-radio-{{$i}}" value="{{$i}}" {{ $i === 1 ? 'checked' : '' }}>
+      <label class="button-toggle button-toggle--group-size" for="group-size-radio-{{$i}}">{{$i}}</label>
     @endfor
   </div>
 
