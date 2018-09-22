@@ -87,6 +87,10 @@ Außerdem war das Konzept des `JavaScript Bundlings` noch nicht ganz klar, das v
 
 All die bisher angesprochenen Punkte wären vermeidbar gewesen hätte man ein Frontendframework wie: `Vue.js` oder `React` genutzt. Dennoch bereuen wir unsere Wahl nicht, denn wir haben viel gelernt und musste nicht noch ein Framework, neben Laravel lernen.
 
+### Weiteres Vorgehen
+
+Es ist geplant dieses Projekt noch einmal zu refactoren und aufzuräumen mit den Dingen, die während der Entwicklung gelernt wurden umzusetzen. Im gleichen Zuge wird das Projekt so überarbeitet, dass es allgemein besser nutzbar für andere _Kunden_ ist und einfacher auf Wünsche eingegangen werden kann.
+
 ## Installationsanleitung
 
 Für Installation des Projektes haben wir ein `install.sh` Shell-Script geschrieben. Mit den nötigen Rechten `chmod +x install.sh` kann das Script über `./install.sh` in der Konsole ausgeführt werden. Es bereitet die Datenbank vor und startet einen PHP Artisan Server (wenn gewünscht). Mehr dazu in der [README.md](README.md).
