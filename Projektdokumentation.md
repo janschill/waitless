@@ -8,7 +8,7 @@ In Gaststätten mit begrenzten Sitzplätzen kommt es oft zu Problemen bei der Zu
 
 ### Lösungsansatz
 
-Um diese Problematik zu beheben, soll eine Webanwendung zur Verwaltung von Gästen erstellt werden. Mit Tablets können Mitarbeiter von Restaurants darauf zugreifen.
+Um diese Problematik zu beheben, soll die Webanwendung „waitless“  zur Verwaltung von Gästen erstellt werden. Mit Tablets können Mitarbeiter von Restaurants darauf zugreifen.
 
 ### Ablauf von Kundeninteraktion
 
