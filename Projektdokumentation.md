@@ -50,6 +50,11 @@ Allerdings haben wir bemerkt, dass es für Gaststätten verlässlicher ist, von 
 Außerdem hat sich der Client zur Tischverwaltung als überflüssig herausgestellt. Die meisten Gaststätten verwenden bereits so ein System. Wenn wir so etwas auch implementieren würden, müssten die Mitarbeiter diese Daten also in zwei Systemen einpflegen. 
 
 Auf Basis dieser Entscheidungen haben wir einen neuen Prototypen erstellt:
+<img src="http://up.picr.de/33891468an.jpg" width="40%">
+<img src="http://up.picr.de/33891469jb.jpg" width="40%">
+<img src="http://up.picr.de/33891470df.jpg" width="40%">
+<img src="http://up.picr.de/33891471nm.jpg" width="40%">
+
 
 Die Interaktion mit diesem Prototyp hat gut funktioniert. Daher haben wir ein Mockup in Adobe XD erstellt:
 <img src="http://up.picr.de/33891331yl.jpg" width="40%">
