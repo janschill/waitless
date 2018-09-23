@@ -1,4 +1,5 @@
 # Projektdokumentation
+Jan Schill, Stephan Richert
 
 ## Einleitung
 
