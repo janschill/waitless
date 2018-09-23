@@ -66,6 +66,7 @@ Bei diesem Prototypen haben wir festgestellt, dass nicht klar war, welchen Statu
 <img src="http://up.picr.de/33792598qf.png" width="40%">
 
 Bei diesem Design hat die Statuszuweisung besser funktioniert, es war aber nicht deutlich, welche Elemente Interaktionen haben. Außerdem waren die Elemente zwar geordnet, es gab aber keine Hierarche. Es sollte deutlich werden, dass der wichtigste Zustand "zugewiesen" ist, denn dann muss ein Mitarbeiter die Gäste informieren.
+Daher haben wir das Design angepasst und sind so bei der finalen Version angelangt.
 
 ## Endergebnis
 <img src="http://up.picr.de/33897499rr.jpg" width="50%"><img src="http://up.picr.de/33897466vz.jpg" width="50%">
