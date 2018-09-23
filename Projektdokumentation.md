@@ -38,7 +38,7 @@ Da die Anwendung für die Mitarbeiter drinnen und draußen identisch ist, könne
 Nach der Festlegung der Anforderungen an die Anwendung wurden erste Skizzen angefertigt. Das Konzept war zu Beginn allerdings noch etwas anders: Der Plan war zuerst, dass Gäste sich selbstständig an einem Touchscreen anmelden. Es sollte drei Clients geben: Einen Touchscreen, der im Eingangsbereich steht, auf dem sich die Gäste anmelden können:
 <img src="https://imgur.com/M68zmDg.jpg" width="50%"><img src="https://imgur.com/6O6MO2y.jpg" width="50%">
 <img src="https://imgur.com/U4WzmIU.jpg" width="50%">
-Einen großen Bildschirm, der die Liste aller wartender Gäste anzeigt:
+Einen großen Bildschirm, der die Liste aller wartender Gäste anzeigt und für die Gäste sichtbar aufgehängt ist:
 <img src="https://imgur.com/ubnRs4F.jpg" width="40%">
 <img src="https://imgur.com/4i8lAXO.jpg" width="60%">
 ...
@@ -71,6 +71,9 @@ Es ist wichtig, dass die Applikation fehlerresistent ist, da sie in einem Kontex
 Auch in anderen Teilen der Applikation haben wir dafür gesorgt, dass es nicht zu Problemen durch falsche Eingaben kommen kann. Bei der Auswahl einer Wartenummer gibt der Nutzer keine Nummer ein, sondern wählt eine der verfügbaren. Angelegt Wartenummern können nur deaktiviert werden und nicht gelöscht werden. Im Index, also in der Listenansicht der Gäste, können zu jeder Zeit alle Parameter geändert werden, um Flexibilität zu gewährleisten und Fehler zu beheben.
 
 Das Hinzufügen von neuen Gästen ist die wichtigsten Funktion, die am schnellsten erreichbar sein muss. Aus diesem Grund gibt es für diese Funktion einen großen grünen Button in der Mitte des Bildschirms (unter den wartenden Gästen). In dem Formular für das Hinzufügen der Gäste gibt es minimale Bedienelemente. Zahlen werden mit vordefinierten Knöpfen schnell zugänglich gemacht.
+
+Da die Applikation von mehreren Nutzern gleichzeitig benutzt wird, ist es wichtig, dass alle über den aktuellen Status informiert sind. Daher haben wir uns entschieden, Benachrichtigungen zu implementieren. Wenn ein Nutzer eine wichtige Eingabe tätigt (z.B. Status ändern oder neue Gäste anlegen) erscheint auf allen anderen Geräten ein Hinweis dazu.
+<img src="http://up.picr.de/33891204in.png">
 
 ## Umsetzung
 
