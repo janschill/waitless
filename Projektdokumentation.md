@@ -39,19 +39,22 @@ Nach der Festlegung der Anforderungen an die Anwendung wurden erste Skizzen ange
 <img src="https://imgur.com/M68zmDg.jpg" width="50%"><img src="https://imgur.com/6O6MO2y.jpg" width="50%">
 <img src="https://imgur.com/U4WzmIU.jpg" width="50%">
 
-Einen großen Bildschirm, der die Liste aller wartender Gäste anzeigt und für die Gäste sichtbar aufgehängt ist:
+Einen Bildschirm für Mitarbeiter draußen zum Verwalten der wartenden Gästen.
 <img src="https://imgur.com/ubnRs4F.jpg" width="40%">
+
+Und ein Client zur Tischverwaltung.
 <img src="https://imgur.com/4i8lAXO.jpg" width="60%">
-...
+
 
 Allerdings haben wir bemerkt, dass es für Gaststätten verlässlicher ist, von Mitarbeitern die Eingaben machen zu lassen und auch die Gäste bevorzugen einen direkten Kontakt mit Mitarbeitern.
-Daher haben wir um dieses Konzept zu testen, einen neuen Papierprototypen angefertigt:
+Außerdem hat sich der Client zur Tischverwaltung als überflüssig herausgestellt. Die meisten Gaststätten verwenden bereits so ein System. Wenn wir so etwas auch implementieren würden, müssten die Mitarbeiter diese Daten also in zwei Systemen einpflegen. 
+
+Auf Basis dieser Entscheidungen haben wir einen neuen Prototypen erstellt:
 
 Die Interaktion mit diesem Prototyp hat gut funktioniert. Daher haben wir ein Mockup in Adobe XD erstellt:
 <img src="http://up.picr.de/33891331yl.jpg" width="40%">
 <img src="http://up.picr.de/33792595po.png" width="40%">
 
-<img src="http://up.picr.de/33792596la.png" width="40%">
 
 <img src="http://up.picr.de/33792597ht.png" width="40%">
 Bei diesem Prototypen haben wir festgestellt, dass nicht klar war, welchen Status die Gäste haben und welche Schaltfläche diesen ändert. Wir haben mit Buttons mit einer Pfeilspitze experimentiert, um den nächsten Status anzuzeigen. Dies hat sich aber als nicht intuitiv herausgestellt. Daher haben wir die Gäste klar in Abschnitte eingeordnet:
