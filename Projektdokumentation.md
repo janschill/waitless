@@ -38,6 +38,7 @@ Da die Anwendung für die Mitarbeiter drinnen und draußen identisch ist, könne
 Nach der Festlegung der Anforderungen an die Anwendung wurden erste Skizzen angefertigt. Das Konzept war zu Beginn allerdings noch etwas anders: Der Plan war zuerst, dass Gäste sich selbstständig an einem Touchscreen anmelden. Es sollte drei Clients geben: Einen Touchscreen, der im Eingangsbereich steht, auf dem sich die Gäste anmelden können:
 <img src="https://imgur.com/M68zmDg.jpg" width="50%"><img src="https://imgur.com/6O6MO2y.jpg" width="50%">
 <img src="https://imgur.com/U4WzmIU.jpg" width="50%">
+
 Einen großen Bildschirm, der die Liste aller wartender Gäste anzeigt und für die Gäste sichtbar aufgehängt ist:
 <img src="https://imgur.com/ubnRs4F.jpg" width="40%">
 <img src="https://imgur.com/4i8lAXO.jpg" width="60%">
@@ -47,7 +48,7 @@ Allerdings haben wir bemerkt, dass es für Gaststätten verlässlicher ist, von 
 Daher haben wir um dieses Konzept zu testen, einen neuen Papierprototypen angefertigt:
 
 Die Interaktion mit diesem Prototyp hat gut funktioniert. Daher haben wir ein Mockup in Adobe XD erstellt:
-
+<img src="http://up.picr.de/33891331yl.jpg" width="40%">
 <img src="http://up.picr.de/33792595po.png" width="40%">
 
 <img src="http://up.picr.de/33792596la.png" width="40%">
