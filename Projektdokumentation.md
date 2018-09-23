@@ -10,7 +10,7 @@ In Gaststätten mit begrenzten Sitzplätzen kommt es oft zu Problemen bei der Zu
 
 Um diese Problematik zu beheben, soll eine Webanwendung zur Verwaltung von Gästen erstellt werden. Mit Tablets können Mitarbeitern von Restaurants darauf zugreifen.
 
-### Ablauf
+### Ablauf von Kundeninteraktion
 
 * Gäste kommen an, da alle Plätze belegt sind, werden sie vor der Gaststätte von einem Mitarbeiter begrüßt.
 * Dieser fügt die Gäste in der Anwendung hinzu und gibt ihnen eine Wartekarte mit der Wartenummer.
