@@ -75,6 +75,11 @@ Das Hinzufügen von neuen Gästen ist die wichtigsten Funktion, die am schnellst
 Da die Applikation von mehreren Nutzern gleichzeitig benutzt wird, ist es wichtig, dass alle über den aktuellen Status informiert sind. Daher haben wir uns entschieden, Benachrichtigungen zu implementieren. Wenn ein Nutzer eine wichtige Eingabe tätigt (z.B. Status ändern oder neue Gäste anlegen) erscheint auf allen anderen Geräten ein Hinweis dazu.
 <img src="http://up.picr.de/33891204in.png">
 
+Um die Schaltfläche zum Ändern des Status eindeutig zu gestalten, haben wir uns für einen Button mit einem Dropdown entschieden.
+<img src="http://up.picr.de/33891238bd.png">
+Dies hat mehrere Vorteile:
+Da Gäste meistens einem Platz zugewiesen werden sollen und eher selten das Lokal vorzeitig verlassen, kann in den meisten Fällen die Statusänderung mit einem Klick ausgeführt werden. Außerdem ist es fehlerresistent, da die seltener verwendete Option versteckter ist.
+
 ## Umsetzung
 
 Für eine genaue Programmierdokumentation und einem Stacküberblick haben wir eine englische [README.nd](README.md) geschrieben, um das _Open Source_ nicht auszuschließen.
