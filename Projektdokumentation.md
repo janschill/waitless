@@ -40,11 +40,12 @@ Nach der Festlegung der Anforderungen an die Anwendung wurden erste Skizzen ange
 <img src="https://imgur.com/U4WzmIU.jpg" width="50%">
 
 Einen Bildschirm für Mitarbeiter draußen zum Verwalten der wartenden Gästen.
+
 <img src="https://imgur.com/ubnRs4F.jpg" width="40%">
 
-Und ein Client zur Tischverwaltung.
-<img src="https://imgur.com/4i8lAXO.jpg" width="60%">
+Und ein Client zur Tischverwaltung:
 
+<img src="https://imgur.com/4i8lAXO.jpg" width="60%">
 
 Allerdings haben wir bemerkt, dass es für Gaststätten verlässlicher ist, von Mitarbeitern die Eingaben machen zu lassen und auch die Gäste bevorzugen einen direkten Kontakt mit Mitarbeitern.
 Außerdem hat sich der Client zur Tischverwaltung als überflüssig herausgestellt. Die meisten Gaststätten verwenden bereits so ein System. Wenn wir so etwas auch implementieren würden, müssten die Mitarbeiter diese Daten also in zwei Systemen einpflegen. 
