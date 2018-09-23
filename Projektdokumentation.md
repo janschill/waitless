@@ -100,7 +100,7 @@ Da Gäste meistens einem Platz zugewiesen werden sollen und eher selten das Loka
 
 Für eine genaue Programmierdokumentation und einem Stacküberblick haben wir eine englische [README.md](README.md) geschrieben, um das _Open Source_ nicht auszuschließen.
 
-### Problem bzw. Verbesserungen
+### Probleme & Verbesserungsmöglichkeiten
 
 Da wir uns dafür entschieden haben kein Frontend-Framework für die reaktive Darstellung von Inhalten zu nutzen, sind wir an die ein oder andere Schwierigkeit gestoßen.
 
