@@ -56,12 +56,11 @@ Auf Basis dieser Entscheidungen haben wir einen neuen Prototypen erstellt:
 <img src="http://up.picr.de/33891471nm.jpg" width="40%">
 
 
-Die Interaktion mit diesem Prototyp hat gut funktioniert. Nur das Menü sollte in einem hamburger-Menü paltziert werden und die Buttons zur Zuweisung des Status überarbeitet werden. Daher haben wir ein Mockup in Adobe XD erstellt:
+Die Interaktion mit diesem Prototyp hat gut funktioniert. Nur das Menü sollte in einem Hamburger-Menü paltziert werden und die Buttons zur Zuweisung des Status überarbeitet werden. Daher haben wir ein Mockup in Adobe XD erstellt:
 <img src="http://up.picr.de/33891331yl.jpg" width="40%">
 <img src="http://up.picr.de/33792595po.png" width="40%">
-
-
 <img src="http://up.picr.de/33792597ht.png" width="40%">
+
 Bei diesem Prototypen haben wir festgestellt, dass nicht klar war, welchen Status die Gäste haben und welche Schaltfläche diesen ändert. Wir haben mit Buttons mit einer Pfeilspitze experimentiert, um den nächsten Status anzuzeigen. Dies hat sich aber als nicht intuitiv herausgestellt. Daher haben wir die Gäste klar in Abschnitte eingeordnet:
 <img src="http://up.picr.de/33792598qf.png" width="40%">
 Bei diesem Design hat die Statuszuweisung besser funktioniert, es war aber nicht deutlich, welche Elemente Interaktionen haben. Außerdem waren die Elemente zwar geordnet, es hab aber keine Hierarche. Es sollte deutlich werden, dass der wichtigste Zustand "zugewiesen" ist, denn dann muss ein Mitarbeiter die Gäste informieren.
@@ -81,7 +80,7 @@ Auch in anderen Teilen der Applikation haben wir dafür gesorgt, dass es nicht z
 
 Das Hinzufügen von neuen Gästen ist die wichtigsten Funktion, die am schnellsten erreichbar sein muss. Aus diesem Grund gibt es für diese Funktion einen großen grünen Button in der Mitte des Bildschirms (unter den wartenden Gästen). In dem Formular für das Hinzufügen der Gäste gibt es minimale Bedienelemente. Zahlen werden mit vordefinierten Knöpfen schnell zugänglich gemacht.
 
-Da die Applikation von mehreren Nutzern gleichzeitig benutzt wird, ist es wichtig, dass alle über den aktuellen Status informiert sind. Daher haben wir uns entschieden, Benachrichtigungen zu implementieren. Wenn ein Nutzer eine wichtige Eingabe tätigt (z.B. Status ändern oder neue Gäste anlegen) erscheint auf allen anderen Geräten ein Hinweis dazu.
+Da die Applikation von mehreren Nutzern gleichzeitig benutzt wird, ist es wichtig, dass alle über den aktuellen Stand informiert sind. Daher haben wir uns dafür entschieden, Benachrichtigungen zu implementieren. Wenn ein Nutzer eine wichtige Eingabe tätigt (z.B. Status ändern oder neue Gäste anlegen) erscheint auf allen anderen Geräten ein Hinweis dazu.
 <img src="http://up.picr.de/33891204in.png">
 
 Um die Schaltfläche zum Ändern des Status eindeutig zu gestalten, haben wir uns für einen Button mit einem Dropdown entschieden.
@@ -91,7 +90,7 @@ Da Gäste meistens einem Platz zugewiesen werden sollen und eher selten das Loka
 
 ## Umsetzung
 
-Für eine genaue Programmierdokumentation und einem Stacküberblick haben wir eine englische [README.nd](README.md) geschrieben, um das _Open Source_ nicht auszuschließen.
+Für eine genaue Programmierdokumentation und einem Stacküberblick haben wir eine englische [README.md](README.md) geschrieben, um das _Open Source_ nicht auszuschließen.
 
 ### Problem bzw. Verbesserungen
 
