@@ -51,6 +51,7 @@ Allerdings haben wir bemerkt, dass es für Gaststätten verlässlicher ist, von 
 Außerdem hat sich der Client zur Tischverwaltung als überflüssig herausgestellt. Die meisten Gaststätten verwenden bereits so ein System. Wenn wir so etwas auch implementieren würden, müssten die Mitarbeiter diese Daten also in zwei Systemen einpflegen. 
 
 Auf Basis dieser Entscheidungen haben wir einen neuen Prototypen erstellt:
+
 <img src="http://up.picr.de/33891468an.jpg" width="40%">
 <img src="http://up.picr.de/33891469jb.jpg" width="40%">
 <img src="http://up.picr.de/33891470df.jpg" width="40%">
@@ -58,11 +59,13 @@ Auf Basis dieser Entscheidungen haben wir einen neuen Prototypen erstellt:
 
 
 Die Interaktion mit diesem Prototyp hat gut funktioniert. Nur das Menü sollte in einem Hamburger-Menü paltziert werden und die Buttons zur Zuweisung des Status überarbeitet werden. Daher haben wir ein Mockup in Adobe XD erstellt:
+
 <img src="http://up.picr.de/33891331yl.jpg" width="40%">
 <img src="http://up.picr.de/33792595po.png" width="40%">
 <img src="http://up.picr.de/33792597ht.png" width="40%">
 
 Bei diesem Prototypen haben wir festgestellt, dass nicht klar war, welchen Status die Gäste haben und welche Schaltfläche diesen ändert. Wir haben mit Buttons mit einer Pfeilspitze experimentiert, um den nächsten Status anzuzeigen. Dies hat sich aber als nicht intuitiv herausgestellt. Daher haben wir die Gäste klar in Abschnitte eingeordnet:
+
 <img src="http://up.picr.de/33792598qf.png" width="40%">
 
 Bei diesem Design hat die Statuszuweisung besser funktioniert, es war aber nicht deutlich, welche Elemente Interaktionen haben. Außerdem waren die Elemente zwar geordnet, es gab aber keine Hierarche. Es sollte deutlich werden, dass der wichtigste Zustand "zugewiesen" ist, denn dann muss ein Mitarbeiter die Gäste informieren.
