@@ -56,7 +56,7 @@ Auf Basis dieser Entscheidungen haben wir einen neuen Prototypen erstellt:
 <img src="http://up.picr.de/33891471nm.jpg" width="40%">
 
 
-Die Interaktion mit diesem Prototyp hat gut funktioniert. Daher haben wir ein Mockup in Adobe XD erstellt:
+Die Interaktion mit diesem Prototyp hat gut funktioniert. Nur das Menü sollte in einem hamburger-Menü paltziert werden und die Buttons zur Zuweisung des Status überarbeitet werden. Daher haben wir ein Mockup in Adobe XD erstellt:
 <img src="http://up.picr.de/33891331yl.jpg" width="40%">
 <img src="http://up.picr.de/33792595po.png" width="40%">
 
