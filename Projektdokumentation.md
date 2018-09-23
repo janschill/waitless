@@ -67,10 +67,10 @@ Bei diesem Prototypen haben wir festgestellt, dass nicht klar war, welchen Statu
 Bei diesem Design hat die Statuszuweisung besser funktioniert, es war aber nicht deutlich, welche Elemente Interaktionen haben. Außerdem waren die Elemente zwar geordnet, es hab aber keine Hierarche. Es sollte deutlich werden, dass der wichtigste Zustand "zugewiesen" ist, denn dann muss ein Mitarbeiter die Gäste informieren.
 
 ## Endergebnis
-<img src="http://up.picr.de/33897499rr.jpg" width="40%"><img src="http://up.picr.de/33897466vz.jpg" width="40%">
-<img src="http://up.picr.de/33897464do.jpg" width="40%"><img src="http://up.picr.de/33897467wv.jpg" width="40%">
-<img src="http://up.picr.de/33897465ap.jpg" width="40%"><img src="http://up.picr.de/33897461sb.jpg" width="40%">
-<img src="http://up.picr.de/33897463wf.jpg" width="40%">
+<img src="http://up.picr.de/33897499rr.jpg" width="50%"><img src="http://up.picr.de/33897466vz.jpg" width="50%">
+<img src="http://up.picr.de/33897464do.jpg" width="50%"><img src="http://up.picr.de/33897467wv.jpg" width="50%">
+<img src="http://up.picr.de/33897465ap.jpg" width="50%"><img src="http://up.picr.de/33897461sb.jpg" width="50%">
+<img src="http://up.picr.de/33897463wf.jpg" width="50%">
 
 ### Designentscheidungen & Besonderheiten
 
@@ -89,6 +89,7 @@ Da die Applikation von mehreren Nutzern gleichzeitig benutzt wird, ist es wichti
 <img src="http://up.picr.de/33891204in.png">
 
 Um die Schaltfläche zum Ändern des Status eindeutig zu gestalten, haben wir uns für einen Button mit einem Dropdown entschieden.
+
 <img src="http://up.picr.de/33891238bd.png">
 Dies hat mehrere Vorteile:
 Da Gäste meistens einem Platz zugewiesen werden sollen und eher selten das Lokal vorzeitig verlassen, kann in den meisten Fällen die Statusänderung mit einem Klick ausgeführt werden. Außerdem ist es fehlerresistent, da die seltener verwendete Option versteckter ist.
@@ -116,31 +117,3 @@ Es ist geplant dieses Projekt noch einmal zu refactoren und aufzuräumen mit den
 ## Installationsanleitung
 
 Für Installation des Projektes haben wir ein `install.sh` Shell-Script geschrieben. Mit den nötigen Rechten `chmod +x install.sh` kann das Script über `./install.sh` in der Konsole ausgeführt werden. Es bereitet die Datenbank vor und startet einen PHP Artisan Server (wenn gewünscht). Mehr dazu in der [README.md](README.md).
-
-## Feedback
-
-### Papierprototyp
-
-* Farbgestaltung an Corporate Design anpassen
-* Historie-Unterpunkt
-* Vorbestellung lieber Checkbox oder Schiebeschalter
-* Gast löschen Position ändern
-* Speichern und Abbrechen tauschen?
-* Hamburger-Menü vllt rechts?
-* Kommentar-Button wirkt wie Eingabe, ... reicht vllt
-* wartend wirkt inaktiv wegen Grauton
-  * vllt Abstand zwischen wartend, platziert
-  * platziert-Icon missverständlich
-
-### 27.08.2018
-
-* evtl. Backup-Funktion?
-* Bearbeiten-Button ist bei Personenanzahl oder Nummer verwirrend -> Umbenennen, vllt Speichern
-* Buttons optisch buttoniger machen
-* Bei Bearbeiten Autofokus in Textfeld
-* größter Kritikpunkt: Plus-Button ungünstig, blockiert Elemente. Anders darstellen, vllt in der Nähe von Aktuelles, da die Nummer dort hinzugefügt wird?
-* Hinweise-Edit in Historie crashed
-* Lieber ... bei langen Kommentaren, abgeschnittener Text wirkt unruhig
-* Statistik an Stil anpassen, Schrift schwarz
-* Wichtig bei Doku: Warum? Irrwege
-* Kleine Designsachen: Abstände von Karten zu allen Seiten gleich, Waitless größer, waitless, Zeit und Menu auf einer Höhe, Einträge links rechts Abstand gleich
