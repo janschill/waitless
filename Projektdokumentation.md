@@ -8,7 +8,7 @@ In Gaststätten mit begrenzten Sitzplätzen kommt es oft zu Problemen bei der Zu
 
 ### Lösungsansatz
 
-Um diese Problematik zu beheben, soll eine Webanwendung zur Verwaltung von Gästen erstellt werden. Mit Tablets können Mitarbeitern von Restaurants darauf zugreifen.
+Um diese Problematik zu beheben, soll eine Webanwendung zur Verwaltung von Gästen erstellt werden. Mit Tablets können Mitarbeiter von Restaurants darauf zugreifen.
 
 ### Ablauf von Kundeninteraktion
 
@@ -26,7 +26,7 @@ Da die Anwendung für die Mitarbeiter drinnen und draußen identisch ist, könne
 * Mehrere Geräte müssen gleichzeitig auf die Anwendung zugreifen können und Änderungen auf beiden aktualisiert werden.
 * Gäste müssen angelegt werden können und die Anzahl der Personen erfasst werden können.
 * Den Gästen müssen Wartenummern zugewiesen werden können.
-* Damit Gäste die ihnen zugewiesene Wartenummer nicht vergessen, können Mitarbeiter Ihnen Karten geben, auf denen die Nummer steht. Das System sollte daher bei neuen Nutzern freie Nummern aus einer Liste anbieten.
+* Damit Gäste die ihnen zugewiesene Wartenummer nicht vergessen, können Mitarbeiter ihnen Karten geben, auf denen die Nummer steht. Das System sollte daher bei neuen Nutzern freie Nummern aus einer Liste anbieten.
 * Damit Kunden schon während sie warten Getränke bekommen können, müssen Mitarbeiter in dem System vermerken können, wenn bereits eine Rechnung besteht.
 * Bei wartenden Gästen soll angezeigt werden, wie lange diese bereits warten.
 * Falsche Eingaben sollen schnell behoben werden können.
@@ -36,16 +36,16 @@ Da die Anwendung für die Mitarbeiter drinnen und draußen identisch ist, könne
 ## Iterationen
 
 Nach der Festlegung der Anforderungen an die Anwendung wurden erste Skizzen angefertigt. Das Konzept war zu Beginn allerdings noch etwas anders: Der Plan war zuerst, dass Gäste sich selbstständig an einem Touchscreen anmelden. Es sollte drei Clients geben: Einen Touchscreen, der im Eingangsbereich steht, auf dem sich die Gäste anmelden können:
-<img src="https://imgur.com/M68zmDg.jpg" width="50%"><img src="https://imgur.com/6O6MO2y.jpg" width="50%">
-<img src="https://imgur.com/U4WzmIU.jpg" width="50%">
+<img src="https://imgur.com/M68zmDg.jpg" width="40%"><img src="https://imgur.com/6O6MO2y.jpg" width="40%">
+<img src="https://imgur.com/U4WzmIU.jpg" width="40%">
 
-Einen Bildschirm für Mitarbeiter draußen zum Verwalten der wartenden Gästen.
+Einen Bildschirm für Mitarbeiter draußen zum Verwalten der wartenden Gästen:
 
 <img src="https://imgur.com/ubnRs4F.jpg" width="40%">
 
 Und ein Client zur Tischverwaltung:
 
-<img src="https://imgur.com/4i8lAXO.jpg" width="60%">
+<img src="https://imgur.com/4i8lAXO.jpg" width="50%">
 
 Allerdings haben wir bemerkt, dass es für Gaststätten verlässlicher ist, von Mitarbeitern die Eingaben machen zu lassen und auch die Gäste bevorzugen einen direkten Kontakt mit Mitarbeitern.
 Außerdem hat sich der Client zur Tischverwaltung als überflüssig herausgestellt. Die meisten Gaststätten verwenden bereits so ein System. Wenn wir so etwas auch implementieren würden, müssten die Mitarbeiter diese Daten also in zwei Systemen einpflegen. 
@@ -64,7 +64,8 @@ Die Interaktion mit diesem Prototyp hat gut funktioniert. Nur das Menü sollte i
 
 Bei diesem Prototypen haben wir festgestellt, dass nicht klar war, welchen Status die Gäste haben und welche Schaltfläche diesen ändert. Wir haben mit Buttons mit einer Pfeilspitze experimentiert, um den nächsten Status anzuzeigen. Dies hat sich aber als nicht intuitiv herausgestellt. Daher haben wir die Gäste klar in Abschnitte eingeordnet:
 <img src="http://up.picr.de/33792598qf.png" width="40%">
-Bei diesem Design hat die Statuszuweisung besser funktioniert, es war aber nicht deutlich, welche Elemente Interaktionen haben. Außerdem waren die Elemente zwar geordnet, es hab aber keine Hierarche. Es sollte deutlich werden, dass der wichtigste Zustand "zugewiesen" ist, denn dann muss ein Mitarbeiter die Gäste informieren.
+
+Bei diesem Design hat die Statuszuweisung besser funktioniert, es war aber nicht deutlich, welche Elemente Interaktionen haben. Außerdem waren die Elemente zwar geordnet, es gab aber keine Hierarche. Es sollte deutlich werden, dass der wichtigste Zustand "zugewiesen" ist, denn dann muss ein Mitarbeiter die Gäste informieren.
 
 ## Endergebnis
 <img src="http://up.picr.de/33897499rr.jpg" width="50%"><img src="http://up.picr.de/33897466vz.jpg" width="50%">
