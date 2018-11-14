@@ -37,7 +37,6 @@
       event.preventDefault();
 
       if (checkCorrectValidationFunction($form, formId)) {
-        console.log('submit');
         $form.submit();
       }
     });
