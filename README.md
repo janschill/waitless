@@ -34,6 +34,14 @@ If you do not want to use the `install.sh` script you can get the application ru
 
 At the moment `waitless` is programmed very specific to fullfill a clients desire, but it is planned to refactor the whole project, to use a modern JavaScript framework and make the whole project more generic.
 
+### Server
+
+To configure the server (Raspberry Pi) to have a static IP address follow this guide:
+[Guide](https://raspberrypi.stackexchange.com/questions/37920/how-do-i-set-up-networking-wifi-static-ip-address/37921#37921)
+
+Most important file:
+`sudo vi /etc/dhcpcd.conf`
+
 ## Setup for development
 
 In the following we will introduce the technologies used in this project. We will give a brief introduction and explain: how it works, how we implemented it, error that may have occured and explain why we chose the service over others or at all.
