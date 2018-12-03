@@ -32,8 +32,12 @@ class Guest {
 
   static setPreorderedValue($tableRow) {
     let $tableColumn = $tableRow.querySelector('.table__column--preordered'),
-      $formRadioOn = $tableColumn.querySelector('.form__radio--preordered.form__radio--on'),
-      $formRadioOff = $tableColumn.querySelector('.form__radio--preordered.form__radio--off');
+      $formRadioOn = $tableColumn.querySelector(
+        '.form__radio--preordered.form__radio--on'
+      ),
+      $formRadioOff = $tableColumn.querySelector(
+        '.form__radio--preordered.form__radio--off'
+      );
 
     if ($formRadioOn.getAttribute('checked') == null) {
       $formRadioOn.setAttribute('checked', 'checked');
@@ -75,17 +79,37 @@ class Guest {
   }
 
   static setModalList($guestForm, unoccupiedWaitidIds) {
-    let $buttonToggles = $guestForm.querySelectorAll('.button-toggle--unoccupied-waitid-id');
+    let $buttonToggles = $guestForm.querySelectorAll(
+      '.button-toggle--unoccupied-waitid-id'
+    );
 
     $buttonToggles.forEach(($buttonToggle, index) => {
-      $buttonToggle.setAttribute('waitid-id', unoccupiedWaitidIds[index].id)
+      $buttonToggle.setAttribute('waitid-id', unoccupiedWaitidIds[index].id);
       $buttonToggle.innerText = unoccupiedWaitidIds[index].number;
     });
   }
 
   /* Creates the guestrow in pending list and destroys old one */
-  static setWaitingState(table, guest, unoccupiedWaitidIds, waitidNumber, statesForCurrent, statesForHistory, stateAssign, $tableRow) {
-    GuestRow.createGuestRow(TablePosition.end(), table, guest, unoccupiedWaitidIds, waitidNumber, statesForCurrent, statesForHistory, stateAssign);
+  static setWaitingState(
+    table,
+    guest,
+    unoccupiedWaitidIds,
+    waitidNumber,
+    statesForCurrent,
+    statesForHistory,
+    stateAssign,
+    $tableRow
+  ) {
+    GuestRow.createGuestRow(
+      TablePosition.end(),
+      table,
+      guest,
+      unoccupiedWaitidIds,
+      waitidNumber,
+      statesForCurrent,
+      statesForHistory,
+      stateAssign
+    );
     this.destroyRow($tableRow);
   }
 
@@ -98,20 +122,56 @@ class Guest {
   }
 
   /* Creates the guestrow in history table and destroys old one */
-  static setSeatedState(table, guest, unoccupiedWaitidIds, waitidNumber, statesForCurrent, statesForHistory, $tableRow) {
-    GuestRow.createGuestRow(TablePosition.start(), table, guest, unoccupiedWaitidIds, waitidNumber, statesForCurrent, statesForHistory);
+  static setSeatedState(
+    table,
+    guest,
+    unoccupiedWaitidIds,
+    waitidNumber,
+    statesForCurrent,
+    statesForHistory,
+    $tableRow
+  ) {
+    GuestRow.createGuestRow(
+      TablePosition.start(),
+      table,
+      guest,
+      unoccupiedWaitidIds,
+      waitidNumber,
+      statesForCurrent,
+      statesForHistory
+    );
     this.destroyRow($tableRow);
   }
 
   /* Creates the guestrow in history table and destroys old one */
-  static setGoneState(table, guest, unoccupiedWaitidIds, waitidNumber, statesForCurrent, statesForHistory, $tableRow) {
-    GuestRow.createGuestRow(TablePosition.start(), table, guest, unoccupiedWaitidIds, waitidNumber, statesForCurrent, statesForHistory);
+  static setGoneState(
+    table,
+    guest,
+    unoccupiedWaitidIds,
+    waitidNumber,
+    statesForCurrent,
+    statesForHistory,
+    $tableRow
+  ) {
+    GuestRow.createGuestRow(
+      TablePosition.start(),
+      table,
+      guest,
+      unoccupiedWaitidIds,
+      waitidNumber,
+      statesForCurrent,
+      statesForHistory
+    );
     this.destroyRow($tableRow);
   }
 
   static initGuestWaitid($tableRow, $tableColumn, $modals) {
-    let $guestWaitidButton = $tableColumn.querySelector('.button-toggle--waitid-id'),
-      $guestWaitidSubmit = $tableColumn.querySelector('.form__submit--waitid-id.form__submit--success');
+    let $guestWaitidButton = $tableColumn.querySelector(
+        '.button-toggle--waitid-id'
+      ),
+      $guestWaitidSubmit = $tableColumn.querySelector(
+        '.form__submit--waitid-id.form__submit--success'
+      );
 
     $guestWaitidSubmit.addEventListener('click', event => {
       event.preventDefault();
@@ -128,7 +188,9 @@ class Guest {
       Modal.showModal($tableRow, $thisGuestWaitidPopup);
     });
 
-    let $buttonToggles = $tableColumn.querySelectorAll('.button-toggle--unoccupied-waitid-id');
+    let $buttonToggles = $tableColumn.querySelectorAll(
+      '.button-toggle--unoccupied-waitid-id'
+    );
     $buttonToggles.forEach($buttonToggle => {
       $buttonToggle.addEventListener('click', event => {
         event.preventDefault();
@@ -143,8 +205,12 @@ class Guest {
   }
 
   static initGuestGroupSize($tableRow, $tableColumn, $modals) {
-    let $guestGroupSizeButton = $tableColumn.querySelector('.button-toggle--group-size'),
-      $guestGroupSizeSubmit = $tableColumn.querySelector('.form__submit--group-size.form__submit--success');
+    let $guestGroupSizeButton = $tableColumn.querySelector(
+        '.button-toggle--group-size'
+      ),
+      $guestGroupSizeSubmit = $tableColumn.querySelector(
+        '.form__submit--group-size.form__submit--success'
+      );
 
     $guestGroupSizeSubmit.addEventListener('click', event => {
       event.preventDefault();
@@ -153,7 +219,9 @@ class Guest {
 
     $guestGroupSizeButton.addEventListener('click', event => {
       event.preventDefault();
-      let $thisGuestGroupSizePopup = $tableRow.querySelector('.modal--group-size');
+      let $thisGuestGroupSizePopup = $tableRow.querySelector(
+        '.modal--group-size'
+      );
 
       $modals.forEach($modal => {
         Modal.hideModal($tableRow, $modal);
@@ -161,11 +229,16 @@ class Guest {
       Modal.showModal($tableRow, $thisGuestGroupSizePopup);
     });
 
-    let $buttonToggles = $tableColumn.querySelectorAll('.button-toggle--all-group-size');
+    let $buttonToggles = $tableColumn.querySelectorAll(
+      '.button-toggle--all-group-size'
+    );
     $buttonToggles.forEach($buttonToggle => {
       $buttonToggle.addEventListener('click', event => {
         event.preventDefault();
-        Guest.setInputGroupSizeValue($tableRow, $buttonToggle.dataset.groupSize);
+        Guest.setInputGroupSizeValue(
+          $tableRow,
+          $buttonToggle.dataset.groupSize
+        );
 
         $buttonToggles.forEach($thisButtonToggle => {
           $thisButtonToggle.classList.remove('button-toggle--highlight');
@@ -176,21 +249,31 @@ class Guest {
   }
 
   static initGuestPreordered($tableRow, $tableColumn) {
-    $tableColumn.querySelector('.form__radio--preordered.form__radio--off').addEventListener('click', () => {
-      Guest.setInputPreorderedValue($tableRow, 0);
-      $tableRow.submit();
-    });
+    $tableColumn
+      .querySelector('.form__radio--preordered.form__radio--off')
+      .addEventListener('click', () => {
+        Guest.setInputPreorderedValue($tableRow, 0);
+        $tableRow.submit();
+      });
 
-    $tableColumn.querySelector('.form__radio--preordered.form__radio--on').addEventListener('click', () => {
-      Guest.setInputPreorderedValue($tableRow, 1);
-      $tableRow.submit();
-    });
+    $tableColumn
+      .querySelector('.form__radio--preordered.form__radio--on')
+      .addEventListener('click', () => {
+        Guest.setInputPreorderedValue($tableRow, 1);
+        $tableRow.submit();
+      });
   }
 
   static initGuestComment($tableRow, $tableColumn, $modals) {
-    let $guestCommentButton = $tableColumn.querySelector('.button-toggle--comment'),
-      $guestInputComment = $tableColumn.querySelector('.modal__text.modal__text--comment'),
-      $guestCommentSubmit = $tableColumn.querySelector('.form__submit--comment.form__submit--success');
+    let $guestCommentButton = $tableColumn.querySelector(
+        '.button-toggle--comment'
+      ),
+      $guestInputComment = $tableColumn.querySelector(
+        '.modal__text.modal__text--comment'
+      ),
+      $guestCommentSubmit = $tableColumn.querySelector(
+        '.form__submit--comment.form__submit--success'
+      );
 
     $guestCommentSubmit.addEventListener('click', event => {
       event.preventDefault();
@@ -213,16 +296,25 @@ class Guest {
   }
 
   static initGuestState($tableRow, $tableColumn) {
-    $tableColumn.querySelectorAll('.button-toggle').forEach($guestStateButton => {
-      $guestStateButton.addEventListener('click', () => {
-        Guest.setInputStateValue($tableRow, $guestStateButton.dataset.stateId);
-        $tableRow.submit();
+    $tableColumn
+      .querySelectorAll('.button-toggle')
+      .forEach($guestStateButton => {
+        $guestStateButton.addEventListener('click', () => {
+          Guest.setInputStateValue(
+            $tableRow,
+            $guestStateButton.dataset.stateId
+          );
+          $tableRow.submit();
+        });
       });
-    });
-    const $buttonToggleDropdown = $tableColumn.querySelector('.button-toggle__dropdown');
+    const $buttonToggleDropdown = $tableColumn.querySelector(
+      '.button-toggle__dropdown'
+    );
     if ($buttonToggleDropdown) {
       $buttonToggleDropdown.addEventListener('click', () => {
-        $tableColumn.querySelector('.modal__child-list').classList.toggle('modal__child-list--hidden');
+        $tableColumn
+          .querySelector('.modal__child-list')
+          .classList.toggle('modal__child-list--hidden');
       });
     }
   }

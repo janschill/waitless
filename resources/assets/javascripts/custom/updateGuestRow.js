@@ -7,6 +7,6 @@
       $tableRows.forEach($tableRow => {
         GuestRow.initGuestRow($tableBody, $tableRow);
       });
-    })
+    });
   });
 })();

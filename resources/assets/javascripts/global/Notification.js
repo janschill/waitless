@@ -12,17 +12,27 @@ class Notification {
   }
 
   static showNotification($notification, guest, waitidNumber, title) {
-    let $notificationHeader = $notification.querySelector('.notification__header'),
-      $notificationHeaderTitle = $notificationHeader.querySelector('.notification__title'),
+    let $notificationHeader = $notification.querySelector(
+        '.notification__header'
+      ),
+      $notificationHeaderTitle = $notificationHeader.querySelector(
+        '.notification__title'
+      ),
       $notificationMain = $notification.querySelector('.notification__main'),
-      $notificationMainTitle = $notificationMain.querySelector('.notification__title'),
-      $notificationParagraph = $notification.querySelector('.notification__paragraph');
+      $notificationMainTitle = $notificationMain.querySelector(
+        '.notification__title'
+      ),
+      $notificationParagraph = $notification.querySelector(
+        '.notification__paragraph'
+      );
 
     // Implement here fallback for empty comment
 
     $notificationHeaderTitle.innerHTML = title;
     $notificationMainTitle.innerHTML = `<strong>#${waitidNumber}</strong>`;
-    $notificationParagraph.innerHTML = `${guest.group_size} ${this.personSingularOrPlural(guest.group_size)} – ${guest.comment}`
+    $notificationParagraph.innerHTML = `${
+      guest.group_size
+    } ${this.personSingularOrPlural(guest.group_size)} – ${guest.comment}`;
   }
 
   static showNew(guest, waitidNumber) {
@@ -33,7 +43,12 @@ class Notification {
 
   static showUpdate(guest, waitidNumber) {
     let $notification = document.querySelector('.notification');
-    this.showNotification($notification, guest, waitidNumber, 'Gast bearbeitet');
+    this.showNotification(
+      $notification,
+      guest,
+      waitidNumber,
+      'Gast bearbeitet'
+    );
     this.activateWindow($notification);
   }
 }

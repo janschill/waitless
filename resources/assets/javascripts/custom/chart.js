@@ -22,7 +22,7 @@
   }
 
   function getRangeForDayToString() {
-    return getRangeForDay().map(hour => `${hour.getHours()}:00` );
+    return getRangeForDay().map(hour => `${hour.getHours()}:00`);
   }
 
   function isEqualHours(guest, hour) {
@@ -32,12 +32,18 @@
   /* MONTH **************************** */
   function getRangeForMonth() {
     const today = new Date();
-    return Array.from(new Array(new Date(today.getFullYear(), today.getMonth(), 0).getDate()),(val, i) => new Date(0, 0, ++i));
+    return Array.from(
+      new Array(new Date(today.getFullYear(), today.getMonth(), 0).getDate()),
+      (val, i) => new Date(0, 0, ++i)
+    );
   }
 
   function getRangeForMonthToString() {
     const today = new Date();
-    return Array.from(new Array(new Date(today.getFullYear(), today.getMonth(), 0).getDate()),(val, i) => ++i);
+    return Array.from(
+      new Array(new Date(today.getFullYear(), today.getMonth(), 0).getDate()),
+      (val, i) => ++i
+    );
   }
 
   function isEqualMonth(guest, month) {
@@ -54,7 +60,20 @@
   }
 
   function getRangeForYearToString() {
-    return ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+    return [
+      'Januar',
+      'Februar',
+      'März',
+      'April',
+      'Mai',
+      'Juni',
+      'Juli',
+      'August',
+      'September',
+      'Oktober',
+      'November',
+      'Dezember'
+    ];
   }
 
   function isEqualYear(guest, year) {
@@ -67,15 +86,18 @@
    * Takes the array with the labels (length of x axis of chart)
    * and then filters through the data looking for time match
    * and returns an array with the counts
-  */
+   */
   function getMappedToRangeData(timeRange, data) {
     return timeRange.range().map(time => {
-      return data.reduce((current, guest) => {
-        if (timeRange.equal(guest, time)) {
-          current.count++;
-        }
-        return current;
-      }, { count: 0 }).count;
+      return data.reduce(
+        (current, guest) => {
+          if (timeRange.equal(guest, time)) {
+            current.count++;
+          }
+          return current;
+        },
+        { count: 0 }
+      ).count;
     });
   }
 
@@ -84,7 +106,9 @@
     chart.data.datasets.forEach(dataset => {
       dataset.label = label;
       dataset.data = getMappedToRangeData(timeRange, data);
-      dataset.backgroundColor = backgroundColorMappedToData(timeRange.label().length);
+      dataset.backgroundColor = backgroundColorMappedToData(
+        timeRange.label().length
+      );
       dataset.borderColor = borderColorMappedToData(timeRange.label().length);
     });
 
@@ -96,20 +120,24 @@
       type: 'bar',
       data: {
         labels: [],
-        datasets: [{
-          label: 'Gäste',
-          data: [],
-          backgroundColor: [],
-          borderColor: []
-        }]
+        datasets: [
+          {
+            label: 'Gäste',
+            data: [],
+            backgroundColor: [],
+            borderColor: []
+          }
+        ]
       },
       options: {
         scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero:true
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
             }
-          }]
+          ]
         }
       }
     });
@@ -123,7 +151,7 @@
         let responseData = request.responseText;
         _updateChart(chart, timeRange, JSON.parse(responseData), 'Gäste');
       } else {
-        console.log('Error')
+        console.log('Error');
       }
     };
     request.onerror = function() {
@@ -135,7 +163,7 @@
   function determineTimeRange($button, url) {
     const dateTimeNow = new Date(),
       dateTimeYear = dateTimeNow.getFullYear(),
-      dateTimeMonth = dateTimeNow.getMonth()+1,
+      dateTimeMonth = dateTimeNow.getMonth() + 1,
       dateTimeDay = dateTimeNow.getDate();
 
     switch ($button.dataset.url) {
@@ -184,10 +212,12 @@
       $statisticsControl = document.querySelector('.statistics-control');
 
     if ($statisticsControl) {
-      const $buttonToggles = $statisticsControl.querySelectorAll('.button-toggle'),
+      const $buttonToggles = $statisticsControl.querySelectorAll(
+          '.button-toggle'
+        ),
         chart = initChart($chart);
 
-      $buttonToggles.forEach(($button) => {
+      $buttonToggles.forEach($button => {
         initButton($buttonToggles, $button, chart);
       });
     }

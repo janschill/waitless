@@ -14,7 +14,6 @@ class Modal {
     $background.classList.remove('background--hidden');
     $element.classList.remove('modal--hidden');
     $tableRow.classList.add('table__row--appear');
-
   }
 
   static hideModal($tableRow, $element) {

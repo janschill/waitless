@@ -6,7 +6,11 @@
       $waitidBoxForm.addEventListener('submit', event => {
         event.preventDefault();
 
-        return confirm(`Möchtest du wirklich die Wartemarke (${$waitidBox.dataset.waitIdNumber}) löschen?`);
+        return confirm(
+          `Möchtest du wirklich die Wartemarke (${
+            $waitidBox.dataset.waitIdNumber
+          }) löschen?`
+        );
       });
 
       $waitidBox.addEventListener('click', event => {

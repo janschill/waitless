@@ -1,5 +1,5 @@
 (() => {
-  function initNavigation ($navigation) {
+  function initNavigation($navigation) {
     let $hamburger = document.querySelector('.hamburger');
 
     $hamburger.addEventListener('click', () => {
@@ -13,7 +13,7 @@
         $navigation.classList.remove('navigation--expanded');
         $hamburger.classList.remove('hamburger--active');
       }
-    }
+    };
   }
 
   document.addEventListener('DOMContentLoaded', () => {

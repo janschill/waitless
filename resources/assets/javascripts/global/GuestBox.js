@@ -14,7 +14,9 @@ class GuestBox {
 
   static createBoxParagraph(guest) {
     let $boxParagraph = document.createElement('p');
-    $boxParagraph.appendChild(document.createTextNode(`Personen: ${guest.group_size}`));
+    $boxParagraph.appendChild(
+      document.createTextNode(`Personen: ${guest.group_size}`)
+    );
 
     return $boxParagraph;
   }
@@ -33,10 +35,22 @@ class GuestBox {
     let $boxTime = document.createElement('div');
     Helper.addClassnames($boxTime, classnames);
     let $paragraphArrival = document.createElement('div');
-    $paragraphArrival.appendChild(document.createTextNode(`${Helper.stringPadding(dateTimeArrivalTime.getHours())}:${Helper.stringPadding(dateTimeArrivalTime.getMinutes())}`));
+    $paragraphArrival.appendChild(
+      document.createTextNode(
+        `${Helper.stringPadding(
+          dateTimeArrivalTime.getHours()
+        )}:${Helper.stringPadding(dateTimeArrivalTime.getMinutes())}`
+      )
+    );
     $boxTime.appendChild($paragraphArrival);
     let $paragraphAssigned = document.createElement('div');
-    $paragraphAssigned.appendChild(document.createTextNode(`${Helper.stringPadding(dateTimeLastStateChange.getHours())}:${Helper.stringPadding(dateTimeLastStateChange.getMinutes())}`));
+    $paragraphAssigned.appendChild(
+      document.createTextNode(
+        `${Helper.stringPadding(
+          dateTimeLastStateChange.getHours()
+        )}:${Helper.stringPadding(dateTimeLastStateChange.getMinutes())}`
+      )
+    );
     $boxTime.appendChild($paragraphAssigned);
 
     return $boxTime;
@@ -53,7 +67,9 @@ class GuestBox {
 
   static createBoxForm(classnames, guest) {
     let $boxForm = document.createElement('form');
-    const CSRF_TOKEN = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    const CSRF_TOKEN = document
+      .querySelector('meta[name="csrf-token"]')
+      .getAttribute('content');
     Helper.addClassnames($boxForm, classnames);
     $boxForm.action = `/guests/${guest.id}`;
     $boxForm.method = 'POST';
@@ -70,9 +86,12 @@ class GuestBox {
   static createBox(guest, waitidNumber) {
     let $box = document.createElement('li');
     $box.setAttribute('data-guest-id', guest.id);
-    $box.id = `guest-id-${guest.id}`
+    $box.id = `guest-id-${guest.id}`;
     Helper.addClassnames($box, ['box', 'box--guest']);
-    let $boxHeadline = this.createBoxHeadline(['box__headline', 'box__headline--large'], `#${waitidNumber}`);
+    let $boxHeadline = this.createBoxHeadline(
+      ['box__headline', 'box__headline--large'],
+      `#${waitidNumber}`
+    );
     $box.appendChild($boxHeadline);
     let $paragraph = this.createBoxParagraph(guest);
     $box.appendChild($paragraph);
