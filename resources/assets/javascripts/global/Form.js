@@ -9,6 +9,7 @@ class Form {
     });
     return waitidExist;
   }
+  
   static validateWaitidId(waitidId) {
     return waitidId !== '';
   }
