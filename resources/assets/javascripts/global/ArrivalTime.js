@@ -9,22 +9,27 @@ class ArrivalTime {
       date.getSeconds()
     );
   }
+  
   static getDifferenceMilliseconds(time) {
     return this.convertDateToUTC(new Date()) - this.convertDateToUTC(time);
   }
+  
   static getDifferenceMinutes(time) {
     return Math.round(
       ((this.getDifferenceMilliseconds(time) % 86400000) % 3600000) / 60000
     );
   }
+  
   static getDifferenceHours(time) {
     return Math.floor(
       (this.getDifferenceMilliseconds(time) % 86400000) / 3600000
     );
   }
+  
   static getDifferenceDays(time) {
     return Math.floor(this.getDifferenceMilliseconds(time) / 86400000);
   }
+  
   static addDangerClass($element) {
     $element.classList.add('table__column--danger-text');
   }
